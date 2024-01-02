@@ -1,0 +1,15 @@
+.ik-logo {
+    
+    height: 62px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .ik-logo::after {
+    content: "";
+    width: 200px;
+    height: 42px;
+    display: flex;
+    background-image: url('https://tobeto.com/_next/static/media/ik-logo-light.ace655db.svg');
+    background-size: 200px 42px;
+  }
