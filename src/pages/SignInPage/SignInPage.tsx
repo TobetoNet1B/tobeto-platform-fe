@@ -1,12 +1,28 @@
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react'
+import { passwordValidator } from 'utils/customValidations';
+import { number, object, string } from 'yup';
 
 type Props = {}
 
 const SignInPage = (props: Props) => {
-    const handleSignIn = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Giriş işlemleri burada gerçekleştirilebilir
-    };
+    const initialValues = {
+        username: '',
+        password: ''
+    }
+
+    const validationSchema = object({
+        username: string().required("E-posta girmek zorunludur.").min(0),
+        password: string()
+            .required("Şifre girmek zorunludur.")
+            .min(3, "Şifre en az 3 karakter olmalıdır.")
+            .max(50)
+            .test(
+                "my-custom-rule",
+                "En az 1 büyük, 1 küçük harf ve 1 rakam içermelidir.",
+                passwordValidator,
+            )
+    });
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -17,44 +33,53 @@ const SignInPage = (props: Props) => {
                     className="mb-5 mt-5 rounded-md mx-auto"
                     style={{ width: "100%", height: "auto" }}
                 />
-                <form onSubmit={handleSignIn}>
-                    <div className="mb-4">
-                        <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            className="mt-1 p-2 w-full border rounded-md"
-                            placeholder="E-Posta"
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            className="mt-1 p-2 w-full border rounded-md"
-                            placeholder="Şifre"
-                        />
-                    </div>
-                    <div className="flex items-center justify-between mb-4">
-                        <div>
-                            <a href="#" className="text-sm text-purple-500 hover:underline">
-                                Şifremi Unuttum
-                            </a>
+                <Formik
+                    initialValues={initialValues}
+                    onSubmit={values => { console.log(values); }}
+                    validationSchema={validationSchema}
+                >
+                    <Form>
+                        <div className="mb-4">
+                            <Field
+                                type="text"
+                                id="username"
+                                name="username"
+                                className="mt-1 p-2 w-full border rounded-md"
+                                placeholder="E-Posta"
+                            />
+                            <ErrorMessage name="username"></ErrorMessage>
                         </div>
-                        <div>
-                            <a href="#" className="text-sm text-purple-500 hover:underline">
-                                Kayıt Ol
-                            </a>
+                        <div className="mb-4">
+                            <Field
+                                type="password"
+                                id="password"
+                                name="password"
+                                className="mt-1 p-2 w-full border rounded-md"
+                                placeholder="Şifre"
+                            />
+                            <ErrorMessage name="password"></ErrorMessage>
                         </div>
-                    </div>
-                    <button
-                        type="submit"
-                        className="bg-purple-600 text-white p-2 rounded-md w-full hover:bg-purple-700"
-                    >
-                        Giriş Yap
-                    </button>
-                </form>
+                        <div className="flex items-center justify-between mb-4">
+                            <div>
+                                <a href="#" className="text-sm text-purple-500 hover:underline">
+                                    Şifremi Unuttum
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#" className="text-sm text-purple-500 hover:underline">
+                                    Kayıt Ol
+                                </a>
+                            </div>
+                        </div>
+                        <button
+                            type="submit"
+                            className="bg-purple-600 text-white p-2 rounded-md w-full hover:bg-purple-700"
+                        >
+                            Giriş Yap
+                        </button>
+                    </Form>
+                </Formik>
+
             </div>
 
 
