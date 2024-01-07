@@ -1,6 +1,7 @@
 import Homepage from "pages/Homepage/Homepage";
 import NotFound from "pages/NotFound";
 import SignInPage from "pages/SignInPage/SignInPage";
+import SignUpPage from "pages/SignUpPage/SignUpPage";
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 
@@ -12,6 +13,7 @@ const RouteDefinitions = (props: Props) => {
 			<Route path="/" element={<Homepage />} />
 			<Route path="*" element={<NotFound />} />
 			<Route path="/giris" element={<SignInPage />} />
+			<Route path="/kayit-ol" element={<SignUpPage />} />
 		</Routes>
 	);
 };
