@@ -1,28 +1,29 @@
-import axios, { AxiosResponse } from "axios";
+import axios, {AxiosResponse} from "axios";
 
 export class BaseService<
 	GetAllType,
-  GetByIdType,
-  AddRequestType,
-  UpdateRequestType,
-  UpdateResponseType> {
-
-	public apiUrl: string
+	GetByIdType,
+	AddRequestType,
+	AddResponseType,
+	UpdateRequestType,
+	UpdateResponseType,
+> {
+	public apiUrl: string;
 
 	constructor() {
 		this.apiUrl = "";
 	}
 
 	getAll(): Promise<AxiosResponse<GetAllType, any>> {
-		return axios.get<GetAllType>(this.apiUrl)
+		return axios.get<GetAllType>(this.apiUrl);
 	}
 
 	getById(id: number): Promise<AxiosResponse<GetByIdType, any>> {
-		return axios.get<GetByIdType>(this.apiUrl + '/' + id)
+		return axios.get<GetByIdType>(this.apiUrl + "/" + id);
 	}
 
-	add(request: AddRequestType): Promise<AxiosResponse<AddRequestType, any>> {
-		return axios.post<AddRequestType>(this.apiUrl, request)
+	add(request: AddRequestType): Promise<AxiosResponse<AddResponseType, any>> {
+		return axios.post<AddResponseType>(this.apiUrl, request);
 	}
 
 	update(
