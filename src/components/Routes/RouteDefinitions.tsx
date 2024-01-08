@@ -1,4 +1,4 @@
-import Homepage from "pages/Homepage/Homepage";
+import Homepage from "pages/Homepage";
 import NotFound from "pages/NotFound";
 import SignInPage from "pages/SignInPage/SignInPage";
 import React from "react";

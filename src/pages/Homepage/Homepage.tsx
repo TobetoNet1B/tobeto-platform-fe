@@ -6,7 +6,7 @@ type Props = {};
 
 const Homepage = (props: Props) => {
 	return (
-		<div className='block box-border font-poppins font-sans'>
+		<div className='block box-border font-mono font-sans'>
 			<div className='bg-zinc-900' style={{height:"0.5rem",overflow:"visible",width:"auto"}}>{/* className='bg-front-dark bg-front-width' */}
 			<section className='box-border'>{/* className='web-header' */}
 				<nav className="top-70 px-3 pt-5 pb-5 pr-2 pl-2 m-0 w-full border-0 fixed flex flex-wrap items-center justify-between z-50 bg-gray-800">{/*className="navbar bg-web navbar-expand-xxl w-100 m-0 z-index-999 position-fixed border-0 px-3 py-5" */}
