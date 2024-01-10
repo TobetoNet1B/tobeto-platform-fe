@@ -6,6 +6,7 @@ import SignUpPage from "pages/SignUpPage/SignUpPage";
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 
+
 type Props = {};
 
 const RouteDefinitions = (props: Props) => {
