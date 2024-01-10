@@ -181,9 +181,9 @@ body {
   width: 12px;
 }
 
-.tab-content > .active {
+/* .tab-content > .active {
   display: block;
-}
+} */
 
 /* .tab-content>.tab-pane {
   display: none;
@@ -195,6 +195,27 @@ body {
   padding: 30px;
   position: relative;
 }
+.tabs-pane .overlay {
+  border-radius: 15px;
+  text-align: center
+}
+
+.tabs-pane .overlay,.tabs-pane .overlay2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%
+}
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0,0,0,.31);
+  z-index: 0;
+  margin: 0!important
+}
+
 
 .tabs-box {
   background: #fff;
@@ -209,6 +230,8 @@ body {
   font-size: 20px;
   line-height: 27px;
   min-height: 180px;
+  position: relative;
+  color: #000!important;
 }
 
 @media screen and (max-width: 760px) {
@@ -263,6 +286,12 @@ body {
     border-bottom: 4px solid #93f;
   }
 }
+@media (max-width: 576px) {
+  .headfarming-mobile {
+    border-top: 4px solid #ff4d05;
+    border-bottom: 4px solid #93f;
+  }
+}
 
 .headfarming {
   background: url("https://tobeto.com/headfarming.svg") no-repeat 50%;
@@ -270,6 +299,7 @@ body {
   min-height: 200px;
   display: flex;
   align-items: center;
+  margin-left: 5%;
 }
 
 @media (max-width: 998px) {
@@ -277,9 +307,6 @@ body {
     background: none;
     min-height: auto;
   }
-}
-
-@media (max-width: 998px) {
   .headfarming p {
     padding-right: 1rem !important;
     padding-left: 1rem !important;
@@ -291,6 +318,10 @@ body {
   .mobile-text-center {
     text-align: center !important;
   }
+  .headfarming {
+    background: none;
+    min-height: auto
+}
 }
 
 .carrosel {
@@ -375,15 +406,23 @@ body {
   height: auto !important;
 }
 
-.brand-slider .slide-track {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr);
+@media screen and (max-width: 900px) {
+  .brand-slider .slide-track {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .brand-slider {
+    height: auto!important
 }
+}
+
 
 .brand-slider {
   background: transparent;
   height: 100px;
-  margin: auto;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
   overflow: hidden;
   position: relative;
   width: -moz-max-content;
@@ -473,11 +512,11 @@ body {
   font-weight: 600
 }
 
-.spec-acc .accordion-item .accordion-collapse .accordion-body .row {
+/* .spec-acc .accordion-item .accordion-collapse .accordion-body .row {
   background-color: transparent!important;
   color: #fff!important;
   justify-content: space-between
-}
+} */
 
 .spec-acc .accordion-item .accordion-button.collapsed {
   display: flex;
@@ -597,6 +636,4 @@ body {
 .accordion-body {
   padding: var(--bs-accordion-body-padding-y) var(--bs-accordion-body-padding-x)
 }
-
-
 
