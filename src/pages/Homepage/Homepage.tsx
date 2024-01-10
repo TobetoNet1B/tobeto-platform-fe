@@ -48,15 +48,6 @@ const Homepage = (props: Props) => {
 								<span className="h-14 flex items-center text-white font-black text-3xl">Aradığın {/* className="text-ik fw-bold"*/}
 									<span style={{color: "rgb(0, 176, 120)"}}>&nbsp;"</span>İş
 									<span style={{color: "rgb(0, 176, 120)"}}>"&nbsp;</span> Burada!
-		<div className='block box-border font-mono font-sans'>
-			<div className='bg-zinc-900' style={{height:"0.5rem",overflow:"visible",width:"auto"}}>{/* className='bg-front-dark bg-front-width' */}
-			<section className='box-border'>{/* className='web-header' */}
-				<nav className="top-70 px-3 pt-5 pb-5 pr-2 pl-2 m-0 w-full border-0 fixed flex flex-wrap items-center justify-between z-50 bg-gray-800">{/*className="navbar bg-web navbar-expand-xxl w-100 m-0 z-index-999 position-fixed border-0 px-3 py-5" */}
-					<div className="flex items-center justify-between mx-auto">{/*container-fluid */}
-						<Link to="#">
-							<span style={{boxSizing: "border-box", display: "inline-block", overflow: "hidden", width: "initial", height: "initial", background: "none", opacity: 1, border: "0px", margin: "0px", padding: "0px", position: "relative", maxWidth: "100%"}}>
-								<span style={{boxSizing: "border-box", display: "block", width: "initial", height: "initial", background: "none", opacity: 1, border: "0px", margin: "0px", padding: "0px", maxWidth: "100%"}}>
-									<img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27165%27%20height=%2734%27/%3e" style={{display: "block", maxWidth: "100%", width: "initial", height: "initial", background: "none", opacity: 1, border: "0px", margin: "0px", padding: "0px"}}/>
 								</span>
 							</div>
 							<div className=''>
