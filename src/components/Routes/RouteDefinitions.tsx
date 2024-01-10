@@ -1,5 +1,6 @@
 import Homepage from "pages/Homepage/Homepage";
 import NotFound from "pages/NotFound";
+import Platform from "pages/Platform/Platform";
 import SignInPage from "pages/SignInPage/SignInPage";
 import SignUpPage from "pages/SignUpPage/SignUpPage";
 import React from "react";
@@ -19,6 +20,7 @@ const RouteDefinitions = (props: Props) => {
 			<Route path="/kayit-ol" element={<SignUpPage />} />
 			<Route path="/test" element={<Test/>} />
 			<Route path="/text2" element={<Text2/>} />
+			<Route path="/platform" element={<Platform/>} />
 		</Routes>
 	);
 };
