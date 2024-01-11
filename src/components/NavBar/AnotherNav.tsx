@@ -2,7 +2,7 @@ type Props = {}
 
 const AnotherNav = (props: Props) => {
 	return (
-		<div className='box-border min-h-16 flex items-center sticky w-full z-50 top-0 left-0 bg-[#1e0f41] bg-cover'>{/* className='ik-banner' */}
+		<div className='box-border flex items-center sticky min-h-16 w-full z-50 top-0 left-0 bg-[#1e0f41] bg-cover'>{/* className='ik-banner' */}
 			<div className='mx-auto box-border block container'>
 				<div className='flex items-center justify-around flex-row gap-4'>{/*className='ik-banner-top' */}
 					<div className='' ><span className='ik-logo '></span>{/*className='ik-logo'*/}</div>

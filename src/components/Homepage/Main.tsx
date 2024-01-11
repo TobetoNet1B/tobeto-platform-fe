@@ -32,7 +32,7 @@ const Main = (props: Props) => {
 	};
 
 	return (
-		<main className='bg-[#181717]'>
+		<main>
 
 
 

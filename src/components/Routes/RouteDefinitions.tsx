@@ -1,4 +1,4 @@
-import Homepage from "pages/Homepage/Homepage";
+import Homepage from "pages/Homepage";
 import NotFound from "pages/NotFound";
 import Platform from "pages/Platform/Platform";
 import SignInPage from "pages/SignInPage/SignInPage";
