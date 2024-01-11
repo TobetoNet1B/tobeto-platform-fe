@@ -1,47 +1,54 @@
 
 'use client';
 
-import { Footer } from 'flowbite-react';
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { Footer, FooterCopyright, FooterIcon, FooterLink, FooterLinkGroup, FooterTitle } from 'flowbite-react';
+import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from 'react-icons/bs';
 
 export default function FooterComp() {
 	return (
-		<Footer container className="text-white !bg-[#181717] px-48">
-			<div className="w-[100%]">
-				<div className="grid w-full gap-8 px-6 py-8 lg:grid-cols-4 md:grid-cols-2">
+		<Footer container className="text-white !bg-[#181717] px-48 ">
+			<div className="w-full">
+				<div className="grid w-full gap-8 px-6 py-8 lg:grid-cols-4 md:grid-cols-2 ">
 					<div>
-						<Footer.LinkGroup col>
-							<Footer.Title title="Site Haritası" />
-							<Footer.Link href="#">About</Footer.Link>
-							<Footer.Link href="#">Careers</Footer.Link>
-							<Footer.Link href="#">Brand Center</Footer.Link>
-							<Footer.Link href="#">Blog</Footer.Link>
+						<Footer.Title title="Site Haritası" />
+						<Footer.LinkGroup col className='items-start'>
+							<Footer.Link href="#">Hakkımızda</Footer.Link>
+							<Footer.Link href="#">Bireyler İçin</Footer.Link>
+							<Footer.Link href="#">Kurumlar İçin</Footer.Link>
+							<Footer.Link href="#">Kurumsal Kimlik</Footer.Link>
+							<Footer.Link href="#">S.S.S.</Footer.Link>
+							<Footer.Link href="#">İletişim</Footer.Link>
 						</Footer.LinkGroup>
 					</div>
 					<div>
-						<Footer.LinkGroup col>
-							<Footer.Title title="Kaynaklar" />
-							<Footer.Link href="#">Discord Server</Footer.Link>
-							<Footer.Link href="#">Twitter</Footer.Link>
-							<Footer.Link href="#">Facebook</Footer.Link>
-							<Footer.Link href="#">Contact Us</Footer.Link>
+						<Footer.Title title="Kaynaklar" />
+						<Footer.LinkGroup col className='items-start'>
+							<Footer.Link href="#">Üyelik Sözleşmesi ve Kullanım Koşulları</Footer.Link>
+							<Footer.Link href="#">KVKK Aydınlatma Metni</Footer.Link>
+							<Footer.Link href="#">İlgili Kişi Başvuru Formu</Footer.Link>
+							<Footer.Link href="#">Çerez Politikası</Footer.Link>
+							<Footer.Link href="#">Cayma Formu</Footer.Link>
 						</Footer.LinkGroup>
 					</div>
 					<div>
-						<Footer.LinkGroup col>
-							<Footer.Title title="Eğitim Yolculukları" />
-							<Footer.Link href="#">Privacy Policy</Footer.Link>
-							<Footer.Link href="#">Licensing</Footer.Link>
-							<Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
+						<Footer.Title title="Eğitim Yolculukları" />
+						<Footer.LinkGroup col className='items-start'>
+							<Footer.Link href="#">Front End</Footer.Link>
+							<Footer.Link href="#">Full Stack</Footer.Link>
+							<Footer.Link href="#">Web & Mobile</Footer.Link>
+							<Footer.Link href="#">Veri Bilimi</Footer.Link>
+							<Footer.Link href="#">Siber Güvenlik</Footer.Link>
+							<Footer.Link href="#">UI / UX</Footer.Link>
 						</Footer.LinkGroup>
 					</div>
 					<div>
-						<Footer.LinkGroup col>
-							<Footer.Title title="Blog" />
-							<Footer.Link href="#">iOS</Footer.Link>
-							<Footer.Link href="#">Android</Footer.Link>
-							<Footer.Link href="#">Windows</Footer.Link>
-							<Footer.Link href="#">MacOS</Footer.Link>
+						<Footer.Title title="Blog" />
+						<Footer.LinkGroup col className='items-start'>
+							<Footer.Link href="#">Web API Nedir? Programlama Yazılımının Arayüzü Nasıl Çalışır?</Footer.Link>
+							<Footer.Link href="#">Yapay Zeka Chatbot: İşte Geleceğin İletişim Aracı!</Footer.Link>
+							<Footer.Link href="#">Yazılım Test Otomasyonu: İş Akışınızı Daha Verimli Hale Getirin!</Footer.Link>
+							<Footer.Link href="#">Node.js Nedir ve Nasıl Kullanılır? İşte Sana Basit ve Etkili Kılavuz</Footer.Link>
+							<Footer.Link href="#">Robotlar ve Yapay Zeka İçin Hangi Yazılım Dili Kullanılır?</Footer.Link>
 						</Footer.LinkGroup>
 					</div>
 				</div>
@@ -53,8 +60,7 @@ export default function FooterComp() {
 						<Footer.Icon href="#" icon={BsFacebook} />
 						<Footer.Icon href="#" icon={BsInstagram} />
 						<Footer.Icon href="#" icon={BsTwitter} />
-						<Footer.Icon href="#" icon={BsGithub} />
-						<Footer.Icon href="#" icon={BsDribbble} />
+						<Footer.Icon href="#" icon={BsLinkedin} />
 					</div>
 				</div>
 			</div>
