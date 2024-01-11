@@ -11,8 +11,10 @@ const Homepage = (props: Props) => {
 		<div className='overflow-y-auto h-screen m-0'>
 			<div className='block box-border font-mono'>
 				<div className='home'>{/* className='bg-front-dark bg-front-width' */}
-					<AnotherNav />
-					<NavBar />
+					<div className="sticky top-0 z-[100]">
+						<AnotherNav />
+						<NavBar />
+					</div>
 					<Main />
 					<FooterComp />
 				</div>
