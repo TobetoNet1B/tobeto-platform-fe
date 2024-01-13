@@ -23,12 +23,12 @@ module.exports = {
       animation: { fade: 'fade 4s ease infinite', fill: 'fill 10s linear 1' },/*  fade 4s ease 0s infinite normal none running fade auto normal normal */
     },
   },
-  daisyui: {
-    themes: ["light", "cupcake"],
-  },
   plugins: [
     require('flowbite/plugin'),
     require("daisyui")
-  ]
+  ],
+  daisyui: {
+    themes: ["light", "cupcake"],
+  }
 }
 
