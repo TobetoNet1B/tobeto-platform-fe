@@ -1,6 +1,6 @@
 export default function NavBar() {
 	return (
-		<div className="navbar w-full px-6 h-16 !bg-[#181717] text-white">
+		<div className="navbar w-full px-6 !py-10 h-16 !bg-[#181717] text-white">
 			<div className="navbar-start">
 				<a className="btn btn-ghost text-xl">
 					<img src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FTebeto-logo-yatay-beyaz.8c2d6927.png&w=256&q=75" className="mr-3 h-6 sm:h-9" />
@@ -31,7 +31,7 @@ export default function NavBar() {
 			</div>
 			<div className="navbar-end gap-3">
 				<a className="btn btn-outline rounded-full text-white">Giriş Yap</a>
-				<a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-full">
+				<a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-full !min-w-max">
 					<span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6]
 					 group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
 					<span className="relative px-6 py-3 transition-all ease-out bg-[#181717] rounded-full group-hover:bg-opacity-0 duration-400">
