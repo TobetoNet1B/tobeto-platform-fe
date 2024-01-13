@@ -1,4 +1,5 @@
 import Homepage from "pages/Homepage";
+import MyProfile from "pages/MyProfile/MyProfile";
 import NotFound from "pages/NotFound";
 import Platform from "pages/Platform/Platform";
 import SignInPage from "pages/SignInPage/SignInPage";
@@ -16,6 +17,7 @@ const RouteDefinitions = (props: Props) => {
 			<Route path="/giris" element={<SignInPage />} />
 			<Route path="/kayit-ol" element={<SignUpPage />} />
 			<Route path="/platform" element={<Platform/>} />
+			<Route path="/profilim" element={<MyProfile/>} />
 		</Routes>
 	);
 };

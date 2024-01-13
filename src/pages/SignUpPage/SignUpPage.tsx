@@ -37,7 +37,7 @@ const SignUpPage = (props: Props) => {
                     style={{ width: "100%", height: "auto" }}
                 />
                 <span className="text-blue font-bold text-3xl mb-3 block">
-                Hemen Kayıt Ol
+                    Hemen Kayıt Ol
                 </span>
                 <Formik
                     initialValues={initialValues}
@@ -89,11 +89,11 @@ const SignUpPage = (props: Props) => {
                                     Zaten bir  hesabın var mı?&nbsp;
                                 </a>
                                 <Link className="nav-link text-sm text-purple-500 hover:underline" to={"/giris"}>
-									Giriş Yap
-								</Link>
-                                
+                                    Giriş Yap
+                                </Link>
+
                             </div>
-                          
+
                         </div>
                         <button
                             type="submit"
