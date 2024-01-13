@@ -6,8 +6,8 @@ import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from 'react-icons/bs';
 
 export default function FooterComp() {
 	return (
-		<Footer container className="text-white !bg-[#181717] px-48 ">
-			<div className="w-full">
+		<Footer container className="text-white !bg-[#181717] max-w-7xl mx-auto">
+			<div className="w-full divide-y divide-zinc-600 divide-solid">
 				<div className="grid w-full gap-8 px-6 py-8 lg:grid-cols-4 md:grid-cols-2 ">
 					<div>
 						<Footer.Title title="Site Haritası" />
@@ -52,7 +52,6 @@ export default function FooterComp() {
 						</Footer.LinkGroup>
 					</div>
 				</div>
-				<div className='divide-y divide-solid'></div>
 				<div className="w-full px-4 py-6 sm:flex sm:items-center sm:justify-between">
 					<Footer.Brand src='https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftobeto-logo.409772fc.png&w=256&q=75' />
 					<Footer.Copyright href="#" by="Tobeto" year={2024} />
