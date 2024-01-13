@@ -37,29 +37,6 @@ const commitCounts = Array.from({ length: 53 }, () =>
     Array.from({ length: 7 }, () => Math.floor(Math.random() * 10))
 );
 
-const experiences = [
-    {
-        year: 2015,
-        title: 'Başlangıç',
-        description: 'İlk deneyim',
-    },
-    {
-        year: 2017,
-        title: 'Devam',
-        description: 'Bir şeyler devam ediyor',
-    },
-    {
-        year: 2019,
-        title: 'Gelişme',
-        description: 'Daha fazla gelişme',
-    },
-    {
-        year: 2021,
-        title: 'Şu An',
-        description: 'Şu anki deneyim',
-    },
-];
-
 const MyProfile = (props: Props) => {
     const data = {
         labels: [
@@ -70,12 +47,12 @@ const MyProfile = (props: Props) => {
             'Başkaları ile birlikte çalışıyorum',
             'Kendimi sürekli geliştiriyorum',
             'Sonuç ve başarı odaklıyım',
-            'Anlıyorum ve anlaşılıyorum',
+            'Anlıyorum ve anlaşılıyorum'
 
         ],
         datasets: [{
             label: "",
-            data: [4.4, 4.9, 4.4, 4.7, 4.8, 4.9, 4.8, 4.6, 0],
+            data: [4.4,4.9,4.4,4.7,4.8,4.9,4.8,4.6],
             fill: true,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgb(255, 99, 132)',
@@ -84,12 +61,17 @@ const MyProfile = (props: Props) => {
             pointHoverBackgroundColor: '#fff',
             pointHoverBorderColor: 'rgb(255, 99, 132)',
             spanGaps: true
-        }]
+        }, {
+            label: '',
+            data: [1.0,2.0,3.0,4.0,5.0,5.0,5.0,5.0],
+            backgroundColor: 'rgba(54, 162, 235, 0)',
+            borderColor: 'rgba(54, 162, 235,0)'
+          }]
     };
     return (
-        <div>
-            <div className='container h-screen overflow-auto'>
-                <div className="row mt-6 mb-2">
+        <div className='h-screen overflow-y-auto '>
+            <div>
+                <div className="mt-6 mb-2">
                     <div className="flex justify-end">
                         <span className="cv-edit-icon">
                             <HiMiniPencil />
@@ -100,8 +82,8 @@ const MyProfile = (props: Props) => {
                         </Dropdown>
                     </div>
                 </div>
-                <div className='flex'>
-                    <div className="flex-none w-1/3">
+                <div className='lg:flex'>
+                    <div className="lg:w-1/3">
                         <div >
                             <div className='col-12 '>
                                 <Card className=" border-gray-50 dark:border-gray-50 max-w-full mr-2 bg-gray-50 dark:bg-gray-50 shadow-2xl ">
@@ -248,7 +230,7 @@ const MyProfile = (props: Props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex-none w-2/3">
+                    <div className="lg:w-2/3">
                         <div >
                             <div className='col-12'>
                                 <Card className=" border-gray-50 dark:border-gray-100 bg-gray-50 dark:bg-gray-50 shadow-2xl ">
@@ -337,51 +319,52 @@ const MyProfile = (props: Props) => {
                                         Eğitim Hayatım ve Deneyimlerim
                                     </h5>
                                     <hr className="border-violet-300 border-b-2 " />
-                                    <div className='p-5'>
-                                        <ol className="items-center sm:flex">
-                                            <li className="relative mb-6 sm:mb-0">
-                                                <div className="flex items-center">
-                                                    <div className="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                                                        <svg className="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                                        </svg>
-                                                    </div>
-                                                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+                                    <div className='p'>
+                                        <ul className="timeline timeline-vertical lg:timeline-horizontal">
+                                            <li>
+                                                <div className="timeline-start">1984</div>
+                                                <div className="timeline-middle">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                                                 </div>
-                                                <div className="mt-3 sm:pe-8">
-                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-black">Asdasd University</h3>
-                                                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">December 2, 2021</time>
-                                                </div>
+                                                <div className="timeline-end timeline-box">First Macintosh computer</div>
+                                                <hr />
                                             </li>
-                                            <li className="relative mb-6 sm:mb-0">
-                                                <div className="flex items-center">
-                                                    <div className="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                                                        <svg className="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                                        </svg>
-                                                    </div>
-                                                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+                                            <li>
+                                                <hr />
+                                                <div className="timeline-start">1998</div>
+                                                <div className="timeline-middle">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                                                 </div>
-                                                <div className="mt-3 sm:pe-8">
-                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-black">Asdasd Company</h3>
-                                                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">December 23, 2021</time>
-                                                </div>
+                                                <div className="timeline-end timeline-box">iMac</div>
+                                                <hr />
                                             </li>
-                                            <li className="relative mb-6 sm:mb-0">
-                                                <div className="flex items-center">
-                                                    <div className="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                                                        <svg className="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                                        </svg>
-                                                    </div>
-                                                    <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+                                            <li>
+                                                <hr />
+                                                <div className="timeline-start">2001</div>
+                                                <div className="timeline-middle">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                                                 </div>
-                                                <div className="mt-3 sm:pe-8">
-                                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-black">Flowbite Company</h3>
-                                                    <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">January 5, 2022</time>
-                                                </div>
+                                                <div className="timeline-end timeline-box">iPod</div>
+                                                <hr />
                                             </li>
-                                        </ol>
+                                            <li>
+                                                <hr />
+                                                <div className="timeline-start">2007</div>
+                                                <div className="timeline-middle">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+                                                </div>
+                                                <div className="timeline-end timeline-box">iPhone</div>
+                                                <hr />
+                                            </li>
+                                            <li>
+                                                <hr />
+                                                <div className="timeline-start">2015</div>
+                                                <div className="timeline-middle">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+                                                </div>
+                                                <div className="timeline-end timeline-box">Apple Watch</div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </Card>
                             </div>
