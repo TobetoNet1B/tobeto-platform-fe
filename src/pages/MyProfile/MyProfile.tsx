@@ -21,6 +21,7 @@ import {
 	Legend,
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
+import HeatMap from '@uiw/react-heat-map';
 
 
 ChartJS.register(
@@ -34,9 +35,6 @@ ChartJS.register(
 
 type Props = {}
 
-const commitCounts = Array.from({ length: 53 }, () =>
-	Array.from({ length: 7 }, () => Math.floor(Math.random() * 10))
-);
 
 const MyProfile = (props: Props) => {
 	const data = {
@@ -70,6 +68,21 @@ const MyProfile = (props: Props) => {
 			borderColor: 'rgba(54, 162, 235,0)'
 		}]
 	};
+
+
+	const value = [
+		{ date: '2024/01/11', count: 2 },
+		{ date: '2024/04/12', count: 2 },
+		{ date: '2024/05/01', count: 5 },
+		{ date: '2024/05/02', count: 5 },
+		{ date: '2024/05/03', count: 1 },
+		{ date: '2024/05/04', count: 11 },
+		{ date: '2024/05/08', count: 32 },
+	];
+
+
+
+
 	return (
 		<div className='h-screen overflow-y-auto  '>
 			<div className='max-w-[1024px] mx-auto'>
@@ -314,18 +327,19 @@ const MyProfile = (props: Props) => {
 										Aktivite Haritam
 									</h5>
 									<hr className="border-violet-300 border-b-2 " />
-									<div className="flex items-center justify-center rotate-90 max-h-32">
-										<div className="grid grid-cols-7 gap-1 flex">
-											{commitCounts.map((weekCommits, weekIndex) =>
-												weekCommits.map((count, dayIndex) => (
-													<div
-														key={`${weekIndex}-${dayIndex}`}
-														className={`lg:w-2 lg:h-2  sm:w-1 sm:h-1 ${count > 0 ? 'bg-green-400' : 'bg-gray-200'}`}
-													></div>
-												))
-											)}
-										</div>
-									</div>
+									<HeatMap
+										value={value}
+										width={600}
+										style={{ color: '#4B0082' }}
+										startDate={new Date('2024/01/01')}
+										panelColors={{
+											0: '#d0cccc',
+											4: '#c064fc',
+											10: '#a034fc',
+											20: '#601c9c',
+											30: '#38145c',
+										}}
+									/>
 								</Card>
 							</div>
 							<div className='col-12 my-2'>
@@ -334,51 +348,51 @@ const MyProfile = (props: Props) => {
 										Eğitim Hayatım ve Deneyimlerim
 									</h5>
 									<hr className="border-violet-300 border-b-2 " />
-										<ul className="timeline timeline-vertical ">
-											<li>
-												<div className="timeline-start">1984</div>
-												<div className="timeline-middle">
-													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
-												</div>
-												<div className="timeline-end timeline-box">Tobeto Lisesi</div>
-												<hr />
-											</li>
-											<li>
-												<hr />
-												<div className="timeline-start">1998</div>
-												<div className="timeline-middle">
-													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
-												</div>
-												<div className="timeline-end timeline-box">Tobeto University</div>
-												<hr />
-											</li>
-											<li>
-												<hr />
-												<div className="timeline-start">2001</div>
-												<div className="timeline-middle">
-													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
-												</div>
-												<div className="timeline-end timeline-box">Tobeto Şirketi</div>
-												<hr />
-											</li>
-											<li>
-												<hr />
-												<div className="timeline-start">2007</div>
-												<div className="timeline-middle">
-													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
-												</div>
-												<div className="timeline-end timeline-box">Tobeto Tech Company</div>
-												<hr />
-											</li>
-											<li>
-												<hr />
-												<div className="timeline-start">2015</div>
-												<div className="timeline-middle">
-													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
-												</div>
-												<div className="timeline-end timeline-box">Tobeto Yüksek Lisans</div>
-											</li>
-										</ul>
+									<ul className="timeline timeline-vertical ">
+										<li>
+											<div className="timeline-start">1984</div>
+											<div className="timeline-middle">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+											</div>
+											<div className="timeline-end timeline-box">Tobeto Lisesi</div>
+											<hr />
+										</li>
+										<li>
+											<hr />
+											<div className="timeline-start">1998</div>
+											<div className="timeline-middle">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+											</div>
+											<div className="timeline-end timeline-box">Tobeto University</div>
+											<hr />
+										</li>
+										<li>
+											<hr />
+											<div className="timeline-start">2001</div>
+											<div className="timeline-middle">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+											</div>
+											<div className="timeline-end timeline-box">Tobeto Şirketi</div>
+											<hr />
+										</li>
+										<li>
+											<hr />
+											<div className="timeline-start">2007</div>
+											<div className="timeline-middle">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+											</div>
+											<div className="timeline-end timeline-box">Tobeto Tech Company</div>
+											<hr />
+										</li>
+										<li>
+											<hr />
+											<div className="timeline-start">2015</div>
+											<div className="timeline-middle">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+											</div>
+											<div className="timeline-end timeline-box">Tobeto Yüksek Lisans</div>
+										</li>
+									</ul>
 								</Card>
 							</div>
 						</div>
