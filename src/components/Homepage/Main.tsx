@@ -32,7 +32,7 @@ const Main = (props: Props) => {
 	};
 
 	return (
-		<main>
+		<main className='max-w-6xl mx-auto'>
 
 
 
@@ -250,7 +250,10 @@ const Main = (props: Props) => {
 								Codecademy’nin tüm kaynaklarına Tobeto aboneliğinin sağlayacağı avantajlar, alanında uzman eğitmenlerle canlı dersler ve mentörlerin desteği ile erişebilir, yeni kariyerine başlayabilirsin!
 							</p>
 						</div>
+
+						
 						<div className="w-full mx-auto m-0 section-three py-20">{/*className="container-fluid m-0 mp-0 section-three py-20" */}
+						{/* mx-[calc((100vw-1152px)/-2+0.4em)]  */}
 							<div className="container">
 								<div className="relative">
 									<p className="text-xl px-10  mx-auto text-center text-white">
@@ -271,7 +274,7 @@ const Main = (props: Props) => {
 						</div>
 						<section className="headfarming-mobile">
 							<div className="container mx-auto">
-								<div className="headfarming my-10">
+								<div className="headfarming !mx-0 my-10">
 									<p className="text-xl font-bold px-10  mx-auto text-center text-white">
 										Tobeto , 20. yy''ın “headhunting” yaklaşımını “headfarming” olarak değiştirmeyi hedefler!
 										<br />
