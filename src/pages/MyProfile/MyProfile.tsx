@@ -9,7 +9,7 @@ import {
 	HiOutlineGlobeAlt,
 	HiOutlineHome
 } from "react-icons/hi2";
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaShareAlt } from "react-icons/fa";
 import { FaFilePdf } from "react-icons/fa6";
 import {
 	Chart as ChartJS,
@@ -74,14 +74,20 @@ const MyProfile = (props: Props) => {
 		<div className='h-screen overflow-y-auto  '>
 			<div className='max-w-[1024px] mx-auto'>
 				<div className="mt-6 mb-2 ">
-					<div className="flex justify-end">
-						<span className="cv-edit-icon">
+					<div className="flex justify-end items-center">
+						<button className="btn btn-circle btn-ghost">
 							<HiMiniPencil />
-						</span>
-						<Dropdown label="" inline >
-							<Dropdown.Item>Profilimi paylaş</Dropdown.Item>
-							<Dropdown.Item>Profil Linki</Dropdown.Item>
-						</Dropdown>
+						</button>
+						<div className="dropdown dropdown-end">
+							<div tabIndex={0} role="button" className="btn btn-circle btn-ghost btn-md text-black">
+								<FaShareAlt />
+							</div>
+							<ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+								<li><a>Profilimi paylaş</a></li>
+								<li><a>Profil Linki</a></li>
+							</ul>
+						</div>
+
 					</div>
 				</div>
 				<div className='lg:flex'>
@@ -155,13 +161,13 @@ const MyProfile = (props: Props) => {
 										Yetkinliklerim
 									</h5>
 									<hr className="border-violet-300 border-b-2 " />
-									<h5 className='my-1 text-lg font-medium bg-white text-black   rounded-3xl hover:bg-purple-600 hover:text-white shadow-lg' >
+									<h5 className='p-2 my-1 text-lg font-medium bg-white text-black   rounded-3xl hover:bg-purple-600 hover:text-white shadow-lg' >
 										&emsp;Back End (Yazılım Mühendisliği)
 									</h5>
-									<h5 className='my-1 text-lg font-medium bg-white text-black    rounded-3xl hover:bg-purple-600 hover:text-white shadow-lg' >
+									<h5 className='p-2 my-1 text-lg font-medium bg-white text-black    rounded-3xl hover:bg-purple-600 hover:text-white shadow-lg' >
 										&emsp;javascript
 									</h5>
-									<h5 className='my-1 text-lg font-medium bg-white text-black   rounded-3xl hover:bg-purple-600 hover:text-white shadow-lg'>
+									<h5 className='p-2 my-1 text-lg font-medium bg-white text-black   rounded-3xl hover:bg-purple-600 hover:text-white shadow-lg'>
 										&emsp;c#
 									</h5>
 								</Card>
@@ -216,32 +222,19 @@ const MyProfile = (props: Props) => {
 										Sertifikalarım
 									</h5>
 									<hr className="border-violet-300 border-b-2 " />
-									<Card className="border-gray-50 dark:border-gray-50  bg-white dark:bg-white rounded-3xl">
-										<div className='flex items-center'>
-
-											<div className="flex-auto">
-												<div className="text-lg font-semibold text-gray-700">
-													&nbsp;Web_Geliştirme_Sertifikası.pdf
-												</div>
-											</div>
-											<div className="flex-none ml-auto">
-												<FaFilePdf className="text-3xl text-gray-700" />
-											</div>
+									<div className='flex items-center p-2 text-base font-medium bg-white text-black rounded-3xl shadow-lg'>
+										<div className='flex-auto max-w-[85%] lg:mb-5 overflow-hidden' >
+											&emsp;Web_Geliştirme_Sasdasdasertifikası.pdf
 										</div>
-									</Card>
-									<Card className="border-gray-50 dark:border-gray-50  bg-white dark:bg-white rounded-3xl">
-										<div className='flex items-center'>
+										<FaFilePdf className="flex-none ml-auto  text-3xl text-gray-700" />
+									</div>
 
-											<div className="flex-auto">
-												<div className="text-lg font-semibold text-gray-700">
-													&nbsp;SQL_Geliştirme_Sertifikası.pdf
-												</div>
-											</div>
-											<div className="flex-none ml-auto">
-												<FaFilePdf className="text-3xl text-gray-700" />
-											</div>
+									<div className='flex items-center p-2 text-base font-medium bg-white text-black rounded-3xl shadow-lg'>
+										<div className='flex-auto max-w-[85%] lg:mb-5 overflow-hidden' >
+											&emsp;SQL_Geliştirme_Sasdasdasertifikası.pdf
 										</div>
-									</Card>
+										<FaFilePdf className="flex-none ml-auto  text-3xl text-gray-700" />
+									</div>
 								</Card>
 							</div>
 							<div className='col-12 my-2'>
