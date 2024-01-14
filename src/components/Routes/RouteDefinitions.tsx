@@ -1,3 +1,5 @@
+import Announcement from "pages/Announcement/Announcement";
+import Education from "pages/Education/Education";
 import Homepage from "pages/Homepage/Homepage";
 import NotFound from "pages/NotFound";
 import SignInPage from "pages/SignInPage/SignInPage";
@@ -12,6 +14,8 @@ const RouteDefinitions = (props: Props) => {
 			<Route path="/" element={<Homepage />} />
 			<Route path="*" element={<NotFound />} />
 			<Route path="/giris" element={<SignInPage />} />
+			<Route path="/egitimlerim" element={<Education />} />
+			<Route path="/duyurularım" element={<Announcement />} />
 		</Routes>
 	);
 };
