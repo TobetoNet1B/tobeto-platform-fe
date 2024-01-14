@@ -16,6 +16,7 @@ const Homepage = (props: Props) => {
 						<NavBar />
 					</div>
 					<Main />
+					<hr className="h-px my-8 border-0 bg-zinc-600" />
 					<FooterComp />
 				</div>
 			</div>

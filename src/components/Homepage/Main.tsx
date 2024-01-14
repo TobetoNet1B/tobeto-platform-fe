@@ -61,9 +61,9 @@ const Main = (props: Props) => {
 		</div> */}
 
 
-			<div className='container pt-52 relative mx-auto '>
+			<div className='container pt-20 relative mx-auto'>
 				<div className='flex flex-wrap relative'>{/* className='row' */}
-					<div className="md:flex md:flex-shrink-0 md:w-1/2 flex-shrink-0 grow-0 basis-auto w-full">{/* className="col-md-6 col-12" */}
+					<div className="md:flex md:flex-shrink-0 lg:w-1/2 md:w-full flex-shrink-0 grow-0 basis-auto justify-end pr-3">{/* className="col-md-6 col-12" */}
 						<div className='bg-cover bg-center bg-no-repeat  flex items-start justify-center flex-col p-8 relative h-[300px] rounded-[14px]' style={{ backgroundImage: `url("https://tobeto.com/_next/static/media/ik02.02de641a.svg")` }}>{/*className='tobeto-card' */}
 							<span className='w-1/2 text-white font-extrabold text-2xl z-10'>Hayalindeki teknoloji kariyerini başlat!</span>
 							<span className='w-1/2 text-white font-extrabold text-2xl z-10' style={{ display: 'flex', fontStyle: "italic" }}>
@@ -85,7 +85,7 @@ const Main = (props: Props) => {
 							</div>
 						</div>
 					</div>
-					<div className="md:flex md:flex-shrink-0 md:w-1/2 flex-shrink-0 grow-0 basis-auto w-full">{/* className="col-md-6 col-12" */}
+					<div className="md:flex md:flex-shrink-0 lg:w-1/2 md:w-full flex-shrink-0 grow-0 basis-auto pl-3">{/* className="col-md-6 col-12" */}
 						<div className='ik-card'>
 							<div className='relative flex flex-row items-center justify-between'>{/*className='ik-container' */}
 								<div className='header-left-3'>
@@ -270,7 +270,7 @@ const Main = (props: Props) => {
 							</div>
 						</div>
 						<section className="headfarming-mobile">
-							<div className="container">
+							<div className="container mx-auto">
 								<div className="headfarming my-10">
 									<p className="text-xl font-bold px-10  mx-auto text-center text-white">
 										Tobeto , 20. yy''ın “headhunting” yaklaşımını “headfarming” olarak değiştirmeyi hedefler!
