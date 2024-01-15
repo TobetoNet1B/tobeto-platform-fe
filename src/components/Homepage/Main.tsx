@@ -32,38 +32,10 @@ const Main = (props: Props) => {
 	};
 
 	return (
-		<main className='max-w-6xl mx-auto'>
-
-
-
-			{/* <div>Tobeto simgesi</div> */}
-
-
-			{/* <div className="modal fade" id="TobetoVideo" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="TobetoVideoLabel" tabindex="-1">
-			<div className="modal-dialog modal-lg modal-dialog-centered">
-				<div className="modal-content back-none border-0">
-					<button type="button" className="btn-close btn-close-modal pause-video" data-bs-dismiss="modal" aria-label="Close">
-						<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M16.5 5.5L5.5 16.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							</path>
-							<path d="M5.5 5.5L16.5 16.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							</path>
-						</svg>
-					</button>
-					<div className="modal-body p-0">
-						<video width="100%" className="modal-height youtube-video" height="240" controls="">
-							<source src="https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4" type="video/mp4">
-							<source src="movie.ogg" type="video/ogg">
-						</video>
-					</div>
-				</div>
-			</div>
-		</div> */}
-
-
+		<main>
 			<div className='container pt-20 relative mx-auto'>
 				<div className='flex flex-wrap relative'>{/* className='row' */}
-					<div className="md:flex md:flex-shrink-0 lg:w-1/2 md:w-full flex-shrink-0 grow-0 basis-auto justify-end pr-3">{/* className="col-md-6 col-12" */}
+					<div className="md:flex md:flex-shrink-0 lg:w-1/2 md:w-full max-w-full flex-shrink-0 grow-0 basis-auto justify-end lg:pr-3 pr-0">{/* className="col-md-6 col-12" */}
 						<div className='bg-cover bg-center bg-no-repeat  flex items-start justify-center flex-col p-8 relative h-[300px] rounded-[14px]' style={{ backgroundImage: `url("https://tobeto.com/_next/static/media/ik02.02de641a.svg")` }}>{/*className='tobeto-card' */}
 							<span className='w-1/2 text-white font-extrabold text-2xl z-10'>Hayalindeki teknoloji kariyerini başlat!</span>
 							<span className='w-1/2 text-white font-extrabold text-2xl z-10' style={{ display: 'flex', fontStyle: "italic" }}>
@@ -85,7 +57,7 @@ const Main = (props: Props) => {
 							</div>
 						</div>
 					</div>
-					<div className="md:flex md:flex-shrink-0 lg:w-1/2 md:w-full flex-shrink-0 grow-0 basis-auto pl-3">{/* className="col-md-6 col-12" */}
+					<div className="md:flex md:flex-shrink-0 lg:w-1/2 md:w-full max-w-full flex-shrink-0 grow-0 basis-auto lg:pl-3 pl-0">{/* className="col-md-6 col-12" */}
 						<div className='ik-card'>
 							<div className='relative flex flex-row items-center justify-between'>{/*className='ik-container' */}
 								<div className='header-left-3'>
@@ -113,202 +85,204 @@ const Main = (props: Props) => {
 
 			<div className="gradient-line2 mt-10"></div>
 
-			<div>
-				<div className="raw-html-embed">{/*className="raw-html-embed" */}
-					<div className="raw-html-embed">{/*className="raw-html-embed" */}
-						<div className="container mx-auto w-full px-0">{/*className="container" */}
-							<div className="flex flex-wrap mt-10 mx-5 py-20">{/* className="row py-20 " */}
-								<div className="lg:w-5/12 flex-shrink-0 grow-0 basis-auto w-full">{/* className="col-lg-5 col-12 " */}
-									<h3 className="text-white mt-0 mb-2 font-black leading-[45px] text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl" style={{ fontSize: 'calc(1.35rem + 1.2vw)' }}>Hangi Konuda Kendini<br />Geliştirmek İstersin?</h3>
-									<div className="flex flex-wrap pl-0 mb-0 list-none flex-col rounded-md mr-3 my-14" id="v-pills-tab" role="tablist" aria-orientation="vertical">{/* className="nav flex-column nav-pills me-3 my-14" */}
-										<button onClick={() => handleButtonClick('button1')} className={`px-6 py-9 hover:border border-gray-600 text-left rounded-2xl m-0 mb-5 ${activeButton === 'button1' ? 'bg-white' : 'bg-[#181717] '}`} id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">{/*className="tab-button active mb-5"*/}
-											<div className={`text-2xl text-gray-700 font-semibold mb-4 ${activeButton === 'button1' ? 'text-gray-700 ' : 'text-white'}`}>{/* className="title" */}
-												Teknik ve Profesyonel Eğitimler
-											</div>
-											<div className="text-base text-gray-500 font-normal text-left">{/*className="desc" */}
-												Kapsamlı beceri setlerinden, gelişmek istediğin konuyu seç, kariyerinde bir adım öne geç.
-											</div>
-										</button>
-										<button onClick={() => handleButtonClick('button2')} className={`px-6 py-9 hover:border border-gray-600 text-left rounded-2xl mb-5  ${activeButton === 'button2' ? ' bg-white' : ' bg-[#181717]'}`} id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="false">{/*className="tab-button*/}
-											<div className={`text-2xl text-gray-700 font-semibold mb-4 ${activeButton === 'button2' ? 'text-gray-700 ' : 'text-white '}`}>{/* className="title" */}
-												Yeni bir meslek
-											</div>
-											<div className="text-base text-gray-500 font-normal text-left">{/*className="desc" */}
-												İhtiyaç duyduğun kapsamlı beceri setlerinden oluşan eğitim yolculuğunu seç, yazılım veya profesyonel iş alanlarında tercih ettiğin yeni mesleğine doğru ilk adımını at.
-											</div>
-										</button>
+			<div className="max-w-6xl mx-auto">{/*className="raw-html-embed" */}
+				<div className="container mx-auto w-full px-0">{/*className="container" */}
+					<div className="flex flex-wrap mt-10 mx-5 py-20">{/* className="row py-20 " */}
+						<div className="lg:w-5/12 flex-shrink-0 grow-0 basis-auto w-full">{/* className="col-lg-5 col-12 " */}
+							<h3 className="text-white mt-0 mb-2 font-black leading-[45px] text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl" style={{ fontSize: 'calc(1.35rem + 1.2vw)' }}>Hangi Konuda Kendini<br />Geliştirmek İstersin?</h3>
+							<div className="flex flex-wrap pl-0 mb-0 list-none flex-col rounded-md mr-3 my-14" id="v-pills-tab" role="tablist" aria-orientation="vertical">{/* className="nav flex-column nav-pills me-3 my-14" */}
+								<button onClick={() => handleButtonClick('button1')} className={`px-6 py-9 hover:border border-gray-600 text-left rounded-2xl m-0 mb-5 ${activeButton === 'button1' ? 'bg-white' : 'bg-[#181717] '}`} id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">{/*className="tab-button active mb-5"*/}
+									<div className={`text-2xl text-gray-700 font-semibold mb-4 ${activeButton === 'button1' ? 'text-gray-700 ' : 'text-white'}`}>{/* className="title" */}
+										Teknik ve Profesyonel Eğitimler
 									</div>
-								</div>
-								
-								<div className="lg:w-1/12 flex-shrink-0 grow-0 basis-auto w-full"></div>{/* className="col-lg-1 col-12 " */}
-								<div className="lg:w-1/2 flex-shrink-0 grow-0 basis-auto w-full relative">{/* className="col-lg-6 col-12 tabs-content " */}
-									<div className="absolute z-1 -top-20 -left-20">{/*className="tab-vector" */}
-										<img src="https://tobeto.s3.cloud.ngn.com.tr/dot_purple_358e282aef.svg?updated_at=2022-09-20T12:52:57.402Z" alt="" width="250" height="250" />
+									<div className="text-base text-gray-500 font-normal text-left">{/*className="desc" */}
+										Kapsamlı beceri setlerinden, gelişmek istediğin konuyu seç, kariyerinde bir adım öne geç.
 									</div>
-									<div className="tab-content block w-full ml-4 mr-0 pr-0" id="v-pills-tabContent">
-										{p1Visible && 
-										<div className="tab-pane animate-[opacity_.15s_linear] show active tabs-pane" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">{/*className="tab-pane fade show active tabs-pane" */}
-											<div className="flex flex-wrap -mt-2 -mx-1">{/* className="row"*/}
-												<div className="lg:w-1/2 w-full p-2">{/* className="col-lg-6 col-6"*/}
-													<Link to={""} className="tabs-box mb-5 relative" style={{ color: "#000!important" }}>
-														Object Oriented Programming (OOP)
-													</Link>
-												</div>
-												<div className="lg:w-1/2 w-full p-2">
-													<Link to={""} className="tabs-box mb-5 relative" style={{ color: "#000!important" }}>
-														Microsoft SQL Server Database
-													</Link>
-												</div>
-												<div className="lg:w-1/2 w-full p-2">
-													<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
-														HTML-CSS-SASS
-													</Link>
-												</div>
-												<div className="lg:w-1/2 w-full p-2">
-													<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
-														Javascript
-													</Link>
-												</div>
-												<div className="lg:w-1/2 w-full p-2">
-													<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
-														ASPNET Core MVC
-													</Link>
-												</div>
-												<div className="lg:w-1/2 w-full p-2">
-													<Link to={""} className="tabs-box mb-5 relative" style={{ color: "#000!important" }}>
-														C# Programming
-													</Link>
-												</div>
-											</div>
-										</div>}
-										{p2Visible && 
-										<div className="tab-pane animate-[opacity_.15s_linear] tabs-pane" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">{/*className="tab-pane fade tabs-pane" */}
-											<div className="flex flex-wrap -mt-2 -mx-1">{/* className="row"*/}
-												<div className="lg:w-1/2 w-full p-2">{/* className="col-lg-6 col-6"*/}
-													<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
-														Full Stack Developer
-													</Link>
-												</div>
-												<div className="lg:w-1/2 w-full p-2">
-													<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
-														Front End Developer
-													</Link>
-												</div>
-												<div className="lg:w-1/2 w-full p-2">
-													<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
-														Web &amp; Mobile Developer
-													</Link>
-												</div>
-												<div className="lg:w-1/2 w-full p-2">
-													<div className="tabs-box mb-5">
-														Siber <br /> Güvenlik Uzmanı
-														<div className="absolute top-0 left-0 w-full h-full z-10">{/*className="overlay2" */}
-															<div className="flex items-end justify-end h-full px-4 py-2">
-																<img src="https://tobeto.s3.cloud.ngn.com.tr/comingsoon_4e9690b5a9.svg?updated_at=2022-10-05T08:27:59.306Z" alt="" className="inline-block align-middle w-[35%]" />
-															</div>
-														</div>
-													</div>
-												</div>
-												<div className="lg:w-1/2 w-full p-2">
-													<div className="tabs-box mb-5">
-														Veri <br /> Bilimi Uzmanı
-														<div className="absolute top-0 left-0 w-full h-full z-10">{/*className="overlay2" */}
-															<div className="flex items-end justify-end h-full px-4 py-2">
-																<img src="https://tobeto.s3.cloud.ngn.com.tr/comingsoon_4e9690b5a9.svg?updated_at=2022-10-05T08:27:59.306Z" alt="" className="inline-block align-middle w-[35%]" />
-															</div>
-														</div>
-													</div>
-												</div>
-												<div className="lg:w-1/2 w-full p-2">
-													<div className="tabs-box mb-5">
-														UI/UX <br /> Developer
-														<div className="absolute top-0 left-0 w-full h-full z-10">{/*className="overlay2" */}
-															<div className="flex items-end justify-end h-full px-4 py-2">
-																<img src="https://tobeto.s3.cloud.ngn.com.tr/comingsoon_4e9690b5a9.svg?updated_at=2022-10-05T08:27:59.306Z" alt="" className="inline-block align-middle w-[35%]" />
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>}
+								</button>
+								<button onClick={() => handleButtonClick('button2')} className={`px-6 py-9 hover:border border-gray-600 text-left rounded-2xl mb-5  ${activeButton === 'button2' ? ' bg-white' : ' bg-[#181717]'}`} id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="false">{/*className="tab-button*/}
+									<div className={`text-2xl text-gray-700 font-semibold mb-4 ${activeButton === 'button2' ? 'text-gray-700 ' : 'text-white '}`}>{/* className="title" */}
+										Yeni bir meslek
 									</div>
-								</div>
-								<div className="my-10 flex justify-end w-full max-w-full">
-									<Link to="#" className="font-normal text-base text-gray-300 hover:text-[#93f] md:mx-auto">Tümünü İncele &gt;</Link>{/*className="tab-link mobile-mx-auto" */}
-								</div>
+									<div className="text-base text-gray-500 font-normal text-left">{/*className="desc" */}
+										İhtiyaç duyduğun kapsamlı beceri setlerinden oluşan eğitim yolculuğunu seç, yazılım veya profesyonel iş alanlarında tercih ettiğin yeni mesleğine doğru ilk adımını at.
+									</div>
+								</button>
 							</div>
 						</div>
 
+						<div className="lg:w-1/12 flex-shrink-0 grow-0 basis-auto w-full"></div>{/* className="col-lg-1 col-12 " */}
 
-						
-						<div className="container ca">
-							<div className="flex" style={{ gap: "2em" }}>{/* className="d-flex" */}
-								<div>
-									<img alt='' src="https://tobeto.s3.cloud.ngn.com.tr/calogo_d676092a98.png?updated_at=2022-12-28T12:36:58.291Z" style={{ maxWidth: "172px", height: "auto" }} />
-								</div>
-								<div>
-									<span>
-										Dünyanın en büyük kodlama eğitimi platformu içerikleri şimdi Tobeto deneyimi ile!
-									</span>
-								</div>
+						<div className="lg:w-1/2 flex-shrink-0 grow-0 basis-auto w-full relative">{/* className="col-lg-6 col-12 tabs-content " */}
+							<div className="absolute z-1 -top-20 -left-20">{/*className="tab-vector" */}
+								<img src="https://tobeto.s3.cloud.ngn.com.tr/dot_purple_358e282aef.svg?updated_at=2022-09-20T12:52:57.402Z" alt="" width="250" height="250" />
 							</div>
-							<p>
-								Codecademy’nin tüm kaynaklarına Tobeto aboneliğinin sağlayacağı avantajlar, alanında uzman eğitmenlerle canlı dersler ve mentörlerin desteği ile erişebilir, yeni kariyerine başlayabilirsin!
+							<div className="tab-content block w-full lg:ml-4 mr-0 pr-0" id="v-pills-tabContent">
+								{p1Visible &&
+									<div className="tab-pane animate-[opacity_.15s_linear] show active tabs-pane" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">{/*className="tab-pane fade show active tabs-pane" */}
+										<div className="flex flex-wrap -mt-2 -mx-1">{/* className="row"*/}
+											<div className="lg:w-1/2 w-full p-2">{/* className="col-lg-6 col-6"*/}
+												<Link to={""} className="tabs-box mb-5 relative" style={{ color: "#000!important" }}>
+													Object Oriented Programming (OOP)
+												</Link>
+											</div>
+											<div className="lg:w-1/2 w-full p-2">
+												<Link to={""} className="tabs-box mb-5 relative" style={{ color: "#000!important" }}>
+													Microsoft SQL Server Database
+												</Link>
+											</div>
+											<div className="lg:w-1/2 w-full p-2">
+												<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
+													HTML-CSS-SASS
+												</Link>
+											</div>
+											<div className="lg:w-1/2 w-full p-2">
+												<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
+													Javascript
+												</Link>
+											</div>
+											<div className="lg:w-1/2 w-full p-2">
+												<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
+													ASPNET Core MVC
+												</Link>
+											</div>
+											<div className="lg:w-1/2 w-full p-2">
+												<Link to={""} className="tabs-box mb-5 relative" style={{ color: "#000!important" }}>
+													C# Programming
+												</Link>
+											</div>
+										</div>
+									</div>}
+								{p2Visible &&
+									<div className="tab-pane animate-[opacity_.15s_linear] tabs-pane" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">{/*className="tab-pane fade tabs-pane" */}
+										<div className="flex flex-wrap -mt-2 -mx-1">{/* className="row"*/}
+											<div className="lg:w-1/2 w-full p-2">{/* className="col-lg-6 col-6"*/}
+												<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
+													Full Stack Developer
+												</Link>
+											</div>
+											<div className="lg:w-1/2 w-full p-2">
+												<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
+													Front End Developer
+												</Link>
+											</div>
+											<div className="lg:w-1/2 w-full p-2">
+												<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
+													Web &amp; Mobile Developer
+												</Link>
+											</div>
+											<div className="lg:w-1/2 w-full p-2">
+												<div className="tabs-box mb-5">
+													Siber <br /> Güvenlik Uzmanı
+													<div className="absolute top-0 left-0 w-full h-full z-10">{/*className="overlay2" */}
+														<div className="flex items-end justify-end h-full px-4 py-2">
+															<img src="https://tobeto.s3.cloud.ngn.com.tr/comingsoon_4e9690b5a9.svg?updated_at=2022-10-05T08:27:59.306Z" alt="" className="inline-block align-middle w-[35%]" />
+														</div>
+													</div>
+												</div>
+											</div>
+											<div className="lg:w-1/2 w-full p-2">
+												<div className="tabs-box mb-5">
+													Veri <br /> Bilimi Uzmanı
+													<div className="absolute top-0 left-0 w-full h-full z-10">{/*className="overlay2" */}
+														<div className="flex items-end justify-end h-full px-4 py-2">
+															<img src="https://tobeto.s3.cloud.ngn.com.tr/comingsoon_4e9690b5a9.svg?updated_at=2022-10-05T08:27:59.306Z" alt="" className="inline-block align-middle w-[35%]" />
+														</div>
+													</div>
+												</div>
+											</div>
+											<div className="lg:w-1/2 w-full p-2">
+												<div className="tabs-box mb-5">
+													UI/UX <br /> Developer
+													<div className="absolute top-0 left-0 w-full h-full z-10">{/*className="overlay2" */}
+														<div className="flex items-end justify-end h-full px-4 py-2">
+															<img src="https://tobeto.s3.cloud.ngn.com.tr/comingsoon_4e9690b5a9.svg?updated_at=2022-10-05T08:27:59.306Z" alt="" className="inline-block align-middle w-[35%]" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>}
+							</div>
+						</div>
+						<div className="my-10 flex justify-end w-full max-w-full">
+							<Link to="#" className="font-normal text-base text-gray-300 hover:text-[#93f] md:mx-auto">Tümünü İncele &gt;</Link>{/*className="tab-link mobile-mx-auto" */}
+						</div>
+					</div>
+				</div>
+
+
+
+				<div className="container ca">
+					<div className="flex" style={{ gap: "2em" }}>{/* className="d-flex" */}
+						<div>
+							<img alt='' src="https://tobeto.s3.cloud.ngn.com.tr/calogo_d676092a98.png?updated_at=2022-12-28T12:36:58.291Z" style={{ maxWidth: "172px", height: "auto" }} />
+						</div>
+						<div>
+							<span>
+								Dünyanın en büyük kodlama eğitimi platformu içerikleri şimdi Tobeto deneyimi ile!
+							</span>
+						</div>
+					</div>
+					<p>
+						Codecademy’nin tüm kaynaklarına Tobeto aboneliğinin sağlayacağı avantajlar, alanında uzman eğitmenlerle canlı dersler ve mentörlerin desteği ile erişebilir, yeni kariyerine başlayabilirsin!
+					</p>
+				</div>
+			</div>
+
+
+
+			<div className="!w-full mx-auto m-0 section-three lg:px-80 sm:px-10 py-20">{/*className="container-fluid m-0 mp-0 section-three py-20" */}
+				{/* mx-[calc((100vw-1152px)/-2+0.4em)]  */}
+				<div className="container">
+					<div className="relative">
+						<p className="text-xl px-10  mx-auto text-center text-white">
+							Tobeto Platform'da ücretsiz olarak; sahip olduğun yetkinlikleri değerlendirir,
+							<br /> ilgi ve bilgi seviyene göre yüzlerce eğitim içeriğine ulaşırsın. Bunları nasıl tamamlayacağını
+							<br /> hızına, bütçene ve zamanına göre kendin belirlersin.
+							<br />
+							<br /> Hemen ücretsiz üye ol, platforma katıl!
+						</p>
+						<div className="-left-20 -top-20 absolute z-10">{/*className="tab-vector3" */}
+							<img src="https://tobeto.s3.cloud.ngn.com.tr/dot_white_1e7b4378ec.svg?updated_at=2022-09-20T12:52:57.424Z" alt="" width="150" height="150" />
+						</div>
+						<div className="absolute right-0 -bottom-12">{/*className="tab-vector2" */}
+							<img src="https://tobeto.s3.cloud.ngn.com.tr/04_b3b68891d7.svg?updated_at=2022-07-05T11:08:56.797Z" alt="" width="75" height="75" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div className='max-w-6xl mx-auto'>
+				<section className="headfarming-mobile">
+					<div className="container mx-auto">
+						<div className="headfarming !mx-0 my-10">
+							<p className="text-xl font-bold px-10  mx-auto text-center text-white">
+								Tobeto , 20. yy''ın “headhunting” yaklaşımını “headfarming” olarak değiştirmeyi hedefler!
+								<br />
+								<br /> Headfarming: Genç yetenekleri, sürekli öğrenme hevesi içinde olan profesyonelleri, 360 derece eğitmek, değerlendirmek, yönlendirmek ve desteklemektir.
 							</p>
 						</div>
-
-						
-						<div className="w-full mx-auto m-0 section-three py-20">{/*className="container-fluid m-0 mp-0 section-three py-20" */}
-						{/* mx-[calc((100vw-1152px)/-2+0.4em)]  */}
-							<div className="container">
-								<div className="relative">
-									<p className="text-xl px-10  mx-auto text-center text-white">
-										Tobeto Platform'da ücretsiz olarak; sahip olduğun yetkinlikleri değerlendirir,
-										<br /> ilgi ve bilgi seviyene göre yüzlerce eğitim içeriğine ulaşırsın. Bunları nasıl tamamlayacağını
-										<br /> hızına, bütçene ve zamanına göre kendin belirlersin.
-										<br />
-										<br /> Hemen ücretsiz üye ol, platforma katıl!
-									</p>
-									<div className="-left-4 -top-20 absolute z-10">{/*className="tab-vector3" */}
-										<img src="https://tobeto.s3.cloud.ngn.com.tr/dot_white_1e7b4378ec.svg?updated_at=2022-09-20T12:52:57.424Z" alt="" width="150" height="150" />
-									</div>
-									<div className="absolute  -right-10 -bottom-12">{/*className="tab-vector2" */}
-										<img src="https://tobeto.s3.cloud.ngn.com.tr/04_b3b68891d7.svg?updated_at=2022-07-05T11:08:56.797Z" alt="" width="75" height="75" />
-									</div>
+					</div>
+				</section>
+				<div className="w-full mx-auto py-8">{/*className="container-fluid py-8" */}
+					<div className="container mx-auto">
+						<div className="row flex flex-wrap items-center py-10" style={{ background: "#2f2f2f", borderRadius: "25px" }}>{/* className="row d-flex align-items-center py-10" */}
+							<div className="lg:w-5/12 flex-shrink-0 grow-0 basis-auto w-full">{/*className="col-lg-7 col-12 col-lg-order-first col-order-last" */}
+								<div className="2xl:max-w-2xl mx-auto">{/*className="mw-xxl mx-auto" */}
+									<img alt='' src="https://tobeto.s3.cloud.ngn.com.tr/spider_2_75142468a4.gif" className="w-100" />
 								</div>
 							</div>
-						</div>
-						<section className="headfarming-mobile">
-							<div className="container mx-auto">
-								<div className="headfarming !mx-0 my-10">
-									<p className="text-xl font-bold px-10  mx-auto text-center text-white">
-										Tobeto , 20. yy''ın “headhunting” yaklaşımını “headfarming” olarak değiştirmeyi hedefler!
-										<br />
-										<br /> Headfarming: Genç yetenekleri, sürekli öğrenme hevesi içinde olan profesyonelleri, 360 derece eğitmek, değerlendirmek, yönlendirmek ve desteklemektir.
+							<div className="lg:w-5/12 flex-shrink-0 w-full mx-auto">
+								<div className="max-w-lg md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-2xl mx-auto mobile-text-center">{/*className="mw-lg mx-auto mobile-text-center"> */}
+									<h4 className="text-white ml-3 font-bold text-4xl">
+										Tobeto'İşte Başarı Modeli'mizi Keşfet!
+									</h4>
+									<p className="block text-white ml-3 mt-6">
+										Üyelerimize ücretsiz sunduğumuz, iş bulma ve işte başarılı olma sürecinde gerekli 80 tane davranış ifadesinden oluşan Tobeto 'İşte Başarı Modeli' ile, profesyonellik yetkinliklerini ölç,
+										<br /> raporunu gör.
 									</p>
-								</div>
-							</div>
-						</section>
-						<div className="w-full mx-auto py-8">{/*className="container-fluid py-8" */}
-							<div className="container mx-auto">
-								<div className="row flex flex-wrap items-center py-10" style={{ background: "#2f2f2f", borderRadius: "25px" }}>{/* className="row d-flex align-items-center py-10" */}
-									<div className="lg:w-5/12 flex-shrink-0 grow-0 basis-auto w-full">{/*className="col-lg-7 col-12 col-lg-order-first col-order-last" */}
-										<div className="2xl:max-w-2xl mx-auto">{/*className="mw-xxl mx-auto" */}
-											<img alt='' src="https://tobeto.s3.cloud.ngn.com.tr/spider_2_75142468a4.gif" className="w-100" />
-										</div>
-									</div>
-									<div className="lg:w-5/12 flex-shrink-0 w-full mx-auto">
-										<div className="max-w-lg md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-2xl mx-auto mobile-text-center">{/*className="mw-lg mx-auto mobile-text-center"> */}
-											<h4 className="text-white ml-3 font-bold text-4xl">
-												Tobeto'İşte Başarı Modeli'mizi Keşfet!
-											</h4>
-											<p className="block text-white ml-3 mt-6">
-												Üyelerimize ücretsiz sunduğumuz, iş bulma ve işte başarılı olma sürecinde gerekli 80 tane davranış ifadesinden oluşan Tobeto 'İşte Başarı Modeli' ile, profesyonellik yetkinliklerini ölç,
-												<br /> raporunu gör.
-											</p>
-											<Link className="md:inline-block mt-3 mx-2 bg-purple-600 text-white px-3 py-1 rounded-2xl font-extrabold hover:bg-purple-800" to="/kayit-ol">Hemen Başla</Link>
-										</div>
-									</div>
+									<Link className="md:inline-block mt-3 mx-2 bg-purple-600 text-white px-3 py-1 rounded-2xl font-extrabold hover:bg-purple-800" to="/kayit-ol">Hemen Başla</Link>
 								</div>
 							</div>
 						</div>
@@ -316,10 +290,10 @@ const Main = (props: Props) => {
 				</div>
 			</div>
 
-			<div className='container mx-auto w-full py-8'>{/* className='mb-6 container mt-20'*/}
-				<div className='flex flex-wrap py-6 bg-[#2f2f2f] rounded-3xl px-5'>{/* className='row acc-bg px-5'*/}
+			<div className='container mx-auto max-w-6xl w-full pt-8 pb-0'>{/* className='mb-6 container mt-20'*/}
+				<div className='flex flex-wrap pt-10 pb-0 bg-[#2f2f2f] rounded-3xl px-5'>{/* className='row acc-bg px-5'*/}
 					<div className="flex-shrink-0 grow-0 basis-auto w-full">{/* className='col-12'*/}
-						<div className="accordion px-5 py-4 relative" id="accordionExample">{/* className='accordion spec-acc'*/}
+						<div className="accordion px-5 pt-4 pb-2 relative" id="accordionExample">{/* className='accordion spec-acc'*/}
 							<div className="mb-10 bg-transparent border-none ">{/* className='accordion-item'*/}
 								<div className="flex flex-wrap">{/* className='row'*/}
 									<div className="md:w-full md:flex-shrink-0 md:grow-0 md:basis-auto flex-shrink-0 grow-0 basis-auto w-full">{/* className='col-md-12 col-12'*/}
@@ -327,7 +301,7 @@ const Main = (props: Props) => {
 														<div className="h-full bg-blue-500 animate-fill"></div>
 												</div> */}{/* Animayson için eklenecek div */}
 										<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">{/* className='accordion-header'*/}
-											<button className="bg-transparent hover:text-purple-900 text-purple-800 font-semibold text-2xl pb-2" aria-label="show menu" onClick={() => setshow1(!show1)}>{/* className='accordion-button'*/}
+											<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow1(!show1)}>{/* className='accordion-button'*/}
 												Tobeto "Yazılımda Başarı" Testi &amp; Huawei Talent Interview
 											</button>
 											<button onClick={() => setshow1(!show1)} className='text-slate-300'>
@@ -373,7 +347,7 @@ const Main = (props: Props) => {
 														<div className="h-full bg-blue-500 animate-fill"></div>
 												</div> */}{/* Animayson için eklenecek div */}
 										<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">
-											<button className="bg-transparent hover:text-purple-900 text-purple-800 font-semibold text-2xl pb-2" aria-label="show menu" onClick={() => setshow2(!show2)}>
+											<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow2(!show2)}>
 												Tobeto Kişisel Gelişim Envanteri
 											</button>
 											<button onClick={() => setshow2(!show2)} className='text-slate-300'>
@@ -412,7 +386,7 @@ const Main = (props: Props) => {
 														<div className="h-full bg-blue-500 animate-fill"></div>
 												</div> */}{/* Animayson için eklenecek div */}
 										<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">
-											<button className="bg-transparent hover:text-purple-900 text-purple-800 font-semibold text-2xl pb-2" aria-label="show menu" onClick={() => setshow3(!show3)}>
+											<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow3(!show3)}>
 												Codecademy &amp; Tobeto
 											</button>
 											<button onClick={() => setshow3(!show3)} className='text-slate-300'>
@@ -451,7 +425,7 @@ const Main = (props: Props) => {
 														<div className="h-full bg-blue-500 animate-fill"></div>
 												</div> */}{/* Animayson için eklenecek div */}
 										<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">
-											<button className="bg-transparent hover:text-purple-900 text-purple-800 font-semibold text-2xl pb-2" aria-label="show menu" onClick={() => setshow4(!show4)}>
+											<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow4(!show4)}>
 												Bilgiyi Beceriye Çevirme
 											</button>
 											<button onClick={() => setshow4(!show4)} className='text-slate-300'>
@@ -490,7 +464,7 @@ const Main = (props: Props) => {
 														<div className="h-full bg-blue-500 animate-fill"></div>
 												</div> */}{/* Animayson için eklenecek div */}
 										<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">
-											<button className="bg-transparent hover:text-purple-900 text-purple-800 font-semibold text-2xl pb-2" aria-label="show menu" onClick={() => setshow5(!show5)}>
+											<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow5(!show5)}>
 												Doğru İş İle Eşleşme
 											</button>
 											<button onClick={() => setshow5(!show5)} className='text-slate-300'>
@@ -524,12 +498,12 @@ const Main = (props: Props) => {
 							</div>
 							<div className="mb-10 bg-transparent border-none ">
 								<div className="flex flex-wrap">
-									<div className="md:w-full md:flex-shrink-0 md:grow-0 md:basis-auto flex-shrink-0 grow-0 basis-auto w-full">
+									<div className="md:w-full block md:flex-shrink-0 md:grow-0 md:basis-auto flex-shrink-0 grow-0 basis-auto w-full">
 										{/* <div className="border-none h-0.5 w-full block">
 														<div className="h-full bg-blue-500 animate-fill"></div>
 												</div> */}{/* Animayson için eklenecek div */}
 										<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">
-											<button className="bg-transparent hover:text-purple-900 text-purple-800 font-semibold text-2xl pb-2" aria-label="show menu" onClick={() => setshow6(!show6)}>
+											<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow6(!show6)}>
 												Hayat Boyu Öğrenme
 											</button>
 											<button onClick={() => setshow6(!show6)} className='text-slate-300'>
@@ -691,6 +665,7 @@ const Main = (props: Props) => {
 					</div>
 				</div>
 			</div>
+
 		</main>
 	)
 }

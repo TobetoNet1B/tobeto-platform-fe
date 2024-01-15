@@ -9,7 +9,7 @@ export default function FooterComp() {
 	return (
 		<Footer container className="text-white !bg-[#181717] max-w-7xl mx-auto">
 			<div className="w-full divide-y divide-zinc-600 divide-solid">
-				<div className="flex w-full gap-14 px-6 pt-8 pb-24 lg:grid-cols-4 md:grid-cols-2">
+				<div className="flex w-full gap-14 px-6 pt-8 pb-24 lg:grid-cols-4 grid-cols-2">
 					<div className='!size-fit min-w-40'>
 						<Footer.Title title="Site Haritası" />
 						<Footer.LinkGroup col className='items-start footer-link-group'>
@@ -21,7 +21,7 @@ export default function FooterComp() {
 							<Link to="#">İletişim</Link>
 						</Footer.LinkGroup>
 					</div>
-					<div className='!size-fit'>
+					<div className='!size-fit min-w-40'>
 						<Footer.Title title="Kaynaklar" />
 						<Footer.LinkGroup col className='items-start'>
 							<Link to="#">Üyelik Sözleşmesi ve Kullanım Koşulları</Link>
@@ -31,7 +31,7 @@ export default function FooterComp() {
 							<Link to="#">Cayma Formu</Link>
 						</Footer.LinkGroup>
 					</div>
-					<div className='!size-fit'>
+					<div className='!size-fit min-w-40'>
 						<Footer.Title title="Eğitim Yolculukları" />
 						<Footer.LinkGroup col className='items-start'>
 							<Link to="#">Front End</Link>
@@ -42,7 +42,7 @@ export default function FooterComp() {
 							<Link to="#">UI / UX</Link>
 						</Footer.LinkGroup>
 					</div>
-					<div className='!size-fit'>
+					<div className='!size-fit min-w-40'>
 						<Footer.Title title="Blog" />
 						<Footer.LinkGroup col className='items-start'>
 							<Link to="#">Web API Nedir? Programlama Yazılımının Arayüzü Nasıl Çalışır?</Link>

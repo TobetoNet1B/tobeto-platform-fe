@@ -6,7 +6,7 @@ const AnotherNav = (props: Props) => {
 			<div className='mx-auto box-border block container'>
 				<div className='flex items-center justify-around flex-row gap-4'>{/*className='ik-banner-top' */}
 					<div className='' ><span className='ik-logo '></span>{/*className='ik-logo'*/}</div>
-					<div className="block">{/* className="mobile-none"*/}
+					<div className="md:block hidden">{/* className="mobile-none"*/}
 						<span className="h-14 flex items-center text-white font-black text-2xl">Aradığın {/* className="text-ik fw-bold"*/}
 							<span style={{ color: "rgb(0, 176, 120)" }}>&nbsp;"</span>İş
 							<span style={{ color: "rgb(0, 176, 120)" }}>"&nbsp;</span> Burada!
