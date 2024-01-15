@@ -13,13 +13,100 @@ module.exports = {
           '33.333%': { opacity: 1 },
           '53.333%': { opacity: 0 }
         },
+
         fill:{
           '0% ': { width: '0' },
           '100%': { width: '100%' }
-        }
+        },
 
+        animateHeart:{
+          '40%': {
+            transform: 'scale(1.2)'
+        },
+        '100%': {
+            transform: 'scale(1)'
+        }
+        },
+
+        animateHeartOut:{
+          '0%': {
+            transform: 'scale(1.4)',
+        },
+        
+        '100%': {
+            transform: 'scale(1)'
+        }
+        },
+
+        animateCircle:{
+          '40%': {
+            transform: 'scale(10)',
+            opacity: 1,
+            fill: '#dd4688'
+        },
+        '55%': {
+            transform: 'scale(11)',
+            opacity: 1,
+            fill: '#d46abf'
+        },
+        '65%': {
+            transform: 'scale(12)',
+            opacity: 1,
+            fill: '#cc8ef5'
+        },
+        '75%': {
+            transform: 'scale(13)',
+            opacity: 1,
+            fill: 'transparent',
+            stroke: '#cc8ef5',
+            strokeWidth: '.5'
+        },
+        '85%': {
+            transform: 'scale(17)',
+            opacity: 1,
+            fill: 'transparent',
+            stroke: '#cc8ef5',
+            strokeWidth: '.2'
+        },
+        '95%': {
+            transform: 'scale(18)',
+            opacity: 1,
+            fill: 'transparent',
+            stroke: '#cc8ef5',
+            strokeWidth: '.1'
+        },
+        '100%': {
+            transform: 'scale(19)',
+            opacity: 1,
+            fill: 'transparent',
+            stroke: '#cc8ef5',
+            strokeWidth: '0'
+        }
+        },
+
+        antProgresActive:{
+          '0%': {
+            transform: 'translateX(-100%) scaleX(0)',
+            opacity: 0.1
+        },
+        '20%': {
+            transform: 'translateX(-100%) scaleX(0)',
+            opacity: 0.5,
+        },
+        '100%': {
+            transform: 'translateX(0) scaleX(1)',
+            opacity: 0
+        }
+        }
       },
-      animation: { fade: 'fade 4s ease infinite' , fill: 'fill 10s linear 1'},/*  fade 4s ease 0s infinite normal none running fade auto normal normal */
+      animation: { 
+       fade: 'fade 4s ease infinite' ,
+       fill: 'fill 10s linear 1s', 
+       animateHeart:'animateHeart 0.3s linear forwards 0.25s',
+       animateHeartOut:'animateHeartOut 0.3s linear forwards', 
+       animateCircle:'animateCircle 0.3s linear forwards',
+       antProgresActive:'antProgresActive 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite',
+      },/*  fade 4s ease 0s infinite normal none running fade auto normal normal */
     },
   },
   plugins: [],

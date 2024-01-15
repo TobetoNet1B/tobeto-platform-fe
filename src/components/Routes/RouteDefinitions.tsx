@@ -5,6 +5,7 @@ import SignInPage from "pages/SignInPage/SignInPage";
 import SignUpPage from "pages/SignUpPage/SignUpPage";
 import React from "react";
 import {Route, Routes} from "react-router-dom";
+import ModuleSet from "pages/ModuleSet/ModuleSet";
 
 import Test from "pages/Homepage/test";
 import Text2 from "pages/Homepage/text2";
@@ -21,6 +22,7 @@ const RouteDefinitions = (props: Props) => {
 			<Route path="/test" element={<Test/>} />
 			<Route path="/text2" element={<Text2/>} />
 			<Route path="/platform" element={<Platform/>} />
+			<Route path="/moduleset" element={<ModuleSet/>} />
 		</Routes>
 	);
 };
