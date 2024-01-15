@@ -8,76 +8,87 @@ type Props = {
   baslik?: string;
   kurum?: string;
 };
-export const Card = (props: Props) => {
-  const isDescriptionOverflowing = props.description.length > 30; // Örnek bir uzunluk, istediğiniz uzunluğa göre ayarlayabilirsiniz.
-  const marginBottom = isDescriptionOverflowing ? 2 : 5; // Açıklama alanı uzunsa boşluğu azalt
-
-  return (
-    <div className="sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 m-2">
-      <div className={`h-full max-w-md bg-white rounded-xl shadow-md overflow-hidden hover:shadow-[5px_5px_5px_5px_rgba(153,51,255,0.6)] flex flex-col justify-between`}>
-        {props.image && (
-          <div>
-            <img
-              className="h-48 w-full object-cover rounded-t-2xl p-1"
-              src={props.image}
-              alt={props.description}
-            />
-          </div>
-        )}
-        <div className={`pl-5 pt-3 pb-${marginBottom}`}>
-          <div className="uppercase tracking-wide text-base font-semibold">
-            {props.description}
-          </div>
-          <p className="block mt-1 text-sm leading-tight font-medium text-black">
-            {props.tarih}
-          </p>
-        </div>
-        <p className="hidden">{props.kurum}</p>
-        <div className="p-4">
-          {props.buttonText && (
-            <button className="w-full px-4 py-2 bg-gray-300 text-black rounded-full hover:bg-[#9933ff]">
-              {props.buttonText}
-            </button>
+export const ECard = (props: Props) => {
+    const isDescriptionOverflowing = props.description.length > 30;
+  const baseMarginBottom = 4;
+  const maxMarginBottom = isDescriptionOverflowing ? 1 : baseMarginBottom;
+  
+    return (
+      <div className="sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 m-2">
+        <div className={`h-full max-w-md bg-white rounded-xl shadow-md overflow-hidden hover:shadow-[5px_5px_5px_5px_rgba(153,51,255,0.6)] flex flex-col justify-between`}>
+          {props.image && (
+            <div>
+              <img
+                className="h-48 w-full object-cover rounded-t-2xl p-1"
+                src={props.image}
+                alt={props.description}
+              />
+            </div>
           )}
+                 <div className={`pl-4 pt-3 pb-${maxMarginBottom} cm`}>
+            <div className="uppercase tracking-wide text-base font-semibold">
+              {props.description}
+            </div>
+            <p className="block mt-1 text-sm leading-tight font-medium text-black">
+              {props.tarih}
+            </p>
+          </div>
+          <div className="pb-4"></div>
+          <p className="hidden">{props.kurum}</p>
+          <div className="p-4">
+            {props.buttonText && (
+              <button className="w-full px-4 py-2 bg-gray-300 text-black rounded-full hover:bg-[#9933ff]">
+                {props.buttonText}
+              </button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
-export default Card;
+    );
+  };
+  export default ECard; 
 
 export const ACard = (props: Props) => {
+  const isDescriptionOverflowing = props.description.length > 40;
+  const baseMarginBottom = 5;
+  const maxMarginBottom = isDescriptionOverflowing ? 1 : baseMarginBottom;
+
   return (
     <div className="h-4/6 sm:w-1/2 md:w-1/3 xl:w-1/4 ml-4 mr-4 p-3 pb-7">
-      <div className="h-full max-w-md shadow-lg shadow-[#e2e2e2] bg-[#FFFFFF] rounded-xl  border-l-8 border-l-[#01956E] overflow-hidden ">
-        <div className="flex items-center justify-between mb-2 ">
+      <div className="h-full max-w-md shadow-lg shadow-[#e2e2e2] bg-[#FFFFFF] rounded-xl border-l-8 border-l-[#01956E] overflow-hidden">
+        <div className="flex items-center justify-between mb-2">
           <div>
-            <div className="mt-1 ml-4 text-sm leading-tight font-medium text-green-800 ">
+            <div className="mt-1 ml-4 text-sm leading-tight font-medium text-green-800">
               {props.baslik}
             </div>
           </div>
           <div className="text-right">
-            <p className="block mt-1 mr-3 text-sm leading-tight font-medium text-green-800">
+            <p
+              className={`block mt-1 mr-3 text-sm leading-tight font-medium text-green-800`}
+            >
               {props.kurum}
             </p>
           </div>
         </div>
 
-        <div className="pl-4 pt-3">
+        <div className={`pl-4 pt-3 pb-${maxMarginBottom} cm`}>
           <div className="uppercase tracking-wide text-sm font-semibold text-[#767676]">
             {props.description}
           </div>
         </div>
-        <br />
-        <div className="p-4 mb-1 flex items-center justify-between">
+        <div className="pb-5"></div>
+        <div
+          className="p-4 mb-1 flex items-center justify-between"
+          style={{ marginTop: isDescriptionOverflowing ? 2 : 0 }}
+        >
           <div className="flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
-              className="w-5 h-5 "
+              className="w-5 h-5"
             >
               <path
                 stroke-linecap="round"
@@ -91,7 +102,7 @@ export const ACard = (props: Props) => {
             </p>
           </div>
           {props.buttonText ? (
-            <span className=" text-[#767676]">
+            <span className="text-[#767676]">
               <Link to={"/*"}>{props.buttonText}</Link>
             </span>
           ) : null}

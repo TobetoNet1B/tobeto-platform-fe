@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "utils/Card";
+import Card, { ECard } from "utils/Card";
 
 type CardData = {
   image?: string;
@@ -15,15 +15,13 @@ type Props = {
   selectedOrganization:string;
 };
 
-
-
 const EducationCard = (props: Props) => {
 
   const cardData: CardData[] = [
     { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor", description: ".NET & REACT FULLSTACK 1-B", tarih: "2023-09-21 15:20", buttonText: "Eğitime Git" },
     { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", description: ".NET & REACT FULLSTACK 1-B", tarih: "2023-09-20 15:20", buttonText: "Eğitime Git" },
     { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", description: "JAVA & REACT FULLSTACK 1-B", tarih: "2023-09-28 15:20", buttonText: "Eğitime Git" },
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  description: "ANGULAR & REACT FULLSTACK 1-B", tarih: "2023-09-21 10:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  description: "Springboot & REACT FULLSTACK 1-B", tarih: "2023-09-21 10:20", buttonText: "Eğitime Git" },
     { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  description: ".NET & React Fullstack | Öğrenme Yolculuğu", tarih: "2023-09-21 15:20", buttonText: "Eğitime Git" },
     { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", description: ".NET & REACT FULLSTACK 1-B", tarih: "2021-09-21 15:20", buttonText: "Eğitime Git" },
     { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  description: "JAVA & REACT FULLSTACK 1-B", tarih: "2022-09-21 15:20", buttonText: "Eğitime Git" },
@@ -69,7 +67,7 @@ const EducationCard = (props: Props) => {
     <div className="flex flex-wrap justify-center">
     {filteredAndSortedCards.length > 0 ? (
       filteredAndSortedCards.map((card, index) => (
-        <Card
+        <ECard
           key={index}
           image={card.image}
           description={card.description}

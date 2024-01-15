@@ -16,7 +16,6 @@ type CardData = {
 };
 
 const AnnouncementCard = (props: Props) => {
-  // Dummy data for testing
   const cardData: CardData[] = [
     { kurum:"İstanbul Kodluyor",baslik:"Duyuru", description: "Ocak Ayı Tercih Formu Bilgilendirmesi", tarih: "2023-09-21 15:20", buttonText: "Devamını Gör" },
     { kurum:"İstanbul Kodluyor",baslik:"Duyuru", description: "Şubat Ayı Tercih Formu Bilgilendirmesi", tarih: "2023-09-20 15:20", buttonText: "Devamını Gör" },
@@ -25,7 +24,6 @@ const AnnouncementCard = (props: Props) => {
     { kurum:"İstanbul Kodluyor",baslik:"Duyuru", description: "Ocak Ayı Tercih Formu Bilgilendirmesi", tarih: "2022-09-21 15:20", buttonText: "Devamını Gör" },
     { kurum:"İstanbul Kodluyor",baslik:"Duyuru", description: "Mesleki Gelişim Eğitimleri Yerleştirmeleri Hk.", tarih: "2023-09-21 14:20", buttonText: "Devamını Gör" },
 
-    // ...
   ];
   const filterCards = (card: CardData) => {
     return (

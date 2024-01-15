@@ -1,7 +1,6 @@
-
 import AnnouncementCard from "components/Announcement/AnnouncementCard";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Banner from "utils/Banner";
 
 type Props = {};
@@ -14,7 +13,6 @@ const Announcement = (props: Props) => {
   const [isInstitutionSelected, setIsInstitutionSelected] = useState(false);
 
   const navigate = useNavigate();
-  // Function to handle clearing the selected institution
   const clearSelectedInstitution = () => {
     setSelectedInstitution("");
     setSelectedOrganization("");
@@ -46,8 +44,8 @@ const Announcement = (props: Props) => {
         spanText="Duyurularım"
       />
       <div className="text-left flex justify-center items-center rounded-xl bg-white p-4 ">
-        <div className="flex items-center space-x-2 mr-4 w-full justify-center mb-5">
-          <div className=" relative text-gray-600  w-1/4 ">
+        <div className="flex items-center space-x-2 mr-3 w-full justify-center relative">
+          <div className="relative text-gray-600 w-1/4">
             <input
               value={searchQuery}
               onChange={handleSearchChange}
@@ -74,7 +72,7 @@ const Announcement = (props: Props) => {
           </div>
           <select
             data-te-select-init
-            className="px-3 py-2 mr-4 w-2/12 border border-gray-300 shadow-gray-400 text-slate-600 font-bold rounded-full focus:outline-none focus:border-indigo-500 shadow-md"
+            className="px-3 py-2 mr-4 w-1/12 border border-gray-300 shadow-gray-400 text-slate-600 font-bold rounded-full focus:outline-none focus:border-indigo-500 shadow-md"
             value={selectedInstitution}
             onChange={handleInstitutionChange}
           >
@@ -112,26 +110,28 @@ const Announcement = (props: Props) => {
             <option value="date-desc">Tarihe Göre (Yeni-Eski)</option>
           </select>
           {isInstitutionSelected && (
-            <button
-              className="relative flex items-center text-black rounded-full p-2 bg-white focus:outline-none group"
-              onClick={clearSelectedInstitution}
-            >
-              <svg
-                className="h-8 w-8 mr-2 text-black group-hover:text-yellow-500"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+            <div className="absolute right-0">
+              <button
+                className="relative flex items-center text-black rounded-full p-2 bg-white focus:outline-none group"
+                onClick={clearSelectedInstitution}
               >
-                <path stroke="none" d="M0 0h24v24H0z" />
-                <path d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5" />
-              </svg>
-              <p className="bg-black text-white p-2 text-[14px] rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                Filtreleri Kaldır
-              </p>
-            </button>
+                <svg
+                  className="h-8 w-8 mr-2 text-black group-hover:text-red-700"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <path d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5" />
+                </svg>
+                <p className="bg-gray-900 text-white p-2 text-[14px] rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  Filtreleri Kaldır
+                </p>
+              </button>
+            </div>
           )}
         </div>
       </div>
