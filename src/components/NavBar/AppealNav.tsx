@@ -1,6 +1,6 @@
 type Props = {}
 
-const AnotherNav = (props: Props) => {
+const AppealNav = (props: Props) => {
 	return (
 		<div className='box-border flex items-center min-h-16 bg-[#1e0f41] bg-cover'>{/* className='ik-banner' */}
 			<div className='mx-auto box-border block container'>
@@ -13,7 +13,9 @@ const AnotherNav = (props: Props) => {
 						</span>
 					</div>
 					<div className=''>
-						<button className='bg-[#00b078] border-2 border-[#00b078] rounded-full px-8 py-2 text-sm font-black text-[#1e0f41] leading-5 min-w-[140px]'>Başvur</button>{/*className='ik-btn' */}
+						<button className='bg-[#00b078] border-2 border-[#00b078] rounded-full px-8 py-2 text-sm font-black text-[#1e0f41] leading-5 min-w-[140px]'>{/*className='ik-btn' */}
+							Başvur
+						</button>
 					</div>
 				</div>
 			</div>
@@ -21,4 +23,4 @@ const AnotherNav = (props: Props) => {
 	)
 }
 
-export default AnotherNav
+export default AppealNav

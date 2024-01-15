@@ -1,8 +1,13 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
+import { SelectIsLoggedIn } from 'store/Auth/AuthSlice';
 
 type Props = {}
 
 const MainOne = (props: Props) => {
+
+	const isLoggedIn = useSelector(SelectIsLoggedIn);
+
 	return (
 		<div className='container pt-20 relative max-w-6xl mx-auto'>
 			<div className='flex flex-wrap relative'>{/* className='row' */}
@@ -28,29 +33,31 @@ const MainOne = (props: Props) => {
 						</div>
 					</div>
 				</div>
-				<div className="md:flex md:flex-shrink-0 lg:w-1/2 md:w-full max-w-full flex-shrink-0 grow-0 basis-auto lg:pl-3 pl-0">{/* className="col-md-6 col-12" */}
-					<div className='ik-card'>
-						<div className='relative flex flex-row items-center justify-between'>{/*className='ik-container' */}
-							<div className='header-left-3'>
-								<span className="text-white text-xl font-extrabold header-left-text">{/*className="text-ik fw-bold header-left-text" */}
-									Aradığın
-									<span style={{ color: 'rgb(0, 176, 120)' }}>&nbsp;"</span>
-									İş
-									<span style={{ color: 'rgb(0, 176, 120)' }}>"&nbsp;</span>
-									Burada!
+				{/* !isLoggedIn && */
+					<div className="md:flex md:flex-shrink-0 lg:w-1/2 md:w-full max-w-full flex-shrink-0 grow-0 basis-auto lg:pl-3 pl-0">{/* className="col-md-6 col-12" */}
+						<div className='ik-card'>
+							<div className='relative flex flex-row items-center justify-between'>{/*className='ik-container' */}
+								<div className='header-left-3'>
+									<span className="text-white text-xl font-extrabold header-left-text">{/*className="text-ik fw-bold header-left-text" */}
+										Aradığın
+										<span style={{ color: 'rgb(0, 176, 120)' }}>&nbsp;"</span>
+										İş
+										<span style={{ color: 'rgb(0, 176, 120)' }}>"&nbsp;</span>
+										Burada!
+									</span>
+								</div>
+								<span style={{ boxSizing: "border-box", display: "inline-block", overflow: "hidden", width: "initial", height: "initial", background: "none", opacity: 1, border: "0px", margin: "0px", padding: "0px", position: "relative", maxWidth: "100%" }}>
+									<span style={{ boxSizing: "border-box", display: "block", width: "initial", height: "initial", background: "none", opacity: 1, border: "0px", margin: "0px", padding: "0px", maxWidth: "100%;" }}>
+										<img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27200%27%20height=%27100%27/%3e" style={{ display: "block", maxWidth: "100%", width: "initial", height: "initial", background: "none", opacity: 1, border: "0px", margin: "0px", padding: "0px" }} />
+									</span>
+									<img alt="İstanbul Kodluyor Logo " srcSet="https://tobeto.com/_next/static/media/ik-logo-light.ace655db.svg 1x, https://tobeto.com/_next/static/media/ik-logo-light.ace655db.svg 2x" src="https://tobeto.com/_next/static/media/ik-logo-light.ace655db.svg" decoding="async" data-nimg="intrinsic" className="px-4" style={{ position: "absolute", inset: "0px", boxSizing: "border-box", padding: "0px", border: "none", margin: "auto", display: "block", width: "0px", height: "0px", minWidth: "100%", maxWidth: "100%", minHeight: "100%", maxHeight: "100%" }} />
 								</span>
 							</div>
-							<span style={{ boxSizing: "border-box", display: "inline-block", overflow: "hidden", width: "initial", height: "initial", background: "none", opacity: 1, border: "0px", margin: "0px", padding: "0px", position: "relative", maxWidth: "100%" }}>
-								<span style={{ boxSizing: "border-box", display: "block", width: "initial", height: "initial", background: "none", opacity: 1, border: "0px", margin: "0px", padding: "0px", maxWidth: "100%;" }}>
-									<img alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27200%27%20height=%27100%27/%3e" style={{ display: "block", maxWidth: "100%", width: "initial", height: "initial", background: "none", opacity: 1, border: "0px", margin: "0px", padding: "0px" }} />
-								</span>
-								<img alt="İstanbul Kodluyor Logo " srcSet="https://tobeto.com/_next/static/media/ik-logo-light.ace655db.svg 1x, https://tobeto.com/_next/static/media/ik-logo-light.ace655db.svg 2x" src="https://tobeto.com/_next/static/media/ik-logo-light.ace655db.svg" decoding="async" data-nimg="intrinsic" className="px-4" style={{ position: "absolute", inset: "0px", boxSizing: "border-box", padding: "0px", border: "none", margin: "auto", display: "block", width: "0px", height: "0px", minWidth: "100%", maxWidth: "100%", minHeight: "100%", maxHeight: "100%" }} />
-							</span>
+							<Link className='bg-cyan-500 rounded-full px-2 py-2 font-semibold text-black leading-5 min-w-36 md:inline-block mt-5 text-center align-middle' to={""}>Başvur
+							</Link>{/* className='btn d-md-inline-block mt-5 btn-blue'*/}
 						</div>
-						<Link className='bg-cyan-500 rounded-full px-2 py-2 font-semibold text-black leading-5 min-w-36 md:inline-block mt-5 text-center align-middle' to={""}>Başvur
-						</Link>{/* className='btn d-md-inline-block mt-5 btn-blue'*/}
 					</div>
-				</div>
+				}
 			</div>
 		</div>
 	)
