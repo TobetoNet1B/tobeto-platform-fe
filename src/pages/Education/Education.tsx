@@ -24,11 +24,6 @@ const Education = (props: Props) => {
     navigate("/egitimlerim");
   };
 
-  const handleInstitutionChange = (event: any) => {
-    setSelectedInstitution(event.target.value);
-    setIsInstitutionSelected(!!event.target.value);
-  };
-
   const handleSortByChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const sortByValue = event.target.value;
     setSortBy(sortByValue);
@@ -47,8 +42,8 @@ const Education = (props: Props) => {
         spanText="Eğitimlerim"
       />
       <div className="text-left flex justify-center items-center rounded-xl bg-white p-4 ">
-        <div className="flex items-center space-x-2 mr-3 w-full justify-center">
-          <div className=" relative text-gray-600  w-1/3 ">
+        <div className="flex items-center space-x-2 mr-3 w-full justify-center relative">
+          <div className="relative text-gray-600 w-1/3">
             <input
               value={searchQuery}
               onChange={handleSearchChange}
@@ -74,50 +69,55 @@ const Education = (props: Props) => {
             </button>
           </div>
 
-          <select
-            data-te-select-init
-            className="px-3 py-2 mr-2 border border-gray-900 text-slate-600 font-bold rounded-full focus:outline-none focus:border-indigo-500 shadow-md"
-            value={selectedOrganization}
-            onChange={handleOrganizationChange}
-          >
-            <option className="" value="" hidden>
-              Kurum Seçiniz
-            </option>
-            <option value="kurum1">İstanbul Kodluyor</option>
-          </select>
-
-          <select
-            className="px-3 py-2 mr-2 border border-black font-bold rounded-full focus:outline-none focus:border-indigo-500 shadow-md"
-            value={sortBy}
-            onChange={handleSortByChange}
-          >
-            <option value="name-asc">Adına Göre (A-Z)</option>
-            <option value="name-desc">Adına Göre (Z-A)</option>
-            <option value="date-asc">Tarihe Göre (Eski-Yeni)</option>
-            <option value="date-desc">Tarihe Göre (Yeni-Eski)</option>
-          </select>
-          {isInstitutionSelected && (
-            <button
-              className="relative flex items-center text-black rounded-full p-2 bg-white focus:outline-none group"
-              onClick={clearSelectedInstitution}
+          <div className="flex items-center">
+            <select
+              data-te-select-init
+              className="px-3 py-2 mr-2 border border-gray-900 text-slate-600 font-bold rounded-full focus:outline-none focus:border-indigo-500 shadow-md"
+              value={selectedOrganization}
+              onChange={handleOrganizationChange}
             >
-              <svg
-                className="h-8 w-8 mr-2 text-black group-hover:text-yellow-500"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" />
-                <path d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5" />
-              </svg>
-              <p className="bg-black text-white p-2 text-[14px] rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                Filtreleri Kaldır
-              </p>
-            </button>
-          )}
+              <option className="" value="" hidden>
+                Kurum Seçiniz
+              </option>
+              <option value="kurum1">İstanbul Kodluyor</option>
+            </select>
+
+            <select
+              className="px-3 py-2 mr-2 border border-black font-bold rounded-full focus:outline-none focus:border-indigo-500 shadow-md"
+              value={sortBy}
+              onChange={handleSortByChange}
+            >
+              <option value="name-asc">Adına Göre (A-Z)</option>
+              <option value="name-desc">Adına Göre (Z-A)</option>
+              <option value="date-asc">Tarihe Göre (Eski-Yeni)</option>
+              <option value="date-desc">Tarihe Göre (Yeni-Eski)</option>
+            </select>
+
+            {isInstitutionSelected && (
+              <div className="absolute right-0">
+                <button
+                  className="relative flex items-center text-black rounded-full p-2 bg-white focus:outline-none group"
+                  onClick={clearSelectedInstitution}
+                >
+                  <svg
+                    className="h-8 w-8 mr-2 text-black group-hover:text-red-700"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5" />
+                  </svg>
+                  <p className="bg-gray-900 text-white p-2 text-[14px] rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    Filtreleri Kaldır
+                  </p>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="p-3 rounded-lg text-center flex justify-center items-center ">
