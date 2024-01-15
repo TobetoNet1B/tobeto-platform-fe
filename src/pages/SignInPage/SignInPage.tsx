@@ -1,7 +1,9 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { passwordValidator } from 'utils/customValidations';
 import { number, object, string } from 'yup';
+import './SignInPage.css';
+import { Link } from 'react-router-dom';
 
 type Props = {}
 
@@ -24,13 +26,15 @@ const SignInPage = (props: Props) => {
             )
     });
 
+
+
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="bg-white p-8 rounded shadow-md w-96 text-center relative overflow-hidden border-4 border-solid border-purple-500 rounded-md mr-5">
+        <div className="flex items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-screen bg-gray-100">
+            <div className="bg-white card shadow-md w-96 text-center relative overflow-hidden">
                 <img
                     src="https://tobeto.com/_next/static/media/tobeto-logo.29b55e1c.svg"
                     alt="tobeto-banner"
-                    className="mb-5 mt-5 rounded-md mx-auto"
+                    className="mb-5 mt-5 rounded-md mx-auto p-4"
                     style={{ width: "100%", height: "auto" }}
                 />
                 <Formik
@@ -61,19 +65,19 @@ const SignInPage = (props: Props) => {
                         </div>
                         <div className="flex items-center justify-between mb-4">
                             <div>
-                                <a href="#" className="text-sm text-purple-500 hover:underline">
+                                <Link className="nav-link text-sm text-purple-500 hover:underline" to={"/sifremi-unuttum"}>
                                     Şifremi Unuttum
-                                </a>
+                                </Link>
                             </div>
                             <div>
-                                <a href="#" className="text-sm text-purple-500 hover:underline">
+                                <Link className="nav-link text-sm text-purple-500 hover:underline" to={"/kayit-ol"}>
                                     Kayıt Ol
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <button
                             type="submit"
-                            className="bg-purple-600 text-white p-2 rounded-md w-full hover:bg-purple-700"
+                            className="bg-purple-600 text-white p-2 rounded-3xl w-full hover:bg-purple-700"
                         >
                             Giriş Yap
                         </button>
@@ -82,12 +86,11 @@ const SignInPage = (props: Props) => {
 
             </div>
 
-
-            <div className="bg-white p-8 rounded shadow-md w-96 text-center relative overflow-hidden border-4 border-solid border-indigo-500 rounded-md">
+            <div className="bg-white p-[34px] shadow-md w-96 text-center relative overflow-hidden border-4 border-solid border-indigo-500 rounded-3xl">
                 <img
                     src="https://tobeto.com/_next/static/media/ik-logo-dark.7938c0de.svg"
                     alt="ik-banner"
-                    className="mb-6 mt-6 rounded-md mx-auto"
+                    className="mb-6 mt-6 rounded-md mx-auto p-5"
                     style={{ width: "100%", height: "auto" }}
                 />
                 <span className="text-blue font-bold text-3xl mb-8 mt-8 block">
@@ -98,11 +101,12 @@ const SignInPage = (props: Props) => {
 
                 <button
                     type="submit"
-                    className="bg-indigo-950 text-white p-2 rounded-md w-full"
+                    className="bg-indigo-950 text-white p-2 rounded-3xl w-full"
                 >
                     Başvur
                 </button>
             </div>
+
 
         </div>
     );
