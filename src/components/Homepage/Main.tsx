@@ -116,7 +116,7 @@ const Main = (props: Props) => {
 			<div>
 				<div className="raw-html-embed">{/*className="raw-html-embed" */}
 					<div className="raw-html-embed">{/*className="raw-html-embed" */}
-						<div className="container mx-auto w-full px-20">{/*className="container" */}
+						<div className="container mx-auto w-full px-0">{/*className="container" */}
 							<div className="flex flex-wrap mt-10 mx-5 py-20">{/* className="row py-20 " */}
 								<div className="lg:w-5/12 flex-shrink-0 grow-0 basis-auto w-full">{/* className="col-lg-5 col-12 " */}
 									<h3 className="text-white mt-0 mb-2 font-black leading-[45px] text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl" style={{ fontSize: 'calc(1.35rem + 1.2vw)' }}>Hangi Konuda Kendini<br />Geliştirmek İstersin?</h3>
@@ -139,13 +139,15 @@ const Main = (props: Props) => {
 										</button>
 									</div>
 								</div>
+								
 								<div className="lg:w-1/12 flex-shrink-0 grow-0 basis-auto w-full"></div>{/* className="col-lg-1 col-12 " */}
 								<div className="lg:w-1/2 flex-shrink-0 grow-0 basis-auto w-full relative">{/* className="col-lg-6 col-12 tabs-content " */}
-									<div className="absolute -z-10 -top-20 -left-20">{/*className="tab-vector" */}
+									<div className="absolute z-1 -top-20 -left-20">{/*className="tab-vector" */}
 										<img src="https://tobeto.s3.cloud.ngn.com.tr/dot_purple_358e282aef.svg?updated_at=2022-09-20T12:52:57.402Z" alt="" width="250" height="250" />
 									</div>
-									<div className="tab-content" id="v-pills-tabContent">
-										{p1Visible && <div className="tab-pane animate-[opacity_.15s_linear] show active tabs-pane" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">{/*className="tab-pane fade show active tabs-pane" */}
+									<div className="tab-content block w-full ml-4 mr-0 pr-0" id="v-pills-tabContent">
+										{p1Visible && 
+										<div className="tab-pane animate-[opacity_.15s_linear] show active tabs-pane" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">{/*className="tab-pane fade show active tabs-pane" */}
 											<div className="flex flex-wrap -mt-2 -mx-1">{/* className="row"*/}
 												<div className="lg:w-1/2 w-full p-2">{/* className="col-lg-6 col-6"*/}
 													<Link to={""} className="tabs-box mb-5 relative" style={{ color: "#000!important" }}>
@@ -179,7 +181,8 @@ const Main = (props: Props) => {
 												</div>
 											</div>
 										</div>}
-										{p2Visible && <div className="tab-pane animate-[opacity_.15s_linear] tabs-pane" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">{/*className="tab-pane fade tabs-pane" */}
+										{p2Visible && 
+										<div className="tab-pane animate-[opacity_.15s_linear] tabs-pane" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">{/*className="tab-pane fade tabs-pane" */}
 											<div className="flex flex-wrap -mt-2 -mx-1">{/* className="row"*/}
 												<div className="lg:w-1/2 w-full p-2">{/* className="col-lg-6 col-6"*/}
 													<Link to={""} className="tabs-box mb-5" style={{ color: "#000!important" }}>
@@ -235,6 +238,9 @@ const Main = (props: Props) => {
 								</div>
 							</div>
 						</div>
+
+
+						
 						<div className="container ca">
 							<div className="flex" style={{ gap: "2em" }}>{/* className="d-flex" */}
 								<div>
