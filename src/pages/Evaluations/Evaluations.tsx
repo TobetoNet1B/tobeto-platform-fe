@@ -30,12 +30,12 @@ const Evaluations = (props: Props) => {
 							<div className="container text-center">
 								<div className="mx-auto max-w-5xl">
 									<h3>
-										<span className="text-secondary font-normal text-4xl text-[#a034fc]"> Yetkinlik</span>
-										<span className="text-info font-normal text-4xl text-[#504c4c]">lerini</span>
-										<span className="text-info font-normal text-4xl text-[#504c4c]"> ücretsiz ölç,</span>
-										<span className="text-secondary font-normal text-4xl text-[#a034fc]"> bilgi</span>
-										<span className="text-info font-normal text-4xl text-[#504c4c]">lerini</span>
-										<span className="text-info font-normal text-4xl text-[#504c4c]"> test et.</span>
+										<span className=" font-normal text-4xl text-[#a034fc]"> Yetkinlik</span>
+										<span className=" font-normal text-4xl text-[#504c4c]">lerini</span>
+										<span className=" font-normal text-4xl text-[#504c4c]"> ücretsiz ölç,</span>
+										<span className=" font-normal text-4xl text-[#a034fc]"> bilgi</span>
+										<span className=" font-normal text-4xl text-[#504c4c]">lerini</span>
+										<span className=" font-normal text-4xl text-[#504c4c]"> test et.</span>
 									</h3>
 								</div>
 							</div>
@@ -110,7 +110,7 @@ const Evaluations = (props: Props) => {
 												<Modal show={openModal} size="2xl" onClose={() => setOpenModal(false)} popup>
 													<Modal.Header className='bg-white'>
 														<div className="d-flex justify-content-between mt-2 mb-5 ml-4 text-black">
-															<span>Front End</span>
+															<span>Back End</span>
 															<button type="button" className="btn-close " aria-label="Close"></button>
 														</div>
 													</Modal.Header>
@@ -171,8 +171,8 @@ const Evaluations = (props: Props) => {
 							<div className="container text-center">
 								<div className="max-w-5xl mx-auto">
 									<h3>
-										<span className="text-secondary font-normal text-4xl text-[#a034fc]"> Aboneliğe özel </span>
-										<span className="font-normal text-info text-4xl text-[#504c4c]">değerlendirme araçları için </span>
+										<span className=" font-normal text-4xl text-[#a034fc]"> Aboneliğe özel </span>
+										<span className="font-normal text-4xl text-[#504c4c]">değerlendirme araçları için </span>
 									</h3>
 								</div>
 							</div>
