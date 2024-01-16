@@ -7,7 +7,7 @@ export default function NavBar() {
 				</a>
 			</div>
 			<div className="navbar-center hidden lg:flex">
-				<ul className="menu menu-horizontal px-1 text-lg gap-3">
+				<ul className="menu menu-horizontal px-1 text-lg xl:gap-3 gap-1">
 					<li className="py-2"><a>Biz Kimiz?</a></li>
 					<div className="dropdown dropdown-hover">
 						<div tabIndex={0} className="py-2">Neler Sunuyoruz?</div>
@@ -29,7 +29,7 @@ export default function NavBar() {
 					</div>
 				</ul>
 			</div>
-			<div className="navbar-end gap-3">
+			<div className="navbar-end gap-3 lg:flex hidden">
 				<a className="btn btn-outline rounded-full text-white">Giriş Yap</a>
 				<a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-full !min-w-max">
 					<span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6]
