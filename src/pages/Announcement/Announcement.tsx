@@ -106,8 +106,8 @@ const Announcement = (props: Props) => {
             <option value="" hidden>
               Sıralama
             </option>
-            <option value="date-asc">Tarihe Göre (Eski-Yeni)</option>
-            <option value="date-desc">Tarihe Göre (Yeni-Eski)</option>
+            <option value="date-asc">Tarihe Göre (E-Y)</option>
+            <option value="date-desc">Tarihe Göre (Y-E)</option>
           </select>
           {isInstitutionSelected && (
             <div className="absolute right-0">

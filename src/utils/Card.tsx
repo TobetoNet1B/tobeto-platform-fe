@@ -1,65 +1,77 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 type Props = {
   image?: string;
   tarih: string;
-  description: string;
+  name: string;
   buttonText?: string;
-  baslik?: string;
+  type?: string;
   kurum?: string;
+  description?: string;
 };
 export const ECard = (props: Props) => {
-    const isDescriptionOverflowing = props.description.length > 30;
+  const isDescriptionOverflowing = props.name.length > 30;
   const baseMarginBottom = 4;
-  const maxMarginBottom = isDescriptionOverflowing ? 1 : baseMarginBottom;
-  
-    return (
-      <div className="sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 m-2">
-        <div className={`h-full max-w-md bg-white rounded-xl shadow-md overflow-hidden hover:shadow-[5px_5px_5px_5px_rgba(153,51,255,0.6)] flex flex-col justify-between`}>
-          {props.image && (
-            <div>
-              <img
-                className="h-48 w-full object-cover rounded-t-2xl p-1"
-                src={props.image}
-                alt={props.description}
-              />
-            </div>
-          )}
-                 <div className={`pl-4 pt-3 pb-${maxMarginBottom} cm`}>
-            <div className="uppercase tracking-wide text-base font-semibold">
-              {props.description}
-            </div>
-            <p className="block mt-1 text-sm leading-tight font-medium text-black">
-              {props.tarih}
-            </p>
-          </div>
-          <div className="pb-4"></div>
-          <p className="hidden">{props.kurum}</p>
-          <div className="p-4">
-            {props.buttonText && (
-              <button className="w-full px-4 py-2 bg-gray-300 text-black rounded-full hover:bg-[#9933ff]">
-                {props.buttonText}
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  };
-  export default ECard; 
-
-export const ACard = (props: Props) => {
-  const isDescriptionOverflowing = props.description.length > 40;
-  const baseMarginBottom = 5;
   const maxMarginBottom = isDescriptionOverflowing ? 1 : baseMarginBottom;
 
   return (
-    <div className="h-4/6 sm:w-1/2 md:w-1/3 xl:w-1/4 ml-4 mr-4 p-3 pb-7">
+    <div className="sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 m-2">
+      <div
+        className={`h-full max-w-md bg-white rounded-xl shadow-md overflow-hidden hover:shadow-[5px_5px_5px_5px_rgba(153,51,255,0.6)] flex flex-col justify-between`}
+      >
+        {props.image && (
+          <div>
+            <img
+              className="h-48 w-full object-cover rounded-t-2xl p-1"
+              src={props.image}
+              alt={props.name}
+            />
+          </div>
+        )}
+        <div
+          className={`pl-4 pt-3 pb-${maxMarginBottom} cm`}
+          style={{ whiteSpace: "pre-wrap" }}
+        >
+          <div className="tracking-wide text-sm font-semibold text-[#767676]">
+            {props.name}
+          </div>
+          <p className="block mt-1 text-sm leading-tight font-medium text-black">
+            {props.tarih}
+          </p>
+        </div>
+        <div className="pb-4"></div>
+        <p className="hidden">{props.kurum}</p>
+        <div className="p-4">
+          {props.buttonText && (
+            <button className="w-full px-4 py-2 bg-gray-300 text-black rounded-full hover:bg-[#9933ff]">
+              {props.buttonText}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+export default ECard;
+
+export const ACard = (props: Props) => {
+  const isDescriptionOverflowing = props.name.length > 50;
+  const baseMarginBottom = 5;
+  const maxMarginBottom = isDescriptionOverflowing ? 1 : baseMarginBottom;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  return (
+    <div className="relative h-4/6 sm:w-1/2 md:w-1/3 xl:w-[390px] ml-2 mr-3 pr-3 pb-7 overflow-auto">
       <div className="h-full max-w-md shadow-lg shadow-[#e2e2e2] bg-[#FFFFFF] rounded-xl border-l-8 border-l-[#01956E] overflow-hidden">
         <div className="flex items-center justify-between mb-2">
           <div>
             <div className="mt-1 ml-4 text-sm leading-tight font-medium text-green-800">
-              {props.baslik}
+              {props.type}
             </div>
           </div>
           <div className="text-right">
@@ -71,9 +83,12 @@ export const ACard = (props: Props) => {
           </div>
         </div>
 
-        <div className={`pl-4 pt-3 pb-${maxMarginBottom} cm`}>
-          <div className="uppercase tracking-wide text-sm font-semibold text-[#767676]">
-            {props.description}
+        <div
+          className={`pl-4 pt-3 pb-${maxMarginBottom} cm`}
+          style={{ whiteSpace: "pre-wrap" }}
+        >
+          <div className="tracking-wide text-sm font-semibold text-[#767676]">
+            {props.name}
           </div>
         </div>
         <div className="pb-5"></div>
@@ -101,11 +116,48 @@ export const ACard = (props: Props) => {
               {props.tarih}
             </p>
           </div>
-          {props.buttonText ? (
+          {props.buttonText && (
             <span className="text-[#767676]">
-              <Link to={"/*"}>{props.buttonText}</Link>
+              <button onClick={toggleModal}>{props.buttonText}</button>
             </span>
-          ) : null}
+          )}
+          {isModalOpen && (
+            <>
+              <div
+                className="fixed inset-0 bg-gray-800 bg-opacity-75 z-50"
+                onClick={toggleModal}
+              ></div>
+              <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-2xl">
+                <div className="bg-white p-8 rounded-lg w-full h-full overflow-y-auto">
+                  <div className="flex justify-between">
+                    <h2 className="text-xl font-semibold mb-4">{props.name}</h2>
+                    <button
+                      onClick={toggleModal}
+                      className="text-gray-500 hover:text-gray-700 mb-4"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        className="h-6 w-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  {props.description && (
+                    <p className="text-md">{props.description}</p>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
