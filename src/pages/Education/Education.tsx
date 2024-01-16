@@ -89,8 +89,8 @@ const Education = (props: Props) => {
             >
               <option value="name-asc">Adına Göre (A-Z)</option>
               <option value="name-desc">Adına Göre (Z-A)</option>
-              <option value="date-asc">Tarihe Göre (Eski-Yeni)</option>
-              <option value="date-desc">Tarihe Göre (Yeni-Eski)</option>
+              <option value="date-asc">Tarihe Göre (E-Y)</option>
+              <option value="date-desc">Tarihe Göre (Y-E)</option>
             </select>
 
             {isInstitutionSelected && (

@@ -3,10 +3,11 @@ import Card, { ECard } from "utils/Card";
 
 type CardData = {
   image?: string;
-  description: string;
+  description?: string;
   tarih: string;
   buttonText?: string;
   kurum?:string
+  name:string;
 };
 
 type Props = {
@@ -18,16 +19,16 @@ type Props = {
 const EducationCard = (props: Props) => {
 
   const cardData: CardData[] = [
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor", description: ".NET & REACT FULLSTACK 1-B", tarih: "2023-09-21 15:20", buttonText: "Eğitime Git" },
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", description: ".NET & REACT FULLSTACK 1-B", tarih: "2023-09-20 15:20", buttonText: "Eğitime Git" },
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", description: "JAVA & REACT FULLSTACK 1-B", tarih: "2023-09-28 15:20", buttonText: "Eğitime Git" },
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  description: "Springboot & REACT FULLSTACK 1-B", tarih: "2023-09-21 10:20", buttonText: "Eğitime Git" },
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  description: ".NET & React Fullstack | Öğrenme Yolculuğu", tarih: "2023-09-21 15:20", buttonText: "Eğitime Git" },
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", description: ".NET & REACT FULLSTACK 1-B", tarih: "2021-09-21 15:20", buttonText: "Eğitime Git" },
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  description: "JAVA & REACT FULLSTACK 1-B", tarih: "2022-09-21 15:20", buttonText: "Eğitime Git" },
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", description: ".NET & REACT FULLSTACK 1-B", tarih: "2022-08-21 15:20", buttonText: "Eğitime Git" },
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  description: ".NET & REACT FULLSTACK 1-B", tarih: "2023-05-21 15:20", buttonText: "Eğitime Git" },
-    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", description: ".NET & REACT FULLSTACK 1-B", tarih: "2023-01-21 15:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor", name: ".NET & REACT FULLSTACK 1-B", tarih: "2023-09-21 15:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", name: ".NET & REACT FULLSTACK 1-B", tarih: "2023-09-20 15:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", name: "JAVA & REACT FULLSTACK 1-B", tarih: "2023-09-28 15:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  name: "Springboot & REACT FULLSTACK", tarih: "2023-09-21 10:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  name: ".NET & React Fullstack | Öğrenme Yolculuğu", tarih: "2023-09-21 15:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", name: ".NET & REACT FULLSTACK 1-B", tarih: "2021-09-21 15:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  name: "JAVA & REACT FULLSTACK 1-B", tarih: "2022-09-21 15:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", name: ".NET & REACT FULLSTACK 1-B", tarih: "2022-08-21 15:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png",kurum:"İstanbul Kodluyor",  name: ".NET & REACT FULLSTACK 1-B", tarih: "2023-05-21 15:20", buttonText: "Eğitime Git" },
+    { image: "https://www.allotraining.com/wp-content/uploads/2021/08/c-.net_.png", name: ".NET & REACT FULLSTACK 1-B", tarih: "2023-01-21 15:20", buttonText: "Eğitime Git" },
     // ...
   ];
   const filterCards = (card: CardData) => {
@@ -36,7 +37,7 @@ const EducationCard = (props: Props) => {
         (card.kurum === "İstanbul Kodluyor" &&
           props.selectedOrganization === "kurum1")) &&
       (props.searchQuery === "" ||
-        card.description.toLowerCase().includes(props.searchQuery.toLowerCase()))
+        card.name.toLowerCase().includes(props.searchQuery.toLowerCase()))
   
     );
   };
@@ -47,9 +48,9 @@ const EducationCard = (props: Props) => {
   
     switch (props.sortBy) {
       case "name-asc":
-        return a.description.localeCompare(b.description);
+        return a.name.localeCompare(b.name);
       case "name-desc":
-        return b.description.localeCompare(a.description);
+        return b.name.localeCompare(a.name);
       case "date-asc":
         return dateA - dateB;
       case "date-desc":
@@ -70,7 +71,7 @@ const EducationCard = (props: Props) => {
         <ECard
           key={index}
           image={card.image}
-          description={card.description}
+          name={card.name}
           kurum={card.kurum}
           tarih={card.tarih}
           buttonText={card.buttonText}
