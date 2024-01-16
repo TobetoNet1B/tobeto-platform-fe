@@ -14,7 +14,7 @@ const Main = (props: Props) => {
 	return (
 		<main>
 			<MainOne />
-			<div className="gradient-line2 mt-10"></div>
+			<div className="my-10 mx-auto w-3 h-44" style={{background:"linear-gradient(180deg, #93f, #953dac 27.08%, #181717)"}}></div>
 			<MainTwo />
 			<MainThree />
 			<MainFour />
