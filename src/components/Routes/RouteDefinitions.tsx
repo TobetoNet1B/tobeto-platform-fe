@@ -1,6 +1,7 @@
 import Calendar from "components/Calendar/Calendar";
 import Announcement from "pages/Announcement/Announcement";
 import Education from "pages/Education/Education";
+import Evaluations from "pages/Evaluations/Evaluations";
 import Homepage from "pages/Homepage";
 import MyProfile from "pages/MyProfile/MyProfile";
 import NotFound from "pages/NotFound";
@@ -24,6 +25,7 @@ const RouteDefinitions = (props: Props) => {
 			<Route path="/egitimlerim" element={<Education />} />
 			<Route path="/duyurularım" element={<Announcement />} />
 			<Route path="/takvim" element={<Calendar />} />
+			<Route path="/degerlendirmeler" element={<Evaluations />} />
 		</Routes>
 	);
 };

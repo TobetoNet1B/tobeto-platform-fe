@@ -180,13 +180,13 @@ body {
     width: 93vw !important;
   }
 }
-
+/* 
 .gradient-line2 {
   height: 180px;
   margin: 40px auto;
   background: linear-gradient(180deg, #93f, #953dac 27.08%, #181717);
   width: 12px;
-}
+} */
 
 /* .tab-content > .active {
   display: block;
