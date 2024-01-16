@@ -25,7 +25,7 @@ const MainTwo = (props: Props) => {
 		<div className="container mx-auto max-w-6xl w-full px-0">{/*className="container" */}
 			<div className="flex flex-wrap mt-10 mx-5 py-20">{/* className="row py-20 " */}
 				<div className="lg:w-5/12 flex-shrink-0 grow-0 basis-auto w-full">{/* className="col-lg-5 col-12 " */}
-					<h3 className="text-white mt-0 mb-2 font-black leading-[45px] text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl" style={{ fontSize: 'calc(1.35rem + 1.2vw)' }}>Hangi Konuda Kendini<br />Geliştirmek İstersin?</h3>
+					<h3 className="text-white mt-0 mb-2 font-black !leading-[45px] text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl">Hangi Konuda Kendini<br />Geliştirmek İstersin?</h3>
 					<div className="flex flex-wrap pl-0 mb-0 list-none flex-col rounded-md mr-3 my-14" id="v-pills-tab" role="tablist" aria-orientation="vertical">{/* className="nav flex-column nav-pills me-3 my-14" */}
 						<button onClick={() => handleButtonClick('button1')} className={`px-6 py-9 hover:border border-gray-600 text-left rounded-2xl m-0 mb-5 ${activeButton === 'button1' ? 'bg-white' : 'bg-[#181717] '}`} id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">{/*className="tab-button active mb-5"*/}
 							<div className={`text-2xl text-gray-700 font-semibold mb-4 ${activeButton === 'button1' ? 'text-gray-700 ' : 'text-white'}`}>{/* className="title" */}
