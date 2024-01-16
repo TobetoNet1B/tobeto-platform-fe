@@ -11,7 +11,7 @@ const MainOne = (props: Props) => {
 	return (
 		<div className='container pt-20 relative max-w-6xl mx-auto'>
 			<div className='flex flex-wrap relative'>{/* className='row' */}
-				<div className="md:flex md:flex-shrink-0 lg:w-1/2 w-full max-w-full flex-shrink-0 grow-0 basis-auto lg:justify-end justify-center lg:pr-3 pr-0">{/* className="col-md-6 col-12" */}
+				<div className="md:flex md:flex-shrink-0 lg:w-1/2 w-full max-w-full flex-shrink-0 grow-0 basis-auto lg:justify-end justify-center mb-3 lg:pr-3 pr-0">{/* className="col-md-6 col-12" */}
 					<div className='bg-cover bg-center bg-no-repeat  flex items-start justify-center flex-col p-8 relative h-[300px] rounded-[14px]' style={{ backgroundImage: `url("https://tobeto.com/_next/static/media/ik02.02de641a.svg")` }}>{/*className='tobeto-card' */}
 						<span className='w-1/2 text-white font-extrabold text-2xl z-10'>Hayalindeki teknoloji kariyerini başlat!</span>
 						<span className='w-1/2 text-white font-extrabold text-2xl z-10' style={{ display: 'flex', fontStyle: "italic" }}>
