@@ -29,7 +29,7 @@ const SignUpPage = (props: Props) => {
 
     return (
         <div className="flex items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-screen bg-gray-100">
-            <div className="bg-white card shadow-md w-96 text-center relative overflow-hidden">
+            <div className="bg-white signInCard shadow-md w-96 text-center relative overflow-hidden">
                 <img
                     src="https://tobeto.com/_next/static/media/tobeto-logo.29b55e1c.svg"
                     alt="tobeto-banner"

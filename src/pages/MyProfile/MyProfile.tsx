@@ -110,7 +110,7 @@ const MyProfile = (props: Props) => {
 								<Card className=" border-gray-50 dark:border-gray-50 max-w-full mr-2 bg-gray-50 dark:bg-gray-50 shadow-2xl ">
 									<div className="flex flex-col items-center">
 										<img
-											src="https://media.licdn.com/dms/image/D4E03AQG6oUIp-LVqUg/profile-displayphoto-shrink_200_200/0/1679575072261?e=1710374400&v=beta&t=mTzzpqe6_elov0W6ViwW5jdahO-0skZ7ROsneN4DFz4"
+											src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
 											alt="profil-picture"
 											className="mb-1 mt-1 rounded-full  p-1"
 											style={{ width: "50%", height: "auto" }}
