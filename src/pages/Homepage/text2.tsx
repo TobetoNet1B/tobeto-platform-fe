@@ -1,8 +1,8 @@
 import CourseAbout from "pages/Course/CourseAbout";
 import CourseContents from "pages/Course/CourseContents";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Bounce, Slide, ToastContainer, toast } from "react-toastify";
+import { Slide, ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Toast from "utils/Toast";
 
