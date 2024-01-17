@@ -8,53 +8,53 @@ type Props = {}
 
 const SideBar = (props: Props) => {
 	return (
-		<ul className="menu lg:menu-vertical menu-horizontal rounded-box items-start text-lg leading-9 text-gray-500">
-			<li className="w-full">
+		<ul className="menu lg:menu-vertical menu-horizontal flex-nowrap items-start lg:text-lg lg:gap-3 gap-0 text-gray-500">
+			<li className="lg:w-full w-fit px-0">
 				<Link to="kisisel-bilgilerim">
-					<BiUser className="h-5 w-5" />
-					<span>Kişisel Bilgilerim</span>
+					<BiUser className="lg:h-5 lg:w-5 h-7 w-7" />
+					<span className="lg:block hidden">Kişisel Bilgilerim</span>
 				</Link>
 			</li>
-			<li className="w-full">
+			<li className="lg:w-full w-fit px-0">
 				<Link to="deneyimlerim">
-					<BiBriefcaseAlt className="h-5 w-5" />
-					<span>Deneyimlerim</span>
+					<BiBriefcaseAlt className="lg:h-5 lg:w-5 h-7 w-7" />
+					<span className="lg:block hidden">Deneyimlerim</span>
 				</Link>
 			</li>
-			<li className="w-full">
+			<li className="lg:w-full w-fit px-0">
 				<Link to="egitim-hayatim">
-					<BiBookOpen className="h-5 w-5" />
-					<span>Eğitim Hayatım</span>
+					<BiBookOpen className="lg:h-5 lg:w-5 h-7 w-7" />
+					<span className="lg:block hidden">Eğitim Hayatım</span>
 				</Link>
 			</li>
-			<li className="w-full">
+			<li className="lg:w-full w-fit px-0">
 				<Link to="yetkinliklerim">
-					<BiAward className="h-5 w-5" />
-					<span>Yetkinliklerim</span>
+					<BiAward className="lg:h-5 lg:w-5 h-7 w-7" />
+					<span className="lg:block hidden">Yetkinliklerim</span>
 				</Link>
 			</li>
-			<li className="w-full">
+			<li className="lg:w-full w-fit px-0">
 				<Link to="sertifikalarim">
-					<PiCertificateBold className="h-5 w-5" />
-					<span>Sertifikalarım</span>
+					<PiCertificateBold className="lg:h-5 lg:w-5 h-7 w-7" />
+					<span className="lg:block hidden">Sertifikalarım</span>
 				</Link>
 			</li>
-			<li className="w-full">
+			<li className="lg:w-full w-fit px-0">
 				<Link to="medya-hesaplarim">
-					<BiWorld className="h-5 w-5" />
-					<span>Medya Hesaplarım</span>
+					<BiWorld className="lg:h-5 lg:w-5 h-7 w-7" />
+					<span className="lg:block hidden">Medya Hesaplarım</span>
 				</Link>
 			</li>
-			<li className="w-full">
+			<li className="lg:w-full w-fit px-0">
 				<Link to="yabanci-dil">
-					<PiTranslate className="h-5 w-5" />
-					<span>Yabancı Dillerim</span>
+					<PiTranslate className="lg:h-5 lg:w-5 h-7 w-7" />
+					<span className="lg:block hidden">Yabancı Dillerim</span>
 				</Link>
 			</li>
-			<li className="w-full">
+			<li className="lg:w-full w-fit px-0">
 				<Link to="ayarlar">
-					<IoSettingsOutline className="h-5 w-5" />
-					<span>Ayarlar</span>
+					<IoSettingsOutline className="lg:h-5 lg:w-5 h-7 w-7" />
+					<span className="lg:block hidden">Ayarlar</span>
 				</Link>
 			</li>
 		</ul>
