@@ -1,5 +1,6 @@
 import Calendar from "components/Calendar/Calendar";
 import Abilities from "components/ProfileInfo/Abilities";
+import Experience from "components/ProfileInfo/Experience/Experience";
 import PersonalInformations from "components/ProfileInfo/PersonalInformations";
 import Announcement from "pages/Announcement/Announcement";
 import Education from "pages/Education/Education";
@@ -32,7 +33,7 @@ const RouteDefinitions = (props: Props) => {
 				<Route index={true} element={<MyProfile/>} />
 				<Route path="profilimi-duzenle" element={<ProfileInfo />}>
 					<Route path="kisisel-bilgilerim" element={<PersonalInformations />} />
-					<Route path="deneyimlerim" element />
+					<Route path="deneyimlerim" element={<Experience/>} />
 					<Route path="egitim-hayatim" element />
 					<Route path="yetkinliklerim" element={<Abilities />} />
 					<Route path="sertifikalarim" element />
