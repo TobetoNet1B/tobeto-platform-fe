@@ -13,19 +13,18 @@ const Evaluations = (props: Props) => {
 
 	return (
 		<div className='overflow-y-auto'>
-			<div className='h-screen  max-w-[1152px] mx-auto '>
+			<div className='h-screen  max-w-[1110px] mx-auto '>
 				<div className='max-w-fit mx-auto'>
 
 
 					<section className="py-5">
-						<div className="relative mt-12">
+						<div className=" mt-12">
 							<span className="block w-full h-full">
-								{/*<img
+								{<img
 											src="https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg"
 											alt="profil-picture"
-											className="ml- mr-52 mb- mt-52 rounded-full  p-1 absolute"
-											style={{ width: "9%", height: "9%" , opacity:1}}
-						/>*/}
+											className="top-5 right-20 rounded-full absolute z-[999] w-[13%] h-[13%]"
+						/>}
 							</span>
 							<div className="container text-center">
 								<div className="mx-auto max-w-5xl">
@@ -49,16 +48,15 @@ const Evaluations = (props: Props) => {
 							<div className="grid grid-cols-1 md:grid-cols-2  gap-6 ">
 
 								<div className="col-span-1 md:col-span-2 mb-1 ">
-									<div className="card rounded-ss-none rounded-[32px] p-5 w-full bg-gradient-to-tr from-[#e4b8f0] to-[#400c8c] text-primary-content items-center flex flex-col justify-center h-full">
-										<div className="dashboard-card text-center">
-											<span className='text-2xl text-white font-bold'>Tobeto İşte Başarı Modeli</span>
-											<p className="my-[100px] text-lg text-white">
+									<div className="card rounded-ss-none rounded-[32px] p-1 w-full bg-gradient-to-tr from-[#E2A5FD] to-[#3C0B8C] items-center flex flex-col justify-center h-full">
+										<div className='text-center mt-5'>
+											<span className='mt-5 text-2xl text-white font-bold'>Tobeto İşte Başarı Modeli</span>
+											<p className="my-16 text-xl text-white">
 												80 soru ile yetkinliklerini <b>ölç,</b> önerilen eğitimleri <b>tamamla,</b> rozetini <b>kazan.</b>
 											</p>
-											<a className="btn border-0 rounded-3xl text-white bg-purple-600 hover:bg-purple-700" href="#">
+											<a className="mb-5 btn border-0 rounded-3xl text-white bg-[#9933ff] hover:bg-[#822BD9]" href="#">
 												Raporu Görüntüle
 											</a>
-
 										</div>
 									</div>
 								</div>
@@ -67,10 +65,10 @@ const Evaluations = (props: Props) => {
 
 
 								<div className="col-span-1 md:col-span-1 mb-6  ">
-									<div className="card rounded-ss-none rounded-[32px] p-5 w-full bg-gradient-to-tr from-[#b9a2fb] to-[#1d0b8c] text-primary-content">
-										<div className="dashboard-card1 equal-box text-center">
+									<div className="card rounded-ss-none rounded-[32px] p-5 w-full bg-gradient-to-tr from-[#b9a2fb] to-[#1d0b8c]  ">
+										<div className="text-center">
 											<span className='text-white text-2xl font-bold'>Yazılımda Başarı Testi</span>
-											<p className='my-[112px] lg:my-[126px] mx-auto text-lg text-white'>Çoktan seçmeli sorular ile teknik bilgini <b>test et.</b></p>
+											<p className='my-[112px] lg:my-[126px] mx-auto text-xl text-white'>Çoktan seçmeli sorular ile teknik bilgini <b>test et.</b></p>
 											<label className="text-white">&gt;&gt;&gt;</label>
 										</div>
 									</div>
@@ -80,33 +78,33 @@ const Evaluations = (props: Props) => {
 								<div className="col-span-1 md:col-span-1 mb-6  ">
 									<div className="flex flex-col equal-box gap-1">
 
-										<div className="card rounded-[32px] w-full bg-gradient-to-tr from-[#b69ff9] to-[#1d0b8c] text-primary-content">
+										<div className="card rounded-[32px] my-1 w-full bg-gradient-to-r from-[#B29BF6] to-[#1D0B8C]  ">
 											<div className="flex items-center justify-between">
 												<div className="flex items-center gap-4">
 													<div className="ml-3 text-4xl border-2 rounded-full p-1 text-white"><HiOutlineListBullet /></div>
 													<span className='text-lg text-white'>Front End</span>
 												</div>
-												<button className="btn btn-light mx-2 my-3 rounded-[32px]">Başla</button>
+												<button className=" btn btn-light mx-2 my-2 rounded-3xl">Başla</button>
 											</div>
 										</div>
 
-										<div className="card rounded-[32px] w-full bg-gradient-to-tr from-[#b69ff9] to-[#1d0b8c] text-primary-content">
+										<div className="card rounded-[32px] my-1 w-full bg-gradient-to-r from-[#B29BF6] to-[#1D0B8C]  ">
 											<div className="flex items-center justify-between">
 												<div className="flex items-center gap-4">
 													<div className="ml-3 text-4xl border-2 rounded-full p-1 text-white"><HiOutlineListBullet /></div>
 													<span className='text-lg text-white'>Full Stack</span>
 												</div>
-												<button className="btn btn-light mx-2 my-3 rounded-[32px]">Başla</button>
+												<button className=" btn btn-light mx-2 my-2 rounded-3xl">Başla</button>
 											</div>
 										</div>
 
-										<div className="card rounded-[32px] w-full bg-gradient-to-tr from-[#b69ff9] to-[#1d0b8c] text-primary-content">
+										<div className="card rounded-[32px] my-1 w-full bg-gradient-to-r from-[#B29BF6] to-[#1D0B8C]  ">
 											<div className="flex items-center justify-between">
 												<div className="flex items-center gap-4">
 													<div className="ml-3 text-4xl border-2 rounded-full p-1 text-white"><HiOutlineListBullet /></div>
 													<span className='text-lg text-white'>Back End</span>
 												</div>
-												<button onClick={() => setOpenModal(true)} className="btn btn-light mx-2 my-3 rounded-[32px]">Başla</button>
+												<button onClick={() => setOpenModal(true)} className=" btn btn-light mx-2 my-2 rounded-3xl">Başla</button>
 												<Modal show={openModal} size="2xl" onClose={() => setOpenModal(false)} popup>
 													<Modal.Header className='bg-white'>
 														<div className="d-flex justify-content-between mt-2 mb-5 ml-4 text-black">
@@ -136,23 +134,23 @@ const Evaluations = (props: Props) => {
 											</div>
 										</div>
 
-										<div className="card rounded-[32px] w-full bg-gradient-to-tr from-[#b69ff9] to-[#1d0b8c] text-primary-content">
+										<div className="card rounded-[32px] my-1 w-full bg-gradient-to-r from-[#B29BF6] to-[#1D0B8C]  ">
 											<div className="flex items-center justify-between">
 												<div className="flex items-center gap-4">
 													<div className="ml-3 text-4xl border-2 rounded-full p-1 text-white"><HiOutlineListBullet /></div>
 													<span className='text-lg text-white'>Microsoft SQL Server</span>
 												</div>
-												<button className="btn btn-light mx-2 my-3 rounded-[32px]">Başla</button>
+												<button className=" btn btn-light mx-2 my-2 rounded-3xl">Başla</button>
 											</div>
 										</div>
 
-										<div className="card rounded-[32px] w-full bg-gradient-to-tr from-[#b69ff9] to-[#1d0b8c] text-primary-content">
+										<div className="card rounded-[32px] my-1 w-full bg-gradient-to-r from-[#B29BF6] to-[#1D0B8C]  ">
 											<div className="flex items-center justify-between">
 												<div className="flex items-center gap-4">
 													<div className="ml-3 text-4xl border-2 rounded-full p-1 text-white"><HiOutlineListBullet /></div>
 													<span className='text-lg text-white'>Masaüstü Programlama</span>
 												</div>
-												<button className="btn btn-light mx-2 my-3 rounded-[32px]">Başla</button>
+												<button className="btn btn-light mx-2 my-2 rounded-3xl">Başla</button>
 											</div>
 										</div>
 										{/* Repeat similar blocks for other cards */}
@@ -184,19 +182,19 @@ const Evaluations = (props: Props) => {
 							<div className="flex md:flex-nowrap flex-wrap   gap-6">
 
 								<div className="w-full md:w-1/2   mb-8  ">
-									<div className="card rounded-ss-none rounded-[32px] p-5 w-full h-full bg-gradient-to-r from-[#a923ec] to-[#686df1] text-primary-content">
-										<div className="dashboard-card1 equal-box text-center">
-											<div className="dashboard-card4 equal-box">
+									<div className="card rounded-ss-none rounded-[32px] p-5 w-full h-full bg-gradient-to-r from-[#a923ec] to-[#686df1]  ">
+										<div className="text-center">
+											
 												<span className="block text-2xl font-bold text-white">Kazanım Odaklı Testler</span>
 												<p className="my-24 text-xl text-white">Dijital gelişim kategorisindeki eğitimlere başlamadan önce konuyla ilgili bilgin ölçülür ve seviyene göre yönlendirilirsin.</p>
-											</div>
+											
 										</div>
 									</div>
 								</div>
 
 								<div className="w-full md:w-1/2 mb-8  ">
-									<div className="card rounded-ss-none rounded-[32px] p-5 w-full bg-gradient-to-r from-[#a923ec] to-[#686df1] text-primary-content">
-										<div className="dashboard-card4 equal-box text-center">
+									<div className="card rounded-ss-none rounded-[32px] p-5 w-full bg-gradient-to-r from-[#a923ec] to-[#686df1]  ">
+										<div className=" text-center">
 											<span className="block text-white text-2xl font-bold">Huawei Talent Interview <br /> Teknik Bilgi Sınavı*</span>
 											<p className="p-5 mt-4 text-white text-xl"><b><i>Sertifika alabilmen için,</i></b> eğitim yolculuğunun sonunda teknik yetkinliklerin ve kod bilgin ölçülür.<br /><br />4400+ soru | 30+ programlama dili <br />4 zorluk seviyesi</p>
 											<small className="text-white block text-sm">*Türkiye Ar-Ge Merkezi tarafından tasarlanmıştır.</small>

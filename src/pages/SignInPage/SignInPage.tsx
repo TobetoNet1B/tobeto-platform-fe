@@ -30,11 +30,11 @@ const SignInPage = (props: Props) => {
 
     return (
         <div className="flex items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-screen bg-gray-100">
-            <div className="bg-white signInCard shadow-md w-96 text-center relative overflow-hidden">
+            <div className="p-10 btn-rainbow-card bg-white shadow-md w-96 text-center relative overflow-hidden rounded-2xl">
                 <img
                     src="https://tobeto.com/_next/static/media/tobeto-logo.29b55e1c.svg"
                     alt="tobeto-banner"
-                    className="mb-5 mt-5 rounded-md mx-auto p-4"
+                    className="mb-5 mt-5 rounded-md mx-auto p-6"
                     style={{ width: "100%", height: "auto" }}
                 />
                 <Formik
@@ -86,14 +86,14 @@ const SignInPage = (props: Props) => {
 
             </div>
 
-            <div className="bg-white p-[34px] shadow-md w-96 text-center relative overflow-hidden border-4 border-solid border-indigo-500 rounded-3xl">
+            <div className="btn-rainbow-card-ik bg-white p-14 shadow-md w-96 text-center relative overflow-hidden  rounded-2xl">
                 <img
                     src="https://tobeto.com/_next/static/media/ik-logo-dark.7938c0de.svg"
                     alt="ik-banner"
-                    className="mb-6 mt-6 rounded-md mx-auto p-5"
-                    style={{ width: "100%", height: "auto" }}
+                    className=" rounded-md mx-auto p-5"
+                    style={{ width: "90%", height: "auto" }}
                 />
-                <span className="text-blue font-bold text-3xl mb-8 mt-8 block">
+                <span className="text-blue font-bold text-2xl mb-8 mt-8 block">
                     Aradığın <span style={{ color: "rgb(0, 176, 120)" }}>&nbsp;"&nbsp;</span>İş<span style={{ color: "rgb(0, 176, 120)" }}>&nbsp;"&nbsp;</span> Burada!
                 </span>
 
