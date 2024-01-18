@@ -1,4 +1,4 @@
-@keyframes borderAnimation {
+/*@keyframes borderAnimation {
     0% {
         border-color: #96ec4b;
     }
@@ -45,10 +45,127 @@
 
 }
 
-.signInCard {
+.sign-in-card {
     border: 4px solid #96ec4b;
-    /* Başlangıç rengi */
+    
     border-radius: 24px;
     padding: 32px;
     animation: borderAnimation 7s infinite;
+}*/
+/*
+.ik-card2 {
+    
+    padding: 35px;
+    border: 4px solid transparent;
+    border-image: linear-gradient(135deg,#1e0f41,#0fcdfa,#87ff87,#1e0f41,#0fcdfa,#87ff87);
+    border-image-slice: 1;
+    animation: rainbow-border 4s linear infinite;
+    background: white;
+    
+}
+
+.ik-card2:{
+    border-radius: 48px;
+}
+
+@keyframes rainbow-border {
+    0% {
+        background-position: 0% 50%;
+        border-image-slice: 1;
+    }
+    100% {
+        background-position: 100% 50%;
+        border-image-slice: 99; 
+    }
+}
+
+.sign-in-card {
+    
+    padding: 35px;
+    border: 4px solid transparent;
+    border-image: linear-gradient(70deg, #0ebeff, #ffdd40, #ae63e4, #47cf73, #0ebeff, #ffdd40, #ae63e4, #47cf73);
+    border-image-slice: 100;
+    animation: rainbow-border 4s linear infinite;
+}*/
+
+
+
+.btn-rainbow-card-ik {
+    position: sticky;
+    background: #fff;
+    color: #282828
+}
+
+.btn-rainbow-card-ik:before {
+    background: linear-gradient(135deg, #1e0f41, #0fcdfa, #87ff87, #1e0f41, #0fcdfa, #87ff87);
+    width: calc(100% + 1px);
+    height: calc(100% + 1px);
+    top: 0;
+    left: 0;
+    background-size: 100% 200%
+}
+
+.btn-rainbow-card-ik:after,
+.btn-rainbow-card-ik:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 1em
+}
+
+.btn-rainbow-card-ik:after {
+    bottom: 2px;
+    top: 2px;
+    left: 1px;
+    right: 1px;
+    height: auto;
+    width: auto;
+    margin: 3px;
+    background: inherit
+}
+
+.btn-rainbow-card {
+    position: sticky;
+    background: #fff;
+    color: #282828
+}
+
+.btn-rainbow-card:before {
+    animation: rainbow-border 4s linear infinite;
+    background: linear-gradient(70deg, #0ebeff, #ffdd40, #ae63e4, #47cf73, #0ebeff, #ffdd40, #ae63e4, #47cf73);
+    width: calc(100% + 1px);
+    height: calc(100% + 1px);
+    top: 0;
+    left: 0;
+    background-size: 200% 200%
+}
+
+.btn-rainbow-card:after,
+.btn-rainbow-card:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 1em
+}
+
+.btn-rainbow-card:after {
+    bottom: 2px;
+    top: 2px;
+    left: 1px;
+    right: 1px;
+    height: auto;
+    width: auto;
+    margin: 3px;
+    background: inherit
+}
+
+@keyframes rainbow-border {
+    0% {
+        background-position: 0% 50%;
+        border-image-slice: 1;
+    }
+    100% {
+        background-position: 100% 50%;
+        border-image-slice: 99; 
+    }
 }

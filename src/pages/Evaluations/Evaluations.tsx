@@ -18,14 +18,13 @@ const Evaluations = (props: Props) => {
 
 
 					<section className="py-5">
-						<div className="relative mt-12">
+						<div className=" mt-12">
 							<span className="block w-full h-full">
-								{/*<img
+								{<img
 											src="https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg"
 											alt="profil-picture"
-											className="ml- mr-52 mb- mt-52 rounded-full  p-1 absolute"
-											style={{ width: "9%", height: "9%" , opacity:1}}
-						/>*/}
+											className="top-5 right-20 rounded-full absolute z-[999] w-[13%] h-[13%]"
+						/>}
 							</span>
 							<div className="container text-center">
 								<div className="mx-auto max-w-5xl">
