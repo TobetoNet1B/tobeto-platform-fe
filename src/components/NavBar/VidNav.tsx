@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Modal } from 'flowbite-react';
+import './vidnav.css'
 
 type Props = {}
 
@@ -19,7 +20,7 @@ const VidNav = (props: Props) => {
 			</div>
 
 			<Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
-				<Modal.Header className='p-0'>
+				<Modal.Header className='pl-8 pr-0 border-b-0 vid-modal'>
 					<video width="100%" height="240" controls src="https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4">
 						<source src="https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4" type="video/mp4" />
 						<source src="movie.ogg" type="video/ogg" />
