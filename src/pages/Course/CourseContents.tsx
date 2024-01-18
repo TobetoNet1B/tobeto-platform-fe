@@ -60,7 +60,7 @@ const CourseContents = (props: Props) => {
                                   </div>
                                 </div>
                               </details>
-
+                              
                             </span>
                           </div>
                         </div>
@@ -79,9 +79,9 @@ const CourseContents = (props: Props) => {
 
             </div>
           </div>
-          <div className="col-lg-7 col-md-7 col-sm-12 w-full flex-grow-0 flex-shrink-0 basis-full">{/*className="col-lg-7 col-md-7 col-sm-12 col-xs-12" */}
+          <div className="!px-2 col-lg-7 col-md-7 col-sm-12 w-full flex-grow-0 flex-shrink-0 basis-full">{/*className="col-lg-7 col-md-7 col-sm-12 col-xs-12" */}
             <div className="shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-[15px] overflow-hidden" id="activity-content-info">{/*className="activity-content-info" */}
-              <div id="activity-largeImageFileName" className="rounded-tl-2xl rounded-tr-2xl overflow-hidden relative w-full  h-[400px]">{/*className="activity-largeImageFileName activity-video" */}
+              <div id="activity-largeImageFileName" className="rounded-tl-2xl rounded-tr-2xl overflow-hidden relative w-full h-[400px]">{/*className="activity-largeImageFileName activity-video" */}
                 <div className=' h-full'>
                   <iframe width={'100%'} height={'100%'} src="https://www.youtube.com/embed/VWc85A8bIyo?si=TshW7dcNJPV7jjUh" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
                 </div>
@@ -91,7 +91,7 @@ const CourseContents = (props: Props) => {
               </div>
               <div id="activity-unit-detail" className="py-[15px] px-5">{/*className="activity-unit-detail" */}
                 <div className="-mx-2 box-border flex flex-row flex-wrap">{/*className="row" */}
-                  <div className="col-lg-9 col-md-8 col-sm-9 w-full flex-grow-0 flex-shrink-0 basis-full">{/*className="col-lg-9 col-md-8 col-sm-9 col-xs-12" */}
+                  <div className="!px-2 col-lg-9 col-md-8 col-sm-9 w-full flex-grow-0 flex-shrink-0 basis-full">{/*className="col-lg-9 col-md-8 col-sm-9 col-xs-12" */}
                     <div className="text-base font-semibold mb-[15px] block">{/*className="unit-detail-title" */}
                       <div>
                         Dışarıdan İçeriye Pazarlama Stratejisi -
@@ -101,17 +101,17 @@ const CourseContents = (props: Props) => {
                     <div className="inline-block align-middle mr-5 text-[#818181]">{/* className="unit-detail-col unit-detail-col-default"*/}
                       Video - <span>4 dk</span>
                     </div>
-                    <div className="inline-block align-middle mr-5-col-status m-0">{/*className="unit-detail-col unit-detail-col-status last-child" */}
-                      <div className="-mt-0.5 bg-[#818181] rounded-[50px] w-[13px] h-[13px] inline-block align-middle bg-contain bg-no-repeat" />{" "}
+                    <div className="inline-block align-middle mr-5 m-0">{/*className="unit-detail-col unit-detail-col-status last-child" */}
+                      <div className="-mt-0.5 bg-[#818181] rounded-[50px] w-[13px] h-[13px] inline-block align-middle !bg-contain !bg-no-repeat" />
                       Başlamadın
                     </div>{/*className="unit-icon unit-pending" */}
                   </div>
-                  <div className="col-lg-3 col-md-4 col-sm-3 w-full flex-grow-0 flex-shrink-0 basis-full">{/*className="col-lg-3 col-md-4 col-sm-3 col-xs-12" */}
-                    <div className="m-3 xl:text-left lg:text-left md:text-left sm:text-center">{/*className="unit-box-actions text-lg-left text-md-left text-sm-left text-xs-center" */}
+                  <div className="!px-2 col-lg-3 col-md-4 col-sm-3 w-full flex-grow-0 flex-shrink-0 basis-full">{/*className="col-lg-3 col-md-4 col-sm-3 col-xs-12" */}
+                    <div className="m-3 xl:text-left lg:text-left md:text-left text-center">{/*className="unit-box-actions text-lg-left text-md-left text-sm-left text-xs-center" */}
                       <div className="w-full inline-flex  flex-col" style={{ gap: 8 }}>{/*className="ant-space ant-space-vertical" */}
-                        <div className="ant-space-item" style={{}} />{/*className="ant-space-item" */}
+                        <div className="empty:hidden" style={{}} />{/*className="ant-space-item" */}
                         <div className="ant-space-item">
-                          <button type="button" className="text-[#9933FF] border-solid border-[#9933FF] border-[1px] bg-white w-full text-base h-10 py-[7px] px-[15px] rounded-lg inline-flex justify-center items-center font-semibold transition-none shadow-[0_2px_0_rgba(0, 0, 0, 0.02)] outline-none relative whitespace-nowrap text-center cursor-pointer">
+                          <button type="button" className="!text-[#9933FF] border-solid !border-[#9933FF] border-[1px] bg-white w-full text-base h-10 py-[7px] px-[15px] rounded-lg inline-flex justify-center items-center font-semibold transition-none shadow-[0_2px_0_rgba(0,0,0,0.02)] outline-none relative whitespace-nowrap text-center cursor-pointer select-none touch-none leading-[1.5px]">
                             <span className="inline-block">DETAY</span>
                           </button>{/*className="ant-btn ant-btn-default ant-btn-lg ant-btn-block btn" */}
                         </div>
