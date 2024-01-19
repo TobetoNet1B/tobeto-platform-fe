@@ -11,6 +11,7 @@ import SignUpPage from "pages/SignUpPage/SignUpPage";
 import {Route, Routes} from "react-router-dom";
 import ModuleSet from "pages/ModuleSet/ModuleSet";
 import Text2 from "pages/Homepage/text2";
+import VideoScreen from "utils/VideoScreen";
 
 
 type Props = {};
@@ -33,6 +34,7 @@ const RouteDefinitions = (props: Props) => {
 
 
 			<Route path="/text2" element={<Text2 />} />
+			<Route path="/VideoScreen" element={<VideoScreen  videoSource="https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4"/>} />
 		</Routes>
 	);
 };

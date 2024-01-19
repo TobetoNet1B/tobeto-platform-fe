@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Toast from "utils/Toast";
+import VideoScreen from "utils/VideoScreen";
 
 export default function text2() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -62,79 +63,129 @@ export default function text2() {
     };
     //----------------------***********************-------------------------
 
-
-
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const videoRef = useRef<HTMLVideoElement>(null);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [speed, setSpeed] = useState<number>(1);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [volume, setVolume] = useState<number>(1);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [isPlaying, setIsPlaying] = useState(false);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [currentTime, setCurrentTime] = useState(0);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [duration, setDuration] = useState(0);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [volume, setVolume] = useState(1);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [playbackRate, setPlaybackRate] = useState(1);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [isFullScreen, setIsFullScreen] = useState(false);
 
-  const handleSpeedChange = (value: number) => {
-    setSpeed(value);
-    if (videoRef.current) {
-      videoRef.current.playbackRate = value;
-    }
-  };
+    const togglePlay = () => {
+        if (videoRef.current) {
+            if (isPlaying) {
+                videoRef.current.pause();
+            } else {
+                videoRef.current.play();
+            }
+            setIsPlaying(!isPlaying);
+        }
+    };
 
-  const handleVolumeChange = (value: number) => {
-    setVolume(value);
-    if (videoRef.current) {
-      videoRef.current.volume = value;
-    }
-  };
-  
+    const handleTimeUpdate = () => {
+        if (videoRef.current) {
+            setCurrentTime(videoRef.current.currentTime);
+            setDuration(videoRef.current.duration);
+        }
+    };
+
+    const handleSeek = (value: number) => {
+        if (videoRef.current) {
+            videoRef.current.currentTime = value;
+            setCurrentTime(value);
+        }
+    };
+
+    const handleVolumeChange = (value: number) => {
+        if (videoRef.current) {
+            videoRef.current.volume = value;
+            setVolume(value);
+        }
+    };
+
+    const handlePlaybackRateChange = (value: number) => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = value;
+            setPlaybackRate(value);
+        }
+    };
+
+
+
+    const fullscreenHandler = () => {
+        if (videoRef.current) {
+          if (isFullScreen) {
+            document.exitFullscreen();
+          } else {
+            videoRef.current.requestFullscreen();
+          }
+          setIsFullScreen(!isFullScreen);
+        }
+      };
+
+
+
     return (
         <div className="">
-            <ToastContainer />
+            {/* <ToastContainer /> */}
             {/* <Toast /> */}
 
-            <div className="max-w-screen-lg mx-auto mt-8">
-                <video
-                    ref={videoRef}
-                    className="w-full"
-                    controls
-                    poster="../../photo.jpg"  // Video önizleme resmi
-                >
-                    <source src="../../video.webm" type="video/webm" />
-                    Your browser does not support the video tag.
-                </video>
+            {/* <VideoScreen videoSource="https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4"/> */}
 
-                <div className="mt-4 flex justify-between items-center">
-                    <div>
-                        <label htmlFor="speed" className="mr-2">Speed:</label>
-                        <select
-                            id="speed"
-                            value={speed}
-                            onChange={(e) => handleSpeedChange(parseFloat(e.target.value))}
-                            className="px-2 py-1 border border-gray-300 rounded"
-                        >
-                            <option value="0.5">0.5x</option>
-                            <option value="1">1x</option>
-                            <option value="1.5">1.5x</option>
-                            <option value="2">2x</option>
-                        </select>
-                    </div>
 
-                    <div>
-                        <label htmlFor="volume" className="mr-2">Volume:</label>
-                        <input
-                            id="volume"
-                            type="range"
-                            min="0"
-                            max="1"
-                            step="0.1"
-                            value={volume}
-                            onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
-                            className="w-16"
-                        />
+
+            <div>
+                <div className={`flex justify-center items-center h-screen `}>
+                    <div className="w-1/2">
+                        <video
+                            ref={videoRef}
+                            className="w-full"
+                            src="https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4"
+                            poster="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt670d428d1921eed8/614be30d69b7947c1b3aebd5/9242021_StateofGameplayArticle_Header.jpg"
+                            onClick={togglePlay}
+                            onTimeUpdate={handleTimeUpdate}
+                        ></video>
+
+                        <div className="flex items-center mt-4">
+                            <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
+                            <input
+                                type="range"
+                                value={currentTime}
+                                max={duration}
+                                onChange={(e) => handleSeek(parseFloat(e.target.value))}
+                            />
+                            <span>{`${Math.floor(currentTime)} / ${Math.floor(duration)}`}</span>
+                            <input
+                                type="range"
+                                value={volume}
+                                step={0.1}
+                                max={1}
+                                onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
+                            />
+                            <select
+                                value={playbackRate}
+                                onChange={(e) => handlePlaybackRateChange(parseFloat(e.target.value))}
+                            >
+                                <option value="0.5">0.5x</option>
+                                <option value="1">1x</option>
+                                <option value="1.5">1.5x</option>
+                                <option value="2">2x</option>
+                                <option value="4">4x</option>
+                            </select>
+                            <button onClick={fullscreenHandler}>
+                                {isFullScreen ? 'Exit Fullscreen' : 'Fullscreen'}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-
 
 
 
@@ -375,8 +426,8 @@ export default function text2() {
                                                                                             <path
                                                                                                 d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
                                                                                                 className={`fill-none origin-center ${liked
-                                                                                                        ? "fill-red-500 scale-100  animate-animateHeart"
-                                                                                                        : "animate-animateHeartOut stroke-2 !stroke-[#7f7f7f]"
+                                                                                                    ? "fill-red-500 scale-100  animate-animateHeart"
+                                                                                                    : "animate-animateHeartOut stroke-2 !stroke-[#7f7f7f]"
                                                                                                     }`}
                                                                                                 id="heart"
                                                                                                 fill="#AAB8C2"
@@ -384,8 +435,8 @@ export default function text2() {
                                                                                             <circle
                                                                                                 id="main-circ"
                                                                                                 className={`origin-[29.5px_29.5px] ${liked
-                                                                                                        ? "transition-all animate-animateCircle  opacity-100"
-                                                                                                        : " "
+                                                                                                    ? "transition-all animate-animateCircle  opacity-100"
+                                                                                                    : " "
                                                                                                     }`}
                                                                                                 fill="#E2264D"
                                                                                                 opacity={0}
@@ -398,8 +449,8 @@ export default function text2() {
                                                                                                 opacity={0}
                                                                                                 transform="translate(7 6)"
                                                                                                 className={` ${liked
-                                                                                                        ? "opacity-100 transition-opacity delay-300"
-                                                                                                        : " "
+                                                                                                    ? "opacity-100 transition-opacity delay-300"
+                                                                                                    : " "
                                                                                                     }`}
                                                                                             >
                                                                                                 <circle
@@ -409,8 +460,8 @@ export default function text2() {
                                                                                                     cy={6}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "transition-transform duration-500 delay-300 scale-0 -translate-x-8 -translate-y-4 origin-[0_0]"
-                                                                                                            : " "
+                                                                                                        ? "transition-transform duration-500 delay-300 scale-0 -translate-x-8 -translate-y-4 origin-[0_0]"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                                 <circle
@@ -420,8 +471,8 @@ export default function text2() {
                                                                                                     cy={2}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 -translate-x-14 -translate-y-8 origin-[0_0] transition-transform	duration-[1500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 -translate-x-14 -translate-y-8 origin-[0_0] transition-transform	duration-[1500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                             </g>
@@ -430,8 +481,8 @@ export default function text2() {
                                                                                                 opacity={0}
                                                                                                 transform="translate(0 28)"
                                                                                                 className={` ${liked
-                                                                                                        ? "opacity-100 transition-opacity delay-300"
-                                                                                                        : " "
+                                                                                                    ? "opacity-100 transition-opacity delay-300"
+                                                                                                    : " "
                                                                                                     }`}
                                                                                             >
                                                                                                 <circle
@@ -441,8 +492,8 @@ export default function text2() {
                                                                                                     cy={7}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 -translate-x-8 translate-y-0 origin-[0_0] transition-transform duration-[500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 -translate-x-8 translate-y-0 origin-[0_0] transition-transform duration-[500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                                 <circle
@@ -452,8 +503,8 @@ export default function text2() {
                                                                                                     cy={2}
                                                                                                     r={2}
                                                                                                     className={`${liked
-                                                                                                            ? "scale-0 -translate-x-16 -translate-y-2 origin-[0_0] transition-transform duration-[1500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 -translate-x-16 -translate-y-2 origin-[0_0] transition-transform duration-[1500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                             </g>
@@ -462,8 +513,8 @@ export default function text2() {
                                                                                                 opacity={0}
                                                                                                 transform="translate(52 28)"
                                                                                                 className={` ${liked
-                                                                                                        ? "opacity-100 transition-opacity delay-300"
-                                                                                                        : " "
+                                                                                                    ? "opacity-100 transition-opacity delay-300"
+                                                                                                    : " "
                                                                                                     }`}
                                                                                             >
                                                                                                 <circle
@@ -473,8 +524,8 @@ export default function text2() {
                                                                                                     cy={7}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 translate-x-16 translate-y-3 origin-[0_0] transition-transform duration-[1500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 translate-x-16 translate-y-3 origin-[0_0] transition-transform duration-[1500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                                 <circle
@@ -484,8 +535,8 @@ export default function text2() {
                                                                                                     cy={2}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 translate-x-8 translate-y-0 origin-[0_0] transition-transform	duration-[500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 translate-x-8 translate-y-0 origin-[0_0] transition-transform	duration-[500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                             </g>
@@ -494,8 +545,8 @@ export default function text2() {
                                                                                                 opacity={0}
                                                                                                 transform="translate(44 6)"
                                                                                                 className={` ${liked
-                                                                                                        ? "opacity-100 transition-opacity delay-300"
-                                                                                                        : " "
+                                                                                                    ? "opacity-100 transition-opacity delay-300"
+                                                                                                    : " "
                                                                                                     }`}
                                                                                             >
                                                                                                 <circle
@@ -505,8 +556,8 @@ export default function text2() {
                                                                                                     cy={6}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 translate-x-16 -translate-y-4 origin-[0_0] transition-transform duration-[1500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 translate-x-16 -translate-y-4 origin-[0_0] transition-transform duration-[1500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                                 <circle
@@ -516,8 +567,8 @@ export default function text2() {
                                                                                                     cy={2}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 translate-x-8 -translate-y-4 origin-[0_0] transition-transform duration-[500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 translate-x-8 -translate-y-4 origin-[0_0] transition-transform duration-[500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                             </g>
@@ -526,8 +577,8 @@ export default function text2() {
                                                                                                 opacity={0}
                                                                                                 transform="translate(14 50)"
                                                                                                 className={` ${liked
-                                                                                                        ? "opacity-100 transition-opacity delay-300"
-                                                                                                        : " "
+                                                                                                    ? "opacity-100 transition-opacity delay-300"
+                                                                                                    : " "
                                                                                                     }`}
                                                                                             >
                                                                                                 <circle
@@ -537,8 +588,8 @@ export default function text2() {
                                                                                                     cy={5}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 -translate-x-3 translate-y-5 origin-[0_0] transition-transform duration-[500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 -translate-x-3 translate-y-5 origin-[0_0] transition-transform duration-[500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                                 <circle
@@ -548,8 +599,8 @@ export default function text2() {
                                                                                                     cy={2}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 -translate-x-16 translate-y-8 origin-[0_0] transition-transform duration-[1500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 -translate-x-16 translate-y-8 origin-[0_0] transition-transform duration-[1500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                             </g>
@@ -558,8 +609,8 @@ export default function text2() {
                                                                                                 opacity={0}
                                                                                                 transform="translate(35 50)"
                                                                                                 className={` ${liked
-                                                                                                        ? "opacity-100 transition-opacity delay-300"
-                                                                                                        : " "
+                                                                                                    ? "opacity-100 transition-opacity delay-300"
+                                                                                                    : " "
                                                                                                     }`}
                                                                                             >
                                                                                                 <circle
@@ -569,8 +620,8 @@ export default function text2() {
                                                                                                     cy={5}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 translate-x-8 translate-y-4 origin-[0_0] transition-transform	duration-[500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 translate-x-8 translate-y-4 origin-[0_0] transition-transform	duration-[500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                                 <circle
@@ -580,8 +631,8 @@ export default function text2() {
                                                                                                     cy={2}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 translate-x-10 translate-y-12 origin-[0_0] transition-transform duration-[1500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 translate-x-10 translate-y-12 origin-[0_0] transition-transform duration-[1500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                             </g>
@@ -590,8 +641,8 @@ export default function text2() {
                                                                                                 opacity={0}
                                                                                                 transform="translate(24)"
                                                                                                 className={` ${liked
-                                                                                                        ? "opacity-100 transition-all delay-300"
-                                                                                                        : " "
+                                                                                                    ? "opacity-100 transition-all delay-300"
+                                                                                                    : " "
                                                                                                     }`}
                                                                                             >
                                                                                                 <circle
@@ -601,8 +652,8 @@ export default function text2() {
                                                                                                     cy={3}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 translate-x-0 -translate-y-8 origin-[0_0] transition-transform duration-[500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 translate-x-0 -translate-y-8 origin-[0_0] transition-transform duration-[500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                                 <circle
@@ -612,8 +663,8 @@ export default function text2() {
                                                                                                     cy={2}
                                                                                                     r={2}
                                                                                                     className={` ${liked
-                                                                                                            ? "scale-0 translate-x-2 -translate-y-12 origin-[0_0] transition-transform duration-[1500ms] delay-300"
-                                                                                                            : " "
+                                                                                                        ? "scale-0 translate-x-2 -translate-y-12 origin-[0_0] transition-transform duration-[1500ms] delay-300"
+                                                                                                        : " "
                                                                                                         }`}
                                                                                                 />
                                                                                             </g>
@@ -630,8 +681,8 @@ export default function text2() {
                                                                         {/*className="like-text liked" */}
                                                                         <span
                                                                             className={`cursor-pointer ${liked
-                                                                                    ? "!text-[#ff4757]"
-                                                                                    : "!text-[#7f7f7f]"
+                                                                                ? "!text-[#ff4757]"
+                                                                                : "!text-[#7f7f7f]"
                                                                                 }`}
                                                                         >
                                                                             106
@@ -649,8 +700,8 @@ export default function text2() {
                                                                 {/*className="activity-favorite" */}
                                                                 <span
                                                                     className={`w-full h-full block !bg-cover !bg-no-repeat !bg-center ${favIcon
-                                                                            ? 'bg-[url("https://lms.tobeto.com/tobeto/eep/Styles/assets/css/img/icon/learning-experience-platform/remove-favorite.svg")]'
-                                                                            : 'bg-[url("https://lms.tobeto.com/tobeto/eep/Styles/assets/css/img/icon/learning-experience-platform/add-favorite.svg")]'
+                                                                        ? 'bg-[url("https://lms.tobeto.com/tobeto/eep/Styles/assets/css/img/icon/learning-experience-platform/remove-favorite.svg")]'
+                                                                        : 'bg-[url("https://lms.tobeto.com/tobeto/eep/Styles/assets/css/img/icon/learning-experience-platform/add-favorite.svg")]'
                                                                         }`}
                                                                 />
                                                                 {/*className="remove-favorite" */}

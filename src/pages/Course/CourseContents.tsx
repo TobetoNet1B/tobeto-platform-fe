@@ -1,4 +1,5 @@
 import React from 'react'
+import VideoScreen from 'utils/VideoScreen'
 
 type Props = {}
 
@@ -82,8 +83,8 @@ const CourseContents = (props: Props) => {
           <div className="!px-2 col-lg-7 col-md-7 col-sm-12 w-full flex-grow-0 flex-shrink-0 basis-full">{/*className="col-lg-7 col-md-7 col-sm-12 col-xs-12" */}
             <div className="shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-[15px] overflow-hidden" id="activity-content-info">{/*className="activity-content-info" */}
               <div id="activity-largeImageFileName" className="rounded-tl-2xl rounded-tr-2xl overflow-hidden relative w-full h-[400px]">{/*className="activity-largeImageFileName activity-video" */}
-                <div className=' h-full'>
-                  <iframe width={'100%'} height={'100%'} src="https://www.youtube.com/embed/VWc85A8bIyo?si=TshW7dcNJPV7jjUh" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+                <div className=''>
+                  <VideoScreen videoSource='https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4'/>
                 </div>
 
 
