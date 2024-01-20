@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Toast from "utils/Toast";
-import VideoScreen from "utils/VideoScreen";
+import VideoScreen from "utils/VideoScreen/VideoScreen";
 
 export default function text2() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -72,7 +72,7 @@ export default function text2() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [duration, setDuration] = useState(0);
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [volume, setVolume] = useState(1);
+    const [volume, setVolume] = useState<number>(100);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [playbackRate, setPlaybackRate] = useState(1);
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -93,22 +93,35 @@ export default function text2() {
         if (videoRef.current) {
             setCurrentTime(videoRef.current.currentTime);
             setDuration(videoRef.current.duration);
+
+            // Videonun hangi sürede olduğuna bağlı olarak seek bar rengini ayarla
+      const progressBar = document.getElementById('progress-bar');
+      if (progressBar) {
+        const progressPercentage = (videoRef.current.currentTime / videoRef.current.duration) * 100;
+        progressBar.style.background = `linear-gradient(to right, #f50 0%, #f50 ${progressPercentage}%, #ccc ${progressPercentage}%, #ccc 100%)`;
+      }
         }
     };
 
-    const handleSeek = (value: number) => {
+    const handleSeek = (value: number ,event: React.ChangeEvent<HTMLInputElement>) => {
         if (videoRef.current) {
             videoRef.current.currentTime = value;
             setCurrentTime(value);
+            const progressBar = (value/duration)*100;
+            event.target.style.background = `linear-gradient(to right, #f50 ${progressBar}%, #ccc ${progressBar}%)`;
         }
     };
 
-    const handleVolumeChange = (value: number) => {
+
+    const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newVolume = parseInt(event.target.value, 10);
+        setVolume(newVolume);
         if (videoRef.current) {
-            videoRef.current.volume = value;
-            setVolume(value);
+          videoRef.current.volume = newVolume / 100;
         }
-    };
+      };
+    
+
 
     const handlePlaybackRateChange = (value: number) => {
         if (videoRef.current) {
@@ -121,16 +134,25 @@ export default function text2() {
 
     const fullscreenHandler = () => {
         if (videoRef.current) {
-          if (isFullScreen) {
-            document.exitFullscreen();
-          } else {
-            videoRef.current.requestFullscreen();
-          }
-          setIsFullScreen(!isFullScreen);
+            if (isFullScreen) {
+                document.exitFullscreen();
+            } else {
+                videoRef.current.requestFullscreen();
+            }
+            setIsFullScreen(!isFullScreen);
         }
+    };
+
+
+
+    const formatTime = (time: number): string => {
+        const hours = Math.floor(time / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = Math.floor(time % 60);
+    
+        const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        return formattedTime;
       };
-
-
 
     return (
         <div className="">
@@ -143,7 +165,53 @@ export default function text2() {
 
             <div>
                 <div className={`flex justify-center items-center h-screen `}>
-                    <div className="w-1/2">
+                    <style>
+                        {`
+              input[type="range"] {
+                /* removing default appearance */
+                -webkit-appearance: none;
+                appearance: none; 
+                /* creating a custom design */
+                width: 100%;
+                cursor: pointer;
+                outline: none;
+                border-radius: 15px;
+                /*  overflow: hidden;  remove this line*/
+                
+                /* New additions */
+                height: 6px;
+                background: #ccc;
+              }
+              
+              /* Thumb: webkit */
+              input[type="range"]::-webkit-slider-thumb {
+                /* removing default appearance */
+                -webkit-appearance: none;
+                appearance: none; 
+                /* creating a custom design */
+                height: 15px;
+                width: 15px;
+                background-color: #f50;
+                border-radius: 50%;
+                border: none;
+              
+                /* box-shadow: -407px 0 0 400px #f50; emove this line */
+                transition: .2s ease-in-out;
+              }
+              input[type="range"]::-webkit-slider-thumb:hover {
+                box-shadow: 0 0 0 10px rgba(255,85,0, .1)
+              }
+              input[type="range"]:active::-webkit-slider-thumb {
+                box-shadow: 0 0 0 13px rgba(255,85,0, .2)
+              }
+              input[type="range"]:focus::-webkit-slider-thumb {
+                box-shadow: 0 0 0 13px rgba(255,85,0, .2)
+              }
+              
+                  
+                  `}
+                    </style>
+                    <div className="w-1/2 ">
                         <video
                             ref={videoRef}
                             className="w-full"
@@ -156,18 +224,21 @@ export default function text2() {
                         <div className="flex items-center mt-4">
                             <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
                             <input
+                            id="progress-bar"
                                 type="range"
                                 value={currentTime}
                                 max={duration}
-                                onChange={(e) => handleSeek(parseFloat(e.target.value))}
+                                onChange={(e) => handleSeek(parseFloat(e.target.value),e)}
                             />
-                            <span>{`${Math.floor(currentTime)} / ${Math.floor(duration)}`}</span>
+                            <span >{formatTime(duration)} -- {formatTime(currentTime)}</span>
                             <input
                                 type="range"
                                 value={volume}
+                                min={0}
+                                max={100}
                                 step={0.1}
-                                max={1}
-                                onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
+                                onChange={handleVolumeChange}
+                                style={{ background: `linear-gradient(to right, #7a29cc 0%, #7a29cc ${volume}%, #ccc ${volume}%, #ccc 100%)`}}
                             />
                             <select
                                 value={playbackRate}

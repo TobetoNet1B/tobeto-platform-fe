@@ -11,7 +11,7 @@ import SignUpPage from "pages/SignUpPage/SignUpPage";
 import {Route, Routes} from "react-router-dom";
 import ModuleSet from "pages/ModuleSet/ModuleSet";
 import Text2 from "pages/Homepage/text2";
-import VideoScreen from "utils/VideoScreen";
+import VideoScreen from "utils/VideoScreen/VideoScreen";
 
 
 type Props = {};

@@ -1,5 +1,5 @@
 import React from 'react'
-import VideoScreen from 'utils/VideoScreen'
+import VideoScreen from 'utils/VideoScreen/VideoScreen'
 
 type Props = {}
 
