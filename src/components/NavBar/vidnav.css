@@ -1,0 +1,3 @@
+div:has(> .vid-modal)   {
+	background-color: #000a;
+}
