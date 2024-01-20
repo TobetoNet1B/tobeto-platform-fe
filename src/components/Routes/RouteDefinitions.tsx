@@ -1,3 +1,4 @@
+import {Route, Routes} from "react-router-dom";
 import Calendar from "components/Calendar/Calendar";
 import Abilities from "components/ProfileInfo/Abilities";
 import Experience from "components/ProfileInfo/Experience/Experience";
@@ -13,8 +14,7 @@ import Platform from "pages/Platform/Platform";
 import ProfileInfo from "pages/ProfileInfo";
 import SignInPage from "pages/SignInPage/SignInPage";
 import SignUpPage from "pages/SignUpPage/SignUpPage";
-import {Route, Routes} from "react-router-dom";
-
+import ModuleSet from "pages/ModuleSet/ModuleSet";
 
 type Props = {};
 
@@ -27,6 +27,7 @@ const RouteDefinitions = (props: Props) => {
 			<Route path="/kayit-ol" element={<SignUpPage />} />
 			<Route path="/platform" element={<Platform/>} />
 			<Route path="/egitimlerim" element={<Education />} />
+			<Route path="/moduleset" element={<ModuleSet/>} />
 			<Route path="/duyurularım" element={<Announcement />} />
 			<Route path="/takvim" element={<Calendar />} />
 			<Route path="/degerlendirmeler" element={<Evaluations />} />

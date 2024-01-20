@@ -8,7 +8,7 @@ type Props = {}
 
 const SideBar = (props: Props) => {
 	return (
-		<ul className="menu lg:menu-vertical menu-horizontal flex-nowrap items-start lg:text-lg lg:gap-3 gap-0 text-gray-500">
+		<ul className="menu lg:menu-lg menu-sm lg:menu-vertical menu-horizontal flex-nowrap items-start">
 			<li className="lg:w-full w-fit px-0">
 				<Link to="kisisel-bilgilerim">
 					<BiUser className="lg:h-5 lg:w-5 h-7 w-7" />
