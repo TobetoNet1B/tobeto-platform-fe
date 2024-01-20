@@ -2,6 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import Calendar from "components/Calendar/Calendar";
 import Abilities from "components/ProfileInfo/Abilities";
 import Experience from "components/ProfileInfo/Experience/Experience";
+import MyEducation from "components/ProfileInfo/MyEducation/MyEducation";
 import PersonalInformations from "components/ProfileInfo/PersonalInformations";
 import Announcement from "pages/Announcement/Announcement";
 import Education from "pages/Education/Education";
@@ -35,7 +36,7 @@ const RouteDefinitions = (props: Props) => {
 				<Route path="profilimi-duzenle" element={<ProfileInfo />}>
 					<Route path="kisisel-bilgilerim" element={<PersonalInformations />} />
 					<Route path="deneyimlerim" element={<Experience/>} />
-					<Route path="egitim-hayatim" element />
+					<Route path="egitim-hayatim" element={<MyEducation/>} />
 					<Route path="yetkinliklerim" element={<Abilities />} />
 					<Route path="sertifikalarim" element />
 					<Route path="medya-hesaplarim" element />

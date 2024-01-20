@@ -252,64 +252,59 @@ const Experience: React.FC = () => {
           </Form>
         </Formik>
         {savedJobs.map((job, index) => (
-          <div
-            key={index}
-            className="pt-2 pl-2 mt-10 mb-3 text-left relative bg-[#FF000003]"
-          >
-            <div className="mb-3 flex  text-[#9933FF]">
-              <MdOutlineCalendarMonth className="mt-1 " />
-              <div className="ml-1">
-                {new Date(job.startDate).toLocaleDateString("tr-TR")} -{" "}
-                {job.ongoing
-                  ? "Çalışmaya Devam Ediyor"
-                  : new Date(job.endDate).toLocaleDateString("tr-TR")}
-              </div>
-            </div>
+  <div
+    key={index}
+    className="pt-2 pl-2 mt-10 mb-3 text-left relative bg-[#FF000003] sm:mb-6 md:mb-8 lg:mb-10"
+  >
+    <div className="mb-3 flex text-[#9933FF]">
+      <MdOutlineCalendarMonth className="mt-1" />
+      <div className="ml-1 text-sm">
+        {new Date(job.startDate).toLocaleDateString("tr-TR")} -{" "}
+        {job.ongoing
+          ? "Çalışmaya Devam Ediyor"
+          : new Date(job.endDate).toLocaleDateString("tr-TR")}
+      </div>
+    </div>
 
-            <div className="grid grid-cols-5 gap-x-36">
-              <div className="mb-4">
-                <h6 className="text-sm font-semibold">Kurum</h6>
-                <p
-                  className="text-black text-sm mt-1"
-                  style={{ whiteSpace: "nowrap" }}
-                >
-                  {job.companyName}
-                </p>
-              </div>
-              <div className="mb-4">
-                <h6 className="text-sm font-semibold">Pozisyon</h6>
-                <p
-                  className="text-black text-sm mt-1"
-                  style={{ whiteSpace: "nowrap" }}
-                >
-                  {job.position}
-                </p>
-              </div>
-              <div className="mb-4">
-                <h6 className="text-sm font-semibold">Sektör</h6>
-                <p className="text-black text-sm mt-1">{job.sector}</p>
-              </div>
-              <div className="mb-4">
-                <h6 className="text-sm font-semibold">Şehir</h6>
-                <p className="text-black text-sm mt-1">{job.city}</p>
-              </div>
-              <div className="mb-4">
-                <button
-                  onClick={() => openDetailsModalHandler(job)}
-                  className="rounded-full bg-[#9933FF] text-white p-1 hover:bg-[#7F22CC] focus:outline-none focus:ring focus:border-blue-300"
-                >
-                  <BsThreeDots size={15} />
-                </button>
-                <button
-                  onClick={() => openDeleteModalHandler(job)}
-                  className="rounded-full bg-[#FF4D4D] mt-3 text-white p-1 hover:bg-[#CC4646] focus:outline-none focus:ring focus:border-blue-300"
-                >
-                  <RiDeleteBin5Line size={15} />
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-36">
+      <div className="mb-4">
+        <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Kurum</h6>
+        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1 whitespace-nowrap">
+          {job.companyName}
+        </p>
+      </div>
+      <div className="mb-4">
+        <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Pozisyon</h6>
+        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1 whitespace-nowrap">
+          {job.position}
+        </p>
+      </div>
+      <div className="mb-4">
+        <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Sektör</h6>
+        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1">{job.sector}</p>
+      </div>
+      <div className="mb-4">
+        <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Şehir</h6>
+        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1">{job.city}</p>
+      </div>
+      <div className="mb-4 flex flex-col items-start">
+        <button
+          onClick={() => openDetailsModalHandler(job)}
+          className="rounded-full bg-[#9933FF] text-white p-1 hover:bg-[#7F22CC] focus:outline-none focus:ring focus:border-blue-300 mb-2"
+        >
+          <BsThreeDots size={15} />
+        </button>
+        <button
+          onClick={() => openDeleteModalHandler(job)}
+          className="rounded-full bg-[#FF4D4D] text-white p-1 hover:bg-[#CC4646] focus:outline-none focus:ring focus:border-blue-300 "
+        >
+          <RiDeleteBin5Line size={15} />
+        </button>
+      </div>
+    </div>
+  </div>
+))}
+
 
         <Modal
           show={openDetailsModal}
