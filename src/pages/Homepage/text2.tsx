@@ -6,6 +6,10 @@ import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Toast from "utils/Toast";
 import VideoScreen from "utils/VideoScreen/VideoScreen";
+import { FaBuilding, FaCalendarAlt, FaFile, FaStopwatch, FaTag } from 'react-icons/fa'
+import { CiStopwatch } from "react-icons/ci";
+import { FaEllipsis, FaRegEye } from "react-icons/fa6";
+import { SlLike } from "react-icons/sl";
 
 export default function text2() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -95,19 +99,19 @@ export default function text2() {
             setDuration(videoRef.current.duration);
 
             // Videonun hangi sürede olduğuna bağlı olarak seek bar rengini ayarla
-      const progressBar = document.getElementById('progress-bar');
-      if (progressBar) {
-        const progressPercentage = (videoRef.current.currentTime / videoRef.current.duration) * 100;
-        progressBar.style.background = `linear-gradient(to right, #f50 0%, #f50 ${progressPercentage}%, #ccc ${progressPercentage}%, #ccc 100%)`;
-      }
+            const progressBar = document.getElementById('progress-bar');
+            if (progressBar) {
+                const progressPercentage = (videoRef.current.currentTime / videoRef.current.duration) * 100;
+                progressBar.style.background = `linear-gradient(to right, #f50 0%, #f50 ${progressPercentage}%, #ccc ${progressPercentage}%, #ccc 100%)`;
+            }
         }
     };
 
-    const handleSeek = (value: number ,event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSeek = (value: number, event: React.ChangeEvent<HTMLInputElement>) => {
         if (videoRef.current) {
             videoRef.current.currentTime = value;
             setCurrentTime(value);
-            const progressBar = (value/duration)*100;
+            const progressBar = (value / duration) * 100;
             event.target.style.background = `linear-gradient(to right, #f50 ${progressBar}%, #ccc ${progressBar}%)`;
         }
     };
@@ -117,10 +121,10 @@ export default function text2() {
         const newVolume = parseInt(event.target.value, 10);
         setVolume(newVolume);
         if (videoRef.current) {
-          videoRef.current.volume = newVolume / 100;
+            videoRef.current.volume = newVolume / 100;
         }
-      };
-    
+    };
+
 
 
     const handlePlaybackRateChange = (value: number) => {
@@ -149,13 +153,388 @@ export default function text2() {
         const hours = Math.floor(time / 3600);
         const minutes = Math.floor((time % 3600) / 60);
         const seconds = Math.floor(time % 60);
-    
+
         const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         return formattedTime;
-      };
+    };
 
+
+
+
+    //***************************************************************************-------- */
     return (
         <div className="">
+
+
+            <div>
+                <div className="drawer drawer-end">
+                    <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+                    <div className="drawer-content">
+                        {/* Page content here */}
+                        <label htmlFor="my-drawer-4" className="drawer-button btn btn-primary">Open drawer</label>
+                    </div>
+                    <div className="drawer-side">
+                        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+                        <div className="menu p-4 w-3/4 min-h-full bg-base-200 text-base-content">
+                            <div>
+                                <ToastContainer />
+                                <div className="">
+                                    <div className="!-mx-2 flex">
+                                        <div className="mx-2 sm:w-full xl:block xl:visible lg:block lg:visible md:block md:visible sm:hidden sm:invisible px-2 lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[8.3%] lg:max-w-[8.3%] xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[8.3%] xl:max-w-[8.3%]">
+                                            <img className="align-middle border-none rounded-lg w-full" src="https://lms.tobeto.com/tobeto/eep/common_show_picture_cached.aspx?pQS=eaAjNZ0uaOEJMI14cKs7Ww%3d%3d" alt="Softskill: İş Yönetimi Becerileri 1" />
+                                        </div>
+                                        <div className="!px-2 w-full">
+                                            <div className="!-mx-2 ">
+                                                <div className="!mx-2  ">
+                                                    <div className="!-mx-2 flex justify-between">
+                                                        <div className="!px-2">
+                                                            <div>
+                                                                <h3 className="my-4 mr-[10px] ml-0 inline align-middle font-semibold text-lg text-black">Softskill: İş Yönetimi Becerileri 1</h3>
+                                                                <div className="flex items-center my-2">
+                                                                    <span className="btn p-[6px] btn-primary pointer-events-none text-white mr-2">VİDEO</span>
+                                                                    <span className="flex mr-2 items-center text-black font-semibold"><CiStopwatch className="mr-1" />4 dk</span>
+                                                                    <span className="flex items-center text-black font-semibold"><FaRegEye className="mr-1" />56</span>
+                                                                </div>
+                                                                <div className="my-4" style={{}}>
+                                                                    <div className="inline-block !align-bottom !h-8">{/*className="like" */}
+                                                                        <div className="flex cursor-pointer">{/*className="like-area" */}
+                                                                            <span className="w-7 ml-1 text-3xl !text-[#7f7f7f] cursor-pointer ">{/*className="like-button liked" */}
+                                                                                <div id="main-content" className="transform translate-x-0 translate-y-[-0.4ex] flex items-center justify-center text-center h-9 ">
+                                                                                    <div id="sub-content" className="cursor-pointer w-7 ">
+                                                                                        <input checked={liked}
+                                                                                            onChange={handleHeartClick} type="checkbox" id="checkbox" className="hidden box-border p-0  " />
+                                                                                        <label id="checkbox-label" htmlFor="checkbox" className="transform -translate-x-5 translate-y-0 block font-semibold text-black touch-manipulation" >
+                                                                                            <svg className="cursor-pointer overflow-visible w-[68px]"
+                                                                                                id="heart-svg"
+                                                                                                viewBox="467 392 58 57"
+                                                                                            >
+                                                                                                <g id="Group"
+                                                                                                    fill="none"
+                                                                                                    fillRule="evenodd"
+                                                                                                    transform="translate(467 392)"
+                                                                                                >
+                                                                                                    <path
+                                                                                                        d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
+                                                                                                        className={`fill-none origin-center ${liked ? 'fill-red-500 scale-100  animate-animateHeart' : 'animate-animateHeartOut stroke-2 !stroke-[#7f7f7f]'}`}
+                                                                                                        id="heart"
+                                                                                                        fill="#AAB8C2"
+                                                                                                    />
+                                                                                                    <circle id="main-circ"
+                                                                                                        className={`origin-[29.5px_29.5px] ${liked ? 'transition-all animate-animateCircle  opacity-100' : ' '}`}
+                                                                                                        fill="#E2264D"
+                                                                                                        opacity={0}
+                                                                                                        cx="29.5"
+                                                                                                        cy="29.5"
+                                                                                                        r="1.5"
+                                                                                                    />
+                                                                                                    <g id="grp7"
+                                                                                                        opacity={0}
+                                                                                                        transform="translate(7 6)" className={` ${liked ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                                                                                    >
+                                                                                                        <circle
+                                                                                                            id="oval1"
+                                                                                                            fill="#9CD8C3"
+                                                                                                            cx={2}
+                                                                                                            cy={6}
+                                                                                                            r={2} className={` ${liked ? 'transition-transform duration-500 delay-300 scale-0 -translate-x-8 -translate-y-4 origin-[0_0]' : ' '}`}
+                                                                                                        />
+                                                                                                        <circle
+                                                                                                            id="oval2"
+                                                                                                            fill="#8CE8C3"
+                                                                                                            cx={5}
+                                                                                                            cy={2}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 -translate-x-14 -translate-y-8 origin-[0_0] transition-transform	duration-[1500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                    </g>
+                                                                                                    <g id="grp6"
+                                                                                                        opacity={0}
+                                                                                                        transform="translate(0 28)" className={` ${liked ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                                                                                    >
+                                                                                                        <circle
+                                                                                                            id="oval1"
+                                                                                                            fill="#CC8EF5"
+                                                                                                            cx={2}
+                                                                                                            cy={7}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 -translate-x-8 translate-y-0 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                        <circle
+                                                                                                            id="oval2"
+                                                                                                            fill="#91D2FA"
+                                                                                                            cx={3}
+                                                                                                            cy={2}
+                                                                                                            r={2} className={`${liked ? 'scale-0 -translate-x-16 -translate-y-2 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                    </g>
+                                                                                                    <g id="grp3"
+                                                                                                        opacity={0}
+                                                                                                        transform="translate(52 28)" className={` ${liked ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                                                                                    >
+                                                                                                        <circle
+                                                                                                            id="oval2"
+                                                                                                            fill="#9CD8C3"
+                                                                                                            cx={2}
+                                                                                                            cy={7}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 translate-x-16 translate-y-3 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                        <circle
+                                                                                                            id="oval1"
+                                                                                                            fill="#8CE8C3"
+                                                                                                            cx={4}
+                                                                                                            cy={2}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 translate-x-8 translate-y-0 origin-[0_0] transition-transform	duration-[500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                    </g>
+                                                                                                    <g id="grp2"
+                                                                                                        opacity={0}
+                                                                                                        transform="translate(44 6)" className={` ${liked ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                                                                                    >
+                                                                                                        <circle
+                                                                                                            id="oval2"
+                                                                                                            fill="#CC8EF5"
+                                                                                                            cx={5}
+                                                                                                            cy={6}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 translate-x-16 -translate-y-4 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                        <circle
+                                                                                                            id="oval1"
+                                                                                                            fill="#CC8EF5"
+                                                                                                            cx={2}
+                                                                                                            cy={2}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 translate-x-8 -translate-y-4 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                    </g>
+                                                                                                    <g id="grp5"
+                                                                                                        opacity={0}
+                                                                                                        transform="translate(14 50)" className={` ${liked ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                                                                                    >
+                                                                                                        <circle
+                                                                                                            id="oval1"
+                                                                                                            fill="#91D2FA"
+                                                                                                            cx={6}
+                                                                                                            cy={5}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 -translate-x-3 translate-y-5 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                        <circle
+                                                                                                            id="oval2"
+                                                                                                            fill="#91D2FA"
+                                                                                                            cx={2}
+                                                                                                            cy={2}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 -translate-x-16 translate-y-8 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                    </g>
+                                                                                                    <g id="grp4"
+                                                                                                        opacity={0}
+                                                                                                        transform="translate(35 50)" className={` ${liked ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                                                                                    >
+                                                                                                        <circle
+                                                                                                            id="oval1"
+                                                                                                            fill="#F48EA7"
+                                                                                                            cx={6}
+                                                                                                            cy={5}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 translate-x-8 translate-y-4 origin-[0_0] transition-transform	duration-[500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                        <circle
+                                                                                                            id="oval2"
+                                                                                                            fill="#F48EA7"
+                                                                                                            cx={2}
+                                                                                                            cy={2}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 translate-x-10 translate-y-12 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                    </g>
+                                                                                                    <g id="grp1"
+                                                                                                        opacity={0}
+                                                                                                        transform="translate(24)" className={` ${liked ? 'opacity-100 transition-all delay-300' : ' '}`}
+                                                                                                    >
+                                                                                                        <circle
+                                                                                                            id="oval1"
+                                                                                                            fill="#9FC7FA"
+                                                                                                            cx="2.5"
+                                                                                                            cy={3}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 translate-x-0 -translate-y-8 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                        <circle
+                                                                                                            id="oval2"
+                                                                                                            fill="#9FC7FA"
+                                                                                                            cx="7.5"
+                                                                                                            cy={2}
+                                                                                                            r={2} className={` ${liked ? 'scale-0 translate-x-2 -translate-y-12 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                                                                                        />
+                                                                                                    </g>
+                                                                                                </g>
+                                                                                            </svg>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </span>
+                                                                            <span className={`!text-[#7f7f7f] font-medium text-3xl z-[1] translate-x-[0.2em] translate-y-[-0.15ex] mr-4 leading-none cursor-pointer ${liked ? ' ' : ' '}`}>{/*className="like-text liked" */}
+                                                                                <span className={`cursor-pointer ${liked ? '!text-[#ff4757]' : '!text-[#7f7f7f]'}`}>106</span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="course-drawer-util col-lg-4 col-md-4 col-sm-5 col-xs-12">
+                                            <div className="course-drawer-button-area col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div
+                                                    className="flex ant-space ant-space-horizontal ant-space-align-center "
+                                                    style={{ gap: 8 }}
+                                                >
+                                                    <div className="ant-space-item" style={{}}>
+                                                        <Link className="btn bg-[#9933FF] hover:bg-[#a64dff] text-white" to="#">EĞİTİME GİT</Link>
+                                                    </div>
+                                                    <div className="ant-space-item" style={{}} />
+                                                    <div className="ant-space-item" style={{}}>
+                                                        <button id="course-header-button" type="button" className="btn btn-ghost">
+                                                            <FaEllipsis />
+                                                        </button>
+                                                    </div>
+                                                    <div className="ant-space-item" />
+                                                </div>
+                                            </div>
+                                            <div className="flex mt-2 course-drawer-status col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <span className="text-[#3dcb79] flex mr-2">
+                                                    <SlLike className="mr-2"/>Tebrikler, tamamladın!
+                                                </span>
+                                                <span className="text-[#3dcb79] font-semibold">
+                                                    100 PUAN
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" tabIndex={0} aria-hidden="false" className="outline-none " id="rc-tabs-0-panel-about" aria-labelledby="rc-tabs-0-tab-about">{/*className="ant-tabs-tabpane ant-tabs-tabpane-active" */}
+                                <div className="">{/*className="activity-detail-info" */}
+                                    <div className="pt-0 px-0 pb-[15px]">{/*className="info-section" */}
+                                        <div className="!-mx-2 box-border flex flex-row flex-wrap">{/*className="row" */}
+                                            <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666%] xl:max-w-[16.66666%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[25%] md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[41.66666667%] max-w-[41.66666667%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-5" */}
+                                                <FaCalendarAlt />
+                                                <strong className='ml-1'>Başlangıç</strong>
+                                            </div>
+                                            <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[91.66666667%] lg:max-w-[91.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[58.33333333%] max-w-[58.33333333%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-7" */}
+                                                25 EKİ 2023 11:20
+                                            </div>
+                                        </div>
+                                        <div className="!-mx-2 box-border flex flex-row flex-wrap">{/*className="row" */}
+                                            <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-2/12 xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-2/12 lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-3/12 md:max-w-[25%] sm:px-2 sm:box-border sm:flex-grow-0 sm:flex-shrink-0 sm:basis-5/12 sm:max-w-[41.66666667%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-5" */}
+                                                <FaCalendarAlt className='invisible' />
+
+                                                <strong className='ml-1'>Bitiş</strong>
+                                            </div>
+                                            <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[91.66666667%] lg:max-w-[91.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[58.33333333%] max-w-[58.33333333%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-7" */}
+                                                <span>30 HAZ 2024 23:59</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="pt-0 px-0 pb-[15px] !-mx-2 box-border flex flex-row flex-wrap">{/* className="info-section row" */}
+                                        <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-2/12 xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-2/12 lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-3/12 md:max-w-[25%] sm:px-2 sm:box-border sm:flex-grow-0 sm:flex-shrink-0 sm:basis-5/12 sm:max-w-[41.66666667%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-5" */}
+                                            <FaStopwatch />
+                                            <strong className='ml-1'>Geçirdiğin Süre</strong>
+                                        </div>
+                                        <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[91.66666667%] lg:max-w-[91.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[58.33333333%] max-w-[58.33333333%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-7" */}
+                                            <span>7 dk</span>
+                                        </div>
+                                    </div>
+                                    <div className="pt-0 px-0 pb-[15px] !-mx-2 box-border flex flex-row flex-wrap">{/*className="info-section row" */}
+                                        <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-2/12 xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-2/12 lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-3/12 md:max-w-[25%] sm:px-2 sm:box-border sm:flex-grow-0 sm:flex-shrink-0 sm:basis-5/12 sm:max-w-[41.66666667%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-5" */}
+                                            <FaStopwatch />
+                                            <strong className='ml-1'>Tahmini Süre</strong>
+                                        </div>
+                                        <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[91.66666667%] lg:max-w-[91.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[58.33333333%] max-w-[58.33333333%]">7 sa 19 dk</div>{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-7" */}
+                                    </div>
+                                    <div className="pt-0 px-0 pb-[15px] !-mx-2 box-border flex flex-row flex-wrap">{/*className="info-section row" */}
+                                        <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-2/12 xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-2/12 lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-3/12 md:max-w-[25%] sm:px-2 sm:box-border sm:flex-grow-0 sm:flex-shrink-0 sm:basis-5/12 sm:max-w-[41.66666667%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-5" */}
+                                            <FaTag className='rotate-90' />
+                                            <strong className='ml-1'>Kategori</strong>
+                                        </div>
+                                        <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[91.66666667%] lg:max-w-[91.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[58.33333333%] max-w-[58.33333333%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-7" */}
+                                            <div>Genel</div>
+                                        </div>
+                                    </div>
+                                    <div className="pt-0 px-0 pb-[15px] !-mx-2 box-border flex flex-row flex-wrap">{/*className="info-section row" */}
+                                        <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-2/12 xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-2/12 lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-3/12 md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[58.33333333%] max-w-[58.33333333%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-7" */}
+                                            <FaFile />
+                                            <strong className='ml-1'>İçerik</strong>
+                                        </div>
+                                        <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-5/6 xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-11/12 lg:max-w-[91.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-9/12 md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-5/12 max-w-[41.66666667%]">131</div>{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-5" */}
+                                    </div>
+                                    <div className="pt-0 px-0 pb-[5px] !-mx-2 box-border flex flex-row flex-wrap">{/*className="info-section file row" */}
+                                        <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-2/12 xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-2/12 lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-3/12 md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[58.33333333%] max-w-[58.33333333%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-7" */}
+                                            <FaFile className='invisible' />
+                                            <span className='ml-1'>Video</span>
+                                        </div>
+                                        <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-5/6 xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-11/12 lg:max-w-[91.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-9/12 md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-5/12 max-w-[41.66666667%]">131</div>{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-5" */}
+                                    </div>
+                                    <div id="last-section" className="!pt-[15px] !px-0 pb-[15px] !-mx-2 box-border flex flex-row flex-wrap">{/*className="info-section row" */}
+                                        <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-2/12 xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-2/12 lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-3/12 md:max-w-[25%] sm:px-2 sm:box-border sm:flex-grow-0 sm:flex-shrink-0 sm:basis-5/12 sm:max-w-[41.66666667%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-5" */}
+                                            <FaBuilding />
+                                            <strong className='ml-1'>Üretici Firma</strong>
+                                        </div>
+                                        <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[91.66666667%] lg:max-w-[91.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[58.33333333%] max-w-[58.33333333%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-7" */}
+                                            <Link to={"#"} className="text-[#1677ff] bg-transparent transition-colors duration-300 touch-manipulation ">Enocta</Link>{/*className="btn-change" */}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             {/* <ToastContainer /> */}
             {/* <Toast /> */}
 
@@ -163,7 +542,7 @@ export default function text2() {
 
 
 
-            <div>
+            <div className="hidden">
                 <div className={`flex justify-center items-center h-screen `}>
                     <style>
                         {`
@@ -224,11 +603,11 @@ export default function text2() {
                         <div className="flex items-center mt-4">
                             <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
                             <input
-                            id="progress-bar"
+                                id="progress-bar"
                                 type="range"
                                 value={currentTime}
                                 max={duration}
-                                onChange={(e) => handleSeek(parseFloat(e.target.value),e)}
+                                onChange={(e) => handleSeek(parseFloat(e.target.value), e)}
                             />
                             <span >{formatTime(duration)} -- {formatTime(currentTime)}</span>
                             <input
@@ -238,7 +617,7 @@ export default function text2() {
                                 max={100}
                                 step={0.1}
                                 onChange={handleVolumeChange}
-                                style={{ background: `linear-gradient(to right, #7a29cc 0%, #7a29cc ${volume}%, #ccc ${volume}%, #ccc 100%)`}}
+                                style={{ background: `linear-gradient(to right, #7a29cc 0%, #7a29cc ${volume}%, #ccc ${volume}%, #ccc 100%)` }}
                             />
                             <select
                                 value={playbackRate}
@@ -257,26 +636,6 @@ export default function text2() {
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             <div className="relative mt-0 mx-auto mb-[-80px] min-h-screen h-auto overflow-hidden hidden">
