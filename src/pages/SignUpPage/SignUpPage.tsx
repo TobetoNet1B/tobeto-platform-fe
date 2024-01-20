@@ -29,7 +29,7 @@ const SignUpPage = (props: Props) => {
 
     return (
         <div className="flex items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-screen bg-gray-100">
-            <div className="bg-white sign-in-card shadow-md w-96 text-center relative overflow-hidden">
+            <div className="bg-white px-12 py-12 btn-rainbow-card shadow-md w-96 text-center relative overflow-hidden rounded-2xl">
                 <img
                     src="https://tobeto.com/_next/static/media/tobeto-logo.29b55e1c.svg"
                     alt="tobeto-banner"
@@ -83,31 +83,32 @@ const SignUpPage = (props: Props) => {
                             />
                             <ErrorMessage name="password"></ErrorMessage>
                         </div>
-                        <div className="flex items-center justify-between mb-4">
+                        <button
+                            type="submit"
+                            className="bg-[#9933FF] text-white p-2 rounded-3xl w-full hover:bg-[#822BD9]"
+                        >
+                            Kayıt Ol
+                        </button>
+                        <div className="flex items-center justify-center mt-4">
                             <div>
                                 <a className="text-sm text-black-500">
                                     Zaten bir  hesabın var mı?&nbsp;
                                 </a>
-                                <Link className="nav-link text-sm text-purple-500 hover:underline" to={"/giris"}>
+                                <Link className="nav-link text-sm text-[#555351] font-bold hover:underline" to={"/giris"}>
                                     Giriş Yap
                                 </Link>
 
                             </div>
 
                         </div>
-                        <button
-                            type="submit"
-                            className="bg-purple-600 text-white p-2 rounded-3xl w-full hover:bg-purple-700"
-                        >
-                            Kayıt Ol
-                        </button>
+                        
                     </Form>
                 </Formik>
 
             </div>
 
 
-            <div className="bg-white p-[50px] shadow-md w-96 text-center relative overflow-hidden border-4 border-solid border-indigo-500 rounded-3xl">
+            <div className="btn-rainbow-card-ik bg-white px-12 py-16 shadow-md w-96 text-center relative overflow-hidden  rounded-2xl">
                 <img
                     src="https://tobeto.com/_next/static/media/ik-logo-dark.7938c0de.svg"
                     alt="ik-banner"
@@ -118,7 +119,7 @@ const SignUpPage = (props: Props) => {
 
                 <button
                     type="submit"
-                    className="bg-indigo-950 text-white p-2 rounded-3xl w-full mb-20 mt-14"
+                    className="bg-[#1E0F41] text-[#0FCDFA] p-2 rounded-3xl w-full mb-20 mt-14"
                 >
                     Başvur
                 </button>

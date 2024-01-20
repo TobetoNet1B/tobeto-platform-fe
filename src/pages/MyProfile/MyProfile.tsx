@@ -108,14 +108,14 @@ const MyProfile = (props: Props) => {
 						<div className='col-12 '>
 							<div className="card rounded-2xl border-gray-50 dark:border-gray-50 max-w-full mr-2 bg-gray-50 dark:bg-gray-50 shadow-2xl ">
 								<div className="flex flex-col">
+									
 									<div className=''>
 
-										<div className="card rounded-2xl w-full max-h-44 bg-gradient-to-t from-[#5056C9] to-[#8D92FA] items-center">
+										<div className="card rounded-2xl w-full max-h-48  bg-gradient-to-t from-[#5056C9] to-[#8D92FA] items-center">
 											<img
 												src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
 												alt="profil-picture"
-												className="mb-1 mt-1 rounded-full p-4 object-cover"
-												style={{ width: "50%", height: "50%" }}
+												className="mb-1 mt-1 rounded-full p-4 flex-shrink-0 flex-grow "
 											/>
 										</div>
 									</div>
@@ -465,14 +465,14 @@ const MyProfile = (props: Props) => {
 						</div>
 
 						<div className='col-12 my-4'>
-							<div className="card p-5 rounded-2xl border-white dark:border-white max-w-full mr-2 bg-white dark:bg-white shadow-2xl ">
+							<div className="card overflow-x-auto pb-7 p-5 rounded-2xl border-white dark:border-white max-w-full mr-2 bg-white dark:bg-white shadow-2xl ">
 
 								<h5 className="text-lg font-bold tracking-normal text-[#323232] ">
 									Eğitim Hayatım ve Deneyimlerim
 								</h5>
 
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
-								<ul className="timeline timeline-vertical ">
+								<ul className="timeline timeline-vertical lg:timeline-horizontal ">
 									<li>
 										<div className="timeline-start">1984</div>
 										<div className="timeline-middle">
