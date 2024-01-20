@@ -30,11 +30,11 @@ const SignInPage = (props: Props) => {
 
     return (
         <div className="flex items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-screen bg-gray-100">
-            <div className="bg-white signInCard shadow-md w-96 text-center relative overflow-hidden">
+            <div className="px-9 py-5 btn-rainbow-card bg-white shadow-md w-96 text-center relative overflow-hidden rounded-2xl">
                 <img
                     src="https://tobeto.com/_next/static/media/tobeto-logo.29b55e1c.svg"
                     alt="tobeto-banner"
-                    className="mb-5 mt-5 rounded-md mx-auto p-4"
+                    className="mb-5 mt-5 rounded-md mx-auto p-6"
                     style={{ width: "100%", height: "auto" }}
                 />
                 <Formik
@@ -63,37 +63,42 @@ const SignInPage = (props: Props) => {
                             />
                             <ErrorMessage name="password"></ErrorMessage>
                         </div>
-                        <div className="flex items-center justify-between mb-4">
-                            <div>
-                                <Link className="nav-link text-sm text-purple-500 hover:underline" to={"/sifremi-unuttum"}>
+                        
+                        <button
+                            type="submit"
+                            className="bg-[#9933FF] text-white p-2 rounded-3xl w-full hover:bg-[#822BD9]"
+                        >
+                            Giriş Yap
+                        </button>
+
+                        <div className=" items-center">
+                        <div className='mt-3 '>
+                                <Link className="nav-link text-sm text-[#555351] hover:underline" to={"/sifremi-unuttum"}>
                                     Şifremi Unuttum
                                 </Link>
                             </div>
-                            <div>
-                                <Link className="nav-link text-sm text-purple-500 hover:underline" to={"/kayit-ol"}>
+                            <div className='mt-6 '>
+                            <a className="text-sm text-black-500">
+                            Henüz üye değil misin?&nbsp;
+                                </a>
+                                <Link className="nav-link text-sm font-bold text-[#555351] hover:underline" to={"/kayit-ol"}>
                                     Kayıt Ol
                                 </Link>
                             </div>
                         </div>
-                        <button
-                            type="submit"
-                            className="bg-purple-600 text-white p-2 rounded-3xl w-full hover:bg-purple-700"
-                        >
-                            Giriş Yap
-                        </button>
                     </Form>
                 </Formik>
 
             </div>
 
-            <div className="bg-white p-[34px] shadow-md w-96 text-center relative overflow-hidden border-4 border-solid border-indigo-500 rounded-3xl">
+            <div className="btn-rainbow-card-ik bg-white px-16 py-16 shadow-md w-96 text-center relative overflow-hidden  rounded-2xl">
                 <img
                     src="https://tobeto.com/_next/static/media/ik-logo-dark.7938c0de.svg"
                     alt="ik-banner"
-                    className="mb-6 mt-6 rounded-md mx-auto p-5"
-                    style={{ width: "100%", height: "auto" }}
+                    className=" rounded-md mx-auto p-5"
+                    style={{ width: "90%", height: "auto" }}
                 />
-                <span className="text-blue font-bold text-3xl mb-8 mt-8 block">
+                <span className="text-[#110A3A] font-bold text-2xl mb-8 mt-8 block">
                     Aradığın <span style={{ color: "rgb(0, 176, 120)" }}>&nbsp;"&nbsp;</span>İş<span style={{ color: "rgb(0, 176, 120)" }}>&nbsp;"&nbsp;</span> Burada!
                 </span>
 
@@ -101,7 +106,7 @@ const SignInPage = (props: Props) => {
 
                 <button
                     type="submit"
-                    className="bg-indigo-950 text-white p-2 rounded-3xl w-full"
+                    className="bg-[#1E0F41] text-[#0FCDFA] p-2 rounded-3xl w-full"
                 >
                     Başvur
                 </button>
