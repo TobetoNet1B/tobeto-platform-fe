@@ -84,11 +84,10 @@ const CourseContents = (props: Props) => {
           <div className="!px-2 col-lg-7 col-md-7 col-sm-12 w-full flex-grow-0 flex-shrink-0 basis-full">{/*className="col-lg-7 col-md-7 col-sm-12 col-xs-12" */}
             <div className="shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-[15px] overflow-hidden" id="activity-content-info">{/*className="activity-content-info" */}
               <div id="activity-largeImageFileName" className="rounded-tl-2xl rounded-tr-2xl overflow-hidden relative w-full h-[400px]">{/*className="activity-largeImageFileName activity-video" */}
+
                 <div className=''>
                   <VideoScreen videoSource='https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4' />
                 </div>
-
-
 
               </div>
               <div id="activity-unit-detail" className="py-[15px] px-5">{/*className="activity-unit-detail" */}
@@ -113,14 +112,9 @@ const CourseContents = (props: Props) => {
                       <div className="w-full inline-flex  flex-col" style={{ gap: 8 }}>{/*className="ant-space ant-space-vertical" */}
                         <div className="empty:hidden" style={{}} />{/*className="ant-space-item" */}
                         <div className="ant-space-item">
-                          <div className="drawer drawer-end">
-                            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-                            <div className="drawer-content">
-                              {/* Page content here */}
-                              <label htmlFor="my-drawer-4" className="drawer-button text-[#9933FF] border-solid !border-[#9933FF] border-[1px] bg-white w-full text-base h-10 py-[7px] px-[15px] rounded-lg inline-flex justify-center items-center font-semibold transition-none shadow-[0_2px_0_rgba(0,0,0,0.02)] outline-none relative whitespace-nowrap text-center cursor-pointer select-none touch-none leading-[1.5px]">DETAY</label>
-                            </div>
-                            <CourseDetail />
-                          </div>
+
+                          <CourseDetail />
+
                         </div>
                       </div>
                     </div>

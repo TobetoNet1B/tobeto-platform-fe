@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaBuilding, FaCubes, FaGlobe, FaStopwatch, FaTag } from 'react-icons/fa'
-import { CiStopwatch } from "react-icons/ci";
 import { FaEllipsis, FaRegEye } from "react-icons/fa6";
 import { SlLike } from "react-icons/sl";
 import { IoClose } from "react-icons/io5";
@@ -14,15 +13,30 @@ const CourseDetail = (props: Props) => {
   const handleHeartClickDetail = () => {
     setLikedDetail(!likedDetail);
   };
+
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+
+  const handleOutsideClick = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
   return (
-    <div className="drawer-side overflow-x-hidden">
-      <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-      <div className="menu p-4 w-3/5 min-h-full text-base-content bg-white">
-        <span className="bg-[#9933FF] absolute -left-[27px] right-auto bottom-auto z-[1] text-white p-1 text-lg leading-normal cursor-pointer rounded-tl-[50%] rounded-bl-[50%] inline-block align-middle">
-          <IoClose className="h-5 block" />
-        </span>
-        <div>
-          
+    <div className="drawer drawer-end">
+      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+      <div onClick={handleOutsideClick} className="drawer-content">
+        {/* Page content here */}
+        <label htmlFor="my-drawer-4" className="drawer-button text-[#9933FF] border-solid !border-[#9933FF] border-[1px] bg-white w-full text-base h-10 py-[7px] px-[15px] rounded-lg inline-flex justify-center items-center font-semibold transition-none shadow-[0_2px_0_rgba(0,0,0,0.02)] outline-none relative whitespace-nowrap text-center cursor-pointer select-none touch-none leading-[1.5px]">DETAY</label>
+      </div>
+      <div className="drawer-side overflow-x-hidden">
+        <label onClick={handleOutsideClick} htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+        <div className="menu p-4 w-3/5 min-h-full text-base-content bg-white">
+          <label onClick={handleOutsideClick} htmlFor="my-drawer-4" aria-label="close sidebar"
+            className={`bg-[#9933FF] absolute -left-[26px] right-auto bottom-auto z-[1] text-white p-1 text-lg leading-normal cursor-pointer rounded-tl-[50%] rounded-bl-[50%] inline-block align-middle ${isDrawerOpen ? "" : "hidden"}`}>
+            <IoClose className="h-5 block" />
+          </label>
+          <div>
+
             <div className="flex flex-row flex-wrap box-border">
               <div className="-mx-2  justify-center text-center box-border flex-grow-0 flex-shrink-0 basis-full max-w-full md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[16.66666667%] md:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666667%] xl:max-w-[16.66666667%]">
                 <div className="!w-[120px] !h-[120px]">
@@ -240,91 +254,92 @@ const CourseDetail = (props: Props) => {
                 </div>
               </div>
             </div>
-          
-        </div>
-        <div className="mt-10" >
-          <div className="">
-            <div className="my-5 flex font-semibold items-center">
-              <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666%] xl:max-w-[16.66666%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[25%] md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-6" */}
-                <FaTag className='rotate-90' />
-                <span className='ml-1'>Kategori</span>
-              </div>
-              <div className="!px-2 flex items-center xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[83.33333333%] lg:max-w-[83.33333333%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-6" */}
-                <div className="w-full break-all">
-                  <span className='ml-1'>İş'te Mükemmellik /</span>
-                  <span className='ml-1'>Müşteri Duyarlılık /</span>
-                  <span className='ml-1'>Müşteri Memnuniyeti / Deneyimi</span>
+
+          </div>
+          <div className="mt-10" >
+            <div className="">
+              <div className="my-5 flex font-semibold items-center">
+                <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666%] xl:max-w-[16.66666%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[25%] md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-6" */}
+                  <FaTag className='rotate-90' />
+                  <span className='ml-1'>Kategori</span>
+                </div>
+                <div className="!px-2 flex items-center xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[83.33333333%] lg:max-w-[83.33333333%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-6" */}
+                  <div className="w-full break-all">
+                    <span className='ml-1'>İş'te Mükemmellik /</span>
+                    <span className='ml-1'>Müşteri Duyarlılık /</span>
+                    <span className='ml-1'>Müşteri Memnuniyeti / Deneyimi</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="my-5 flex font-semibold items-center">
-              <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666667%] xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[25%] md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-6" */}
-                <FaGlobe />
-                <span className='ml-1'>Dili</span>
+              <div className="my-5 flex font-semibold items-center">
+                <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666667%] xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[25%] md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-6" */}
+                  <FaGlobe />
+                  <span className='ml-1'>Dili</span>
+                </div>
+                <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[83.33333333%] lg:max-w-[83.33333333%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-6" */}
+                  <span className='ml-1'>Türkçe</span>
+                </div>
               </div>
-              <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[83.33333333%] lg:max-w-[83.33333333%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-6" */}
-                <span className='ml-1'>Türkçe</span>
+              <div className="my-5 flex font-semibold items-center">
+                <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666667%] xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[25%] md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-6" */}
+                  <FaCubes />
+                  <span className='ml-1'>Alt Tip</span>
+                </div>
+                <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[83.33333333%] lg:max-w-[83.33333333%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">
+                  <span className='ml-1'>Konu Uzmanı Videosu</span>
+                </div>{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-6" */}
               </div>
-            </div>
-            <div className="my-5 flex font-semibold items-center">
-              <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666667%] xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[25%] md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-6" */}
-                <FaCubes />
-                <span className='ml-1'>Alt Tip</span>
+              <div className="my-5 flex font-semibold items-center">
+                <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666667%] xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[25%] md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-6" */}
+                  <FaBuilding />
+                  <span className='ml-1'>Üretici Firma</span>
+                </div>
+                <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[83.33333333%] lg:max-w-[83.33333333%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-6" */}
+                  <Link to={"#"} className="text-[#1677ff] bg-transparent transition-colors duration-300 touch-manipulation ">Enocta</Link>
+                </div>
               </div>
-              <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[83.33333333%] lg:max-w-[83.33333333%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">
-                <span className='ml-1'>Konu Uzmanı Videosu</span>
-              </div>{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-6" */}
-            </div>
-            <div className="my-5 flex font-semibold items-center">
-              <div className="!px-2 flex xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666667%] xl:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[25%] md:max-w-[25%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-2 col-md-2 col-sm-3 col-xs-6" */}
-                <FaBuilding />
-                <span className='ml-1'>Üretici Firma</span>
+              <div className="my-5">
+                <h4 className="text-base font-semibold text-black mt-0 mb-[0.5em]">İçerik</h4>
+                <p className="mt-0 mb-[1em] ">
+                  Bir pazar seçtikten sonra, o pazardaki müşterilerin ne
+                  istediğini belirleyin. Birçok pazar araştırma aracı
+                  var ama bunlar çoğunlukla, önceden bilinenleri
+                  desteklemek için kullanılıyor. Bunun yerine,
+                  müşterinin dünyasına derin bir dalış yapın. Onlarla
+                  zaman geçirin. Ürünlerinizi sevip sevmediklerini
+                  değil, ne yapmaya çalıştıklarını öğrenmeye çalışın.
+                  İnovasyon şirketlerini ziyaret edin. Dünyayı,
+                  müşterinin perspektifinden görün.
+                </p>
               </div>
-              <div className="!px-2 xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[83.33333333%] xl:max-w-[83.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[83.33333333%] lg:max-w-[83.33333333%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[75%] md:max-w-[75%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">{/*className="col-lg-10 col-md-10 col-sm-9 col-xs-6" */}
-                <Link to={"#"} className="text-[#1677ff] bg-transparent transition-colors duration-300 touch-manipulation ">Enocta</Link>
+              <div className="my-5">
+                <h4 className="mt-0 mx-0 mb-[15px] text-base font-semibold text-black">İlgi Alanları</h4>
+                <div className="">
+                  <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">LDC</Link>
+                  <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Skillsoft</Link>
+                  <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Quick Talks</Link>
+                  <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Exclusive</Link>
+                  <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Müşteri Odaklılık</Link>
+                  <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Skillsoft ile İnsan ve İş Yönetimi</Link>
+                  <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Peter Fisk</Link>
+                  <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Pazarları Yeniden Tanımlayan Müşteri Öngörüleri</Link>
+                </div>
               </div>
-            </div>
-            <div className="my-5">
-              <h4 className="text-base font-semibold text-black mt-0 mb-[0.5em]">İçerik</h4>
-              <p className="mt-0 mb-[1em] ">
-                Bir pazar seçtikten sonra, o pazardaki müşterilerin ne
-                istediğini belirleyin. Birçok pazar araştırma aracı
-                var ama bunlar çoğunlukla, önceden bilinenleri
-                desteklemek için kullanılıyor. Bunun yerine,
-                müşterinin dünyasına derin bir dalış yapın. Onlarla
-                zaman geçirin. Ürünlerinizi sevip sevmediklerini
-                değil, ne yapmaya çalıştıklarını öğrenmeye çalışın.
-                İnovasyon şirketlerini ziyaret edin. Dünyayı,
-                müşterinin perspektifinden görün.
-              </p>
-            </div>
-            <div className="my-5">
-              <h4 className="mt-0 mx-0 mb-[15px] text-base font-semibold text-black">İlgi Alanları</h4>
-              <div className="">
-                <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">LDC</Link>
-                <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Skillsoft</Link>
-                <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Quick Talks</Link>
-                <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Exclusive</Link>
-                <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Müşteri Odaklılık</Link>
-                <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Skillsoft ile İnsan ve İş Yönetimi</Link>
-                <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Peter Fisk</Link>
-                <Link to="#" className="btn bg-[#d6d9de] text-[#444] mx-1 mb-1">Pazarları Yeniden Tanımlayan Müşteri Öngörüleri</Link>
+              <div className="my-5">
+                <h4 className="text-base font-semibold text-black mt-0 mb-[0.5em]">Konuşmacı</h4>
+                <p className="mt-0 mb-[1em]">Peter Fisk</p>
               </div>
-            </div>
-            <div className="my-5">
-              <h4 className="text-base font-semibold text-black mt-0 mb-[0.5em]">Konuşmacı</h4>
-              <p className="mt-0 mb-[1em]">Peter Fisk</p>
-            </div>
-            <div className="my-5">
-              <h4 className="text-base font-semibold text-black mt-0 mb-[0.5em]">Konuşmacı Hakkında</h4>
-              <p className="mt-0 mb-[1em]">
-                The Genius Works’ün kurucusu ve CEO’sudur. Peter
-                oldukça deneyimli bir pazarlama uzmanıdır. British
-                Airways, Coca Cola, Microsoft, M&amp;S, Virgin ve
-                Vodafone gibi markalarla uzun yıllar çalışmıştır.
-                Dünyanın en büyük profesyonel pazarlama kuruluşu olan
-                Chart
-              </p>
+              <div className="my-5">
+                <h4 className="text-base font-semibold text-black mt-0 mb-[0.5em]">Konuşmacı Hakkında</h4>
+                <p className="mt-0 mb-[1em]">
+                  The Genius Works’ün kurucusu ve CEO’sudur. Peter
+                  oldukça deneyimli bir pazarlama uzmanıdır. British
+                  Airways, Coca Cola, Microsoft, M&amp;S, Virgin ve
+                  Vodafone gibi markalarla uzun yıllar çalışmıştır.
+                  Dünyanın en büyük profesyonel pazarlama kuruluşu olan
+                  Chart
+                </p>
+              </div>
             </div>
           </div>
         </div>
