@@ -15,6 +15,7 @@ import ProfileInfo from "pages/ProfileInfo";
 import SignInPage from "pages/SignInPage/SignInPage";
 import SignUpPage from "pages/SignUpPage/SignUpPage";
 import ModuleSet from "pages/ModuleSet/ModuleSet";
+import ForeignLanguage from "components/ProfileInfo/ForeignLanguage/ForeignLanguage";
 import MyCertificates from "components/ProfileInfo/MyCertificates";
 
 type Props = {};
@@ -41,7 +42,7 @@ const RouteDefinitions = (props: Props) => {
 					<Route path="yetkinliklerim" element={<Abilities />} />
 					<Route path="sertifikalarim" element={<MyCertificates />}  />
 					<Route path="medya-hesaplarim" element />
-					<Route path="yabanci-dil" element />
+					<Route path="yabanci-dil" element={<ForeignLanguage/>} />
 					<Route path="ayarlar" element />
 				</Route>
 			</Route>
