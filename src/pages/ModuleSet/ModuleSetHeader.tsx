@@ -300,7 +300,7 @@ const ModuleSetHeader = (props: Props) => {
                                 </div>
                               </div>
                             </span>
-                            <span className={`!text-[#7f7f7f] font-medium text-3xl z-[1] translate-x-[0.2em] translate-y-[-0.15ex] mr-4 leading-none cursor-pointer ${liked ? ' ' : ' '}`}>{/*className="like-text liked" */}
+                            <span className={`!text-[#7f7f7f] font-medium text-3xl  translate-x-[0.2em] translate-y-[-0.15ex] mr-4 leading-none cursor-pointer ${liked ? ' ' : ' '}`}>{/*className="like-text liked" */}
                               <span className={`cursor-pointer ${liked ? '!text-[#ff4757]' : '!text-[#7f7f7f]'}`}>106</span>
                             </span>
                           </div>

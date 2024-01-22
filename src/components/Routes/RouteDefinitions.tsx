@@ -14,6 +14,7 @@ import ProfileInfo from "pages/ProfileInfo";
 import SignInPage from "pages/SignInPage/SignInPage";
 import SignUpPage from "pages/SignUpPage/SignUpPage";
 import ModuleSet from "pages/ModuleSet/ModuleSet";
+import TestPage from "pages/ModuleSet/testPage";
 
 type Props = {};
 
@@ -43,6 +44,12 @@ const RouteDefinitions = (props: Props) => {
 					<Route path="ayarlar" element />
 				</Route>
 			</Route>
+
+
+
+
+
+			<Route path="/testpage" element={<TestPage />} />
 		</Routes>
 	);
 };
