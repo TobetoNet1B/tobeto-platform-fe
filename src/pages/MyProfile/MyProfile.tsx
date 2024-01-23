@@ -22,6 +22,7 @@ import {
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
 import HeatMap from '@uiw/react-heat-map';
+import { Link } from 'react-router-dom';
 
 
 ChartJS.register(
@@ -88,9 +89,11 @@ const MyProfile = (props: Props) => {
 			<div className='max-w-[1110px] mx-auto'>
 				<div className="mt-6 mb-2 ">
 					<div className="flex justify-end items-center">
-						<button className="btn btn-circle btn-ghost">
-							<HiMiniPencil />
-						</button>
+						<Link to="profilimi-duzenle/kisisel-bilgilerim">
+							<button className="btn btn-circle btn-ghost">
+								<HiMiniPencil />
+							</button>
+						</Link>
 						<div className="dropdown dropdown-end">
 							<div tabIndex={0} role="button" className="btn btn-circle btn-ghost btn-md text-black">
 								<FaShareAlt />
@@ -108,7 +111,7 @@ const MyProfile = (props: Props) => {
 						<div className='col-12 '>
 							<div className="card rounded-2xl border-gray-50 dark:border-gray-50 max-w-full mr-2 bg-gray-50 dark:bg-gray-50 shadow-2xl ">
 								<div className="flex flex-col">
-									
+
 									<div className=''>
 
 										<div className="card rounded-2xl w-full max-h-48  bg-gradient-to-t from-[#5056C9] to-[#8D92FA] items-center">
