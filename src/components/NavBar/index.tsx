@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { LogInLogOut, SelectIsLoggedIn } from "store/Auth/AuthSlice";
 
 export default function NavBar() {
@@ -57,14 +58,13 @@ export default function NavBar() {
 							<span className="lg:flex hidden">Tobeto Pair Three</span>
 						</div>
 						<ul tabIndex={0} className="mt-3 z-[1] py-2 px-0 text-end shadow menu menu-sm dropdown-content rounded-box min-w-32 w-fit !bg-[#93f] text-white">
-							<li className="w-full"><a className="block text-right">Profile</a></li>
-							<li className="w-full"><a className="block text-right">Settings</a></li>
-							<li className="w-full"><a className="block text-right" onClick={() => dispatch(LogInLogOut())}>Logout</a></li>
+							<li className="w-full"><Link to="profilim" className="block text-right">Profile</Link></li>
+							<li className="w-full"><Link to="profilim/profilimi-duzenle/kisisel-bilgilerim" className="block text-right">Settings</Link></li>
+							<li className="w-full"><Link to="" className="block text-right" onClick={() => dispatch(LogInLogOut())}>Logout</Link></li>
 						</ul>
 					</div>
 				</div>
 			}
-
 		</div>
 	);
 }
