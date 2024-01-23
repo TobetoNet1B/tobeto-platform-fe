@@ -1,5 +1,5 @@
 import './form-input.css'
-import { Field } from "formik";
+import { ErrorMessage, Field } from "formik";
 
 type Props = {
 	label: string;
@@ -30,9 +30,12 @@ const FormInput = (props: Props) => {
 			{props.inputStyle === "select" &&
 				<Field as="select" id={props.name} name={props.name} value={props.value}
 					className='select select-bordered w-full'>
-					{props.selectOption?.map((option, index) => <option key={index}>{option}</option>)}
+					{props.selectOption?.map((option, index) => <option key={index} value={option}>{option}</option>)}
 				</Field>
 			}
+			<ErrorMessage name={props.name}>
+				{message => <span className='text-danger-600'>{message}</span>}
+			</ErrorMessage>
 		</div>
 	)
 }
