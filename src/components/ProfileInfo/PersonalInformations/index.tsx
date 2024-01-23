@@ -1,9 +1,8 @@
-import { Field, FormikProvider, useFormik } from 'formik'
+import { FormikProvider, useFormik } from 'formik'
 import { MdOutlineEdit } from "react-icons/md";
-import { useEffect, useState } from 'react'
-import axios from 'axios';
-import CityAndDistrictTR from 'utils/CityAndDistrictTR.json'
 import FormInput from 'utils/FormInput/FormInput';
+import Address from './Address';
+import PhoneNumber from './PhoneNumber';
 
 type Props = {}
 
@@ -11,17 +10,11 @@ const PersonalInformations = (props: Props) => {
 
 	const maxDate = new Date().toLocaleDateString('sv-SE')
 
-	// const [city, setCity] = useState([])
-	// const [district, setDistrict] = useState([])
-	// const [countryCode, setCountryCode] = useState([])
-
-	const countryCodes = ["+1", "+44", "+90"]
-
 	const formik = useFormik({
 		initialValues: {
 			name: '',
 			surname: '',
-			phone: '',
+			phoneNumber: '',
 			countryCode: "+90",
 			birthDate: '',
 			identityNumber: '',
@@ -54,17 +47,7 @@ const PersonalInformations = (props: Props) => {
 					<FormInput label="Soyadınız" name="surname" isRequired={true} inputStyle='input'
 						value={formik.values.surname} className='lg:col-span-6 col-span-12' />
 
-					<div className='lg:col-span-6 col-span-12'>
-						<label htmlFor='tel'>Telefon Numaranız*</label>
-						<div className='join w-full'>
-							<Field as='select' className="select select-bordered join-item"
-								id='countryCode' name='countryCode' value={formik.values.countryCode}>
-								{countryCodes.map(cc => <option key={cc}>{cc}</option>)}
-							</Field>
-							<Field id='tel' type='tel' name='tel' value={formik.values.phone}
-								className="input input-bordered w-full join-item" placeholder='5** *** ** **' />
-						</div>
-					</div>
+					<PhoneNumber countryCode={formik.values.countryCode} phoneNumber={formik.values.phoneNumber} />
 
 					<FormInput label='Doğum Tarihiniz' name='birthDate' isRequired={true}
 						inputStyle='input' type='date' maxDate={maxDate}
@@ -74,35 +57,18 @@ const PersonalInformations = (props: Props) => {
 						value={formik.values.identityNumber} className='lg:col-span-6 col-span-12' />
 					<FormInput label='E-posta' name='email' isRequired={true} inputStyle='input'
 						value={formik.values.email} className='lg:col-span-6 col-span-12' />
+
 					<FormInput label='Ülke' name='country' isRequired={true} inputStyle='input'
 						value={formik.values.country} className='col-span-12' />
+					<Address city={formik.values.city} district={formik.values.district} addressDetails={formik.values.addressDetails} />
 
-
-					<div className='lg:col-span-6 col-span-12'>
-						<label htmlFor='city'>İl*</label>
-						<Field as='select' className='select select-bordered w-full'
-							id='city' name='city' value={formik.values.city}>
-							{CityAndDistrictTR.map(c => <option key={c.value} >{c.city}</option>)}
-						</Field>
-					</div>
-					<div className='lg:col-span-6 col-span-12'>
-						<label htmlFor='district'>İlçe*</label>
-						<Field as='select' disabled className='select select-bordered w-full'
-							id='district' name='district' value={formik.values.district}>
-							<option>İlçeler</option>
-						</Field>
-					</div>
-
-					<FormInput label='Adres' name='addressDetails' isRequired={false} inputStyle='textarea' textareaH='h-28'
-						value={formik.values.addressDetails} className='col-span-12' />
 					<FormInput label='Hakkımda' name='about' isRequired={false} inputStyle='textarea' textareaH='h-32'
-						value={formik.values.about} className='col-span-12' />
-
+						value={formik.values.about} className='col-span-12' placeHolder="Kendini kısaca tanıt" />
 				</div>
+
 				<button type="submit" className='btn btn-md px-5 mt-5 rounded-full bg-[#93f] hover:bg-[#822bd9] text-white'>
 					Kaydet
 				</button>
-
 			</form>
 		</FormikProvider>
 	)
