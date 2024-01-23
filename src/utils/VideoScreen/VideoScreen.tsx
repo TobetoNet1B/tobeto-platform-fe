@@ -114,7 +114,7 @@ const VideoScreen = (props: Props) => {
           ref={videoRef}
           src={props.videoSource}
           className="w-full h-full"
-          poster='https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt670d428d1921eed8/614be30d69b7947c1b3aebd5/9242021_StateofGameplayArticle_Header.jpg'
+          poster='https://jobtogo.co/wp-content/uploads/2023/06/tobeto-1.png'
           onClick={playPauseHandler}
           onTimeUpdate={timeUpdateHandler}
         ></video>
@@ -131,8 +131,8 @@ const VideoScreen = (props: Props) => {
               <FaForward />
             </button>
             <div className='flex p-1'>
-              <span className='my-0 pt-1 text-white font-medium'>{`${formatTime(currentTime)}-`}</span>
-              <span className='my-0 pt-1 text-white font-medium'>{`${formatTime(duration)}`}</span>
+              <span className='my-0 pt-1 text-[#93f] font-medium'>{`${formatTime(currentTime)}-`}</span>
+              <span className='my-0 pt-1 text-[#93f] font-medium'>{`${formatTime(duration)}`}</span>
             </div>
           </div>
           <div className='items-center'>

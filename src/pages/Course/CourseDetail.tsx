@@ -30,209 +30,207 @@ const CourseDetail = (props: Props) => {
       </div>
       <div className="drawer-side overflow-x-hidden">
         <label onClick={handleOutsideClick} htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-        <div className="menu p-4 w-3/5 min-h-full text-base-content bg-white">
+        <div className="menu p-10 w-3/5 min-h-full text-base-content bg-white">
           <label onClick={handleOutsideClick} htmlFor="my-drawer-4" aria-label="close sidebar"
             className={`bg-[#9933FF] absolute -left-[26px] right-auto bottom-auto z-[1] text-white p-1 text-lg leading-normal cursor-pointer rounded-tl-[50%] rounded-bl-[50%] inline-block align-middle ${isDrawerOpen ? "" : "hidden"}`}>
             <IoClose className="h-5 block" />
           </label>
           <div>
 
-            <div className="flex flex-row flex-wrap box-border">
-              <div className="-mx-2  justify-center text-center box-border flex-grow-0 flex-shrink-0 basis-full max-w-full md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[16.66666667%] md:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666667%] xl:max-w-[16.66666667%]">
+            <div className="!-mx-2 box-border flex flex-row flex-wrap flex-grow-0 flex-shrink basis-auto" style={{ WebkitBoxDirection: "normal", WebkitBoxOrient: "horizontal" }}>
+              <div className="-mx-2 flex justify-center text-center box-border flex-grow-0 flex-shrink-0 basis-full max-w-full md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[16.66666667%] md:max-w-[16.66666667%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[16.66666667%] lg:max-w-[16.66666667%] xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[16.66666667%] xl:max-w-[16.66666667%]">
                 <div className="!w-[120px] !h-[120px]">
-                  <img className="w-full h-auto rounded-2xl border-none align-middle" src="https://lms.tobeto.com/tobeto/eep/common_show_picture_cached.aspx?pQS=eaAjNZ0uaOEJMI14cKs7Ww%3d%3d" alt="Softskill: İş Yönetimi Becerileri 1" />
+                  <img className="w-full h-auto rounded-[14px] border-none align-middle" src="https://lms.tobeto.com/tobeto/eep/common_show_picture_cached.aspx?pQS=eaAjNZ0uaOEJMI14cKs7Ww%3d%3d" alt="Softskill: İş Yönetimi Becerileri 1" />
                 </div>
               </div>
               <div className="xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[50%] xl:max-w-[50%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[50%] lg:max-w-[50%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[41.66666667%] md:max-w-[41.66666667%] px-2 box-border flex-grow-0 flex-shrink-0 basis-full max-w-full">
                 <div>
                   <h3 className="mb-3 mt-0 font-semibold text-lg text-black leading-normal">Softskill: İş Yönetimi Becerileri 1</h3>
                   <div className="flex items-center my-2">
-                    <span className="btn p-[6px] btn-primary pointer-events-none text-white mr-2">VİDEO</span>
-                    <span className="flex mr-2 items-center text-black font-semibold"><FaStopwatch className="mr-1 mb-1" />4 dk</span>
+                    <span className="btn px-[6px] btn-primary pointer-events-none text-white mr-2">VİDEO</span>
+                    <span className="flex mr-2  items-center text-black font-semibold"><FaStopwatch className="mr-1 mb-1" />4 dk</span>
                     <span className="flex items-center text-black font-semibold"><FaRegEye className="mr-1" />56</span>
                   </div>
-                  <div className="my-4">
-                    <div className="inline-block !align-bottom !h-8">
-                      <div className="flex cursor-pointer items-center">
-                        <span className="w-7 ml-1 text-3xl !text-[#7f7f7f] cursor-pointer ">
-                          <div id="main-content" className="transform translate-x-0 translate-y-[-0.4ex] flex items-center justify-center text-center h-9 ">
-                            <div id="sub-content" className="cursor-pointer w-7 ">
-                              <input checked={likedDetail}
-                                onChange={handleHeartClickDetail} type="checkbox" id="checkbox1" className="hidden box-border p-0  " />
-                              <label id="checkbox-label" htmlFor="checkbox1" className="transform -translate-x-5 translate-y-0 block font-semibold text-black touch-manipulation" >
-                                <svg className="cursor-pointer overflow-visible w-14"
-                                  id="heart-svg"
-                                  viewBox="467 392 58 57"
+                  <div className="min-h-9 mt-2 !p-0 xl:max-w-[100%] xl:basis-[100%] xl:box-border xl:flex-grow-0 xl:flex-shrink-0 lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[100%] lg:max-w-[100%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[100%] md:max-w-[100%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">
+                    <div className="flex cursor-pointer">
+                      <span className="text-3xl my-0 mr-2 ml-0">
+                        <div id="main-content" className="absolute flex items-center justify-center text-center h-9">
+                          <div id="sub-content" className="cursor-pointer w-7">
+                            <input checked={likedDetail}
+                              onChange={handleHeartClickDetail} type="checkbox" id="checkbox1" className="hidden box-border p-0  " />
+                            <label id="checkbox-label" htmlFor="checkbox1" className="transform -translate-x-3 translate-y-0 block font-semibold text-black touch-manipulation" >
+                              <svg className="cursor-pointer overflow-visible w-14"
+                                id="heart-svg"
+                                viewBox="467 392 58 57"
+                              >
+                                <g id="Group"
+                                  fill="none"
+                                  fillRule="evenodd"
+                                  transform="translate(467 392)"
                                 >
-                                  <g id="Group"
-                                    fill="none"
-                                    fillRule="evenodd"
-                                    transform="translate(467 392)"
+                                  <path
+                                    d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
+                                    className={`fill-none origin-center ${likedDetail ? 'fill-red-500 scale-100  animate-animateHeart' : 'animate-animateHeartOut stroke-2 !stroke-[#7f7f7f]'}`}
+                                    id="heart"
+                                    fill="#AAB8C2"
+                                  />
+                                  <circle id="main-circ"
+                                    className={`origin-[29.5px_29.5px] ${likedDetail ? 'transition-all animate-animateCircle  opacity-100' : ' '}`}
+                                    fill="#E2264D"
+                                    opacity={0}
+                                    cx="29.5"
+                                    cy="29.5"
+                                    r="1.5"
+                                  />
+                                  <g id="grp7"
+                                    opacity={0}
+                                    transform="translate(7 6)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
                                   >
-                                    <path
-                                      d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
-                                      className={`fill-none origin-center ${likedDetail ? 'fill-red-500 scale-100  animate-animateHeart' : 'animate-animateHeartOut stroke-2 !stroke-[#7f7f7f]'}`}
-                                      id="heart"
-                                      fill="#AAB8C2"
+                                    <circle
+                                      id="oval1"
+                                      fill="#9CD8C3"
+                                      cx={2}
+                                      cy={6}
+                                      r={2} className={` ${likedDetail ? 'transition-transform duration-500 delay-300 scale-0 -translate-x-8 -translate-y-4 origin-[0_0]' : ' '}`}
                                     />
-                                    <circle id="main-circ"
-                                      className={`origin-[29.5px_29.5px] ${likedDetail ? 'transition-all animate-animateCircle  opacity-100' : ' '}`}
-                                      fill="#E2264D"
-                                      opacity={0}
-                                      cx="29.5"
-                                      cy="29.5"
-                                      r="1.5"
+                                    <circle
+                                      id="oval2"
+                                      fill="#8CE8C3"
+                                      cx={5}
+                                      cy={2}
+                                      r={2} className={` ${likedDetail ? 'scale-0 -translate-x-14 -translate-y-8 origin-[0_0] transition-transform	duration-[1500ms] delay-300' : ' '}`}
                                     />
-                                    <g id="grp7"
-                                      opacity={0}
-                                      transform="translate(7 6)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
-                                    >
-                                      <circle
-                                        id="oval1"
-                                        fill="#9CD8C3"
-                                        cx={2}
-                                        cy={6}
-                                        r={2} className={` ${likedDetail ? 'transition-transform duration-500 delay-300 scale-0 -translate-x-8 -translate-y-4 origin-[0_0]' : ' '}`}
-                                      />
-                                      <circle
-                                        id="oval2"
-                                        fill="#8CE8C3"
-                                        cx={5}
-                                        cy={2}
-                                        r={2} className={` ${likedDetail ? 'scale-0 -translate-x-14 -translate-y-8 origin-[0_0] transition-transform	duration-[1500ms] delay-300' : ' '}`}
-                                      />
-                                    </g>
-                                    <g id="grp6"
-                                      opacity={0}
-                                      transform="translate(0 28)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
-                                    >
-                                      <circle
-                                        id="oval1"
-                                        fill="#CC8EF5"
-                                        cx={2}
-                                        cy={7}
-                                        r={2} className={` ${likedDetail ? 'scale-0 -translate-x-8 translate-y-0 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
-                                      />
-                                      <circle
-                                        id="oval2"
-                                        fill="#91D2FA"
-                                        cx={3}
-                                        cy={2}
-                                        r={2} className={`${likedDetail ? 'scale-0 -translate-x-16 -translate-y-2 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
-                                      />
-                                    </g>
-                                    <g id="grp3"
-                                      opacity={0}
-                                      transform="translate(52 28)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
-                                    >
-                                      <circle
-                                        id="oval2"
-                                        fill="#9CD8C3"
-                                        cx={2}
-                                        cy={7}
-                                        r={2} className={` ${likedDetail ? 'scale-0 translate-x-16 translate-y-3 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
-                                      />
-                                      <circle
-                                        id="oval1"
-                                        fill="#8CE8C3"
-                                        cx={4}
-                                        cy={2}
-                                        r={2} className={` ${likedDetail ? 'scale-0 translate-x-8 translate-y-0 origin-[0_0] transition-transform	duration-[500ms] delay-300' : ' '}`}
-                                      />
-                                    </g>
-                                    <g id="grp2"
-                                      opacity={0}
-                                      transform="translate(44 6)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
-                                    >
-                                      <circle
-                                        id="oval2"
-                                        fill="#CC8EF5"
-                                        cx={5}
-                                        cy={6}
-                                        r={2} className={` ${likedDetail ? 'scale-0 translate-x-16 -translate-y-4 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
-                                      />
-                                      <circle
-                                        id="oval1"
-                                        fill="#CC8EF5"
-                                        cx={2}
-                                        cy={2}
-                                        r={2} className={` ${likedDetail ? 'scale-0 translate-x-8 -translate-y-4 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
-                                      />
-                                    </g>
-                                    <g id="grp5"
-                                      opacity={0}
-                                      transform="translate(14 50)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
-                                    >
-                                      <circle
-                                        id="oval1"
-                                        fill="#91D2FA"
-                                        cx={6}
-                                        cy={5}
-                                        r={2} className={` ${likedDetail ? 'scale-0 -translate-x-3 translate-y-5 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
-                                      />
-                                      <circle
-                                        id="oval2"
-                                        fill="#91D2FA"
-                                        cx={2}
-                                        cy={2}
-                                        r={2} className={` ${likedDetail ? 'scale-0 -translate-x-16 translate-y-8 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
-                                      />
-                                    </g>
-                                    <g id="grp4"
-                                      opacity={0}
-                                      transform="translate(35 50)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
-                                    >
-                                      <circle
-                                        id="oval1"
-                                        fill="#F48EA7"
-                                        cx={6}
-                                        cy={5}
-                                        r={2} className={` ${likedDetail ? 'scale-0 translate-x-8 translate-y-4 origin-[0_0] transition-transform	duration-[500ms] delay-300' : ' '}`}
-                                      />
-                                      <circle
-                                        id="oval2"
-                                        fill="#F48EA7"
-                                        cx={2}
-                                        cy={2}
-                                        r={2} className={` ${likedDetail ? 'scale-0 translate-x-10 translate-y-12 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
-                                      />
-                                    </g>
-                                    <g id="grp1"
-                                      opacity={0}
-                                      transform="translate(24)" className={` ${likedDetail ? 'opacity-100 transition-all delay-300' : ' '}`}
-                                    >
-                                      <circle
-                                        id="oval1"
-                                        fill="#9FC7FA"
-                                        cx="2.5"
-                                        cy={3}
-                                        r={2} className={` ${likedDetail ? 'scale-0 translate-x-0 -translate-y-8 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
-                                      />
-                                      <circle
-                                        id="oval2"
-                                        fill="#9FC7FA"
-                                        cx="7.5"
-                                        cy={2}
-                                        r={2} className={` ${likedDetail ? 'scale-0 translate-x-2 -translate-y-12 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
-                                      />
-                                    </g>
                                   </g>
-                                </svg>
-                              </label>
-                            </div>
+                                  <g id="grp6"
+                                    opacity={0}
+                                    transform="translate(0 28)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                  >
+                                    <circle
+                                      id="oval1"
+                                      fill="#CC8EF5"
+                                      cx={2}
+                                      cy={7}
+                                      r={2} className={` ${likedDetail ? 'scale-0 -translate-x-8 translate-y-0 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
+                                    />
+                                    <circle
+                                      id="oval2"
+                                      fill="#91D2FA"
+                                      cx={3}
+                                      cy={2}
+                                      r={2} className={`${likedDetail ? 'scale-0 -translate-x-16 -translate-y-2 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                    />
+                                  </g>
+                                  <g id="grp3"
+                                    opacity={0}
+                                    transform="translate(52 28)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                  >
+                                    <circle
+                                      id="oval2"
+                                      fill="#9CD8C3"
+                                      cx={2}
+                                      cy={7}
+                                      r={2} className={` ${likedDetail ? 'scale-0 translate-x-16 translate-y-3 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                    />
+                                    <circle
+                                      id="oval1"
+                                      fill="#8CE8C3"
+                                      cx={4}
+                                      cy={2}
+                                      r={2} className={` ${likedDetail ? 'scale-0 translate-x-8 translate-y-0 origin-[0_0] transition-transform	duration-[500ms] delay-300' : ' '}`}
+                                    />
+                                  </g>
+                                  <g id="grp2"
+                                    opacity={0}
+                                    transform="translate(44 6)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                  >
+                                    <circle
+                                      id="oval2"
+                                      fill="#CC8EF5"
+                                      cx={5}
+                                      cy={6}
+                                      r={2} className={` ${likedDetail ? 'scale-0 translate-x-16 -translate-y-4 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                    />
+                                    <circle
+                                      id="oval1"
+                                      fill="#CC8EF5"
+                                      cx={2}
+                                      cy={2}
+                                      r={2} className={` ${likedDetail ? 'scale-0 translate-x-8 -translate-y-4 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
+                                    />
+                                  </g>
+                                  <g id="grp5"
+                                    opacity={0}
+                                    transform="translate(14 50)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                  >
+                                    <circle
+                                      id="oval1"
+                                      fill="#91D2FA"
+                                      cx={6}
+                                      cy={5}
+                                      r={2} className={` ${likedDetail ? 'scale-0 -translate-x-3 translate-y-5 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
+                                    />
+                                    <circle
+                                      id="oval2"
+                                      fill="#91D2FA"
+                                      cx={2}
+                                      cy={2}
+                                      r={2} className={` ${likedDetail ? 'scale-0 -translate-x-16 translate-y-8 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                    />
+                                  </g>
+                                  <g id="grp4"
+                                    opacity={0}
+                                    transform="translate(35 50)" className={` ${likedDetail ? 'opacity-100 transition-opacity delay-300' : ' '}`}
+                                  >
+                                    <circle
+                                      id="oval1"
+                                      fill="#F48EA7"
+                                      cx={6}
+                                      cy={5}
+                                      r={2} className={` ${likedDetail ? 'scale-0 translate-x-8 translate-y-4 origin-[0_0] transition-transform	duration-[500ms] delay-300' : ' '}`}
+                                    />
+                                    <circle
+                                      id="oval2"
+                                      fill="#F48EA7"
+                                      cx={2}
+                                      cy={2}
+                                      r={2} className={` ${likedDetail ? 'scale-0 translate-x-10 translate-y-12 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                    />
+                                  </g>
+                                  <g id="grp1"
+                                    opacity={0}
+                                    transform="translate(24)" className={` ${likedDetail ? 'opacity-100 transition-all delay-300' : ' '}`}
+                                  >
+                                    <circle
+                                      id="oval1"
+                                      fill="#9FC7FA"
+                                      cx="2.5"
+                                      cy={3}
+                                      r={2} className={` ${likedDetail ? 'scale-0 translate-x-0 -translate-y-8 origin-[0_0] transition-transform duration-[500ms] delay-300' : ' '}`}
+                                    />
+                                    <circle
+                                      id="oval2"
+                                      fill="#9FC7FA"
+                                      cx="7.5"
+                                      cy={2}
+                                      r={2} className={` ${likedDetail ? 'scale-0 translate-x-2 -translate-y-12 origin-[0_0] transition-transform duration-[1500ms] delay-300' : ' '}`}
+                                    />
+                                  </g>
+                                </g>
+                              </svg>
+                            </label>
                           </div>
-                        </span>
-                        <span className={`!text-[#7f7f7f] font-medium text-2xl z-[1] translate-x-[0.2em] translate-y-[-0.15ex] mr-4 leading-none cursor-pointer ${likedDetail ? ' ' : ' '}`}>
-                          <span className={`cursor-pointer ${likedDetail ? '!text-[#ff4757]' : '!text-[#7f7f7f]'}`}>106</span>
-                        </span>
-                      </div>
+                        </div>
+                      </span>
+                      <span className={`font-medium text-2xl z-[1] translate-x-0 translate-y-[-0.125ex] mt-2 ml-7 leading-none cursor-pointer`}>
+                        <span className={` ${likedDetail ? '!text-[#ff4757]' : '!text-[#7f7f7f]'}`}>106</span>
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[33.33333333%] xl:max-w-[33.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[33.33333333%] lg:max-w-[33.33333333%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[41.66666667%] md:max-w-[41.66666667%] px-2 box-border flex-grow-0 flex-shrink-0 basis-full max-w-full">
-                <div className="flex items-center justify-end xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[100%] xl:max-w-[100%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[100%] lg:max-w-[100%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[100%] md:max-w-[100%] px-2 box-border flex-grow-0 flex-shrink-0 basis-full max-w-full" style={{ flexBasis: "unset" }}>
-                  <div className="inline-flex  ant-space-horizontal items-center" style={{ gap: 8 }}>
+              <div className="flex flex-col xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[33.33333333%] xl:max-w-[33.33333333%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[33.33333333%] lg:max-w-[33.33333333%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[41.66666667%] md:max-w-[41.66666667%] !px-2 box-border flex-grow-0 flex-shrink-0 basis-full max-w-full">
+                <div className="flex items-center justify-end xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[100%] xl:max-w-[100%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[100%] lg:max-w-[100%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[100%] md:max-w-[100%] !px-2 box-border flex-grow-0 flex-shrink-0 basis-full max-w-full" style={{ flexBasis: "unset" }}>
+                  <div className="inline-flex items-center" style={{ gap: 8 }}>
                     <div className="">
                       <Link className="btn bg-[#9933FF] hover:bg-[#a64dff] text-white" to="#">EĞİTİME GİT</Link>
                     </div>
@@ -243,8 +241,8 @@ const CourseDetail = (props: Props) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex mt-4 items-center justify-end xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[100%] xl:max-w-[100%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[100%] lg:max-w-[100%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[100%] md:max-w-[100%] px-2 box-border flex-grow-0 flex-shrink-0 basis-full max-w-full" style={{ flexBasis: "unset" }}>
-                  <span className="text-[#3dcb79] items-center mr-2">
+                <div className="flex mt-4 items-center justify-end xl:px-2 xl:box-border xl:flex-grow-0 xl:flex-shrink-0 xl:basis-[100%] xl:max-w-[100%] lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[100%] lg:max-w-[100%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[100%] md:max-w-[100%] !px-2 box-border flex-grow-0 flex-shrink-0 basis-full max-w-full" style={{ flexBasis: "unset" }}>
+                  <span className="text-[#3dcb79] items-center mr-2 flex">
                     <SlLike className="mr-2 inline-block" />
                     <span className="inline-block">Tebrikler, tamamladın!</span>
                   </span>
