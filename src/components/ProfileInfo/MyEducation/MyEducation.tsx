@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import * as Yup from "yup";
 import { Button, Modal } from "flowbite-react";
-import { BsThreeDots } from "react-icons/bs";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import YearPicker from "./YearPicker";
@@ -39,11 +38,9 @@ const EducationSchema = Yup.object().shape({
       const { ongoing, startYear } = this.parent;
 
       if (!ongoing) {
-        // Check if endYear is a valid date and greater than or equal to startYear
         return endYear instanceof Date && !isNaN(endYear.getTime()) && endYear >= startYear;
       }
 
-      // No validation when "Devam Ediyorum" is selected and endYear is empty
       return endYear === null || endYear === undefined || endYear === null;
     },
   }),
