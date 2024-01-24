@@ -1,97 +1,3 @@
-// import { ErrorMessage, Field, Form, Formik } from 'formik'
-// import React from 'react'
-// import * as Yup from "yup";
-// type Props = {}
-// const language = ["İngilizce", "Fransızca", "İtalyanca", "Türkçe", "Arapça"];
-// const level = ["Başlangıç", "Orta"];
-
-// const JobSchema = Yup.object().shape({
-//     language: Yup.string().required("Doldurulması zorunlu alan"),
-//     level: Yup.string().required("Doldurulması zorunlu alan"),
-//   });
-// const ForeignLanguage = (props: Props) => {
-
-//   const [savedJobs, setSavedJobs] = React.useState<any[]>([]);
-//     const initialValues = {
-//         language: "",
-//         seviye: "",
-//       };
-//       const handleSave = (values: any) => {
-//         setSavedJobs((prevJobs) => [...prevJobs, { ...values }]);
-//       };
-//   return (
-//     <div className="mt-7">
-//     <div className="max-w-4xl mx-auto text-[#828282] ">
-//     <Formik
-//           initialValues={initialValues}
-//           validationSchema={JobSchema}
-//           onSubmit={(values) => {
-//             handleSave(values);
-//           }}
-//           >
-//         <Form className="text-sm">
-
-//           <div className="flex mb-4">
-//             <div className="w-1/2 mr-2">
-//             <Field
-//                 as="select"
-//                 id="language"
-//                 name="language"
-//                 className="w-full border border-[#B3A6C0]  p-2 rounded-md"
-//               >
-//                 <option value="" disabled>
-//                  Dil seçiniz*
-//                 </option>
-//                 {language.map((language) => (
-//                   <option key={language} value={language}>
-//                     {language}
-//                   </option>
-//                 ))}
-//               </Field>
-//               <ErrorMessage
-//                 name="language"
-//                 component="div"
-//                 className="text-red-500"
-//               />
-//             </div>
-//             <div className="w-1/2 ml-2">
-//               <Field
-//                 as="select"
-//                 id="seviye"
-//                 name="seviye"
-//                 className="w-full border border-[#B3A6C0]  p-2 rounded-md"
-//               >
-//                 <option value="" disabled>
-//                   Seviye Seçiniz*
-//                 </option>
-//                 {level.map((level) => (
-//                   <option key={level} value={level}>
-//                     {level}
-//                   </option>
-//                 ))}
-//               </Field>
-//               <ErrorMessage
-//                 name="level"
-//                 component="div"
-//                 className="text-red-500"
-//               />
-//             </div>
-//           </div>
-//           <button
-//             type="submit"
-//             className="bg-[#9933FF] text-white p-2 w-24 rounded-full"
-//           >
-//             Kaydet
-//           </button>
-//         </Form>
-//       </Formik>
-//       </div>
-//       </div>
-//   )
-// }
-
-// export default ForeignLanguage
-
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
@@ -198,10 +104,6 @@ const ForeignLanguage = (props: Props) => {
         </Formik>
         <div className="bg-[#FCF9FC] flex flex-wrap mt-5 w-full justify-center">
           {savedJobs.map((job, index) => (
-            // <div
-            //   key={index}
-            //   className="m-2 border-2 border-white p-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 bg-white rounded-full flex items-center justify-center mx-4 hover:border-red-500"
-            // >
             <div
             key={index}
             className="m-2 border-2 border-white p-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 bg-white rounded-full flex items-center justify-center mx-4 hover:border-red-500 relative"
