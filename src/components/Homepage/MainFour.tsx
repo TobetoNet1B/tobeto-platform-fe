@@ -2,7 +2,7 @@ type Props = {}
 
 const MainFour = (props: Props) => {
 	return (
-		<div className="!w-full mx-auto m-0 section-three lg:px-80 sm:px-10 py-20">{/*className="container-fluid m-0 mp-0 section-three py-20" */}
+		<div className="!w-full !m-0 text-center text-white font-semibold text-[28px] leading-[34px] lg:px-80 sm:px-10 !py-20" style={{background:"linear-gradient(179.79deg,#93f .18%,#7d19e1 77.21%)"}}>
 			{/* mx-[calc((100vw-1152px)/-2+0.4em)]  */}
 			<div className="container">
 				<div className="relative">
