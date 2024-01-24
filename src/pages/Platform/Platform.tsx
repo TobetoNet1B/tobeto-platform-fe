@@ -1,83 +1,101 @@
 import React from "react";
+import { useState } from 'react'
+import { Link } from "react-router-dom";
 import "./platform.css";
+import PlatformNavbar from "./PlatformNavbar";
+import ApplyCard from "./ApplyCard";
+import Education from "pages/Education/Education";
 
 export default function Platform() {
-  return (
-    <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-          style={{ display: "flex" }}
-        >
-          <img
-            className="tobeto-logo"
-            src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftobeto-logo.409772fc.png&w=256&q=75"
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
-        </a>
+  const [selectedLink, setSelectedLink] = useState<string>('Başvurularım');
 
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-  
-        
-        </div>
-        <div
-          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-          id="navbar-sticky"
+ 
+  const handleLinkClick = (link: string) => {
+    setSelectedLink(link);
+    
+  };
+
+
+  return (
+    <div>
+   <PlatformNavbar></PlatformNavbar>
+
+   <div className="entry-container">
+  <div className="text-container">
+    <h1 className="welcome-message">
+      <span className="text-purple-600" style={{ fontSize: 37, fontWeight: "bold" }}> TOBETO </span>
+      <span className="text-green-700" style={{ fontSize: 35 }}> 'ya hoş geldin </span>
+    </h1>
+    <h1 className="text-green-700" style={{ fontSize: 35, marginLeft:460 }}>PAIR 3</h1>
+  </div>
+  <img className="ball" src="https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg" alt="" />
+</div>
+ 
+   <h1 id="text1" className="text-2xl font-medium text-gray-900 dark:text-white" >Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin yanında!</h1>
+<br /><br />
+ 
+   <div className="body-container">
+<img className="ikLogo" src="https://tobeto.com/_next/static/media/ik-logo-dark.7938c0de.svg" alt="" />
+<h1 className="freeCourse text-2xl font-medium text-gray-900 dark:text-white" >Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.</h1>
+<h1 className="freeCourse  text-4xl font-extrabold text-gray-900 dark:text-white">Aradığın 
+
+<span style={{fontFamily:"Verdana", paddingLeft:"10px",fontStyle:"italic"}} className="text-4xl font-extrabold text-gray-400" >"</span> İş 
+
+<span style={{fontFamily:"Verdana", paddingRight:"10px",fontStyle:"italic"}} className="text-4xl font-extrabold text-gray-400">"</span>  
+
+Burada!</h1> 
+
+<div className="localBar">
+        <Link
+          id="localLink1"
+          className={`localLink text-lg text-gray-900 dark:text-white ${selectedLink === 'Başvurularım' ? 'selected' : ''}`}
+          to={""}
+          onClick={() => handleLinkClick('Başvurularım')}
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <div className="navbar">
-            <li>
-              <a
-                href="#"
-                className="font-semibold block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                Ana Sayfa
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="font-semibold block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                Profilim
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="font-semibold block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700e"
-              >
-                Değerlendirmeler
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="font-semibold block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                Katalog
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="font-semibold block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              > Takvim
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="font-semibold block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >
-                İstanbul Kodluyor  
-              </a>
-            </li>
-            </div>
-          </ul>
-          
-        </div>
+          Başvurularım
+        </Link>
+        <Link
+          id="localLink2"
+          className={`localLink text-lg text-gray-900 dark:text-white ${selectedLink === 'Eğitimlerim' ? 'selected' : ''}`}
+          to={""}
+          onClick={() => handleLinkClick('Eğitimlerim')}
+        >
+          Eğitimlerim
+        </Link>
+        <Link
+          id="localLink3"
+          className={`localLink text-lg text-gray-900 dark:text-white ${selectedLink === 'Duyuru ve Haberlerim' ? 'selected' : ''}`}
+          to={""}
+          onClick={() => handleLinkClick('Duyuru ve Haberlerim')}
+        >
+          Duyuru ve Haberlerim
+        </Link>
+        <Link
+          id="localLink4"
+          className={`localLink text-lg text-gray-900 dark:text-white ${selectedLink === 'Anketlerim' ? 'selected' : ''}`}
+          to={""}
+          onClick={() => handleLinkClick('Anketlerim')}
+        >
+          Anketlerim
+        </Link>
       </div>
-    </nav>
+
+      {selectedLink === 'Başvurularım' && <ApplyCard />}
+    </div>
+
+
+
+
+
+
+</div>
+
+
+      
+
+
+    
+
   );
-}
+
+  }

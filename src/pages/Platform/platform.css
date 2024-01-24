@@ -1,4 +1,109 @@
 .tobeto-logo {
-    height: 2.1rem;
-  }
+  height: 2.1rem;
+}
+
+.nav{
+  background-color: white;
+}
+.entry-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-container {
+  text-align: center;
+  margin-right: 5rem; 
+}
+
+.welcome-message {
+  margin-top: 10rem;
+  margin-left: 30rem;
+}
+
+.ball {
+  width: 10rem;
+  height: 10rem;
+  margin-top: 10rem;
+  margin-left: 10rem;
+}
+
+#text1 {
+display: flex;
+justify-content: center;
+}
+
+.body-container{
+  display: flex;
+  display: block;
+  height: 700px;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+border-radius:1.5%;
+  margin: 0 auto;
+  box-shadow: 0 20px 16px rgba(0, 0, 0, 0.1);
+}
+
+.ikLogo {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  padding-top: 4rem;
+}
+
+.freeCourse{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+padding: 20px;
+}
+
+.localBar {
+margin: 30px 0px 0px 30px
+}
+
+.localLink{
+
+  margin: 30px 0px 0px 20px
   
+}
+
+.localLink:active,
+.localLink:focus {
+  text-decoration: underline; 
+
+}
+.applyInfo{
+  width: 550px; 
+  height: 130px; 
+  border: 2px solid;
+  border-left: 6px solid #803f10;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 8px; 
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); /* Kutu gölge */
+  margin: 20px; 
+}
+.theGreenBar{
+  display: flex;
+  width: 145px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 5px;
+ margin-left: 25.5rem;
+ margin-top: 0.4rem;
+  background-color: rgb(114, 80, 80);
+  color: white;
+  float: right;
+}
+
+.applyInfoNote1{
+  display: flex;
+  align-items: center;
+}
+.applyInfoNote2{
+  display: flex;
+  align-items: center;
+}
