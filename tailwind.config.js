@@ -93,6 +93,17 @@ module.exports = {
             opacity: 0,
           },
         },
+        preloaderAnimation: {
+          "0%": {
+            opacity: 0.3,
+          },
+          "50%": {
+            opacity: 1,
+          },
+          "100%": {
+            opacity: 0.3,
+          }
+        }
       },
     },
     animation: {
@@ -102,6 +113,7 @@ module.exports = {
       animateHeartOut: "animateHeartOut 0.3s linear forwards",
       animateCircle: "animateCircle 0.3s linear forwards",
       antProgresActive: "antProgresActive 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite",
+      preloaderAnimation: "preloaderAnimation 2s linear infinite"
     } /*  fade 4s ease 0s infinite normal none running fade auto normal normal */,
   },
 };

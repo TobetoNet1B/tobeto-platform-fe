@@ -19,10 +19,10 @@ export default function NotFound() {
 								<Link className="nvb" to="/">Ana Sayfa</Link>
 							</li>
 							<li>
-								<Link className="nvb" to="#">Giriş</Link>
+								<Link className="nvb" to="/giris">Giriş</Link>
 							</li>
 							<li>
-								<Link className="nvb" to="#">Kayıt Ol</Link>
+								<Link className="nvb" to="/kayit-ol">Kayıt Ol</Link>
 							</li>
 						</ul>
 					</div>

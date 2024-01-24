@@ -16,7 +16,7 @@ const Homepage = (props: Props) => {
 	return (
 		<div className='overflow-y-auto h-screen m-0'>
 			<div className='block box-border'>
-				<div className='home'>{/* className='bg-front-dark bg-front-width' */}
+				<div className='home'>
 					<div className="sticky top-0 z-[100]">
 						{!isLoggedIn ? <AppealNav /> : <VidNav />}
 						<NavBar />
