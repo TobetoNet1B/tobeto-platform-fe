@@ -1,5 +1,5 @@
 import { Card, Dropdown } from 'flowbite-react';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	HiMiniPencil,
 	HiMiniUser,
@@ -22,6 +22,14 @@ import {
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
 import HeatMap from '@uiw/react-heat-map';
+import { Link } from 'react-router-dom';
+
+import StudentService from 'services/studentService';
+import { GetStudentResponse } from 'models/responses/students/getStudentResponse';
+
+//let student = studentService.getById(2);
+
+
 
 
 ChartJS.register(
@@ -80,7 +88,17 @@ const MyProfile = (props: Props) => {
 		{ date: '2024/05/08', count: 32 },
 	];
 
+	const [student, setStudent] = useState<GetStudentResponse>({} as GetStudentResponse);
 
+
+	useEffect(() => {
+		let studentService = StudentService;
+		studentService
+			.getById("b1aa1476-33b9-448e-cc48-08dc1c1643b0")
+			.then((result) => setStudent(result.data));
+	}, []);
+	console.log(student.imgUrl);
+	
 
 
 	return (
@@ -88,9 +106,11 @@ const MyProfile = (props: Props) => {
 			<div className='max-w-[1110px] mx-auto'>
 				<div className="mt-6 mb-2 ">
 					<div className="flex justify-end items-center">
-						<button className="btn btn-circle btn-ghost">
-							<HiMiniPencil />
-						</button>
+						<Link to="profilimi-duzenle/kisisel-bilgilerim">
+							<button className="btn btn-circle btn-ghost">
+								<HiMiniPencil />
+							</button>
+						</Link>
 						<div className="dropdown dropdown-end">
 							<div tabIndex={0} role="button" className="btn btn-circle btn-ghost btn-md text-black">
 								<FaShareAlt />
@@ -108,14 +128,14 @@ const MyProfile = (props: Props) => {
 						<div className='col-12 '>
 							<div className="card rounded-2xl border-gray-50 dark:border-gray-50 max-w-full mr-2 bg-gray-50 dark:bg-gray-50 shadow-2xl ">
 								<div className="flex flex-col">
-									
+
 									<div className=''>
 
-										<div className="card rounded-2xl w-full max-h-48  bg-gradient-to-t from-[#5056C9] to-[#8D92FA] items-center">
+										<div className="card rounded-2xl w-full p-4 max-h-48  bg-gradient-to-t from-[#5056C9] to-[#8D92FA] items-center">
 											<img
-												src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+												src={student.imgUrl}
 												alt="profil-picture"
-												className="mb-1 mt-1 rounded-full p-4 flex-shrink-0 flex-grow "
+												className="mb-1 mt-1 rounded-full p-4 flex-shrink-0 border-4  flex-grow max-h-32 "
 											/>
 										</div>
 									</div>
@@ -131,7 +151,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1">
 												<p className="text-xs font-medium text-gray-500">Ad Soyad</p>
-												<p className="text-base font-bold text-gray-900">Tunahan Yıldırım</p>
+												<p className="text-base font-bold text-gray-900">{student.user?.firstName} {student.user?.lastName}</p>
 											</div>
 										</div>
 										<div className="flex">
@@ -144,7 +164,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1">
 												<p className="text-xs font-medium text-gray-500">Doğum Tarihi</p>
-												<p className="text-base font-bold text-gray-900">08.03.1997</p>
+												<p className="text-base font-bold text-gray-900">{student.birthDate?.substring(0, 10)}</p>
 											</div>
 										</div>
 										<div className="flex">
@@ -157,7 +177,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1">
 												<p className="text-xs font-medium text-gray-500">E-Posta Adresi</p>
-												<p className="text-base font-bold text-gray-900">asdasd@gmail.com</p>
+												<p className="text-base font-bold text-gray-900">{student.user?.email}</p>
 											</div>
 										</div>
 										<div className="flex">
@@ -170,7 +190,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1 ">
 												<p className="text-xs font-medium text-gray-500">Telefon Numarası</p>
-												<p className="text-base font-bold text-gray-900">+905325554466</p>
+												<p className="text-base font-bold text-gray-900">+90{student.phoneNumber}</p>
 											</div>
 										</div>
 
@@ -185,7 +205,7 @@ const MyProfile = (props: Props) => {
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 								<p className="font-medium text-base text-[#272727] mb-2">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+								{student.about}
 								</p>
 							</div>
 						</div>
@@ -202,7 +222,7 @@ const MyProfile = (props: Props) => {
 									&emsp;javascript
 								</h5>
 								<h5 className='p-2 my-2 text-base font-normal bg-white text-black   rounded-3xl hover:bg-[#9933FF] hover:text-white shadow-lg'>
-									&emsp;c#
+									&emsp;C#
 								</h5>
 							</div>
 						</div>
@@ -267,7 +287,7 @@ const MyProfile = (props: Props) => {
 								<div className='flex p-1 my-2 rounded-[38px] shadow-lg'>
 									<div className="overflow-hidden ml-2 py-2 flex-1 flex items-center text-black">
 										<div className='truncate'>
-											Web_Geliştirme_Sasdasdaserafsafsadfasetifikası.pdf
+											Web_Geliştirme_Sertifikası.pdf
 										</div>
 									</div>
 									<div className="flex ml-1 items-center">
@@ -275,21 +295,12 @@ const MyProfile = (props: Props) => {
 									</div>
 								</div>
 
-								<div className='flex p-1 my-2 rounded-[38px] shadow-lg'>
-									<div className="overflow-hidden ml-2 py-2 flex-1 flex items-center text-black">
-										<div className='truncate'>
-											Web_Geliştirme_Sasdasdaserafsafsadfasetifikası.pdf
-										</div>
-									</div>
-									<div className="flex ml-1 items-center">
-										<FaFilePdf className="p-1 text-3xl text-gray-700" />
-									</div>
-								</div>
+								
 
 								<div className='flex p-1 my-2 rounded-[38px] shadow-lg'>
 									<div className="overflow-hidden ml-2 py-2 flex-1 flex items-center text-black">
 										<div className='truncate'>
-											SQL_Geliştirme_Sasdasdaserafsafsadfasetifikası.pdf
+											SQL_Geliştirme_Sertifikası.pdf
 										</div>
 									</div>
 									<div className="flex ml-1 items-center">
