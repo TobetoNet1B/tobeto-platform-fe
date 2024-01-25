@@ -316,7 +316,7 @@
 } */
 }
 
-.carrosel {
+/* .carrosel {
   -webkit-perspective: 250px;
   -moz-perspective: 250px;
   width: 400px;
@@ -324,9 +324,9 @@
   top: 50px;
   position: relative;
   margin: 0 auto;
-}
+} */
 
-@keyframes efeitoCarrosel {
+/* @keyframes efeitoCarrosel {
   0% {
     -webkit-transform: rotateY(1turn) translateZ(130px) rotateY(-1turn);
     -moz-transform: rotateY(1turn) translateZ(130px) rotateY(-1turn);
@@ -344,9 +344,9 @@
     z-index: 10;
     opacity: 1;
   }
-}
+} */
 
-.caixa__card.cc__1 {
+/* .caixa__card.cc__1 {
   -webkit-animation-delay: -12s;
   -moz-animation-delay: -12s;
 }
@@ -374,31 +374,31 @@
 .caixa__card.cc__6 {
   -webkit-animation-delay: -2s;
   -moz-animation-delay: -2s;
-}
+} */
 
-.mobile-none-1200 {
+/* .mobile-none-1200 {
   display: flex;
-}
+} */
 
-.mobile-display-1200 {
+/* .mobile-display-1200 {
   display: none;
-}
+} */
 
 @media screen and (max-width: 1200px) {
-  .mobile-none-1200 {
+  /* .mobile-none-1200 {
     display: none !important;
-  }
+  } */
 
-  .mobile-display-1200 {
+  /* .mobile-display-1200 {
     display: block;
-  }
+  } */
 }
 
-.brand-slider {
+/* .brand-slider {
   height: auto !important;
-}
+} */
 
-@media screen and (max-width: 900px) {
+/* @media screen and (max-width: 900px) {
   .brand-slider .slide-track {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr);
@@ -406,10 +406,10 @@
   .brand-slider {
     height: auto!important
 }
-}
+} */
 
 
-.brand-slider {
+/* .brand-slider {
   background: transparent;
   height: 100px;
   margin-top: 5%;
@@ -421,24 +421,24 @@
   width: max-content;
   display: flex;
   align-items: center;
-}
+} */
 
-.brand-slider .slide-track {
+/* .brand-slider .slide-track {
   display: flex;
   align-items: center;
   gap: 3em;
-}
+} */
 
-.brand-slider .slide {
+/* .brand-slider .slide {
   height: 58px;
   max-width: 163px;
   display: flex;
   align-items: center;
   cursor: pointer;
   justify-content: center;
-}
+} */
 
-.caixa__card {
+/* .caixa__card {
   width: 120px;
   height: 120px;
   padding: 0 1em;
@@ -463,27 +463,27 @@
   -webkit-animation-timing-function: linear;
   -moz-animation-timing-function: linear;
   animation-fill-mode: both;
-}
+} */
 
 
 
 
-.spec-acc .accordion-item .accordion-button:focus {
+/* .spec-acc .accordion-item .accordion-button:focus {
   box-shadow: none
-}
+} */
 
-.spec-acc .accordion-item .accordion-button:not(.collapsed) {
+/* .spec-acc .accordion-item .accordion-button:not(.collapsed) {
   background-color: transparent!important;
   transition: .3s ease-out;
   display: flex;
   color: #93f!important;
   justify-content: space-between;
   font-weight: 600
-}
+} */
 
 
 
-.spec-acc .accordion-item .accordion-button.collapsed {
+/* .spec-acc .accordion-item .accordion-button.collapsed {
   display: flex;
   justify-content: space-between;
   transition: .3s ease-out
@@ -501,9 +501,9 @@
 .spec-acc .arrowshow.accordion-item .accordion-button.collapsed:after {
   color: #fff;
   transform: rotate(-180deg)!important
-}
+} */
 
-.acc-img {
+/* .acc-img {
   position: absolute;
   top: 50%;
   left: 75%;
@@ -515,12 +515,12 @@
 .acc-img img {
   border-radius: 36px;
   width: 100%
-}
+} */
 
-.tb-bottom {
+/* .tb-bottom {
   border-bottom: 2px solid #272727;
   padding-bottom: 18px
-}
+} */
 
 .tb-bottom-2 {
   border-bottom: 1px solid #ccc;
@@ -528,10 +528,10 @@
   display: none
 }
 
-.acc-content-text {
+/* .acc-content-text {
   max-width: 90%;
   font-size: 17px
-}
+} */
 
 
 
@@ -547,27 +547,27 @@
 
 
 
-.accordion {
+/* .accordion {
   margin-bottom: 1em
-}
+} */
 
 
-.accordion {
+/* .accordion {
   --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
   --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23052c65'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
   --bs-accordion-btn-focus-border-color: #86b7fe;
   --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25)
-}
+} */
 
 .accordion {
-  --bs-accordion-color: var(--bs-body-color);
+  /* --bs-accordion-color: var(--bs-body-color);
   --bs-accordion-bg: var(--bs-body-bg);
   --bs-accordion-transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out,border-radius 0.15s ease;
   --bs-accordion-border-color: var(--bs-border-color);
   --bs-accordion-border-width: var(--bs-border-width);
   --bs-accordion-border-radius: var(--bs-border-radius);
-  --bs-accordion-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
-  --bs-accordion-btn-padding-x: 1.25rem;
+  --bs-accordion-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width))); */
+  /* --bs-accordion-btn-padding-x: 1.25rem;
   --bs-accordion-btn-padding-y: 1rem;
   --bs-accordion-btn-color: var(--bs-body-color);
   --bs-accordion-btn-bg: var(--bs-accordion-bg);
@@ -575,13 +575,13 @@
   --bs-accordion-btn-icon-width: 1.25rem;
   --bs-accordion-btn-icon-transform: rotate(-180deg);
   --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
-  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%233d1466'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-  --bs-accordion-btn-focus-border-color: #c9f;
-  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(153,51,255,.25);
-  --bs-accordion-body-padding-x: 1.25rem;
-  --bs-accordion-body-padding-y: 1rem;
-  --bs-accordion-active-color: var(--bs-primary-text-emphasis);
-  --bs-accordion-active-bg: var(--bs-primary-bg-subtle)
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%233d1466'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); */
+  /* --bs-accordion-btn-focus-border-color: #c9f; */
+  /* --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(153,51,255,.25); */
+  /* --bs-accordion-body-padding-x: 1.25rem;
+  --bs-accordion-body-padding-y: 1rem; */
+  /* --bs-accordion-active-color: var(--bs-primary-text-emphasis);
+  --bs-accordion-active-bg: var(--bs-primary-bg-subtle) */
 }
 
 

@@ -4,8 +4,8 @@ type Props = {}
 
 const MainSix = (props: Props) => {
 	return (
-		<div className="w-full mx-auto max-w-6xl py-8">
-			<div className="container mx-auto">
+		<div className="w-full mx-auto px-[calc(1.5rem*0.5)] !py-8">
+			<div  className="container mx-auto px-[calc(1.5rem*0.5)]">
 				<div className="row flex flex-wrap items-center py-10" style={{ background: "#2f2f2f", borderRadius: "25px" }}>
 					<div className="lg:w-5/12 flex-shrink-0 grow-0 basis-auto w-full">
 						<div className="2xl:max-w-2xl mx-auto">
