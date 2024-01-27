@@ -13,7 +13,7 @@ const MainSix = (props: Props) => {
 						</div>
 					</div>
 					<div className="lg:w-5/12 flex-shrink-0 w-full mx-auto">
-						<div className="max-w-lg md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-2xl mx-auto mobile-text-center">
+						<div className="max-w-lg md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-2xl mx-auto [@media(max-width:576px)]:!text-center">
 							<h4 className="text-white ml-3 font-bold text-4xl">
 								Tobeto'İşte Başarı Modeli'mizi Keşfet!
 							</h4>
