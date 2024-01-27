@@ -25,6 +25,7 @@
     "@uppy/drag-drop": "^3.0.3",
     "@uppy/file-input": "^3.0.4",
     "@uppy/progress-bar": "^3.0.4",
+    "@uppy/status-bar": "^3.2.5",
     "@uppy/react": "^3.2.1",
     "axios": "^1.6.3",
     "chart.js": "^4.4.1",
