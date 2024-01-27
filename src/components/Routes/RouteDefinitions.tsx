@@ -18,6 +18,7 @@ import ModuleSet from "pages/ModuleSet/ModuleSet";
 import ForeignLanguage from "components/ProfileInfo/ForeignLanguage/ForeignLanguage";
 import MyCertificates from "components/ProfileInfo/MyCertificates";
 import SocialMedia from "components/ProfileInfo/SocialMedia/SocialMedia";
+import Setting from "components/ProfileInfo/Settings/Setting";
 
 type Props = {};
 
@@ -44,7 +45,7 @@ const RouteDefinitions = (props: Props) => {
 					<Route path="sertifikalarim" element={<MyCertificates />}  />
 					<Route path="medya-hesaplarim" element={<SocialMedia/>} />
 					<Route path="yabanci-dil" element={<ForeignLanguage/>} />
-					<Route path="ayarlar" element />
+					<Route path="ayarlar" element={<Setting/>} />
 				</Route>
 			</Route>
 		</Routes>
