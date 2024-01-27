@@ -94,7 +94,7 @@ const MyProfile = (props: Props) => {
 	useEffect(() => {
 		let studentService = StudentService;
 		studentService
-			.getById("b1aa1476-33b9-448e-cc48-08dc1c1643b0")
+			.getById("fd85d04a-0598-4280-80c3-08dc1c47fa56")
 			.then((result) => setStudent(result.data));
 	}, []);
 	console.log(student.imgUrl);

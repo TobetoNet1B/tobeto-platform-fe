@@ -2,9 +2,9 @@ type Props = {}
 
 const MainFour = (props: Props) => {
 	return (
-		<div className="!w-full mx-auto m-0 section-three lg:px-80 sm:px-10 py-20">{/*className="container-fluid m-0 mp-0 section-three py-20" */}
+		<div className="!py-20 !m-0 w-full mx-auto px-[calc(1.5rem*0.5)] text-center text-white font-semibold text-[28px] leading-[34px] " style={{background:"linear-gradient(179.79deg,#93f .18%,#7d19e1 77.21%)"}}>
 			{/* mx-[calc((100vw-1152px)/-2+0.4em)]  */}
-			<div className="container">
+			<div className="container mx-auto px-[calc(1.5rem*0.5)]">
 				<div className="relative">
 					<p className="text-xl px-10  mx-auto text-center text-white">
 						Tobeto Platform'da ücretsiz olarak; sahip olduğun yetkinlikleri değerlendirir,

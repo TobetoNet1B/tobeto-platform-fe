@@ -93,6 +93,34 @@ module.exports = {
             opacity: 0,
           },
         },
+        preloaderAnimation: {
+          "0%": {
+            opacity: 0.3,
+          },
+          "50%": {
+            opacity: 1,
+          },
+          "100%": {
+            opacity: 0.3,
+          }
+        },
+        carrosel: {
+          "0%": {
+            transform: "rotateY(1turn) translateZ(130px) rotateY(-1turn)",
+            zIndex: 10,
+            opacity: 1
+          },
+        
+          "50%": {
+            zIndex: -10
+          },
+        
+          "to": {
+            transform: "rotateY(0deg) translateZ(130px) rotateY(0deg)",
+            zIndex: 10,
+            opacity: 1,
+          }
+        }
       },
     },
     animation: {
@@ -102,6 +130,8 @@ module.exports = {
       animateHeartOut: "animateHeartOut 0.3s linear forwards",
       animateCircle: "animateCircle 0.3s linear forwards",
       antProgresActive: "antProgresActive 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite",
+      preloaderAnimation: "preloaderAnimation 2s linear infinite",
+      carrosel: "carrosel 12s linear infinite"
     } /*  fade 4s ease 0s infinite normal none running fade auto normal normal */,
   },
 };
