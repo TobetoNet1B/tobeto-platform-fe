@@ -13,7 +13,7 @@ const ModuleSet = (props: Props) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 6000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -29,10 +29,9 @@ const ModuleSet = (props: Props) => {
               </svg>
             </Link>
           </div>
-
-          <div id="root">
-            <div id="wrapper-content" className="relative mt-0 mx-auto mb-[-80px] min-h-screen h-auto overflow-hidden">
-              <div id="dynamicContent" className="py-10 px-0 w-[88%] m-auto">
+          <div>
+            <div className="relative mt-0 mx-auto mb-[-80px] min-h-screen h-auto overflow-hidden">
+              <div className="py-10 px-0 my-0 mx-auto 2xl:w-[calc(100%-610px)] xl:w-[calc(100%-190px)] lg:w-[calc(100%-200px)] md:w-[calc(100%-90px)] [@media(max-width:768px)]:w-[calc(100%-70px)] [@media(max-width:768px)]:m-auto [@media(max-width:768px)]:!h-auto [@media(max-width:768px)]:block">
                 <div className="rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] inline-block align-middle w-full h-auto p-5 mb-12">
                   <ModuleSetHeader />
 
@@ -41,10 +40,7 @@ const ModuleSet = (props: Props) => {
               </div>
               <div className="h-20 clear-both" />
             </div>
-
-            <div className="top-0 absolute overflow-visible" />
           </div>
-
         </div>
       )}
     </div>
