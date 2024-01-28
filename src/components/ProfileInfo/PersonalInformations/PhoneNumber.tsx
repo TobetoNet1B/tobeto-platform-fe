@@ -1,7 +1,8 @@
 import { Field } from 'formik'
-import React from 'react'
+import ErrorSpan from 'utils/FormInput/ErrorSpan';
 
 type Props = {
+	name: string;
 	countryCode: string;
 	phoneNumber: string;
 }
@@ -21,6 +22,7 @@ const PhoneNumber = (props: Props) => {
 				<Field id='phoneNumber' type='number' name='phoneNumber' value={props.phoneNumber}
 					className="input input-bordered w-full join-item" placeholder='5** *** ** **' />
 			</div>
+			<ErrorSpan name={props.name} />
 		</div>
 	)
 }

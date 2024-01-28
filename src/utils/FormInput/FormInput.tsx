@@ -1,5 +1,7 @@
 import './form-input.css'
-import { ErrorMessage, Field } from "formik";
+import { Field } from "formik";
+import ErrorSpan from './ErrorSpan';
+import { IdentityErrorSpan } from 'utils/FormInput/ErrorSpan';
 
 type Props = {
 	label: string;
@@ -33,9 +35,7 @@ const FormInput = (props: Props) => {
 					{props.selectOption?.map((option, index) => <option key={index} value={option}>{option}</option>)}
 				</Field>
 			}
-			<ErrorMessage name={props.name}>
-				{message => <span className='text-danger-600'>{message}</span>}
-			</ErrorMessage>
+			{props.name === 'identityNumber' ? <IdentityErrorSpan name={props.name} /> : <ErrorSpan name={props.name} />}
 		</div>
 	)
 }
