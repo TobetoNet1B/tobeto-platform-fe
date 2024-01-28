@@ -53,8 +53,8 @@ const CourseDetail = (props: Props) => {
                   <div className="min-h-9 mt-2 !p-0 xl:max-w-[100%] xl:basis-[100%] xl:box-border xl:flex-grow-0 xl:flex-shrink-0 lg:px-2 lg:box-border lg:flex-grow-0 lg:flex-shrink-0 lg:basis-[100%] lg:max-w-[100%] md:px-2 md:box-border md:flex-grow-0 md:flex-shrink-0 md:basis-[100%] md:max-w-[100%] box-border flex-grow-0 flex-shrink-0 basis-[50%] max-w-[50%]">
                     <div className="flex cursor-pointer">
                       <span className="text-3xl my-0 mr-2 ml-0">
-                        <div id="main-content" className="absolute flex items-center justify-center text-center h-9">
-                          <div id="sub-content" className="cursor-pointer w-7">
+                        <div className="absolute flex items-center justify-center text-center h-9">
+                          <div className="cursor-pointer w-7">
                             <input checked={likedDetail}
                               onChange={handleHeartClickDetail} type="checkbox" id="checkbox1" className="hidden box-border p-0  " />
                             <label id="checkbox-label" htmlFor="checkbox1" className="transform -translate-x-3 translate-y-0 block font-semibold text-black touch-manipulation" >

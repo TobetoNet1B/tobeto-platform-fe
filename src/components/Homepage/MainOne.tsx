@@ -9,9 +9,9 @@ const MainOne = (props: Props) => {
 	const isLoggedIn = useSelector(SelectIsLoggedIn);
 
 	return (
-		<div className='container mx-auto px-[calc(1.5rem*0.5)] pt-20 xl:max-w-[1140px]'>
+		<div className='container mx-auto [@media(max-width:640px)]:!max-w-full px-[calc(1.5rem*0.5)] pt-20 xl:max-w-[1140px]'>
 			<div className='flex flex-wrap mx-[calc(1.5rem*-0.5)]'>
-				<div className="md:flex-grow-0 md:flex-shrink-0 md:basis-auto md:w-1/2 flex-grow-0 flex-shrink-0 basis-auto w-full md:pr-3 pr-0 mt-1">
+				<div className="md:flex-grow-0 md:flex-shrink-0 md:basis-auto md:w-1/2 flex-grow-0 flex-shrink-0 basis-auto w-full md:pr-3 pr-0 mt-1 [@media(max-width:640px)]:!ml-2 [@media(max-width:640px)]:!pr-3">
 					<div className='bg-cover bg-center bg-no-repeat  flex items-start justify-center flex-col p-[2em] relative h-[300px] rounded-[14px] transition-all duration-[400] [@media(max-width:762px)]:mb-[1em] [@media(max-width:762px)]:-mt-[2em]' style={{ backgroundImage: `url("https://tobeto.com/_next/static/media/ik02.02de641a.svg")` }}>
 						<span className='w-1/2 text-white font-bold !text-[20px] [@media(max-width:325px)]:z-20 z-20'>Hayalindeki teknoloji kariyerini başlat!</span>
 						<span className='w-1/2 text-white font-bold !text-[20px] [@media(max-width:325px)]:z-20 z-20' style={{ display: 'flex', fontStyle: "italic" }}>
@@ -34,11 +34,11 @@ const MainOne = (props: Props) => {
 					</div>
 				</div>
 				{/* !isLoggedIn && */
-					<div className="md:flex-grow-0 md:flex-shrink-0 md:basis-auto md:w-1/2 flex-grow-0 flex-shrink-0 basis-auto w-full md:pl-3 pl-0 mt-1">
+					<div className="md:flex-grow-0 md:flex-shrink-0 md:basis-auto md:w-1/2 flex-grow-0 flex-shrink-0 basis-auto w-full md:pl-3 pl-0 mt-1 [@media(max-width:640px)]:!ml-2 [@media(max-width:640px)]:!pr-3">
 						<div className='ik-card'>
 							<div className='relative flex flex-row items-center justify-between [@media(max-width:900px)]:relative [@media(max-width:900px)]:!flex-col [@media(max-width:900px)]:flex [@media(max-width:900px)]:items-center [@media(max-width:900px)]:justify-between [@media(max-width:900px)]:gap-[2em] [@media(max-width:767px)]:relative [@media(max-width:767px)]:!flex-col [@media(max-width:767px)]:flex [@media(max-width:767px)]:items-center [@media(max-width:767px)]:justify-between [@media(max-width:767px)]:gap-[2em]'>
 								<div className='relative left-0 w-[70%] !pl-0 [@media(max-width:900px)]:top-[20%] [@media(max-width:767px)]:!w-full [@media(max-width:767px)]:top-[25%]'>
-									<span className="bg-[#fdfdfd] py-[0.75em] px-[4em] rounded-tr-[2em] rounded-br-[2em] flex w-auto justify-end items-center relative text-[#1d1141] text-[1.25em] !font-bold after:content-[''] after:w-[2em] after:h-[2em] after:bg-[#1d1141] after:rounded-[1.5em] after:right-[0.45em] after:absolute [@media(max-width:900px)]:text-[0.75em] [@media(max-width:900px)]:justify-center [@media(max-width:767px)]:text-[0.7em] [@media(max-width:767px)]:justify-center [@media(max-width:767px)]:!w-[93vw] [@media(max-width:1024px)]:text-[1em]" style={{ padding: "0.75em 4em" }}>
+									<span className="bg-[#fdfdfd] py-[0.75em] px-[4em] rounded-tr-[2em] rounded-br-[2em] flex w-auto justify-end items-center relative text-[#1d1141] text-[1.25em] !font-bold after:content-[''] after:w-[2em] after:h-[2em] after:bg-[#1d1141] after:rounded-[1.5em] after:right-[0.45em] after:absolute [@media(max-width:900px)]:text-[0.75em] [@media(max-width:900px)]:justify-center [@media(max-width:767px)]:text-[0.7em] [@media(max-width:767px)]:justify-center [@media(max-width:767px)]:!w-[85vw] [@media(max-width:1024px)]:text-[1em]" style={{ padding: "0.75em 4em" }}>
 										Aradığın
 										<span style={{ color: 'rgb(0, 176, 120)' }}>&nbsp;"</span>
 										İş

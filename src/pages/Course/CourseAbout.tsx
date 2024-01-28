@@ -6,7 +6,7 @@ type Props = {}
 
 const CourseAbout = (props: Props) => {
   return (
-    <div role="tabpanel" tabIndex={0} aria-hidden="false" className="outline-none " id="rc-tabs-0-panel-about" aria-labelledby="rc-tabs-0-tab-about">
+    <div className="outline-none">
       <div className="">
         <div className="pt-0 px-0 pb-[15px]">
           <div className="!-mx-2 box-border flex flex-row flex-wrap">
