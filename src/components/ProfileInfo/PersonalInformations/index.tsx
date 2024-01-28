@@ -3,6 +3,7 @@ import { MdOutlineEdit } from "react-icons/md";
 import FormInput from 'utils/FormInput/FormInput';
 import Address from './Address';
 import PhoneNumber from './PhoneNumber';
+import * as Yup from 'yup';
 
 type Props = {}
 
@@ -12,8 +13,8 @@ const PersonalInformations = (props: Props) => {
 
 	const formik = useFormik({
 		initialValues: {
-			name: '',
-			surname: '',
+			firstName: '',
+			lastName: '',
 			phoneNumber: '',
 			countryCode: "+90",
 			birthDate: '',
@@ -25,6 +26,34 @@ const PersonalInformations = (props: Props) => {
 			addressDetails: '',
 			about: ''
 		},
+		validationSchema: Yup.object({
+			firstName: Yup.string()
+				.required('Adınızı girin')
+				.min(2, 'Ad 2 karakterden az olamaz.')
+				.max(20, 'Ad 20 karakterden fazla olamaz.'),
+			lastName: Yup.string()
+				.required('Soyadınızı girin')
+				.min(2, 'Soyad 2 karakterden az olamaz.')
+				.max(20, 'Soyad 20 karakterden fazla olamaz.'),
+			phoneNumber: Yup.string()
+				.required('Telefon Numarası Zorunlu')
+				.min(10, 'Telefon numarası 10 karakter olmalı')
+				.max(10, 'Telefon numarası 10 karakter olmalı'),
+			birthDate: Yup.date()
+				.required('Doğum tarihi gerekli'),
+			identityNumber: Yup.string()
+				.required('Aboneliklerde fatura için doldurulması zorunlu alan')
+				.min(11, '11 karakter')
+				.max(11, '11 karakter'),
+			email: Yup.string().email('Geçersiz e-posta')
+				.required('E-posta zorunlu'),
+			country: Yup.string()
+				.required('Gerekli')
+				.min(2, 'Geçersiz ülke adı')
+				.max(25, 'Ülke adı çok uzun'),
+			district:  Yup.string()
+				.required('İlçe Seçin')
+		}),
 		onSubmit: values => {
 			alert(JSON.stringify(values, null, 2));
 		}
@@ -42,12 +71,12 @@ const PersonalInformations = (props: Props) => {
 						</div>
 					</div>
 
-					<FormInput label="Adınız" name="name" isRequired={true} inputStyle='input'
-						value={formik.values.name} className='lg:col-span-6 col-span-12' />
-					<FormInput label="Soyadınız" name="surname" isRequired={true} inputStyle='input'
-						value={formik.values.surname} className='lg:col-span-6 col-span-12' />
+					<FormInput label="Adınız" name="firstName" isRequired={true} inputStyle='input'
+						value={formik.values.firstName} className='lg:col-span-6 col-span-12' />
+					<FormInput label="Soyadınız" name="lastName" isRequired={true} inputStyle='input'
+						value={formik.values.lastName} className='lg:col-span-6 col-span-12' />
 
-					<PhoneNumber countryCode={formik.values.countryCode} phoneNumber={formik.values.phoneNumber} />
+					<PhoneNumber countryCode={formik.values.countryCode} phoneNumber={formik.values.phoneNumber} name='phoneNumber' />
 
 					<FormInput label='Doğum Tarihiniz' name='birthDate' isRequired={true}
 						inputStyle='input' type='date' maxDate={maxDate}
@@ -60,7 +89,8 @@ const PersonalInformations = (props: Props) => {
 
 					<FormInput label='Ülke' name='country' isRequired={true} inputStyle='input'
 						value={formik.values.country} className='col-span-12' />
-					<Address city={formik.values.city} district={formik.values.district} addressDetails={formik.values.addressDetails} />
+					<Address city={formik.values.city} district={formik.values.district} addressDetails={formik.values.addressDetails}
+						cname="city" dname="district" />
 
 					<FormInput label='Hakkımda' name='about' isRequired={false} inputStyle='textarea' textareaH='h-32'
 						value={formik.values.about} className='col-span-12' placeHolder="Kendini kısaca tanıt" />
