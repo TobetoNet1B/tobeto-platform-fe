@@ -50,10 +50,10 @@ const VideoScreen = (props: Props) => {
   };
 
   const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseInt(event.target.value, 10);//İlk parametre olarak dönüştürülecek metin dizesi, ikinci parametre olarak ise kullanılacak olan sayı tabanını alır. Burada, metin dizesinin onluk sistemde olduğunu belirtmek için 10 kullanılır. Yani, event.target.value değeri (input elemanının değeri) onluk bir sayıya dönüştürülür. Bu işlem, ses seviyesini kontrol etmek amacıyla kullanılır ve genellikle bir input elemanının değeri 0 ile 100 arasında bir sayıdır.
+    const newVolume = parseInt(event.target.value, 10);
     setVolume(newVolume);
     if (videoRef.current) {
-      videoRef.current.volume = newVolume / 100;//Bu ifade ise video elementinin ses seviyesini kontrol eder. newVolume değişkeni, yukarıdaki parseInt ifadesi tarafından elde edilen 0 ile 100 arasındaki sayıyı temsil eder. Ancak, HTML5 video elementinin volume özelliği 0 ile 1 arasında bir değer alır. Bu nedenle, 0 ile 100 arasındaki ses seviyesini 0 ile 1 arasındaki bir değere dönüştürmek için bu ifadede 100 kullanılır. Yani, newVolume değeri 0 ile 100 arasında bir sayıyı temsil ederken, videoRef.current.volume değeri 0 ile 1 arasında bir sayı olacaktır.
+      videoRef.current.volume = newVolume / 100;
     }
   };
 
@@ -72,7 +72,7 @@ const VideoScreen = (props: Props) => {
     if (videoRef.current) {
       setCurrentTime(videoRef.current.currentTime);
       setDuration(videoRef.current.duration);
-      // Videonun hangi sürede olduğuna bağlı olarak seek bar rengini ayarla
+      
       const progressBar = document.getElementById('progress-bar');
       if (progressBar) {
         const progressPercentage = (videoRef.current.currentTime / videoRef.current.duration) * 100;

@@ -10,11 +10,11 @@ const Toast = (props: Props) => {
     setButtonData(status);
 
     try {
-      // Örnek asenkron işlem
+      
       const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
       const data = await response.json();
 
-      // İşleminiz başarılı ise status durumunu 'success' olarak güncelleyebilirsiniz.
+      
       if (data.id) {
         setButtonData('success');
       }

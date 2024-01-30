@@ -12,18 +12,18 @@ const MainSeven = (props: Props) => {
 	const [show6, setshow6] = useState(false);
 
 	return (
-		<div className='container mx-auto max-w-6xl w-full pt-8 pb-0'>{/* className='mb-6 container mt-20'*/}
-			<div className='flex flex-wrap pt-10 pb-0 bg-[#2f2f2f] rounded-3xl px-5'>{/* className='row acc-bg px-5'*/}
-				<div className="flex-shrink-0 grow-0 basis-auto w-full">{/* className='col-12'*/}
-					<div className="accordion px-5 pt-4 pb-2 relative" id="accordionExample">{/* className='accordion spec-acc'*/}
-						<div className="mb-10 bg-transparent border-none ">{/* className='accordion-item'*/}
-							<div className="flex flex-wrap">{/* className='row'*/}
-								<div className="md:w-full md:flex-shrink-0 md:grow-0 md:basis-auto flex-shrink-0 grow-0 basis-auto w-full">{/* className='col-md-12 col-12'*/}
+		<div className='container mx-auto [@media(max-width:640px)]:!max-w-full px-[calc(1.5rem*0.5)] !mb-6 !mt-20'>
+			<div className='flex flex-wrap pt-10 pb-0 bg-[#2f2f2f] rounded-3xl px-5'>
+				<div className="flex-shrink-0 grow-0 basis-auto w-full">
+					<div className="px-5 pt-4 pb-2 relative mb-[1em]">
+						<div className="mb-10 bg-transparent border-none ">
+							<div className="flex flex-wrap">
+								<div className="md:w-full md:flex-shrink-0 md:grow-0 md:basis-auto flex-shrink-0 grow-0 basis-auto w-full">
 									{/* <div className="border-none h-0.5 w-full block">
 												<div className="h-full bg-blue-500 animate-fill"></div>
 										</div> */}{/* Animayson için eklenecek div */}
-									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">{/* className='accordion-header'*/}
-										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow1(!show1)}>{/* className='accordion-button'*/}
+									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none">
+										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold [@media(max-width:760px)]:!text-[15px] text-xl pb-2" aria-label="show menu" onClick={() => setshow1(!show1)}>
 											Tobeto "Yazılımda Başarı" Testi &amp; Huawei Talent Interview
 										</button>
 										<button onClick={() => setshow1(!show1)} className='text-slate-300'>
@@ -36,12 +36,12 @@ const MainSeven = (props: Props) => {
 										</button>
 									</h2>
 								</div>
-								<div className="flex-shrink-0 grow-0 basis-auto w-full">{/*className="col-12" */}
+								<div className="flex-shrink-0 grow-0 basis-auto w-full">
 									<div id="collapse1" className={` ${show1 ? "flex" : "hidden"}`} style={{}}>
-										<div className="accordion-body border-b-2 border-gray-800 border-solid pb-4">{/*className="accordion-body tb-bottom" */}
-											<div className="flex flex-wrap bg-transparent text-white justify-between">{/*className="row" */}
-												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full">{/*className="col-lg-9 col-12" */}
-													<div className="text-lg max-w-[90%]">{/*className="acc-content-text" */}
+										<div className="py-4 md:border-b-2 md:border-[#272727] md:border-solid pb-4">
+											<div className="flex flex-wrap bg-transparent text-white justify-between">
+												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full">
+													<div className="text-lg max-w-[90%] mt-3 leading-5 [@media(max-width:760px)]:!text-[12.5px]">
 														Tobeto"da kendini sürekli değerlendirerek, öğrenim yolculuğunu kişiselleştirebilir ve işe hazırlık sürecine yön verebilirsin.&nbsp;
 														<br /> - Ücretsiz sunduğumuz&nbsp; Tobeto "Yazılımda
 														Başarı" Testi ile teknik bilgi ve yetkinliklerini
@@ -52,11 +52,11 @@ const MainSeven = (props: Props) => {
 														al.
 													</div>
 												</div>
-												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full">
+												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full mt-3">
 													<img className="max-w-full h-auto" src="https://tobeto.com/a1.png" alt="" style={{ borderRadius: "16px" }} />
 												</div>
 											</div>
-											<div className="border-b-[1px] border-solid border-gray-300 pb-5 hidden"></div>
+											<div className="border-b-[1px] border-solid border-gray-300 pb-5 md:hidden"></div>
 										</div>
 									</div>
 								</div>
@@ -68,8 +68,8 @@ const MainSeven = (props: Props) => {
 									{/* <div className="border-none h-0.5 w-full block">
 												<div className="h-full bg-blue-500 animate-fill"></div>
 										</div> */}{/* Animayson için eklenecek div */}
-									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">
-										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow2(!show2)}>
+									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none">
+										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold [@media(max-width:760px)]:!text-[15px] text-xl pb-2" aria-label="show menu" onClick={() => setshow2(!show2)}>
 											Tobeto Kişisel Gelişim Envanteri
 										</button>
 										<button onClick={() => setshow2(!show2)} className='text-slate-300'>
@@ -84,18 +84,18 @@ const MainSeven = (props: Props) => {
 								</div>
 								<div className="flex-shrink-0 grow-0 basis-auto w-full">
 									<div id="collapse1" className={` ${show2 ? "flex" : "hidden"}`} style={{}}>
-										<div className="accordion-body border-b-2 border-gray-800 border-solid pb-4">
+										<div className="py-4 md:border-b-2 md:border-[#272727] md:border-solid pb-4">
 											<div className="flex flex-wrap bg-transparent text-white justify-between">
-												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full pr-28">
-													<div className="text-lg max-w-[90%]">
+												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full">
+													<div className="text-lg max-w-[90%] mt-3 leading-5 [@media(max-width:760px)]:!text-[12.5px]">
 														Yeni bir meslek. Daha yüksek ücret. Uzaktan çalışma. Hedeflediğin ne olursa olsun, hepsine uygun bir yol mutlaka var. Bir sonraki hamleni planlamaya başlamadan önce üyelerimize ücretsiz sunduğumuz Tobeto Kişisel Gelişim Envanteri'mizi yap, kendin için en uygun kariyer alanlarını keşfet.
 													</div>
 												</div>
-												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full">
+												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full mt-3">
 													<img className="max-w-full h-auto" src="https://tobeto.com/a2.png" alt="" style={{ borderRadius: "16px" }} />
 												</div>
 											</div>
-											<div className="border-b-[1px] border-solid border-gray-300 pb-5 hidden"></div>
+											<div className="border-b-[1px] border-solid border-gray-300 pb-5 md:hidden"></div>
 										</div>
 									</div>
 								</div>
@@ -107,8 +107,8 @@ const MainSeven = (props: Props) => {
 									{/* <div className="border-none h-0.5 w-full block">
 												<div className="h-full bg-blue-500 animate-fill"></div>
 										</div> */}{/* Animayson için eklenecek div */}
-									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">
-										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow3(!show3)}>
+									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none">
+										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold [@media(max-width:760px)]:!text-[15px] text-xl pb-2" aria-label="show menu" onClick={() => setshow3(!show3)}>
 											Codecademy &amp; Tobeto
 										</button>
 										<button onClick={() => setshow3(!show3)} className='text-slate-300'>
@@ -123,18 +123,18 @@ const MainSeven = (props: Props) => {
 								</div>
 								<div className="flex-shrink-0 grow-0 basis-auto w-full">
 									<div id="collapse1" className={` ${show3 ? "flex" : "hidden"}`} style={{}}>
-										<div className="accordion-body border-b-2 border-gray-800 border-solid pb-4">
+										<div className="py-4 md:border-b-2 md:border-[#272727] md:border-solid pb-4">
 											<div className="flex flex-wrap bg-transparent text-white justify-between">
-												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full pr-28">
-													<div className="text-lg max-w-[90%]">
+												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full">
+													<div className="text-lg max-w-[90%] mt-3 leading-5 [@media(max-width:760px)]:!text-[12.5px]">
 														Codecademy;  50 milyondan fazla üyesinin yeni teknolojik beceriler  konusunda meraklanması, projelere imza atması, kariyerini geliştirmesine yardımcı  olan bir online kodlama eğitimi platformudur. Tobeto'nun, gerçek zamanlı, kendi hızında, etkileşimli öğrenme ortamıyla öğrenmek daha kolay! Üstelik, Türkçe derslerimiz ve öğrenmeni destekleyici kaynaklarımız bu süreci kolaylaştırmak ve hızlandırmak için senin yanında!
 													</div>
 												</div>
-												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full">
+												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full mt-3">
 													<img className="max-w-full h-auto" src="https://tobeto.com/calogo.png" alt="" style={{ borderRadius: "16px" }} />
 												</div>
 											</div>
-											<div className="border-b-[1px] border-solid border-gray-300 pb-5 hidden"></div>
+											<div className="border-b-[1px] border-solid border-gray-300 pb-5 md:hidden"></div>
 										</div>
 									</div>
 								</div>
@@ -146,8 +146,8 @@ const MainSeven = (props: Props) => {
 									{/* <div className="border-none h-0.5 w-full block">
 												<div className="h-full bg-blue-500 animate-fill"></div>
 										</div> */}{/* Animayson için eklenecek div */}
-									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">
-										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow4(!show4)}>
+									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none">
+										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold [@media(max-width:760px)]:!text-[15px] text-xl pb-2" aria-label="show menu" onClick={() => setshow4(!show4)}>
 											Bilgiyi Beceriye Çevirme
 										</button>
 										<button onClick={() => setshow4(!show4)} className='text-slate-300'>
@@ -162,18 +162,18 @@ const MainSeven = (props: Props) => {
 								</div>
 								<div className="flex-shrink-0 grow-0 basis-auto w-full">
 									<div id="collapse1" className={` ${show4 ? "flex" : "hidden"}`} style={{}}>
-										<div className="accordion-body border-b-2 border-gray-800 border-solid pb-4">
+										<div className="py-4 md:border-b-2 md:border-[#272727] md:border-solid pb-4">
 											<div className="flex flex-wrap bg-transparent text-white justify-between">
-												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full pr-28">
-													<div className="text-lg max-w-[90%]">
+												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full">
+													<div className="text-lg max-w-[90%] mt-3 leading-5 [@media(max-width:760px)]:!text-[12.5px]">
 														Canlı dersler, becerilerini derinleştirebileceğin uygulamalar, gerçek senaryoları deneyimleyebileceğin projeler ve mentör desteği ile becerilerini geliştir, süreci kendin yönet.
 													</div>
 												</div>
-												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full">
+												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full mt-3">
 													<img className="max-w-full h-auto" src="https://tobeto.com/a5.png" alt="" style={{ borderRadius: "16px" }} />
 												</div>
 											</div>
-											<div className="border-b-[1px] border-solid border-gray-300 pb-5 hidden"></div>
+											<div className="border-b-[1px] border-solid border-gray-300 pb-5 md:hidden"></div>
 										</div>
 									</div>
 								</div>
@@ -185,8 +185,8 @@ const MainSeven = (props: Props) => {
 									{/* <div className="border-none h-0.5 w-full block">
 												<div className="h-full bg-blue-500 animate-fill"></div>
 										</div> */}{/* Animayson için eklenecek div */}
-									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">
-										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow5(!show5)}>
+									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none">
+										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold [@media(max-width:760px)]:!text-[15px] text-xl pb-2" aria-label="show menu" onClick={() => setshow5(!show5)}>
 											Doğru İş İle Eşleşme
 										</button>
 										<button onClick={() => setshow5(!show5)} className='text-slate-300'>
@@ -201,18 +201,18 @@ const MainSeven = (props: Props) => {
 								</div>
 								<div className="flex-shrink-0 grow-0 basis-auto w-full">
 									<div id="collapse1" className={` ${show5 ? "flex" : "hidden"}`} style={{}}>
-										<div className="accordion-body border-b-2 border-gray-800 border-solid pb-4">
+										<div className="py-4 md:border-b-2 md:border-[#272727] md:border-solid pb-4">
 											<div className="flex flex-wrap bg-transparent text-white justify-between">
-												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full pr-28">
-													<div className="text-lg max-w-[90%]">
+												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full">
+													<div className="text-lg max-w-[90%] mt-3 leading-5 [@media(max-width:760px)]:!text-[12.5px]">
 														Uzmanlığın için yeni becerileri kazanmak (reskill) veya yeni bir role başlamak (upskill) için gelişim yolculuğunu tamamla, profilini güncelle, teknoloji odaklı iş fırsatlarıyla eşleş.
 													</div>
 												</div>
-												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full">
+												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full mt-3">
 													<img className="max-w-full h-auto" src="https://tobeto.com/a6.png" alt="" style={{ borderRadius: "16px" }} />
 												</div>
 											</div>
-											<div className="border-b-[1px] border-solid border-gray-300 pb-5 hidden"></div>
+											<div className="border-b-[1px] border-solid border-gray-300 pb-5 md:hidden"></div>
 										</div>
 									</div>
 								</div>
@@ -224,8 +224,8 @@ const MainSeven = (props: Props) => {
 									{/* <div className="border-none h-0.5 w-full block">
 												<div className="h-full bg-blue-500 animate-fill"></div>
 										</div> */}{/* Animayson için eklenecek div */}
-									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none" id="heading1">
-										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold text-xl pb-2" aria-label="show menu" onClick={() => setshow6(!show6)}>
+									<h2 className="mb-0 flex justify-between border-b-2 border-[#272727] border-solid shadow-none">
+										<button className="bg-transparent hover:text-[#93fd] text-[#93f] font-semibold [@media(max-width:760px)]:!text-[15px] text-xl pb-2" aria-label="show menu" onClick={() => setshow6(!show6)}>
 											Hayat Boyu Öğrenme
 										</button>
 										<button onClick={() => setshow6(!show6)} className='text-slate-300'>
@@ -240,18 +240,18 @@ const MainSeven = (props: Props) => {
 								</div>
 								<div className="flex-shrink-0 grow-0 basis-auto w-full">
 									<div id="collapse1" className={` ${show6 ? "flex" : "hidden"}`} style={{}}>
-										<div className="accordion-body border-b-2 border-gray-800 border-solid pb-4">
+										<div className="py-4 md:border-b-2 md:border-[#272727] md:border-solid pb-4">
 											<div className="flex flex-wrap bg-transparent text-white justify-between">
-												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full pr-28">
-													<div className="text-lg max-w-[90%]">
+												<div className="lg:w-9/12 flex-shrink-0 grow-0 basis-auto w-full">
+													<div className="text-lg max-w-[90%] mt-3 leading-5 [@media(max-width:760px)]:!text-[12.5px]">
 														Sürekli öğrenme ve sürdürebilir gelişim için Tobeto topluluğuna dahil ol.
 													</div>
 												</div>
-												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full">
+												<div className="lg:w-3/12 flex-shrink-0 grow-0 basis-auto w-full mt-3">
 													<img className="max-w-full h-auto" src="https://tobeto.com/a4.png" alt="" style={{ borderRadius: "16px" }} />
 												</div>
 											</div>
-											<div className="border-b-[1px] border-solid border-gray-300 pb-5 hidden"></div>
+											<div className="border-b-[1px] border-solid border-gray-300 pb-5 md:hidden"></div>
 										</div>
 									</div>
 								</div>
