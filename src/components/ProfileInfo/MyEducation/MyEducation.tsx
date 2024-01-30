@@ -9,11 +9,11 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 const educationLevels = ["Lisans", "Önlisans", "Yüksek Lisans", "Doktora"];
 
 const EducationSchema = Yup.object().shape({
-  educationLevel: Yup.string().required("Eğitim Durumu boş bırakılamaz"),
-  university: Yup.string().required("Üniversite boş bırakılamaz"),
-  department: Yup.string().required("Bölüm boş bırakılamaz"),
+  educationLevel: Yup.string().required("Doldurulması zorunlu alan*"),
+  university: Yup.string().required("Doldurulması zorunlu alan*"),
+  department: Yup.string().required("Doldurulması zorunlu alan*"),
   startYear: Yup.date()
-  .required("Başlangıç Yılı boş bırakılamaz")
+  .required("Doldurulması zorunlu alan*")
   .transform((originalValue, originalObject) => {
     if (originalObject && originalObject.ongoing) {
       return null;
@@ -22,7 +22,7 @@ const EducationSchema = Yup.object().shape({
   })
   .test({
     name: 'startYear',
-    message: 'Başlangıç Yılı boş bırakılamaz',
+    message: 'Doldurulması zorunlu alan*',
     test: function (value, { parent }) {
       return parent.ongoing || (value !== null && value !== undefined && !isNaN(value.getTime()));
     },
@@ -117,7 +117,7 @@ const MyEducation: React.FC = () => {
 
   return (
     <div className="">
-      <div className="max-w-4xl mx-auto text-[#828282]">
+      <div className="max-w-4xl mx-auto mt-5 text-[#828282]">
         <Formik
            initialValues={initialValues}
            validationSchema={EducationSchema}
@@ -224,7 +224,7 @@ const MyEducation: React.FC = () => {
 
             <button
               type="submit"
-              className="bg-[#9933FF] text-white p-2 rounded"
+              className="bg-[#9933FF] text-white p-2 w-24 rounded-full"
             >
               Kaydet
             </button>
