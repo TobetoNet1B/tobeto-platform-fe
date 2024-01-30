@@ -2,10 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import "./platform.css";
 import PlatformNavbar from "./PlatformNavbar";
 import ApplyCard from "./ApplyCard";
 import EducationShowcase from "./EducationShowcase";
+import { SlArrowRight } from "react-icons/sl";
 
 export default function Platform() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
@@ -21,10 +23,15 @@ export default function Platform() {
     setSelectedLink(link);
 
     if (link === "Eğitimlerim") {
-      setContainerHeight(1000); //
+      setContainerHeight(1010); //
     } else {
       setContainerHeight(700);
     }
+  };
+  const navigate = useNavigate();
+
+  const toEgitimlerim = () => {
+    navigate('/egitimlerim');
   };
 
   return (
@@ -150,13 +157,29 @@ export default function Platform() {
 
         {selectedLink === "Başvurularım" && <ApplyCard />}
         {selectedLink === "Eğitimlerim" && (
-          <EducationShowcase
-            searchQuery={searchQuery}
-            sortBy={sortBy}
-            selectedOrganization={selectedOrganization}
-          />
+        <>
+        <EducationShowcase
+          searchQuery={searchQuery}
+          sortBy={sortBy}
+          selectedOrganization={selectedOrganization}
+        />
+      <div className="showMoreContainer">
+  <button className="showMoreBtn"  onClick={toEgitimlerim}>
+    <SlArrowRight />
+  </button>
+  <p className="showMoreText" onClick={toEgitimlerim}>
+    Daha Fazla Göster
+  </p>
+</div>
+
+
+      </>
         )}
+
+
       </div>
+
     </div>
   );
 }
+
