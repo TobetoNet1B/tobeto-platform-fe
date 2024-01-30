@@ -11,18 +11,18 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 const cities = ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya"];
 
 const JobSchema = Yup.object().shape({
-  companyName: Yup.string().required("Kurum Adı boş bırakılamaz"),
-  position: Yup.string().required("Pozisyon boş bırakılamaz"),
-  sector: Yup.string().required("Sektör boş bırakılamaz"),
-  city: Yup.string().required("Şehir Seçiniz boş bırakılamaz"),
-  startDate: Yup.string().required("Başlangıç Tarihi boş bırakılamaz"),
+  companyName: Yup.string().required("Doldurulması zorunlu alan*"),
+  position: Yup.string().required("Doldurulması zorunlu alan*"),
+  sector: Yup.string().required("Doldurulması zorunlu alan*"),
+  city: Yup.string().required("Doldurulması zorunlu alan*"),
+  startDate: Yup.string().required("Doldurulması zorunlu alan*"),
   endDate: Yup.string().test({
     name: "endDate",
     test: function (value, context) {
       if (!context.parent.ongoing) {
         return (
           !!value ||
-          this.createError({ message: "Bitiş Tarihi boş bırakılamaz" })
+          this.createError({ message: "Doldurulması zorunlu alan*" })
         );
       }
       return true;
@@ -109,7 +109,7 @@ const Experience: React.FC = () => {
 
   return (
     <div className="">
-      <div className="max-w-4xl mx-auto text-[#828282] ">
+      <div className="max-w-4xl mt-5 mx-auto text-[#828282] ">
         <Formik
           initialValues={initialValues}
           validationSchema={JobSchema}

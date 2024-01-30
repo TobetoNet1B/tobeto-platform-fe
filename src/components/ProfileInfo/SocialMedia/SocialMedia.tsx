@@ -16,8 +16,8 @@ const initialValues: Card = {
 };
 
 const validationSchema = Yup.object({
-  socialMedia: Yup.string().required("Bu alan boş bırakılamaz"),
-  url: Yup.string().required("Bu alan boş bırakılamaz"),
+  socialMedia: Yup.string().required("Doldurulması zorunlu alan*"),
+  url: Yup.string().required("Doldurulması zorunlu alan*"),
 });
 const SocialMediaOptions = [
   "Instagram",
