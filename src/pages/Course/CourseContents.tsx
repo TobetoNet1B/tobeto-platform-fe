@@ -83,12 +83,10 @@ const CourseContents = (props: Props) => {
           </div>
           <div className="!px-2 flex-grow-0 flex-shrink-0 xl:max-w-[58.33333333%] xl:basis-[58.33333333%] lg:max-w-[58.33333333%] lg:basis-[58.33333333%] md:basis-[100%] md:max-w-[100%] w-full basis-full">
             <div className="shadow-[0_10px_30px_rgba(0,0,0,0.1)] rounded-[15px] overflow-hidden">
-              <div className="rounded-tl-2xl rounded-tr-2xl overflow-hidden relative w-full h-[400px]">
-
-                <div className=''>
+              <div className="rounded-tl-2xl rounded-tr-2xl overflow-hidden relative w-full h-full">
+                <div>
                   <VideoScreen videoSource='https://s3.cloud.ngn.com.tr/tobeto/tobeto_final_v2_5c7893fbe0.mp4' />
                 </div>
-
               </div>
               <div className="py-[15px] px-5">
                 <div className="!-mx-2 box-border flex flex-row flex-wrap" style={{WebkitBoxOrient:"horizontal",WebkitBoxDirection:"normal"}}>
