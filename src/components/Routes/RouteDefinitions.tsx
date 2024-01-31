@@ -10,7 +10,7 @@ import Evaluations from "pages/Evaluations/Evaluations";
 import Homepage from "pages/Homepage";
 import MyProfile from "pages/MyProfile/MyProfile";
 import NotFound from "pages/NotFound";
-import Platform from "pages/Platform/Platform";
+import Platform from "pages/Platform";
 import ProfileInfo from "pages/ProfileInfo";
 import SignInPage from "pages/SignInPage/SignInPage";
 import SignUpPage from "pages/SignUpPage/SignUpPage";
