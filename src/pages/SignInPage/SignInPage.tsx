@@ -4,18 +4,23 @@ import { passwordValidator } from 'utils/customValidations';
 import { number, object, string } from 'yup';
 import './SignInPage.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 type Props = {}
 
 const SignInPage = (props: Props) => {
     const initialValues = {
-        username: '',
+        email: '',
         password: ''
     }
 
     const validationSchema = object({
-        username: string().required("E-posta girmek zorunludur.").min(0),
-        password: string()
+        email: string().required("E-posta girmek zorunludur.").min(0),
+        password: string()/*
             .required("Şifre girmek zorunludur.")
             .min(3, "Şifre en az 3 karakter olmalıdır.")
             .max(50)
@@ -23,8 +28,43 @@ const SignInPage = (props: Props) => {
                 "my-custom-rule",
                 "En az 1 büyük, 1 küçük harf ve 1 rakam içermelidir.",
                 passwordValidator,
-            )
+            )*/
     });
+
+
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
+
+    const handleSubmit = async (values: { email: string; password: string }) => {
+        try {
+            const response = await fetch('http://localhost:60805/api/Auth/Login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const { token } = data.accessToken;
+
+                // Store the token in local storage
+                localStorage.setItem('token', token);
+
+                
+              
+
+                navigate('/platform'); // Redirect to the dashboard upon successful login
+            } else {
+                setError('Authentication failed');
+                
+            }
+        } catch (error) {
+            console.error('Error during authentication', error);
+            setError('Error during authentication');
+        }
+    };
 
 
 
@@ -39,15 +79,15 @@ const SignInPage = (props: Props) => {
                 />
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={values => { console.log(values); }}
+                    onSubmit={async (values) => { handleSubmit(values) }}
                     validationSchema={validationSchema}
                 >
                     <Form>
                         <div className="mb-4">
                             <Field
                                 type="text"
-                                id="username"
-                                name="username"
+                                id="email"
+                                name="email"
                                 className="mt-1 p-2 w-full border rounded-md"
                                 placeholder="E-Posta"
                             />
@@ -63,23 +103,24 @@ const SignInPage = (props: Props) => {
                             />
                             <ErrorMessage name="password"></ErrorMessage>
                         </div>
-                        
+
                         <button
                             type="submit"
                             className="bg-[#9933FF] text-white p-2 rounded-3xl w-full hover:bg-[#822BD9]"
                         >
                             Giriş Yap
                         </button>
+                        {error && <div className="text-red-500 mt-2">{error}</div>}
 
                         <div className=" items-center">
-                        <div className='mt-3 '>
+                            <div className='mt-3 '>
                                 <Link className="nav-link text-sm text-[#555351] hover:underline" to={"/sifremi-unuttum"}>
                                     Şifremi Unuttum
                                 </Link>
                             </div>
                             <div className='mt-6 '>
-                            <a className="text-sm text-black-500">
-                            Henüz üye değil misin?&nbsp;
+                                <a className="text-sm text-black-500">
+                                    Henüz üye değil misin?&nbsp;
                                 </a>
                                 <Link className="nav-link text-sm font-bold text-[#555351] hover:underline" to={"/kayit-ol"}>
                                     Kayıt Ol

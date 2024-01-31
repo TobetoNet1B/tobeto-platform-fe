@@ -26,7 +26,8 @@ import { Link } from 'react-router-dom';
 
 import StudentService from 'services/studentService';
 import { GetStudentResponse } from 'models/responses/students/getStudentResponse';
-
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 //let student = studentService.getById(2);
 
 
@@ -88,19 +89,51 @@ const MyProfile = (props: Props) => {
 		{ date: '2024/05/08', count: 32 },
 	];
 
-	const [student, setStudent] = useState<GetStudentResponse>({} as GetStudentResponse);
+	const [student, setStudent] = useState<GetStudentResponse[]>({} as GetStudentResponse[]);
 
-
-	useEffect(() => {
-		let studentService = StudentService;
-		studentService
-			.getById("fd85d04a-0598-4280-80c3-08dc1c47fa56")
-			.then((result) => setStudent(result.data));
-	}, []);
-	console.log(student.imgUrl);
 	
+		useEffect(() => {
+			let studentService = StudentService;
+				studentService
+					.getAll(0,999)
+					.then((result) => setStudent(result.data as GetStudentResponse[]));
+		}, []);
+		console.log("qqqqqqqqqqqqqqqq");
+		
+		console.log(student);
+		console.log("qqqqqqqqqqqqqqqq");
+	/*axios.interceptors.request.use(
+		(config) => {
+			const token = localStorage.getItem('token');
+			if (token) {
+				config.headers['Authorization'] = 'Bearer ' + token;
+			}
+			return config;
+		},
+		(error) => {
+			return Promise.reject(error);
+		}
+	);*/
+
+	/*useEffect(() => {
+		axios.get('http://localhost:60805/api/Students/', {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`
+			}
+		})
+			.then(response => {
+				setStudent(response.data);
+			})
+			.catch(error => console.error('Fetching user data failed:', error));
+	}, []);*/
 
 
+	const token2 = localStorage.getItem('token');
+	const decodedToken = jwtDecode(token2!);
+	console.log("--------------------");
+
+	console.log(decodedToken);
+	console.log("--------------------");
 	return (
 		<div className='h-screen overflow-y-auto  '>
 			<div className='max-w-[1110px] mx-auto'>
@@ -133,7 +166,7 @@ const MyProfile = (props: Props) => {
 
 										<div className="card rounded-2xl w-full p-4 max-h-48  bg-gradient-to-t from-[#5056C9] to-[#8D92FA] items-center">
 											<img
-												src={student.imgUrl}
+												//src={{/*student.imgUrl*/}}
 												alt="profil-picture"
 												className="mb-1 mt-1 rounded-full p-4 flex-shrink-0 border-4  flex-grow max-h-32 "
 											/>
@@ -151,7 +184,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1">
 												<p className="text-xs font-medium text-gray-500">Ad Soyad</p>
-												<p className="text-base font-bold text-gray-900">{student.user?.firstName} {student.user?.lastName}</p>
+												<p className="text-base font-bold text-gray-900"></p>
 											</div>
 										</div>
 										<div className="flex">
@@ -164,7 +197,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1">
 												<p className="text-xs font-medium text-gray-500">Doğum Tarihi</p>
-												<p className="text-base font-bold text-gray-900">{student.birthDate?.substring(0, 10)}</p>
+												<p className="text-base font-bold text-gray-900"></p>
 											</div>
 										</div>
 										<div className="flex">
@@ -177,7 +210,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1">
 												<p className="text-xs font-medium text-gray-500">E-Posta Adresi</p>
-												<p className="text-base font-bold text-gray-900">{student.user?.email}</p>
+												<p className="text-base font-bold text-gray-900"></p>
 											</div>
 										</div>
 										<div className="flex">
@@ -190,7 +223,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1 ">
 												<p className="text-xs font-medium text-gray-500">Telefon Numarası</p>
-												<p className="text-base font-bold text-gray-900">+90{student.phoneNumber}</p>
+												<p className="text-base font-bold text-gray-900">+90</p>
 											</div>
 										</div>
 
@@ -205,7 +238,7 @@ const MyProfile = (props: Props) => {
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 								<p className="font-medium text-base text-[#272727] mb-2">
-								{student.about}
+									
 								</p>
 							</div>
 						</div>
@@ -295,7 +328,7 @@ const MyProfile = (props: Props) => {
 									</div>
 								</div>
 
-								
+
 
 								<div className='flex p-1 my-2 rounded-[38px] shadow-lg'>
 									<div className="overflow-hidden ml-2 py-2 flex-1 flex items-center text-black">
