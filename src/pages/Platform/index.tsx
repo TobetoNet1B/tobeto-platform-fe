@@ -4,14 +4,14 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./platform.css";
-import PlatformNavbar from "./PlatformNavbar";
-import ApplyCard from "./ApplyCard";
-import EducationShowcase from "./EducationShowcase";
+import PlatformNavbar from "../../components/Platform/NavBar/PlatformNavbar";
+import ApplyCard from "../../components/Platform/Main/ApplyCard";
+import EducationShowcase from "../../components/Platform/Main/EducationShowcase";
 import { SlArrowRight } from "react-icons/sl";
-import AnnouncementCard from "./AnnouncementCards/AnnouncementCard";
-import AnnouncementCard2 from "./AnnouncementCards/AnnouncementCard2";
-import AnnouncementCard3 from "./AnnouncementCards/AnnouncementCard3";
-import MyExams from "./MyExams";
+import AnnouncementCard from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard";
+import AnnouncementCard2 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard2";
+import AnnouncementCard3 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard3";
+import MyExams from "../../components/Platform/Main/MyExams";
 
 export default function PlatformMain() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
