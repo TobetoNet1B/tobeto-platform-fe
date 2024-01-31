@@ -1,10 +1,8 @@
-import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./platform.css";
-import PlatformNavbar from "../../components/Platform/NavBar/PlatformNavbar";
 import ApplyCard from "../../components/Platform/Main/ApplyCard";
 import EducationShowcase from "../../components/Platform/Main/EducationShowcase";
 import { SlArrowRight } from "react-icons/sl";
@@ -44,8 +42,6 @@ export default function PlatformMain() {
 
   return (
     <div>
-      <PlatformNavbar/>
-
       <div className="entry-container">
         <div className="text-container">
           <h1 className="welcome-message">
@@ -202,8 +198,6 @@ export default function PlatformMain() {
 </div>
 <br />
 <MyExams/>
-
-      
     </div>
   );
 }

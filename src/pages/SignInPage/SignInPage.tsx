@@ -29,7 +29,7 @@ const SignInPage = (props: Props) => {
 
 
     return (
-        <div className="flex items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-screen bg-gray-100">
+        <div className="items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-full py-16 bg-gray-100">
             <div className="px-9 py-5 btn-rainbow-card bg-white shadow-md w-96 text-center relative overflow-hidden rounded-2xl">
                 <img
                     src="https://tobeto.com/_next/static/media/tobeto-logo.29b55e1c.svg"
@@ -91,7 +91,7 @@ const SignInPage = (props: Props) => {
 
             </div>
 
-            <div className="btn-rainbow-card-ik bg-white px-16 py-16 shadow-md w-96 text-center relative overflow-hidden  rounded-2xl">
+            <div className="btn-rainbow-card-ik bg-white px-16 py-16 shadow-md w-96 text-center relative overflow-hidden rounded-2xl">
                 <img
                     src="https://tobeto.com/_next/static/media/ik-logo-dark.7938c0de.svg"
                     alt="ik-banner"
