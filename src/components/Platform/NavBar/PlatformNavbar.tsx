@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import "../Main/platform.css";
+import "pages/Platform/platform.css";
 
 export default function PlatformNavbar() {
   return (

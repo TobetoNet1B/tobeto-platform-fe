@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Calendar from "components/Calendar/Calendar";
+import Calendar from "pages/Calendar/Calendar";
 import Abilities from "components/ProfileInfo/Abilities";
 import Experience from "components/ProfileInfo/Experience/Experience";
 import MyEducation from "components/ProfileInfo/MyEducation/MyEducation";
@@ -7,10 +7,10 @@ import PersonalInformations from "components/ProfileInfo/PersonalInformations";
 import Announcement from "pages/Announcement/Announcement";
 import Education from "pages/Education/Education";
 import Evaluations from "pages/Evaluations/Evaluations";
-import Home from "pages/Home";
+import Home from "layout/Home";
 import MyProfile from "pages/MyProfile/MyProfile";
 import NotFound from "pages/NotFound";
-import PlatformMain from "components/Platform/Main/PlatformMain";
+import PlatformMain from "pages/Platform";
 import ProfileInfo from "pages/ProfileInfo";
 import SignInPage from "pages/SignInPage/SignInPage";
 import SignUpPage from "pages/SignUpPage/SignUpPage";
@@ -19,8 +19,8 @@ import ForeignLanguage from "components/ProfileInfo/ForeignLanguage/ForeignLangu
 import MyCertificates from "components/ProfileInfo/MyCertificates";
 import SocialMedia from "components/ProfileInfo/SocialMedia/SocialMedia";
 import Setting from "components/ProfileInfo/Settings/Setting";
-import Main from "components/Homepage/Main/Main";
-import Platform from "pages/Platform";
+import Main from "pages/Homepage";
+import Platform from "layout/Platform";
 
 type Props = {};
 
@@ -35,7 +35,6 @@ const RouteDefinitions = (props: Props) => {
 			<Route element={<Platform />}>
 				<Route path="/platform" element={<PlatformMain />} />
 				<Route path="/egitimlerim" element={<Education />} />
-				<Route path="/moduleset" element={<ModuleSet />} />
 				<Route path="/duyurularım" element={<Announcement />} />
 				<Route path="/takvim" element={<Calendar />} />
 				<Route path="/degerlendirmeler" element={<Evaluations />} />
@@ -53,6 +52,7 @@ const RouteDefinitions = (props: Props) => {
 					</Route>
 				</Route>
 			</Route>
+			<Route path="/moduleset" element={<ModuleSet />} />
 			<Route path="*" element={<NotFound />} />
 		</Routes>
 	);
