@@ -7,6 +7,7 @@ import MainSix from './MainSix';
 import MainSeven from './MainSeven';
 import MainEight from './MainEight';
 import MainNine from './MainNine';
+import "./homepage.css";
 
 type Props = {}
 
@@ -23,6 +24,7 @@ const Main = (props: Props) => {
 			<MainSeven />
 			<MainEight />
 			<MainNine />
+			<hr className="h-px my-8 border-0 bg-zinc-600" />
 		</main>
 	)
 }

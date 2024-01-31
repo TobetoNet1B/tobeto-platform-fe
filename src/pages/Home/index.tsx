@@ -1,15 +1,14 @@
-import "./homepage.css";
-import NavBar from "components/NavBar";
-import AppealNav from "components/NavBar/AppealNav";
-import VidNav from "components/NavBar/VidNav";
-import Main from "../../components/Homepage/Main";
-import FooterComp from "components/Footer";
+import NavBar from "components/Homepage/NavBar";
+import AppealNav from "components/Homepage/NavBar/AppealNav";
+import VidNav from "components/Homepage/NavBar/VidNav";
+import FooterComp from "components/Homepage/Footer";
 import { useSelector } from "react-redux";
 import { SelectIsLoggedIn } from "store/Auth/AuthSlice";
+import { Outlet } from "react-router-dom";
 
 type Props = {};
 
-const Homepage = (props: Props) => {
+const Home = (props: Props) => {
 
 	const isLoggedIn = useSelector(SelectIsLoggedIn);
 
@@ -21,8 +20,7 @@ const Homepage = (props: Props) => {
 						{!isLoggedIn ? <AppealNav /> : <VidNav />}
 						<NavBar />
 					</div>
-					<Main />
-					<hr className="h-px my-8 border-0 bg-zinc-600" />
+					<Outlet />
 					<FooterComp />
 				</div>
 			</div>
@@ -30,4 +28,4 @@ const Homepage = (props: Props) => {
 	)
 }
 
-export default Homepage
+export default Home
