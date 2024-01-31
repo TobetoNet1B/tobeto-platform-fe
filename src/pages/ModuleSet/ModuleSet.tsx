@@ -32,7 +32,7 @@ const ModuleSet = (props: Props) => {
           <div>
             <div className="relative mt-0 mx-auto mb-[-80px] min-h-screen h-auto overflow-hidden">
               <div className="py-10 px-0 my-0 mx-auto 2xl:w-[calc(100%-610px)] xl:w-[calc(100%-190px)] lg:w-[calc(100%-200px)] md:w-[calc(100%-90px)] [@media(max-width:768px)]:w-[calc(100%-70px)] [@media(max-width:768px)]:m-auto [@media(max-width:768px)]:!h-auto [@media(max-width:768px)]:block">
-                <div className="rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] inline-block align-middle w-full h-auto p-5 mb-12">
+                <div className="rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] inline-block align-middle w-full h-auto p-5 mb-12">
                   <ModuleSetHeader />
 
                   <Course />
