@@ -13,7 +13,7 @@ import AnnouncementCard2 from "./AnnouncementCards/AnnouncementCard2";
 import AnnouncementCard3 from "./AnnouncementCards/AnnouncementCard3";
 import MyExams from "./MyExams";
 
-export default function Platform() {
+export default function PlatformMain() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("");
