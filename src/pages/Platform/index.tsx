@@ -25,11 +25,9 @@ export default function PlatformMain() {
     setSelectedLink(link);
 
     if (link === "Eğitimlerim") {
-      setContainerHeight(1010); 
-    } 
-    else if (link === "Duyuru ve Haberlerim") {
-      setContainerHeight(800); 
-    
+      setContainerHeight(1010);
+    } else if (link === "Duyuru ve Haberlerim") {
+      setContainerHeight(800);
     } else {
       setContainerHeight(700);
     }
@@ -160,8 +158,7 @@ export default function PlatformMain() {
         </div>
 
         {selectedLink === "Başvurularım" && <ApplyCard />}
-       
-        
+
         {selectedLink === "Eğitimlerim" && (
           <>
             <EducationShowcase
@@ -179,25 +176,22 @@ export default function PlatformMain() {
             </div>
           </>
         )}
-        <div style={{display:'flex'}}>
-      {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard/>}
-      {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard2/>}
-      {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard3/>}
-    </div>
-    {selectedLink === "Duyuru ve Haberlerim" && (
-         
-         <div className="showMoreContainer">
-           <button className="showMoreBtn">
-             <SlArrowRight />
-           </button>
-           <p className="showMoreText" >
-             Daha Fazla Göster
-           </p>
-         </div>
+        <div style={{ display: "flex" }}>
+          {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard />}
+          {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard2 />}
+          {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard3 />}
+        </div>
+        {selectedLink === "Duyuru ve Haberlerim" && (
+          <div className="showMoreContainer">
+            <button className="showMoreBtn">
+              <SlArrowRight />
+            </button>
+            <p className="showMoreText">Daha Fazla Göster</p>
+          </div>
         )}
-</div>
-<br />
-<MyExams/>
+      </div>
+      <br />
+      <MyExams />
     </div>
   );
 }
