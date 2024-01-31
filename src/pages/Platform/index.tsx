@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./platform.css";
 import ApplyCard from "../../components/Platform/Main/ApplyCard";
 import EducationShowcase from "../../components/Platform/Main/EducationShowcase";
 import { SlArrowRight } from "react-icons/sl";
+import AnnouncementCard from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard";
+import AnnouncementCard2 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard2";
+import AnnouncementCard3 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard3";
+import MyExams from "../../components/Platform/Main/MyExams";
 
 export default function PlatformMain() {
 	const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
@@ -21,7 +25,11 @@ export default function PlatformMain() {
 		setSelectedLink(link);
 
 		if (link === "Eğitimlerim") {
-			setContainerHeight(1010); //
+			setContainerHeight(1010);
+		}
+		else if (link === "Duyuru ve Haberlerim") {
+			setContainerHeight(800);
+
 		} else {
 			setContainerHeight(700);
 		}
@@ -29,12 +37,11 @@ export default function PlatformMain() {
 	const navigate = useNavigate();
 
 	const toEgitimlerim = () => {
-		navigate('/egitimlerim');
+		navigate("/egitimlerim");
 	};
 
 	return (
 		<div>
-
 			<div className="entry-container">
 				<div className="text-container">
 					<h1 className="welcome-message">
@@ -149,6 +156,8 @@ export default function PlatformMain() {
 				</div>
 
 				{selectedLink === "Başvurularım" && <ApplyCard />}
+
+
 				{selectedLink === "Eğitimlerim" && (
 					<>
 						<EducationShowcase
@@ -164,15 +173,27 @@ export default function PlatformMain() {
 								Daha Fazla Göster
 							</p>
 						</div>
-
-
 					</>
 				)}
+				<div style={{ display: 'flex' }}>
+					{selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard />}
+					{selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard2 />}
+					{selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard3 />}
+				</div>
+				{selectedLink === "Duyuru ve Haberlerim" && (
 
-
+					<div className="showMoreContainer">
+						<button className="showMoreBtn">
+							<SlArrowRight />
+						</button>
+						<p className="showMoreText" >
+							Daha Fazla Göster
+						</p>
+					</div>
+				)}
 			</div>
-
+			<br />
+			<MyExams />
 		</div>
 	);
 }
-
