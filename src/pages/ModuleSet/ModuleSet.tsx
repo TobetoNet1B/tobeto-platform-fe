@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import "./ModuleSet.css"
-import Course from "pages/Course/Course"
+import Course from "components/Course/Course"
 import ModuleSetHeader from "./ModuleSetHeader"
 import PreLoader from "utils/PreLoader"
 import { useEffect, useState } from "react"
