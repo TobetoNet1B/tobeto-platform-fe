@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 
 interface CustomJwtPayload {
-    [key: string]: any; // Dinamik anahtarlar için
+    [key: string]: any;
     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"?: string;
 }
 
@@ -56,7 +56,6 @@ const SignInPage = (props: Props) => {
 
                 const decodedToken: CustomJwtPayload = jwtDecode(token);
                 console.log(decodedToken);
-                //"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "3"
 
                 const userId = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
                 if (userId) {
@@ -64,9 +63,8 @@ const SignInPage = (props: Props) => {
                     console.log("ha burda user id vardı usagum"+userId);
                 }
 
-                // Store the token in local storage
                 localStorage.setItem('token', token);
-                navigate('/platform'); // Redirect to the dashboard upon successful login
+                navigate('/platform'); 
             } else {
                 setError('Authentication failed');
 
