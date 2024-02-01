@@ -7,7 +7,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import { jwtDecode } from 'jwt-decode';
 
+interface CustomJwtPayload {
+    [key: string]: any; // Dinamik anahtarlar için
+    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"?: string;
+}
 
 
 type Props = {}
@@ -49,16 +54,22 @@ const SignInPage = (props: Props) => {
                 const data = await response.json();
                 const { token } = data.accessToken;
 
+                const decodedToken: CustomJwtPayload = jwtDecode(token);
+                console.log(decodedToken);
+                //"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "3"
+
+                const userId = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+                if (userId) {
+                    localStorage.setItem('userId', userId);
+                    console.log("ha burda user id vardı usagum"+userId);
+                }
+
                 // Store the token in local storage
                 localStorage.setItem('token', token);
-
-                
-              
-
                 navigate('/platform'); // Redirect to the dashboard upon successful login
             } else {
                 setError('Authentication failed');
-                
+
             }
         } catch (error) {
             console.error('Error during authentication', error);

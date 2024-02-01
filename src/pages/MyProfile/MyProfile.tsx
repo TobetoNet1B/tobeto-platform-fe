@@ -89,19 +89,19 @@ const MyProfile = (props: Props) => {
 		{ date: '2024/05/08', count: 32 },
 	];
 
-	const [student, setStudent] = useState<GetStudentResponse[]>({} as GetStudentResponse[]);
+	const [student, setStudent] = useState<GetStudentResponse>({} as GetStudentResponse);
 
-	
-		useEffect(() => {
-			let studentService = StudentService;
-				studentService
-					.getAll(0,999)
-					.then((result) => setStudent(result.data as GetStudentResponse[]));
-		}, []);
-		console.log("qqqqqqqqqqqqqqqq");
-		
-		console.log(student);
-		console.log("qqqqqqqqqqqqqqqq");
+
+	useEffect(() => {
+		let studentService = StudentService;
+		studentService
+			.getById(localStorage.userId)
+			.then((result) => setStudent(result.data as GetStudentResponse));
+	}, []);
+	console.log("qqqqqqqqqqqqqqqq");
+
+	console.log(student);
+	console.log("qqqqqqqqqqqqqqqq");
 	/*axios.interceptors.request.use(
 		(config) => {
 			const token = localStorage.getItem('token');
@@ -127,13 +127,16 @@ const MyProfile = (props: Props) => {
 			.catch(error => console.error('Fetching user data failed:', error));
 	}, []);*/
 
-
-	const token2 = localStorage.getItem('token');
-	const decodedToken = jwtDecode(token2!);
-	console.log("--------------------");
-
-	console.log(decodedToken);
-	console.log("--------------------");
+	/*
+		const token2 = localStorage.getItem('token');
+		const decodedToken = jwtDecode(token2!);
+		console.log("--------------------");
+	
+		console.log(decodedToken);
+		console.log("--------------------");
+		console.log("----------token2----------");
+		console.log(token2);
+		*/
 	return (
 		<div className='h-screen overflow-y-auto  '>
 			<div className='max-w-[1110px] mx-auto'>
@@ -166,7 +169,7 @@ const MyProfile = (props: Props) => {
 
 										<div className="card rounded-2xl w-full p-4 max-h-48  bg-gradient-to-t from-[#5056C9] to-[#8D92FA] items-center">
 											<img
-												//src={{/*student.imgUrl*/}}
+												src={student.imgUrl}
 												alt="profil-picture"
 												className="mb-1 mt-1 rounded-full p-4 flex-shrink-0 border-4  flex-grow max-h-32 "
 											/>
@@ -184,7 +187,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1">
 												<p className="text-xs font-medium text-gray-500">Ad Soyad</p>
-												<p className="text-base font-bold text-gray-900"></p>
+												<p className="text-base font-bold text-gray-900">{student.user?.firstName} {student.user?.lastName}</p>
 											</div>
 										</div>
 										<div className="flex">
@@ -197,7 +200,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1">
 												<p className="text-xs font-medium text-gray-500">Doğum Tarihi</p>
-												<p className="text-base font-bold text-gray-900"></p>
+												<p className="text-base font-bold text-gray-900">{student.birthDate?.substring(0, 10)}</p>
 											</div>
 										</div>
 										<div className="flex">
@@ -210,7 +213,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1">
 												<p className="text-xs font-medium text-gray-500">E-Posta Adresi</p>
-												<p className="text-base font-bold text-gray-900"></p>
+												<p className="text-base font-bold text-gray-900">{student.user?.email}</p>
 											</div>
 										</div>
 										<div className="flex">
@@ -223,7 +226,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1 ">
 												<p className="text-xs font-medium text-gray-500">Telefon Numarası</p>
-												<p className="text-base font-bold text-gray-900">+90</p>
+												<p className="text-base font-bold text-gray-900">+90{student.phoneNumber}</p>
 											</div>
 										</div>
 
@@ -238,7 +241,7 @@ const MyProfile = (props: Props) => {
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 								<p className="font-medium text-base text-[#272727] mb-2">
-									
+									{student.about}
 								</p>
 							</div>
 						</div>
