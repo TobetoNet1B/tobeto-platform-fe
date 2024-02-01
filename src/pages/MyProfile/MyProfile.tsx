@@ -26,7 +26,8 @@ import { Link } from 'react-router-dom';
 
 import StudentService from 'services/studentService';
 import { GetStudentResponse } from 'models/responses/students/getStudentResponse';
-
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 //let student = studentService.getById(2);
 
 
@@ -94,13 +95,48 @@ const MyProfile = (props: Props) => {
 	useEffect(() => {
 		let studentService = StudentService;
 		studentService
-			.getById("fd85d04a-0598-4280-80c3-08dc1c47fa56")
-			.then((result) => setStudent(result.data));
+			.getById(localStorage.userId)
+			.then((result) => setStudent(result.data as GetStudentResponse));
 	}, []);
-	console.log(student.imgUrl);
+	console.log("qqqqqqqqqqqqqqqq");
+
+	console.log(student);
+	console.log("qqqqqqqqqqqqqqqq");
+	/*axios.interceptors.request.use(
+		(config) => {
+			const token = localStorage.getItem('token');
+			if (token) {
+				config.headers['Authorization'] = 'Bearer ' + token;
+			}
+			return config;
+		},
+		(error) => {
+			return Promise.reject(error);
+		}
+	);*/
+
+	/*useEffect(() => {
+		axios.get('http://localhost:60805/api/Students/', {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`
+			}
+		})
+			.then(response => {
+				setStudent(response.data);
+			})
+			.catch(error => console.error('Fetching user data failed:', error));
+	}, []);*/
+
+	/*
+		const token2 = localStorage.getItem('token');
+		const decodedToken = jwtDecode(token2!);
+		console.log("--------------------");
 	
-
-
+		console.log(decodedToken);
+		console.log("--------------------");
+		console.log("----------token2----------");
+		console.log(token2);
+		*/
 	return (
 		<div className='h-screen overflow-y-auto  '>
 			<div className='max-w-[1110px] mx-auto'>
@@ -205,7 +241,7 @@ const MyProfile = (props: Props) => {
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 								<p className="font-medium text-base text-[#272727] mb-2">
-								{student.about}
+									{student.about}
 								</p>
 							</div>
 						</div>
@@ -295,7 +331,7 @@ const MyProfile = (props: Props) => {
 									</div>
 								</div>
 
-								
+
 
 								<div className='flex p-1 my-2 rounded-[38px] shadow-lg'>
 									<div className="overflow-hidden ml-2 py-2 flex-1 flex items-center text-black">
