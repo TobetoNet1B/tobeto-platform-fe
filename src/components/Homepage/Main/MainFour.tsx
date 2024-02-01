@@ -4,7 +4,7 @@ const MainFour = (props: Props) => {
 	return (
 		<div className="!py-20 !m-0 w-full mx-auto px-[calc(1.5rem*0.5)] text-center text-white font-semibold text-[28px] leading-[34px] " style={{background:"linear-gradient(179.79deg,#93f .18%,#7d19e1 77.21%)"}}>
 			{/* mx-[calc((100vw-1152px)/-2+0.4em)]  */}
-			<div className="container mx-auto [@media(max-width:640px)]:!max-w-full px-[calc(1.5rem*0.5)]">
+			<div className="container mx-auto [@media(max-width:640px)]:!max-w-full max-w-6xl px-[calc(1.5rem*0.5)]">
 				<div className="relative">
 					<p className="text-xl px-10  mx-auto text-center text-white">
 						Tobeto Platform'da ücretsiz olarak; sahip olduğun yetkinlikleri değerlendirir,

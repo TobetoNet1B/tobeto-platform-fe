@@ -9,7 +9,7 @@ const MainOne = (props: Props) => {
 	const isLoggedIn = useSelector(SelectIsLoggedIn);
 
 	return (
-		<div className='container mx-auto [@media(max-width:640px)]:!max-w-full px-[calc(1.5rem*0.5)] pt-20 xl:max-w-[1140px]'>
+		<div className='container mx-auto [@media(max-width:640px)]:!max-w-full max-w-6xl px-[calc(1.5rem*0.5)] pt-20 xl:max-w-[1140px]'>
 			<div className='flex flex-wrap mx-[calc(1.5rem*-0.5)]'>
 				<div className="md:flex-grow-0 md:flex-shrink-0 md:basis-auto md:w-1/2 flex-grow-0 flex-shrink-0 basis-auto w-full md:pr-3 pr-0 mt-1 [@media(max-width:640px)]:!ml-2 [@media(max-width:640px)]:!pr-3">
 					<div className='bg-cover bg-center bg-no-repeat  flex items-start justify-center flex-col p-[2em] relative h-[300px] rounded-[14px] transition-all duration-[400] [@media(max-width:762px)]:mb-[1em] [@media(max-width:762px)]:-mt-[2em]' style={{ backgroundImage: `url("https://tobeto.com/_next/static/media/ik02.02de641a.svg")` }}>
