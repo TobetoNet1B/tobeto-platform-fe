@@ -2,7 +2,7 @@
   height: 2.1rem;
 }
 
-.nav{
+.nav {
   background-color: white;
 }
 .entry-container {
@@ -13,7 +13,7 @@
 
 .text-container {
   text-align: center;
-  margin-right: 5rem; 
+  margin-right: 5rem;
 }
 
 .welcome-message {
@@ -29,18 +29,18 @@
 }
 
 #text1 {
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-.body-container{
+.body-container {
   display: flex;
   display: block;
   height: 700px;
   align-items: center;
   justify-content: center;
   max-width: 1200px;
-border-radius:1.5%;
+  border-radius: 1.5%;
   margin: 0 auto;
   box-shadow: 0 20px 16px rgba(0, 0, 0, 0.1);
 }
@@ -52,58 +52,129 @@ border-radius:1.5%;
   padding-top: 4rem;
 }
 
-.freeCourse{
+.freeCourse {
   display: flex;
   justify-content: center;
   align-items: center;
-padding: 20px;
+  padding: 20px;
 }
 
 .localBar {
-margin: 30px 0px 0px 30px
+  margin: 30px 0px 0px 30px;
 }
 
-.localLink{
-
-  margin: 30px 0px 0px 20px
-  
+.localLink {
+  margin: 30px 0px 0px 20px;
 }
 
 .localLink:active,
 .localLink:focus {
-  text-decoration: underline; 
-
+  text-decoration: underline;
 }
-.applyInfo{
-  width: 550px; 
-  height: 130px; 
+
+#localLink2 {
+  transition: 1.5s ease;
+}
+
+.applyInfo {
+  width: 550px;
+  height: 130px;
   border: 2px solid;
   border-left: 6px solid #803f10;
   border-right: none;
   border-top: none;
   border-bottom: none;
-  border-radius: 8px; 
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); 
-  margin: 20px; 
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  margin: 20px;
 }
-.theGreenBar{
+.theGreenBar {
   display: flex;
   width: 145px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   padding: 5px;
- margin-left: 25.5rem;
- margin-top: 0.4rem;
+  margin-left: 25.5rem;
+  margin-top: 0.4rem;
   background-color: rgb(114, 80, 80);
   color: white;
   float: right;
 }
 
-.applyInfoNote1{
+.applyInfoNote1 {
   display: flex;
   align-items: center;
 }
-.applyInfoNote2{
+.applyInfoNote2 {
   display: flex;
   align-items: center;
+}
+
+.showMoreContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.showMoreBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 0.5px solid #f7f2fd;
+  background-color: transparent;
+  color: #828282;
+  box-shadow: 0px 0px 10px 2px gray;
+  cursor: pointer;
+  margin: 1rem auto;
+}
+
+.showMoreText {
+  color: #828282;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.announcementCard,
+.announcementCard2,
+.announcementCard3 {
+  display: flex;
+  width: 340px;
+  height: 130px;
+  border: 2px solid;
+  border-left: 7px solid #627062;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  justify-content: space-between;
+  color: gray;
+}
+
+.myExams {
+  display: flex;
+  height: 200px;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 1200px;
+  border-radius: 1.5%;
+  margin: 0 auto;
+  box-shadow: 0 20px 16px rgba(0, 0, 0, 0.1);
+}
+
+
+.cfe1bExam{
+  display: flex;
+  margin-top:100px;
+  width: 580px;
+  height: 100px;
+  border: 2px solid;
+  border-color: #828282;
+  border-radius:1.5%;
+  box-shadow: 0 20px 16px rgba(0, 0, 0, 0.1);
 }

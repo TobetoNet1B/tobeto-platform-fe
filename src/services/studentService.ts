@@ -21,6 +21,8 @@ class StudentService extends BaseService<
 	}
 
 	getByFilter() {}
+
+
 }
 
 export default new StudentService();

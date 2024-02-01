@@ -4,18 +4,28 @@ import { passwordValidator } from 'utils/customValidations';
 import { number, object, string } from 'yup';
 import './SignInPage.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+import { jwtDecode } from 'jwt-decode';
+
+interface CustomJwtPayload {
+    [key: string]: any;
+    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"?: string;
+}
+
 
 type Props = {}
 
 const SignInPage = (props: Props) => {
     const initialValues = {
-        username: '',
+        email: '',
         password: ''
     }
 
     const validationSchema = object({
-        username: string().required("E-posta girmek zorunludur.").min(0),
-        password: string()
+        email: string().required("E-posta girmek zorunludur.").min(0),
+        password: string()/*
             .required("Şifre girmek zorunludur.")
             .min(3, "Şifre en az 3 karakter olmalıdır.")
             .max(50)
@@ -23,13 +33,52 @@ const SignInPage = (props: Props) => {
                 "my-custom-rule",
                 "En az 1 büyük, 1 küçük harf ve 1 rakam içermelidir.",
                 passwordValidator,
-            )
+            )*/
     });
+
+
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
+
+    const handleSubmit = async (values: { email: string; password: string }) => {
+        try {
+            const response = await fetch('http://localhost:60805/api/Auth/Login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const { token } = data.accessToken;
+
+                const decodedToken: CustomJwtPayload = jwtDecode(token);
+                console.log(decodedToken);
+
+                const userId = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+                if (userId) {
+                    localStorage.setItem('userId', userId);
+                    console.log("ha burda user id vardı usagum"+userId);
+                }
+
+                localStorage.setItem('token', token);
+                navigate('/platform'); 
+            } else {
+                setError('Authentication failed');
+
+            }
+        } catch (error) {
+            console.error('Error during authentication', error);
+            setError('Error during authentication');
+        }
+    };
 
 
 
     return (
-        <div className="flex items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-screen bg-gray-100">
+        <div className="items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-full py-16 bg-gray-100">
             <div className="px-9 py-5 btn-rainbow-card bg-white shadow-md w-96 text-center relative overflow-hidden rounded-2xl">
                 <img
                     src="https://tobeto.com/_next/static/media/tobeto-logo.29b55e1c.svg"
@@ -39,15 +88,15 @@ const SignInPage = (props: Props) => {
                 />
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={values => { console.log(values); }}
+                    onSubmit={async (values) => { handleSubmit(values) }}
                     validationSchema={validationSchema}
                 >
                     <Form>
                         <div className="mb-4">
                             <Field
                                 type="text"
-                                id="username"
-                                name="username"
+                                id="email"
+                                name="email"
                                 className="mt-1 p-2 w-full border rounded-md"
                                 placeholder="E-Posta"
                             />
@@ -63,23 +112,24 @@ const SignInPage = (props: Props) => {
                             />
                             <ErrorMessage name="password"></ErrorMessage>
                         </div>
-                        
+
                         <button
                             type="submit"
                             className="bg-[#9933FF] text-white p-2 rounded-3xl w-full hover:bg-[#822BD9]"
                         >
                             Giriş Yap
                         </button>
+                        {error && <div className="text-red-500 mt-2">{error}</div>}
 
                         <div className=" items-center">
-                        <div className='mt-3 '>
+                            <div className='mt-3 '>
                                 <Link className="nav-link text-sm text-[#555351] hover:underline" to={"/sifremi-unuttum"}>
                                     Şifremi Unuttum
                                 </Link>
                             </div>
                             <div className='mt-6 '>
-                            <a className="text-sm text-black-500">
-                            Henüz üye değil misin?&nbsp;
+                                <a className="text-sm text-black-500">
+                                    Henüz üye değil misin?&nbsp;
                                 </a>
                                 <Link className="nav-link text-sm font-bold text-[#555351] hover:underline" to={"/kayit-ol"}>
                                     Kayıt Ol
@@ -91,7 +141,7 @@ const SignInPage = (props: Props) => {
 
             </div>
 
-            <div className="btn-rainbow-card-ik bg-white px-16 py-16 shadow-md w-96 text-center relative overflow-hidden  rounded-2xl">
+            <div className="btn-rainbow-card-ik bg-white px-16 py-16 shadow-md w-96 text-center relative overflow-hidden rounded-2xl">
                 <img
                     src="https://tobeto.com/_next/static/media/ik-logo-dark.7938c0de.svg"
                     alt="ik-banner"
