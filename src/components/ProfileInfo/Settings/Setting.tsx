@@ -106,21 +106,21 @@ const Setting: React.FC = () => {
       </Form>
     </Formik>
     <Modal show={isDeleteModalOpen} onClose={cancelDeleteAccount}>
-    <BsExclamationCircle size={40} className='m-3 text-[#8C2EE8]' />
+    <BsExclamationCircle size={50} className='m-3 border-4 border-[#f2e2ff] rounded-full text-[#8C2EE8]' />
         <div className="p-4">
           <h2 className="text-xl font-bold mb-4">Hesabınızı silmek istediğinize emin misiniz?</h2>
-          <p className="mb-4">Hesabınızı silme işleminden sonrasında bilgileriniz geri alınamaz şekilde silinecektir.</p>
+          <p className="mb-4 text-[#828282]">Hesabınızı silme işleminden sonrasında bilgileriniz geri alınamaz şekilde silinecektir.</p>
           <div className="flex justify-end space-x-4">
             <button
               onClick={cancelDeleteAccount}
-              className="bg-[#828282] w-1/2 text-white py-2 px-4 rounded-full hover:bg-[#8C2EE8] focus:outline-none focus:ring focus:border-green-300"
+              className="bg-[#b4b3b3] w-1/2 text-white py-2 px-4 rounded-full hover:bg-[#8C2EE8] focus:outline-none focus:ring focus:border-green-300"
             >
               Hayır
             </button>
 
             <button
               onClick={confirmDeleteAccount}
-              className="bg-[#828282] w-1/2 text-white py-2 px-4 rounded-full hover:bg-[#8C2EE8] focus:outline-none focus:ring focus:border-red-300"
+              className="bg-red-400 w-1/2 text-white py-2 px-4 rounded-full hover:bg-[#8C2EE8] focus:outline-none focus:ring focus:border-red-300"
             >
               Evet
             </button>

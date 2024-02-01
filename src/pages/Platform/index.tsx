@@ -1,13 +1,17 @@
-import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./platform.css";
-import PlatformNavbar from "./PlatformNavbar";
-import ApplyCard from "./ApplyCard";
-import EducationShowcase from "./EducationShowcase";
+import ApplyCard from "../../components/Platform/Main/ApplyCard";
+import EducationShowcase from "../../components/Platform/Main/EducationShowcase";
+import { SlArrowRight } from "react-icons/sl";
+import AnnouncementCard from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard";
+import AnnouncementCard2 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard2";
+import AnnouncementCard3 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard3";
+import MyExams from "../../components/Platform/Main/MyExams";
 
-export default function Platform() {
+export default function PlatformMain() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("");
@@ -16,21 +20,26 @@ export default function Platform() {
   useEffect(() => {
     handleLinkClick(selectedLink);
   }, []);
-  
+
   const handleLinkClick = (link: string) => {
     setSelectedLink(link);
 
     if (link === "Eğitimlerim") {
-      setContainerHeight(1000); //
+      setContainerHeight(1010);
+    } else if (link === "Duyuru ve Haberlerim") {
+      setContainerHeight(800);
     } else {
       setContainerHeight(700);
     }
   };
+  const navigate = useNavigate();
+
+  const toEgitimlerim = () => {
+    navigate("/egitimlerim");
+  };
 
   return (
     <div>
-      <PlatformNavbar></PlatformNavbar>
-
       <div className="entry-container">
         <div className="text-container">
           <h1 className="welcome-message">
@@ -149,14 +158,40 @@ export default function Platform() {
         </div>
 
         {selectedLink === "Başvurularım" && <ApplyCard />}
+
         {selectedLink === "Eğitimlerim" && (
-          <EducationShowcase
-            searchQuery={searchQuery}
-            sortBy={sortBy}
-            selectedOrganization={selectedOrganization}
-          />
+          <>
+            <EducationShowcase
+              searchQuery={searchQuery}
+              sortBy={sortBy}
+              selectedOrganization={selectedOrganization}
+            />
+            <div className="showMoreContainer">
+              <button className="showMoreBtn" onClick={toEgitimlerim}>
+                <SlArrowRight />
+              </button>
+              <p className="showMoreText" onClick={toEgitimlerim}>
+                Daha Fazla Göster
+              </p>
+            </div>
+          </>
+        )}
+        <div style={{ display: "flex" }}>
+          {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard />}
+          {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard2 />}
+          {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard3 />}
+        </div>
+        {selectedLink === "Duyuru ve Haberlerim" && (
+          <div className="showMoreContainer">
+            <button className="showMoreBtn">
+              <SlArrowRight />
+            </button>
+            <p className="showMoreText">Daha Fazla Göster</p>
+          </div>
         )}
       </div>
+      <br />
+      <MyExams />
     </div>
   );
 }
