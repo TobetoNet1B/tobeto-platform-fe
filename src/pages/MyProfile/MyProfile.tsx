@@ -1,11 +1,6 @@
-import { Card, Dropdown } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
 import {
 	HiMiniPencil,
-	HiMiniUser,
-	HiMiniCake,
-	HiEnvelope,
-	HiMiniPhone,
 	HiOutlineGlobeAlt,
 	HiOutlineHome
 } from "react-icons/hi2";
@@ -23,14 +18,8 @@ import {
 import { Radar } from 'react-chartjs-2';
 import HeatMap from '@uiw/react-heat-map';
 import { Link } from 'react-router-dom';
-
 import StudentService from 'services/studentService';
 import { GetStudentResponse } from 'models/responses/students/getStudentResponse';
-import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
-//let student = studentService.getById(2);
-
-
 
 
 ChartJS.register(
@@ -44,20 +33,9 @@ ChartJS.register(
 
 type Props = {}
 
-
 const MyProfile = (props: Props) => {
 	const data = {
-		labels: [
-			'',
-			'',
-			'',
-			'',
-			'',
-			'',
-			'',
-			''
-
-		],
+		labels: ['','','','','','','',''],
 		datasets: [{
 			label: "",
 			data: [4.4, 4.9, 4.4, 4.7, 4.8, 4.9, 4.8, 4.6],
@@ -78,7 +56,6 @@ const MyProfile = (props: Props) => {
 		}]
 	};
 
-
 	const value = [
 		{ date: '2024/01/11', count: 2 },
 		{ date: '2024/04/12', count: 2 },
@@ -90,63 +67,27 @@ const MyProfile = (props: Props) => {
 	];
 
 	const [student, setStudent] = useState<GetStudentResponse>({} as GetStudentResponse);
-
-
 	useEffect(() => {
 		let studentService = StudentService;
 		studentService
 			.getById(localStorage.userId)
 			.then((result) => setStudent(result.data as GetStudentResponse));
 	}, []);
-	console.log("qqqqqqqqqqqqqqqq");
-
 	console.log(student);
-	console.log("qqqqqqqqqqqqqqqq");
-	/*axios.interceptors.request.use(
-		(config) => {
-			const token = localStorage.getItem('token');
-			if (token) {
-				config.headers['Authorization'] = 'Bearer ' + token;
-			}
-			return config;
-		},
-		(error) => {
-			return Promise.reject(error);
-		}
-	);*/
-
-	/*useEffect(() => {
-		axios.get('http://localhost:60805/api/Students/', {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`
-			}
-		})
-			.then(response => {
-				setStudent(response.data);
-			})
-			.catch(error => console.error('Fetching user data failed:', error));
-	}, []);*/
-
-	/*
-		const token2 = localStorage.getItem('token');
-		const decodedToken = jwtDecode(token2!);
-		console.log("--------------------");
 	
-		console.log(decodedToken);
-		console.log("--------------------");
-		console.log("----------token2----------");
-		console.log(token2);
-		*/
 	return (
 		<div className='h-screen overflow-y-auto  '>
 			<div className='max-w-[1110px] mx-auto'>
+				
 				<div className="mt-6 mb-2 ">
 					<div className="flex justify-end items-center">
+
 						<Link to="profilimi-duzenle/kisisel-bilgilerim">
 							<button className="btn btn-circle btn-ghost">
 								<HiMiniPencil />
 							</button>
 						</Link>
+
 						<div className="dropdown dropdown-end">
 							<div tabIndex={0} role="button" className="btn btn-circle btn-ghost btn-md text-black">
 								<FaShareAlt />
@@ -159,14 +100,15 @@ const MyProfile = (props: Props) => {
 
 					</div>
 				</div>
+
 				<div className='lg:flex'>
 					<div className="lg:w-1/3 mr-2">
+
 						<div className='col-12 '>
 							<div className="card rounded-2xl border-gray-50 dark:border-gray-50 max-w-full mr-2 bg-gray-50 dark:bg-gray-50 shadow-2xl ">
 								<div className="flex flex-col">
 
 									<div className=''>
-
 										<div className="card rounded-2xl w-full p-4 max-h-48  bg-gradient-to-t from-[#5056C9] to-[#8D92FA] items-center">
 											<img
 												src={student.imgUrl}
@@ -234,6 +176,7 @@ const MyProfile = (props: Props) => {
 								</div>
 							</div>
 						</div>
+
 						<div className='col-12 my-4'>
 							<div className="card p-5 rounded-2xl border-white dark:border-white max-w-full mr-2 bg-white dark:bg-white shadow-2xl ">
 								<h5 className="text-lg font-bold tracking-normal text-[#323232] ">
@@ -245,13 +188,13 @@ const MyProfile = (props: Props) => {
 								</p>
 							</div>
 						</div>
+
 						<div className='col-12 my-4'>
 							<div className="card p-5 rounded-2xl border-white dark:border-white max-w-full mr-2 bg-white dark:bg-white shadow-2xl ">
 								<h5 className="text-lg font-bold tracking-normal text-[#323232] ">
 									Yetkinliklerim
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
-								{/* abilities dizisindeki her bir yeteneği map fonksiyonu ile listele */}
 								{student.abilities?.map((ability, index) => (
 									<h5 key={index} className='p-2 my-2 text-base font-normal bg-white text-black rounded-3xl hover:bg-[#9933FF] hover:text-white shadow-lg'>
 										&emsp;{ability.name}
@@ -259,6 +202,7 @@ const MyProfile = (props: Props) => {
 								))}
 							</div>
 						</div>
+
 						<div className='col-12 my-4'>
 							<div className="card p-5 rounded-2xl border-white dark:border-white max-w-full mr-2 bg-white dark:bg-white shadow-2xl ">
 
@@ -267,24 +211,21 @@ const MyProfile = (props: Props) => {
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 
-								{/* studentForeignLanguages dizisindeki her bir dil bilgisini map fonksiyonu ile listele */}
 								{student.studentForeignLanguages?.map((language, index) => (
 									<div key={index} className="card my-2 border-gray-50 dark:border-gray-50 bg-white dark:bg-white rounded-3xl shadow-md">
 										<div className='flex items-center p-1'>
 											<div className="flex-none">
-												{/* Dili temsil eden bir ikon (örneğin, bir dünya ikonu) */}
 												<HiOutlineGlobeAlt className="text-3xl border-2 border-white rounded-full text-[#828282]" />
 											</div>
 											<div className="flex-auto">
 												<div className="text-base font-medium text-[#828282]">
-													&nbsp;{language.languageName} {/* Dil adı */}
+													&nbsp;{language.languageName} 
 												</div>
 												<div className="text-xs text-[#828282]">
-													&nbsp;{language.languageLevel} Seviye {/* Dil seviyesi */}
+													&nbsp;{language.languageLevel} Seviye 
 												</div>
 											</div>
 											<div className="flex-none">
-												{/* Kültürel veya coğrafi bağlantıyı temsil eden bir ikon (örneğin, bir ev ikonu) */}
 												<HiOutlineHome className="text-3xl bg-[#F3F3F3] border-2 rounded-full text-[#828282]" />
 											</div>
 										</div>
@@ -295,7 +236,6 @@ const MyProfile = (props: Props) => {
 						</div>
 
 						<div className='col-12 my-4'>
-
 							<div className="card p-5 rounded-2xl border-white dark:border-white max-w-full mr-2 bg-white dark:bg-white shadow-2xl ">
 
 								<h5 className="text-lg font-bold tracking-normal text-[#323232] ">
@@ -303,16 +243,14 @@ const MyProfile = (props: Props) => {
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 
-								{/* certificates dizisindeki her bir sertifikayı map fonksiyonu ile listele */}
 								{student.certificates?.map((certificate, index) => (
 									<div key={index} className='flex p-1 my-2 rounded-[38px] hover:bg-[#9933FF]  shadow-lg'>
 										<div className="overflow-hidden ml-2 py-2 flex-1 flex items-center  text-black hover:text-white">
 											<div className='truncate'>
-												{certificate.name} {/* Sertifika adı */}
+												{certificate.name}
 											</div>
 										</div>
 										<div className="flex ml-1 items-center">
-											{/* Dosya türüne göre ikon göster */}
 											{certificate.fileType === '.pdf' && <FaFilePdf className="p-1 text-3xl text-gray-700" />}
 											{certificate.fileType === '.jpg' && <FaFileImage className="p-1 text-3xl text-gray-700 mr-1" />}
 										</div>
@@ -330,7 +268,6 @@ const MyProfile = (props: Props) => {
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 
 								<div className='flex justify-between'>
-									{/* socialMedias dizisindeki her bir sosyal medya hesabını map fonksiyonu ile listele */}
 									{student.socialMedias?.map((socialMedia, index) => (
 										<div key={index}>
 											<a key={index} href={`https://${socialMedia.socialMediaUrl}`} target="_blank" rel="noopener noreferrer">												{socialMedia.name === 'linkedin' && (
@@ -382,7 +319,6 @@ const MyProfile = (props: Props) => {
 
 							</div>
 						</div>
-
 
 					</div>
 
@@ -455,11 +391,10 @@ const MyProfile = (props: Props) => {
 
 								<div className='flex '>
 
-									{/* studentExams dizisindeki her bir sınavı map fonksiyonu ile listele */}
 									{student.studentExams?.map((exam, index) => (
 										<div key={index} className="p-2 bg-white rounded-md flex-none w-1/2 shadow-md mr-2 my-2 border-white border-2 hover:border-purple-600 hover:border-2" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
 											<div className="">
-												<h2 className="text-base font-medium text-[#828282]">{exam.examName}</h2> {/* Sınav adı */}
+												<h2 className="text-base font-medium text-[#828282]">{exam.examName}</h2>
 												<p className="text-md">{exam.score}</p>
 											</div>
 											<div className="text-right">
@@ -534,7 +469,6 @@ const MyProfile = (props: Props) => {
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 								<ul className="timeline timeline-vertical lg:timeline-horizontal ">
-									{/* experiences dizisindeki her bir deneyimi map fonksiyonu ile listele */}
 									{student.experiences?.map((experience, index) => (
 										<li key={index}>
 											<div className="timeline-start">{new Date(experience.startDate).getFullYear()}</div>
