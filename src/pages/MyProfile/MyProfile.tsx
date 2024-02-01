@@ -9,7 +9,7 @@ import {
 	HiOutlineGlobeAlt,
 	HiOutlineHome
 } from "react-icons/hi2";
-import { FaLinkedin, FaShareAlt } from "react-icons/fa";
+import { FaFileImage, FaLinkedin, FaShareAlt } from "react-icons/fa";
 import { FaFilePdf } from "react-icons/fa6";
 import {
 	Chart as ChartJS,
@@ -251,15 +251,12 @@ const MyProfile = (props: Props) => {
 									Yetkinliklerim
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
-								<h5 className='p-2 my-2 text-base font-normal bg-white text-black   rounded-3xl hover:bg-[#9933FF] hover:text-white shadow-lg' >
-									&emsp;Back End (Yazılım Mühendisliği)
-								</h5>
-								<h5 className='p-2 my-2 text-base font-normal bg-white text-black    rounded-3xl hover:bg-[#9933FF] hover:text-white shadow-lg' >
-									&emsp;javascript
-								</h5>
-								<h5 className='p-2 my-2 text-base font-normal bg-white text-black   rounded-3xl hover:bg-[#9933FF] hover:text-white shadow-lg'>
-									&emsp;C#
-								</h5>
+								{/* abilities dizisindeki her bir yeteneği map fonksiyonu ile listele */}
+								{student.abilities?.map((ability, index) => (
+									<h5 key={index} className='p-2 my-2 text-base font-normal bg-white text-black rounded-3xl hover:bg-[#9933FF] hover:text-white shadow-lg'>
+										&emsp;{ability.name}
+									</h5>
+								))}
 							</div>
 						</div>
 						<div className='col-12 my-4'>
@@ -270,43 +267,29 @@ const MyProfile = (props: Props) => {
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 
-								<div className="card my-2 border-gray-50 dark:border-gray-50  bg-white dark:bg-white rounded-3xl shadow-md">
-									<div className='flex items-center p-1'>
-										<div className="flex-none">
-											<HiOutlineGlobeAlt className="text-3xl border-2 border-white rounded-full text-[#828282]" />
-										</div>
-										<div className="flex-auto">
-											<div className="text-base font-medium text-[#828282]">
-												&nbsp;İngilizce
+								{/* studentForeignLanguages dizisindeki her bir dil bilgisini map fonksiyonu ile listele */}
+								{student.studentForeignLanguages?.map((language, index) => (
+									<div key={index} className="card my-2 border-gray-50 dark:border-gray-50 bg-white dark:bg-white rounded-3xl shadow-md">
+										<div className='flex items-center p-1'>
+											<div className="flex-none">
+												{/* Dili temsil eden bir ikon (örneğin, bir dünya ikonu) */}
+												<HiOutlineGlobeAlt className="text-3xl border-2 border-white rounded-full text-[#828282]" />
 											</div>
-											<div className="text-xs text-[#828282]">
-												&nbsp;Orta Seviye (B1 , B2)
+											<div className="flex-auto">
+												<div className="text-base font-medium text-[#828282]">
+													&nbsp;{language.languageName} {/* Dil adı */}
+												</div>
+												<div className="text-xs text-[#828282]">
+													&nbsp;{language.languageLevel} Seviye {/* Dil seviyesi */}
+												</div>
 											</div>
-										</div>
-										<div className="flex-none">
-											<HiOutlineHome className="text-3xl bg-[#F3F3F3] border-2 rounded-full text-[#828282]" />
+											<div className="flex-none">
+												{/* Kültürel veya coğrafi bağlantıyı temsil eden bir ikon (örneğin, bir ev ikonu) */}
+												<HiOutlineHome className="text-3xl bg-[#F3F3F3] border-2 rounded-full text-[#828282]" />
+											</div>
 										</div>
 									</div>
-								</div>
-
-								<div className="card my-2 border-gray-50 dark:border-gray-50  bg-white dark:bg-white rounded-3xl shadow-md">
-									<div className='flex items-center p-1'>
-										<div className="flex-none">
-											<HiOutlineGlobeAlt className="text-3xl border-2 border-white rounded-full text-[#828282]" />
-										</div>
-										<div className="flex-auto">
-											<div className="text-base font-medium text-[#828282]">
-												&nbsp;Almanca
-											</div>
-											<div className="text-xs text-[#828282]">
-												&nbsp;Orta Seviye (B1 , B2)
-											</div>
-										</div>
-										<div className="flex-none">
-											<HiOutlineHome className="text-3xl bg-[#F3F3F3] border-2 rounded-full text-[#828282]" />
-										</div>
-									</div>
-								</div>
+								))}
 
 							</div>
 						</div>
@@ -320,29 +303,21 @@ const MyProfile = (props: Props) => {
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 
-								<div className='flex p-1 my-2 rounded-[38px] shadow-lg'>
-									<div className="overflow-hidden ml-2 py-2 flex-1 flex items-center text-black">
-										<div className='truncate'>
-											Web_Geliştirme_Sertifikası.pdf
+								{/* certificates dizisindeki her bir sertifikayı map fonksiyonu ile listele */}
+								{student.certificates?.map((certificate, index) => (
+									<div key={index} className='flex p-1 my-2 rounded-[38px] hover:bg-[#9933FF]  shadow-lg'>
+										<div className="overflow-hidden ml-2 py-2 flex-1 flex items-center  text-black hover:text-white">
+											<div className='truncate'>
+												{certificate.name} {/* Sertifika adı */}
+											</div>
+										</div>
+										<div className="flex ml-1 items-center">
+											{/* Dosya türüne göre ikon göster */}
+											{certificate.fileType === '.pdf' && <FaFilePdf className="p-1 text-3xl text-gray-700" />}
+											{certificate.fileType === '.jpg' && <FaFileImage className="p-1 text-3xl text-gray-700 mr-1" />}
 										</div>
 									</div>
-									<div className="flex ml-1 items-center">
-										<FaFilePdf className="p-1 text-3xl text-gray-700" />
-									</div>
-								</div>
-
-
-
-								<div className='flex p-1 my-2 rounded-[38px] shadow-lg'>
-									<div className="overflow-hidden ml-2 py-2 flex-1 flex items-center text-black">
-										<div className='truncate'>
-											SQL_Geliştirme_Sertifikası.pdf
-										</div>
-									</div>
-									<div className="flex ml-1 items-center">
-										<FaFilePdf className="p-1 text-3xl text-gray-700" />
-									</div>
-								</div>
+								))}
 
 							</div>
 						</div>
@@ -353,14 +328,62 @@ const MyProfile = (props: Props) => {
 									Medya Hesaplarım
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
-								<img
-									src="https://tobeto.com/cv-linkedn.svg"
-									alt="CV Icon"
-									className="w-[52px] h-[52px] my-2"
-								/>
+
+								<div className='flex justify-between'>
+									{/* socialMedias dizisindeki her bir sosyal medya hesabını map fonksiyonu ile listele */}
+									{student.socialMedias?.map((socialMedia, index) => (
+										<div key={index}>
+											<a key={index} href={`https://${socialMedia.socialMediaUrl}`} target="_blank" rel="noopener noreferrer">												{socialMedia.name === 'linkedin' && (
+												<img
+													src="https://tobeto.com/cv-linkedn.svg"
+													alt="LinkedIn Icon"
+													className="w-[52px] h-[52px] my-2"
+												/>
+											)}
+												{socialMedia.name === 'github' && (
+													<img
+														src="https://tobeto.com/cv-github.svg"
+														alt="GitHub Icon"
+														className="w-[52px] h-[52px] my-2"
+													/>
+												)}
+												{socialMedia.name === 'instagram' && (
+													<img
+														src="https://tobeto.com/cv-insta.svg"
+														alt="GitHub Icon"
+														className="w-[52px] h-[52px] my-2"
+													/>
+												)}
+												{socialMedia.name === 'twitter' && (
+													<img
+														src="https://tobeto.com/cv-twitter.svg"
+														alt="GitHub Icon"
+														className="w-[52px] h-[52px] my-2"
+													/>
+												)}
+												{socialMedia.name === 'behance' && (
+													<img
+														src="https://tobeto.com/cv-behance.svg"
+														alt="GitHub Icon"
+														className="w-[52px] h-[52px] my-2"
+													/>
+												)}
+												{socialMedia.name === 'dribble' && (
+													<img
+														src="https://tobeto.com/cv-dribble.svg"
+														alt="GitHub Icon"
+														className="w-[52px] h-[52px] my-2"
+													/>
+												)}
+											</a>
+										</div>
+									))}
+								</div>
 
 							</div>
 						</div>
+
+
 					</div>
 
 
@@ -432,25 +455,18 @@ const MyProfile = (props: Props) => {
 
 								<div className='flex '>
 
-									<div className="p-2 bg-white rounded-md flex-none w-1/2 shadow-md mr-2 my-2 border-white border-2 hover:border-purple-600 hover:border-2" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-										<div className="">
-											<h2 className="text-base font-medium text-[#828282]">Herkes İçin Kodlama 1A Değerlendirme Sınavı</h2>
-											<p className="text-md">96.00</p>
+									{/* studentExams dizisindeki her bir sınavı map fonksiyonu ile listele */}
+									{student.studentExams?.map((exam, index) => (
+										<div key={index} className="p-2 bg-white rounded-md flex-none w-1/2 shadow-md mr-2 my-2 border-white border-2 hover:border-purple-600 hover:border-2" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+											<div className="">
+												<h2 className="text-base font-medium text-[#828282]">{exam.examName}</h2> {/* Sınav adı */}
+												<p className="text-md">{exam.score}</p>
+											</div>
+											<div className="text-right">
+												<p className="text-sm text-[#828282]">11-10-2023</p>
+											</div>
 										</div>
-										<div className="text-right">
-											<p className="text-sm text-[#828282]">11-10-2023</p>
-										</div>
-									</div>
-
-									<div className="p-2 bg-white rounded-md flex-none w-1/2 shadow-md mr-2 my-2 border-white border-2 hover:border-purple-600 hover:border-2" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-										<div className="">
-											<h2 className="text-base font-medium text-[#828282]">Herkes İçin Kodlama 1A Değerlendirme Sınavı</h2>
-											<p className="text-md">96.00</p>
-										</div>
-										<div className="text-right">
-											<p className="text-sm text-[#828282]">11-10-2023</p>
-										</div>
-									</div>
+									))}
 
 								</div>
 
@@ -513,59 +529,30 @@ const MyProfile = (props: Props) => {
 
 						<div className='col-12 my-4'>
 							<div className="card overflow-x-auto pb-7 p-5 rounded-2xl border-white dark:border-white max-w-full mr-2 bg-white dark:bg-white shadow-2xl ">
-
 								<h5 className="text-lg font-bold tracking-normal text-[#323232] ">
 									Eğitim Hayatım ve Deneyimlerim
 								</h5>
-
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
 								<ul className="timeline timeline-vertical lg:timeline-horizontal ">
-									<li>
-										<div className="timeline-start">1984</div>
-										<div className="timeline-middle">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-primary"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
-										</div>
-										<div className="timeline-end timeline-box">Tobeto Lisesi</div>
-										<hr />
-									</li>
-									<li>
-										<hr />
-										<div className="timeline-start">1998</div>
-										<div className="timeline-middle">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-primary"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
-										</div>
-										<div className="timeline-end timeline-box">Tobeto University</div>
-										<hr />
-									</li>
-									<li>
-										<hr />
-										<div className="timeline-start">2001</div>
-										<div className="timeline-middle">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
-										</div>
-										<div className="timeline-end timeline-box">Tobeto Şirketi</div>
-										<hr />
-									</li>
-									<li>
-										<hr />
-										<div className="timeline-start">2007</div>
-										<div className="timeline-middle">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
-										</div>
-										<div className="timeline-end timeline-box">Tobeto Tech Company</div>
-										<hr />
-									</li>
-									<li>
-										<hr />
-										<div className="timeline-start">2015</div>
-										<div className="timeline-middle">
-											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
-										</div>
-										<div className="timeline-end timeline-box">Tobeto Yüksek Lisans</div>
-									</li>
+									{/* experiences dizisindeki her bir deneyimi map fonksiyonu ile listele */}
+									{student.experiences?.map((experience, index) => (
+										<li key={index}>
+											<div className="timeline-start">{new Date(experience.startDate).getFullYear()}</div>
+											<div className="timeline-middle">
+												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-primary">
+													<path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
+												</svg>
+											</div>
+											<div className="timeline-end timeline-box">
+												{experience.companyName} - {experience.position}
+											</div>
+											<hr />
+										</li>
+									))}
 								</ul>
 							</div>
 						</div>
+
 
 					</div>
 				</div>
