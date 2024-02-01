@@ -12,7 +12,7 @@ const MainSeven = (props: Props) => {
 	const [show6, setshow6] = useState(false);
 
 	return (
-		<div className='container mx-auto [@media(max-width:640px)]:!max-w-full px-[calc(1.5rem*0.5)] !mb-6 !mt-20'>
+		<div className='container mx-auto [@media(max-width:640px)]:!max-w-full max-w-6xl px-[calc(1.5rem*0.5)] !mb-6 !mt-20'>
 			<div className='flex flex-wrap pt-10 pb-0 bg-[#2f2f2f] rounded-3xl px-5'>
 				<div className="flex-shrink-0 grow-0 basis-auto w-full">
 					<div className="px-5 pt-4 pb-2 relative mb-[1em]">

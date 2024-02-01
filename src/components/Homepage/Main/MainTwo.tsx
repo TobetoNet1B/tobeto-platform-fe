@@ -22,7 +22,7 @@ const MainTwo = (props: Props) => {
 	};
 
 	return (
-		<div className="container mx-auto [@media(max-width:640px)]:!max-w-full">
+		<div className="container mx-auto [@media(max-width:640px)]:!max-w-full max-w-6xl">
 			<div className="flex flex-wrap mt-10 mx-5 py-20">
 				<div className="lg:w-5/12 lg:flex-grow-0 lg:flex-shrink-0 lg:basis-auto flex-shrink-0 grow-0 basis-auto w-full">
 					<h3 className="text-white mt-0 mb-2 font-black !leading-[45px] [@media(max-width:768px)]:text-2xl md:text-3xl xl:text-4xl">Hangi Konuda Kendini<br />Geliştirmek İstersin?</h3>
