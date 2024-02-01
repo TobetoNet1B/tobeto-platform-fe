@@ -1,22 +1,33 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { passwordValidator } from 'utils/customValidations';
 import { number, object, string } from 'yup';
 
 type Props = {}
 
+interface SignUpFormValues {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+  }
+  
+
 const SignUpPage = (props: Props) => {
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
+
     const initialValues = {
-        username: '',
+        email: '',
         password: '',
-        name: '',
-        lastname: ''
-    }
+        firstName: '',
+        lastName: ''
+    };
 
     const validationSchema = object({
-        username: string().required("E-posta girmek zorunludur.").min(0),
-        password: string()
+        email: string().required("E-posta girmek zorunludur.").min(0),
+        password: string()/*
             .required("Şifre girmek zorunludur.")
             .min(3, "Şifre en az 3 karakter olmalıdır.")
             .max(50)
@@ -24,8 +35,32 @@ const SignUpPage = (props: Props) => {
                 "my-custom-rule",
                 "En az 1 büyük, 1 küçük harf ve 1 rakam içermelidir.",
                 passwordValidator,
-            )
+            )*/,
+        firstName: string().required("Ad girmek zorunludur."),
+        lastName: string().required("Soyad girmek zorunludur.")
     });
+
+    const handleSubmit = async (values: { email: string; password: string; firstName: string; lastName: string; }) => {
+        try {
+            const response = await fetch('http://localhost:60805/api/Auth/Register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+            });
+
+            if (response.ok) {
+                navigate('/platform');
+            } else {
+                const errorData = await response.json();
+                setError(errorData.message || 'Kayıt işlemi başarısız.');
+            }
+        } catch (error) {
+            console.error('Kayıt sırasında bir hata oluştu:', error);
+            setError('Kayıt sırasında bir hata oluştu.');
+        }
+    };
 
     return (
         <div className="items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-ful py-16 bg-gray-100">
@@ -41,37 +76,39 @@ const SignUpPage = (props: Props) => {
                 </span>
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={values => { console.log(values); }}
+                    onSubmit={handleSubmit}
                     validationSchema={validationSchema}
                 >
                     <Form>
                         <div className="mb-4">
                             <Field
                                 type="text"
-                                id="name"
-                                name="name"
+                                id="firstName"
+                                name="firstName"
                                 className="mt-1 p-2 w-full border rounded-md"
                                 placeholder="Ad"
                             />
+                            <ErrorMessage name="firstName"></ErrorMessage>
                         </div>
                         <div className="mb-4">
                             <Field
                                 type="text"
-                                id="lastname"
-                                name="lastname"
+                                id="lastName"
+                                name="lastName"
                                 className="mt-1 p-2 w-full border rounded-md"
                                 placeholder="Soyad"
                             />
+                            <ErrorMessage name="lastName"></ErrorMessage>
                         </div>
                         <div className="mb-4">
                             <Field
                                 type="text"
-                                id="username"
-                                name="username"
+                                id="email"
+                                name="email"
                                 className="mt-1 p-2 w-full border rounded-md"
                                 placeholder="E-Posta"
                             />
-                            <ErrorMessage name="username"></ErrorMessage>
+                            <ErrorMessage name="email"></ErrorMessage>
                         </div>
                         <div className="mb-4">
                             <Field
@@ -89,6 +126,7 @@ const SignUpPage = (props: Props) => {
                         >
                             Kayıt Ol
                         </button>
+                        {error && <div className="error-message">{error}</div>}
                         <div className="flex items-center justify-center mt-4">
                             <div>
                                 <a className="text-sm text-black-500">
@@ -101,7 +139,7 @@ const SignUpPage = (props: Props) => {
                             </div>
 
                         </div>
-                        
+
                     </Form>
                 </Formik>
 
