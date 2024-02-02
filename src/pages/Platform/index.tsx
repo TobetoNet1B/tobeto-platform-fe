@@ -10,6 +10,7 @@ import AnnouncementCard from "../../components/Platform/Main/AnnouncementCards/A
 import AnnouncementCard2 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard2";
 import AnnouncementCard3 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard3";
 import MyExams from "../../components/Platform/Main/MyExams";
+import MySurveys from "components/Platform/Main/MySurveys";
 
 export default function PlatformMain() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
@@ -28,14 +29,22 @@ export default function PlatformMain() {
       setContainerHeight(1010);
     } else if (link === "Duyuru ve Haberlerim") {
       setContainerHeight(800);
-    } else {
+      } 
+      else if (link === "Anketlerim") {
+        setContainerHeight(825);
+      }
+      else {
       setContainerHeight(700);
     }
-  };
+  }
   const navigate = useNavigate();
 
   const toEgitimlerim = () => {
     navigate("/egitimlerim");
+  };
+
+  const toDuyurularim = () => {
+    navigate("/duyurularim");
   };
 
   return (
@@ -183,12 +192,13 @@ export default function PlatformMain() {
         </div>
         {selectedLink === "Duyuru ve Haberlerim" && (
           <div className="showMoreContainer">
-            <button className="showMoreBtn">
+            <button className="showMoreBtn" onClick={toDuyurularim}>
               <SlArrowRight />
             </button>
-            <p className="showMoreText">Daha Fazla Göster</p>
+            <p className="showMoreText" onClick={toDuyurularim}>Daha Fazla Göster</p>
           </div>
         )}
+        {selectedLink === "Anketlerim" &&  <MySurveys/>}
       </div>
       <br />
       <MyExams />
