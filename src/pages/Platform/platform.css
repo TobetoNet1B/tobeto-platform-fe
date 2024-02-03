@@ -1,6 +1,8 @@
 
 .tobeto-logo {
   height: 2.1rem;
+  justify-content: start;
+  margin-right: 10px;
 }
 
 .nav {
