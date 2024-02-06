@@ -76,7 +76,7 @@ const MyProfile = (props: Props) => {
 	console.log(student);
 	
 	return (
-		<div className='h-screen overflow-y-auto  '>
+		<div className='h-screen'>
 			<div className='max-w-[1110px] mx-auto'>
 				
 				<div className="mt-6 mb-2 ">

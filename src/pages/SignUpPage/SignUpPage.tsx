@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import ContractsModal from 'components/ContractsModal/ContractsModal';
 import { passwordValidator } from 'utils/customValidations';
 import { number, object, string } from 'yup';
 
@@ -11,8 +12,8 @@ interface SignUpFormValues {
     password: string;
     firstName: string;
     lastName: string;
-  }
-  
+}
+
 
 const SignUpPage = (props: Props) => {
     const navigate = useNavigate();
@@ -23,6 +24,14 @@ const SignUpPage = (props: Props) => {
         password: '',
         firstName: '',
         lastName: ''
+    };
+
+    const openModal = () => {
+        const modalElement = document.getElementById('my_modal_2') as HTMLDialogElement | null;
+
+        if (modalElement) {
+            modalElement.showModal();
+        }
     };
 
     const validationSchema = object({
@@ -123,8 +132,10 @@ const SignUpPage = (props: Props) => {
                         <button
                             type="submit"
                             className="bg-[#9933FF] text-white p-2 rounded-3xl w-full hover:bg-[#822BD9]"
+                            onClick={openModal}
                         >
                             Kayıt Ol
+                            <ContractsModal/>
                         </button>
                         {error && <div className="error-message">{error}</div>}
                         <div className="flex items-center justify-center mt-4">

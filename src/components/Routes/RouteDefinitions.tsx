@@ -21,6 +21,7 @@ import SocialMedia from "components/ProfileInfo/SocialMedia/SocialMedia";
 import Setting from "components/ProfileInfo/Settings/Setting";
 import Main from "pages/Homepage";
 import Platform from "layout/Platform";
+import Confirmationpage from "components/Confirmationpage/Confirmationpage";
 
 type Props = {};
 
@@ -54,6 +55,7 @@ const RouteDefinitions = (props: Props) => {
 			</Route>
 			<Route path="/moduleset" element={<ModuleSet />} />
 			<Route path="*" element={<NotFound />} />
+			<Route path="/confirm" element={<Confirmationpage />} />
 		</Routes>
 	);
 };
