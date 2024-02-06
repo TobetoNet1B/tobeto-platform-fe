@@ -36,7 +36,7 @@ const RouteDefinitions = (props: Props) => {
 			<Route element={<Platform />}>
 				<Route path="/platform" element={<PlatformMain />} />
 				<Route path="/egitimlerim" element={<Education />} />
-				<Route path="/duyurularım" element={<Announcement />} />
+				<Route path="/duyurularim" element={<Announcement />} />
 				<Route path="/takvim" element={<Calendar />} />
 				<Route path="/degerlendirmeler" element={<Evaluations />} />
 				<Route path="/profilim">

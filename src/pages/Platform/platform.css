@@ -1,5 +1,8 @@
+
 .tobeto-logo {
   height: 2.1rem;
+  justify-content: start;
+  margin-right: 10px;
 }
 
 .nav {
@@ -17,14 +20,14 @@
 }
 
 .welcome-message {
-  margin-top: 10rem;
+  margin-top: 4rem;
   margin-left: 30rem;
 }
 
 .ball {
   width: 10rem;
   height: 10rem;
-  margin-top: 10rem;
+  margin-top: 4rem;
   margin-left: 10rem;
 }
 
@@ -36,13 +39,14 @@
 .body-container {
   display: flex;
   display: block;
-  height: 700px;
+  height: 600px;
   align-items: center;
   justify-content: center;
-  max-width: 1200px;
+  max-width: 1150px;
   border-radius: 1.5%;
   margin: 0 auto;
-  box-shadow: 0 20px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 15px 15px rgba(192, 192, 192, 0.25);
+
 }
 
 .ikLogo {
@@ -78,7 +82,7 @@
 
 .applyInfo {
   width: 550px;
-  height: 130px;
+  height: 145px;
   border: 2px solid;
   border-left: 6px solid #803f10;
   border-right: none;
@@ -142,7 +146,7 @@
 .announcementCard2,
 .announcementCard3 {
   display: flex;
-  width: 340px;
+  width: 400px;
   height: 130px;
   border: 2px solid;
   border-left: 7px solid #627062;
@@ -158,23 +162,41 @@
 
 .myExams {
   display: flex;
-  height: 200px;
-  align-items: center;
-  justify-content: flex-start;
-  max-width: 1200px;
+  flex-direction: column; 
+  align-items: flex-start; 
+  max-width: 1150px;
   border-radius: 1.5%;
   margin: 0 auto;
-  box-shadow: 0 20px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 15px 15px rgba(192, 192, 192, 0.25);
+  padding-left: 3rem; 
 }
 
+.cfeExam {
+  width: 560px;
+  height: 105px;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  position: relative;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 15px 1px rgba(0, 0, 0, 0.25);
+  padding: 8px 14px;
+  transition: 0.6s;
+  cursor:pointer;
+}
 
-.cfe1bExam{
+.cfeExam:hover{
+  transform: scale(1.1);
+}
+
+.mySurveys {
   display: flex;
-  margin-top:100px;
-  width: 580px;
-  height: 100px;
-  border: 2px solid;
-  border-color: #828282;
+  flex-direction: column; 
+  align-items: center;  
+  justify-content: center;
+  max-width: 1200px;
+  margin: 20px 20px 20px 20px;
   border-radius:1.5%;
-  box-shadow: 0 20px 16px rgba(0, 0, 0, 0.1);
+  height: 280px;
+  background-color: #e6e6e6
 }

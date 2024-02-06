@@ -38,7 +38,7 @@ const Announcement = (props: Props) => {
     setIsInstitutionSelected(!!event.target.value);
   };
   return (
-    <div className="overflow-y-auto h-screen">
+    <div className="">
       <Banner
         url="https://tobeto.com/_next/static/media/edu-banner3.d7dc50ac.svg"
         spanText="Duyurularım"
