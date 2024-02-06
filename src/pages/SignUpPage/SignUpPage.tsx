@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import ContractsModal from 'utils/ContractsModal';
+import ContractsModal from 'components/ContractsModal/ContractsModal';
 import { passwordValidator } from 'utils/customValidations';
 import { number, object, string } from 'yup';
 

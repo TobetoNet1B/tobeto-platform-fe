@@ -4,7 +4,7 @@ import { IoClose } from "react-icons/io5";
 import { MdOutlineDone } from "react-icons/md";
 import { CiGlobe } from "react-icons/ci";
 import { FaPhoneAlt } from "react-icons/fa";
-import CountryAndCallingCode from './CountryAndCallingCode.json'
+import CountryAndCallingCode from '../../utils/CountryAndCallingCode.json'
 
 interface CountryData {
   name: string;
