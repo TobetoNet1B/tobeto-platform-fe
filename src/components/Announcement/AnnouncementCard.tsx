@@ -90,14 +90,14 @@ const AnnouncementCard = (props: Props) => {
       {paginatedCards.length > 0 ? (
         paginatedCards.map((card, index) => (
           <ACard
-            key={index}
-            description={card.description}
-            type={card.type}
-            kurum={card.kurum}
-            name={card.name}
-            tarih={card.tarih}
-            buttonText={card.buttonText}
-          />
+          key={index}
+          description={card.description}
+          type={card.type}
+          companyName={card.kurum}
+          name={card.name}
+          createdDate={card.tarih}
+          buttonText={card.buttonText}
+        />
         ))
       ) : (
         <p className="text-center text-gray-500">

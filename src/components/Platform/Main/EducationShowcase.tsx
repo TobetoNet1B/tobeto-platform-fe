@@ -62,10 +62,10 @@ const EducationShowcase = (props: Props) => {
       filteredAndSortedCards.map((card, index) => (
         <ECard
           key={index}
-          image={card.image}
+          imgUrl={card.image}
           name={card.name}
-          kurum={card.kurum}
-          tarih={card.tarih}
+          companyName={card.kurum}
+          createdDate={card.tarih}
           buttonText={card.buttonText}
         />
       ))

@@ -2,29 +2,29 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 type Props = {
-  image?: string;
-  tarih: string;
-  name: string;
-  buttonText?: string;
-  type?: string;
-  kurum?: string;
+  imgUrl?: string;
   description?: string;
+  createdDate: string;
+  buttonText?: string;
+  companyName?:string
+  name:string;
+  type?: string;
 };
 export const ECard = (props: Props) => {
   const isDescriptionOverflowing = props.name.length > 30;
   const baseMarginBottom = 4;
   const maxMarginBottom = isDescriptionOverflowing ? 1 : baseMarginBottom;
-
+  const formattedDate = new Date(props.createdDate).toLocaleString();
   return (
     <div className="sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 m-2">
       <div
         className={`h-full max-w-md bg-white rounded-xl shadow-md overflow-hidden hover:shadow-[5px_5px_5px_5px_rgba(153,51,255,0.6)] flex flex-col justify-between`}
       >
-        {props.image && (
+        {props.imgUrl && (
           <div>
             <img
               className="h-48 w-full object-cover rounded-t-2xl p-1"
-              src={props.image}
+              src={props.imgUrl}
               alt={props.name}
             />
           </div>
@@ -37,19 +37,16 @@ export const ECard = (props: Props) => {
             {props.name}
           </div>
           <p className="block mt-1 text-sm leading-tight font-medium text-black">
-            {props.tarih}
+            {formattedDate}
           </p>
         </div>
         <div className="pb-4"></div>
-        <p className="hidden">{props.kurum}</p>
+        <p className="hidden">{props.companyName}</p>
         <div className="p-4">
           {props.buttonText && (
-            <Link to={"/moduleset"}>
             <button className="w-full px-4 py-2 bg-gray-300 text-black rounded-full hover:bg-[#9933ff]">
               {props.buttonText}
-              
             </button>
-            </Link>
           )}
         </div>
       </div>
@@ -81,7 +78,7 @@ export const ACard = (props: Props) => {
             <p
               className={`block mt-1 mr-3 text-sm leading-tight font-medium text-green-800`}
             >
-              {props.kurum}
+              {props.companyName}
             </p>
           </div>
         </div>
@@ -116,7 +113,7 @@ export const ACard = (props: Props) => {
             </svg>
 
             <p className="block ml-2 mt-1 text-sm leading-tight font-medium text-[#767676]">
-              {props.tarih}
+              {props.createdDate}
             </p>
           </div>
           {props.buttonText && (

@@ -71,7 +71,10 @@ const MyProfile = (props: Props) => {
 		let studentService = StudentService;
 		studentService
 			.getById(localStorage.userId)
-			.then((result) => setStudent(result.data as GetStudentResponse));
+			.then((result) => {
+				setStudent(result.data as GetStudentResponse);
+				localStorage.setItem('studentId', result.data.id);
+			});
 	}, []);
 	console.log(student);
 	
