@@ -1,0 +1,7 @@
+.PhoneInputInput {
+	border: none !important;
+}
+.PhoneInputInput:focus {
+	outline: none !important;
+	--tw-ring-color: transparent !important;
+}

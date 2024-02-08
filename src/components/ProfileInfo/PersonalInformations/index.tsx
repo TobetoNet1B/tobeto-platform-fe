@@ -9,13 +9,13 @@ type Props = {}
 
 const PersonalInformations = (props: Props) => {
 
-	const maxDate = new Date().toLocaleDateString('sv-SE')
+	const date = new Date().toLocaleDateString('sv-SE')
 
 	const formik = useFormik({
 		initialValues: {
 			firstName: '',
 			lastName: '',
-			phoneNumber: '',
+			phoneNumber: '' as any,
 			countryCode: "+90",
 			birthDate: '',
 			identityNumber: '',
@@ -37,8 +37,8 @@ const PersonalInformations = (props: Props) => {
 				.max(20, 'Soyad 20 karakterden fazla olamaz.'),
 			phoneNumber: Yup.string()
 				.required('Telefon Numarası Zorunlu')
-				.min(10, 'Telefon numarası 10 karakter olmalı')
-				.max(10, 'Telefon numarası 10 karakter olmalı'),
+				.min(10, 'Telefon numarası en az 10 karakter olabilir.')
+				.max(16, 'Telefon numarası en fazla 16 karakter olabilir.'),
 			birthDate: Yup.date()
 				.required('Doğum tarihi gerekli'),
 			identityNumber: Yup.string()
@@ -50,7 +50,7 @@ const PersonalInformations = (props: Props) => {
 			country: Yup.string()
 				.required('Gerekli')
 				.min(2, 'Geçersiz ülke adı')
-				.max(25, 'Ülke adı çok uzun'),
+				.max(40, 'Ülke adı çok uzun'),
 			district:  Yup.string()
 				.required('İlçe Seçin')
 		}),
@@ -76,10 +76,10 @@ const PersonalInformations = (props: Props) => {
 					<FormInput label="Soyadınız" name="lastName" isRequired={true} inputStyle='input'
 						value={formik.values.lastName} className='lg:col-span-6 col-span-12' />
 
-					<PhoneNumber countryCode={formik.values.countryCode} phoneNumber={formik.values.phoneNumber} name='phoneNumber' />
+					<PhoneNumber value={formik.values.phoneNumber} name='phoneNumber' handleChange={formik.handleChange} />
 
 					<FormInput label='Doğum Tarihiniz' name='birthDate' isRequired={true}
-						inputStyle='input' type='date' maxDate={maxDate}
+						inputStyle='input' type='date' maxDate={date}
 						value={formik.values.birthDate} className='lg:col-span-6 col-span-12' />
 
 					<FormInput label='TC Kimlik No' name='identityNumber' isRequired={true} inputStyle='input'
@@ -96,7 +96,7 @@ const PersonalInformations = (props: Props) => {
 						value={formik.values.about} className='col-span-12' placeHolder="Kendini kısaca tanıt" />
 				</div>
 
-				<button type="submit" className='btn btn-md px-5 mt-5 rounded-full bg-[#93f] hover:bg-[#822bd9] text-white'>
+				<button type="submit" className='btn btn-md px-5 mt-5 rounded-full bg-bs_btn_bg hover:bg-bs_btn_hover_bg text-bs_btn_color'>
 					Kaydet
 				</button>
 			</form>
