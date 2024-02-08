@@ -6,6 +6,10 @@ class TokenService {
 	hasToken(): boolean {
 		return localStorage.getItem("token") != null;
 	}
+
+	removeToken() {
+		localStorage.removeItem("token");
+	}
 }
 
 export default new TokenService();

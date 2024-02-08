@@ -3,14 +3,14 @@ import AppealNav from "components/Homepage/NavBar/AppealNav";
 import VidNav from "components/Homepage/NavBar/VidNav";
 import FooterComp from "components/Homepage/Footer";
 import { useSelector } from "react-redux";
-import { SelectIsLoggedIn } from "store/Auth/AuthSlice";
 import { Outlet } from "react-router-dom";
 
 type Props = {};
 
 const Home = (props: Props) => {
 
-	const isLoggedIn = useSelector(SelectIsLoggedIn);
+	const isLoggedIn = useSelector((state:any) => state.auth.isAuthenticated);
+
 
 	return (
 		<div className='overflow-y-auto h-screen m-0'>
