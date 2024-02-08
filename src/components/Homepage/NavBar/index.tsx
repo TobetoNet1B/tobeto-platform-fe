@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { logout } from 'store/Auth/AuthSlice';
+import { SelectIsAuthenticated, logout } from 'store/Auth/AuthSlice';
+
 export default function NavBar() {
 
-	const isLoggedIn = useSelector((state:any) => state.auth.isAuthenticated);
+	const isAuthenticated = useSelector(SelectIsAuthenticated);
 	const dispatch = useDispatch();
-
 	
 	return (
 		<div className="navbar w-full px-6 !py-10 h-16 !bg-[#181717] text-white">
@@ -37,7 +37,7 @@ export default function NavBar() {
 					</div>
 				</ul>
 			</div>
-			{!isLoggedIn ?
+			{!isAuthenticated ?
 				<div className="navbar-end gap-3 lg:flex hidden">
 					<Link to={"/giris"} className="btn btn-outline rounded-full text-white" >Giriş Yap</Link>
 					<Link to={"/kayit-ol"} className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-full !min-w-max">
