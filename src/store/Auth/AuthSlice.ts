@@ -1,17 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
+import tokenServices from "core/services/tokenService";
+
+
+const getInitialState = () => {
+	if (tokenServices.hasToken()) return {isAuthenticated: true};
+
+	return {isAuthenticated: false};
+};
 
 const authSlice = createSlice({
 	name: "auth",
-	initialState: {
-		isLoggedIn: false
-	},
-	reducers: {
-		LogInLogOut: state => {
-			state.isLoggedIn = !state.isLoggedIn
-		}
-	}
-})
+	initialState: getInitialState(),
+	reducers: {},
+});
 
 export const authReducer = authSlice.reducer;
-export const { LogInLogOut } = authSlice.actions;
-export const SelectIsLoggedIn = (state:any) => state.auth.isLoggedIn;
+export const authActions = authSlice.actions;
