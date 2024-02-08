@@ -71,12 +71,15 @@ const MyProfile = (props: Props) => {
 		let studentService = StudentService;
 		studentService
 			.getById(localStorage.userId)
-			.then((result) => setStudent(result.data as GetStudentResponse));
+			.then((result) => {
+				setStudent(result.data as GetStudentResponse);
+				localStorage.setItem('studentId', result.data.id);
+			});
 	}, []);
 	console.log(student);
 	
 	return (
-		<div className='h-screen overflow-y-auto  '>
+		<div className='h-screen'>
 			<div className='max-w-[1110px] mx-auto'>
 				
 				<div className="mt-6 mb-2 ">
