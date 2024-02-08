@@ -1,27 +1,14 @@
-import {BaseService} from "./baseService";
-import {BASE_API_URL} from "../environment/environment";
-import { GetAllAuthResponse } from "models/responses/auth/getAllAuthResponse";
-import { GetAuthResponse } from "models/responses/auth/getAuthResponse";
-import { AddAuthResponse } from "models/responses/auth/addAuthResponse";
-import { UpdateAuthResponse } from "models/responses/auth/updateAuthResponse";
-import { UpdateAuthRequest } from "models/requests/auth/updateAuthRequest";
-import { AddAuthRequest } from "models/requests/auth/addAuthRequest";
+import axiosInstance from "../core/interceptors/axiosInterceptor";
 
-
-class AuthService extends BaseService<
-	GetAllAuthResponse,
-	GetAuthResponse,
-	AddAuthRequest,
-	AddAuthResponse,
-	UpdateAuthRequest,
-	UpdateAuthResponse
-> {
-	constructor() {
-		super();
-		this.apiUrl = BASE_API_URL + "Auth";
+class AuthService {
+	// modelleme
+	register(model: any) {
+		return axiosInstance.post("Auth/Register", model);
 	}
 
-	getByFilter() {}
+	login(model: any) {
+		return axiosInstance.post("Auth/Login", model);
+	}
 }
 
 export default new AuthService();

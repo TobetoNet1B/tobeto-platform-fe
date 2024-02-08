@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ContractsModal from 'components/ContractsModal/ContractsModal';
 import { passwordValidator } from 'utils/customValidations';
 import { number, object, string } from 'yup';
+import authService from 'services/authService';
 
 type Props = {}
 
@@ -49,27 +50,21 @@ const SignUpPage = (props: Props) => {
         lastName: string().required("Soyad girmek zorunludur.")
     });
 
-    const handleSubmit = async (values: { email: string; password: string; firstName: string; lastName: string; }) => {
-        try {
-            const response = await fetch('http://localhost:60805/api/Auth/Register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(values),
-            });
+  
 
-            if (response.ok) {
-                navigate('/platform');
-            } else {
-                const errorData = await response.json();
-                setError(errorData.message || 'Kayıt işlemi başarısız.');
-            }
-        } catch (error) {
-            console.error('Kayıt sırasında bir hata oluştu:', error);
-            setError('Kayıt sırasında bir hata oluştu.');
-        }
+    const handleSubmit = async (values: { email: string; password: string; firstName: string; lastName: string; }) => {
+        console.log(values);
+        authService.register(values)
+            .then(async response => {
+                console.log(response);
+                navigate('/giris');
+            })
+            .catch(error => {
+                console.error('Kayıt sırasında bir hata oluştu:', error);
+                setError('Kayıt sırasında bir hata oluştu.');
+            });
     };
+
 
     return (
         <div className="items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-ful py-16 bg-gray-100">
@@ -135,7 +130,7 @@ const SignUpPage = (props: Props) => {
                             onClick={openModal}
                         >
                             Kayıt Ol
-                            <ContractsModal/>
+                            <ContractsModal />
                         </button>
                         {error && <div className="error-message">{error}</div>}
                         <div className="flex items-center justify-center mt-4">
