@@ -126,6 +126,20 @@ module.exports = {
 				bs_form_valid_border_color: "#65b996",
 				bs_form_invalid_color: "#fc5c46",
 				bs_form_invalid_border_color: "#fc5c46",
+				bs_btn_color: "#fff",
+				bs_btn_bg: "#93f",
+				bs_btn_border_color: "#93f",
+				bs_btn_hover_color: "#fff",
+				bs_btn_hover_bg: "#822bd9",
+				bs_btn_hover_border_color: "#7a29cc",
+				bs_btn_focus_shadow_rgb: "168,82,255",
+				bs_btn_active_color: "#fff",
+				bs_btn_active_bg: "#7a29cc",
+				bs_btn_active_border_color: "#7326bf",
+				bs_btn_active_shadow: "inset 0 3px 5px rgba(0,0,0,.125)",
+				bs_btn_disabled_color: "#fff",
+				bs_btn_disabled_bg: "#93f",
+				bs_btn_disabled_border_color: "#93f"
 			},
 			keyframes: {
 				fade: {
