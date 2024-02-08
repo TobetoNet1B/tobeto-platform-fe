@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { LogInLogOut, SelectIsLoggedIn } from "store/Auth/AuthSlice";
-
+import { logout } from 'store/Auth/AuthSlice';
 export default function NavBar() {
 
-	const isLoggedIn = useSelector(SelectIsLoggedIn);
+	const isLoggedIn = useSelector((state:any) => state.auth.isAuthenticated);
 	const dispatch = useDispatch();
 
+	
 	return (
 		<div className="navbar w-full px-6 !py-10 h-16 !bg-[#181717] text-white">
 			<div className="navbar-start">
@@ -39,7 +39,7 @@ export default function NavBar() {
 			</div>
 			{!isLoggedIn ?
 				<div className="navbar-end gap-3 lg:flex hidden">
-					<Link to={"/giris"} className="btn btn-outline rounded-full text-white" onClick={() => dispatch(LogInLogOut())}>Giriş Yap</Link>
+					<Link to={"/giris"} className="btn btn-outline rounded-full text-white" >Giriş Yap</Link>
 					<Link to={"/kayit-ol"} className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-full !min-w-max">
 						<span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6]
 				 		group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
@@ -60,7 +60,7 @@ export default function NavBar() {
 						<ul tabIndex={0} className="mt-3 z-[1] py-2 px-0 text-end shadow menu menu-sm dropdown-content rounded-box min-w-32 w-fit !bg-[#93f] text-white">
 							<li className="w-full"><Link to="profilim" className="block text-right">Profile</Link></li>
 							<li className="w-full"><Link to="profilim/profilimi-duzenle/kisisel-bilgilerim" className="block text-right">Settings</Link></li>
-							<li className="w-full"><Link to="" className="block text-right" onClick={() => dispatch(LogInLogOut())}>Logout</Link></li>
+							 <li className="w-full"><Link to="" className="block text-right" onClick={() => dispatch(logout())}>Logout</Link></li> 
 						</ul>
 					</div>
 				</div>
