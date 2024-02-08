@@ -200,3 +200,18 @@
   height: 280px;
   background-color: #e6e6e6
 }
+
+.dropdown-platform {
+
+  margin-left: 18rem;
+}
+
+
+
+
+.navbar-platform {
+  margin-left: 5rem;
+   max-width: 38rem;
+   white-space: nowrap;
+}
+
