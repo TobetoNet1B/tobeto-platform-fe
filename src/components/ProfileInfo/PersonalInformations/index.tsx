@@ -66,7 +66,7 @@ const PersonalInformations = (props: Props) => {
 				<div className='grid grid-cols-12 gap-6 mx-auto'>
 					<div className="avatar col-span-12">
 						<div className="w-36 rounded-full mx-auto">
-							<img src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=48&q=75" />
+							<img alt='' src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=48&q=75" />
 							<MdOutlineEdit className='z-10 absolute ml-24 top-24 bg-white text-violet-600 rounded-full text-3xl p-2' />
 						</div>
 					</div>

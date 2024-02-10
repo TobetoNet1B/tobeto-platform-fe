@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Slide, ToastContainer, toast } from 'react-toastify';
+import "./Toast.css"
 
 type Props = {}
 
@@ -10,11 +11,11 @@ const Toast = (props: Props) => {
     setButtonData(status);
 
     try {
-      
+
       const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
       const data = await response.json();
 
-      
+
       if (data.id) {
         setButtonData('success');
       }
@@ -33,8 +34,8 @@ const Toast = (props: Props) => {
 
   switch (buttonData) {
     case 'success':
-      className = 'shadow-[0_10px_10px_rgba(0,0,0,0.1)] rounded-md relative p-4 mb-1 bg-white last:mb-0 first:mt-[18px] border-solid border-t-8 border-[#3dcb79] cursor-pointer flex p-5 w-[450px] left-auto bottom-auto right-[120px] top-[0px] mb-8';
-      toast.success('Başarılı Mesaj', {
+      className = `${"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#65b996] after:content-['*_Giriş_Başarılı']"}`;
+      toast('TOBETO', {
         className,
         hideProgressBar: true,
         autoClose: 4000,
@@ -46,8 +47,8 @@ const Toast = (props: Props) => {
       });
       break;
     case 'error':
-      className = 'shadow-[0_10px_10px_rgba(0,0,0,0.1)] rounded-md relative p-4 mb-1 bg-white last:mb-0 first:mt-[18px] border-solid border-t-8 border-[#cc0000] cursor-pointer flex p-5 w-[450px] left-auto bottom-auto right-[120px] top-[0px] mb-8';
-      toast.error('Hatalı Mesaj', {
+      className = `${"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#fc5c46] after:content-['*_Başarısız']"}`;
+      toast('TOBETO', {
         className,
         hideProgressBar: true,
         autoClose: 4000,
@@ -59,8 +60,8 @@ const Toast = (props: Props) => {
       });
       break;
     case 'info':
-      className = 'shadow-[0_10px_10px_rgba(0,0,0,0.1)] rounded-md relative p-4 mb-1 bg-white last:mb-0 first:mt-[18px] border-solid border-t-8 border-[#0000b3] cursor-pointer flex p-5 w-[450px] left-auto bottom-auto right-[120px] top-[0px] mb-8';
-      toast.info('Bilgi Mesajı', {
+      className = `${"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#4d4d4d] after:content-['*_Bilgilendirme']"}`;
+      toast('TOBETO', {
         className,
         hideProgressBar: true,
         autoClose: 4000,
@@ -71,9 +72,9 @@ const Toast = (props: Props) => {
         transition: Slide,
       });
       break;
-      case 'warning':
-      className = 'shadow-[0_10px_10px_rgba(0,0,0,0.1)] rounded-md relative p-4 mb-1 bg-white last:mb-0 first:mt-[18px] border-solid border-t-8 border-[#ffcc00] cursor-pointer flex p-5 w-[450px] left-auto bottom-auto right-[120px] top-[0px] mb-8';
-      toast.warning('Uyarı Mesajı', {
+    case 'warning':
+      className = `${"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#ed9c56] after:content-['*_Uyarı']"}`;
+      toast('TOBETO', {
         className,
         hideProgressBar: true,
         autoClose: 4000,
@@ -89,9 +90,9 @@ const Toast = (props: Props) => {
   }
   return (
     <div>
-      <button onClick={() => handleClick('')}>Toast Göster</button>
+      <button onClick={() => handleClick('warning')}>Toast Göster</button>
 
-      <ToastContainer />
+      <ToastContainer/>
     </div>
   )
 }
