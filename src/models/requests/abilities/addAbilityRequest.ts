@@ -1,1 +1,4 @@
-export interface AddAbilityRequest {}
+export interface AddAbilityRequest {
+  name: string
+  studentId: string
+}
