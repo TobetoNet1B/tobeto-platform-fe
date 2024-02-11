@@ -7,8 +7,7 @@ import { AddAnnouncementResponse } from "models/responses/announcement/addAnnoun
 import { UpdateAnnouncementRequest } from "models/requests/announcement/updateAnnouncementRequest";
 import { UpdateAnnouncementResponse } from "models/responses/announcement/updateAnnouncementResponse";
 
-
-class AppealService extends BaseService<
+class AnnouncementService extends BaseService<
 	GetAllAnnouncementResponse,
 	GetAnnouncementResponse,
 	AddAnnouncementRequest,
@@ -20,8 +19,7 @@ class AppealService extends BaseService<
 		super();
 		this.apiUrl = BASE_API_URL + "Announcements";
 	}
-
 	getByFilter() {}
 }
 
-export default new AppealService();
+export default new AnnouncementService();

@@ -18,7 +18,7 @@ const Announcement = (props: Props) => {
     setSelectedOrganization("");
     setSortBy("");
     setIsInstitutionSelected(false);
-    navigate("/duyurularım");
+    navigate("/duyurularim");
   };
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
