@@ -1,12 +1,8 @@
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { SelectIsLoggedIn } from 'store/Auth/AuthSlice';
 
 type Props = {}
 
 const MainOne = (props: Props) => {
-
-	const isLoggedIn = useSelector(SelectIsLoggedIn);
 
 	return (
 		<div className='container mx-auto [@media(max-width:640px)]:!max-w-full max-w-6xl px-[calc(1.5rem*0.5)] pt-20 xl:max-w-[1140px]'>

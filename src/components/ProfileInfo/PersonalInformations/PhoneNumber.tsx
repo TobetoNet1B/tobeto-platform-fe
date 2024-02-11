@@ -1,27 +1,24 @@
-import { Field } from 'formik'
 import ErrorSpan from 'utils/FormInput/ErrorSpan';
+import PhoneInput from 'react-phone-number-input'
+import tr from 'react-phone-number-input/locale/tr.json'
+import 'react-phone-number-input/style.css'
+import './phone-number.css'
 
 type Props = {
 	name: string;
-	countryCode: string;
-	phoneNumber: string;
+	value: string;
+	handleChange?: any;
 }
 
 const PhoneNumber = (props: Props) => {
-
-	const countryCodes = ["+1", "+44", "+90"]
-
 	return (
 		<div className='lg:col-span-6 col-span-12'>
 			<label htmlFor='phoneNumber'>Telefon Numaranız*</label>
-			<div className='join w-full'>
-				<Field as='select' className="select select-bordered join-item"
-					id='countryCode' name='countryCode' value={props.countryCode}>
-					{countryCodes.map(cc => <option key={cc} value={cc}>{cc}</option>)}
-				</Field>
-				<Field id='phoneNumber' type='number' name='phoneNumber' value={props.phoneNumber}
-					className="input input-bordered w-full join-item" placeholder='5** *** ** **' />
-			</div>
+			<PhoneInput defaultCountry="TR" labels={tr} countryCallingCodeEditable={true} international
+				className='input input-bordered w-full' id={props.name} name={props.name}
+				value={props.value} onChange={(value) => {
+					props.handleChange({ target: { name: props.name, value } });
+				}} />
 			<ErrorSpan name={props.name} />
 		</div>
 	)

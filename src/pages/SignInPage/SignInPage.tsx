@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import { jwtDecode } from 'jwt-decode';
+import authService from 'services/authService';
 
 interface CustomJwtPayload {
     [key: string]: any;
@@ -41,18 +42,12 @@ const SignInPage = (props: Props) => {
     const [error, setError] = useState('');
 
     const handleSubmit = async (values: { email: string; password: string }) => {
-        try {
-            const response = await fetch('http://localhost:60805/api/Auth/Login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(values),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
+        console.log(values);
+        authService.login(values)
+            .then(async response => {
+                const data = response.data;
                 const { token } = data.accessToken;
+                localStorage.setItem('token', token);
 
                 const decodedToken: CustomJwtPayload = jwtDecode(token);
                 console.log(decodedToken);
@@ -60,21 +55,18 @@ const SignInPage = (props: Props) => {
                 const userId = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
                 if (userId) {
                     localStorage.setItem('userId', userId);
-                    console.log("ha burda user id vardı usagum"+userId);
+                    console.log("User ID found: " + userId);
                 }
 
-                localStorage.setItem('token', token);
-                navigate('/platform'); 
-            } else {
-                setError('Authentication failed');
 
-            }
-        } catch (error) {
-            console.error('Error during authentication', error);
-            setError('Error during authentication');
-        }
+                navigate('/platform');
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error during authentication', error);
+                setError('Error during authentication');
+            });
     };
-
 
 
     return (
