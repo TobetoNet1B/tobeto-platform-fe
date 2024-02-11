@@ -1,11 +1,10 @@
 import {toast} from "react-toastify";
-
 import {BUSINESS_ERROR, VALIDATION_ERROR} from "./errorTypes";
 
 export const handleError = (error: any) => {
 	if (error.code && error.code == "ERR_NETWORK") {
 		toast.error("Sunucuya ulaşılamıyor..");
-		
+		console.log("Sunucuya ulaşılamıyor..");
 	}
 
 	if (error.response && error.response.data && error.response.data.type) {
@@ -27,10 +26,11 @@ export const handleError = (error: any) => {
 
 export const handleBusinessError = (error: any) => {
 	toast.error(error.detail);
+	console.log("handleBusinessError");
 };
 export const handleValidationError = (error: any) => {
 	console.log(error);
-
+	console.log("handleValidationError");
 	Object.keys(error.errors).forEach(key => {
 		toast.error(`${key}: ${error.errors[key]}`);
 	});
