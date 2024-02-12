@@ -12,6 +12,7 @@ import AnnouncementCard3 from "../../components/Platform/Main/AnnouncementCards/
 import MyExams from "../../components/Platform/Main/MyExams";
 import MySurveys from "components/Platform/Main/MySurveys";
 import FooterBoxes from "components/Platform/Footer/FooterBoxes";
+import FooterBar from "components/Platform/Footer/FooterBar";
 
 export default function PlatformMain() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
@@ -204,6 +205,7 @@ export default function PlatformMain() {
       <br />
       <MyExams />
       <FooterBoxes/>
+      <FooterBar/>
     </div>
   );
 }
