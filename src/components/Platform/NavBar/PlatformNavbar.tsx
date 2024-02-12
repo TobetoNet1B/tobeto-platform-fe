@@ -9,7 +9,7 @@ export default function PlatformNavbar() {
     <nav className="nav bg-white dark:bg-gray-900 w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
-          to=""
+          to="/platform"
           className="flex items-center space-x-3 rtl:space-x-reverse"
           style={{ display: "flex" }}
         >

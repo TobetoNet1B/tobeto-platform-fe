@@ -7,7 +7,7 @@ export default function DropdownItem() {
   
     return (
         <div className="navbar navbar-end">
-            <div className="dropdown-platform dropdown dropdown-end">
+            <div className="ml-72 dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle flex-nowrap avatar lg:min-w-52 lg:bg-slate-200 text-slate-900 hover:text-slate-200">
                     <div className="w-10 flex rounded-full w-[33px] ">
                         <img style={{ width: '32px', height: '32px' }} alt="Tailwind CSS Navbar component" src="./p3.png" />
