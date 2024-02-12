@@ -1,4 +1,3 @@
-
 import { GetAllAnnouncementResponse } from "models/responses/announcement/getAllAnnouncementResponse";
 import React, { useEffect, useState } from "react";
 import AnnouncementService from "services/announcementService";
@@ -64,12 +63,12 @@ const AnnouncementCard = (props: Props) => {
   const filteredAndSortedCards = announcement && announcement.items
   ? announcement.items.map(items => ({
     kurum: "İstanbul Kodluyor",
-    type: "Duyuru", // You might want to adjust this according to your data
+    type: "Duyuru", 
     title: items.title,
     description: items.description,
-    createdDate: items.createdDate.toString(), // You need to ensure that you have a date property in your item
+    createdDate: items.createdDate.toString(),
     buttonText: "Devamını Gör"
-  })).filter(filterCards).sort(sortCards):[]; // Apply filters and sorting
+  })).filter(filterCards).sort(sortCards):[];
 
   const totalPages = Math.ceil(filteredAndSortedCards.length / cardsPerPage);
 
