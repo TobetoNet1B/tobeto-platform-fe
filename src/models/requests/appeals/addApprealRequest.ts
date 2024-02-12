@@ -1,1 +1,4 @@
-export interface AddApprealRequest{}
+export interface AddApprealRequest {
+	name: string;
+	description: string;
+}

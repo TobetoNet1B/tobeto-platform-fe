@@ -1,1 +1,4 @@
-export interface AddAnnouncementRequest{}
+export interface AddAnnouncementRequest {
+	title: string;
+	description: string;
+}

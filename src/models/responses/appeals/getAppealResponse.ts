@@ -1,1 +1,5 @@
-export interface GetAppealResponse{}
+export interface GetAppealResponse{
+  id: string;
+  name: string;
+	description: string;
+}

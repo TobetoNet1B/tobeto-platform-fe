@@ -1,1 +1,5 @@
-export interface GetAbilityResponse{}
+export interface GetAbilityResponse {
+	id: string;
+	name: string;
+	studentId: string;
+}
