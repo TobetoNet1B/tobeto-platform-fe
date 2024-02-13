@@ -1,10 +1,10 @@
-export interface GetAllAnnouncementResponse{
-    items :Announcement[]
- 
+export interface GetAllAnnouncementResponse {
+  items: Announcement[]
+
 }
-interface Announcement{
+interface Announcement {
   id: string;
-    title:string
-    description:string
-    createdDate:Date
+  title: string
+  description: string
+  createdDate: Date
 }
