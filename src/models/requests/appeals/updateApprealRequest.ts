@@ -1,1 +1,5 @@
-export interface UpdateApprealRequest{}
+export interface UpdateApprealRequest{
+  id: string;
+  name: string;
+	description: string;
+}

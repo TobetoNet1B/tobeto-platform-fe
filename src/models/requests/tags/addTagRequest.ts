@@ -1,1 +1,3 @@
-export interface AddTagRequest{}
+export interface AddTagRequest {
+	tagName: string;
+}

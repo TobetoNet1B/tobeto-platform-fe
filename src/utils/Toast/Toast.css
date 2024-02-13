@@ -1,0 +1,25 @@
+.Toastify__toast {
+  position: relative;
+  width: 400px;
+  height: 112px;
+  left: auto;
+  bottom: auto;
+  top: 0;
+  right: 120px;
+  box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+}
+.Toastify__toast-body {
+  margin-bottom: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  color: black !important;
+}
+.Toastify__toast-body::before {
+  background-image: url(https://tobeto.com/_next/static/media/tbtlogo-gradient.7979f966.svg);
+  background-size: cover;
+  background-color: wheat;
+  width: 20px;
+  height: 20px;
+  content: '';
+  margin-right: 4px;
+}
