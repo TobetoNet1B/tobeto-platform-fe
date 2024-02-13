@@ -1,11 +1,11 @@
 import {BaseService} from "./baseService";
 import {BASE_API_URL} from "../environment/environment";
-import { GetAllLessonTagResponse } from "models/responses/lessontags/getAllLessonTagResponse";
-import { GetLessonTagResponse } from "models/responses/lessontags/getLessonTagResponse";
-import { AddLessonTagRequest } from "models/requests/lessontags/addLessonTagRequest";
-import { AddLessonTagResponse } from "models/responses/lessontags/addLessonTagResponse";
-import { UpdateLessonTagRequest } from "models/requests/lessontags/updateLessonTagRequest";
-import { UpdateLessonTagResponse } from "models/responses/lessontags/updateLessonTagResponse";
+import { GetAllLessonTagResponse } from "models/responses/lesson-tags/getAllLessonTagResponse";
+import { GetLessonTagResponse } from "models/responses/lesson-tags/getLessonTagResponse";
+import { AddLessonTagRequest } from "models/requests/lesson-tags/addLessonTagRequest";
+import { AddLessonTagResponse } from "models/responses/lesson-tags/addLessonTagResponse";
+import { UpdateLessonTagRequest } from "models/requests/lesson-tags/updateLessonTagRequest";
+import { UpdateLessonTagResponse } from "models/responses/lesson-tags/updateLessonTagResponse";
 
 class LessonTagService extends BaseService<
 	GetAllLessonTagResponse,

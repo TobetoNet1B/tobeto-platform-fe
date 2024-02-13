@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StudentModuleService from "services/studentModuleService";
 import Card, { ECard } from "utils/Card";
-import { GetStudentModuleResponse } from "models/responses/studentModules/getStudentModuleResponse";
+import { GetStudentModuleResponse } from "models/responses/student-modules/getStudentModuleResponse";
 
 type CardData = {
   imgUrl?: string;

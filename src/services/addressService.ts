@@ -1,7 +1,7 @@
 
 import {BaseService} from "./baseService";
 import {BASE_API_URL} from "../environment/environment";
-import { GetAllAbilityResponse } from "models/responses/abilities/getAllAbilityResponse";
+import { GetAllAddressResponse } from "models/responses/addresses/getAllAddressResponse";
 import { GetAddressResponse } from "models/responses/addresses/getAddressResponse";
 import { AddAddressResponse } from "models/responses/addresses/addAddressResponse";
 import { UpdateAddressResponse } from "models/responses/addresses/updateAddressResponse";
@@ -10,7 +10,7 @@ import { UpdateAddressRequest } from "models/requests/addresses/updateAddressReq
 
 
 class AddressService extends BaseService<
-	GetAllAbilityResponse,
+	GetAllAddressResponse,
 	GetAddressResponse,
 	AddAddressRequest,
 	AddAddressResponse,

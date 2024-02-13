@@ -1,11 +1,11 @@
 import {BaseService} from "./baseService";
 import {BASE_API_URL} from "../environment/environment";
-import { GetAllCourseInstructorResponse } from "models/responses/courseinstructors/getAllCourseInstructorResponse";
-import { GetCourseInstructorResponse } from "models/responses/courseinstructors/getCourseInstructorResponse";
-import { AddCourseInstructorResponse } from "models/responses/courseinstructors/addCourseInstructorResponse";
-import { AddCourseInstructorsRequest } from "models/requests/courseinstructors/addCourseInstructorsRequest";
-import { UpdateCourseInstructorsRequest } from "models/requests/courseinstructors/updateCourseInstructorsRequest";
-import { UpdateCourseInstructorResponse } from "models/responses/courseinstructors/updateCourseInstructorResponse";
+import { GetAllCourseInstructorResponse } from "models/responses/course-instructors/getAllCourseInstructorResponse";
+import { GetCourseInstructorResponse } from "models/responses/course-instructors/getCourseInstructorResponse";
+import { AddCourseInstructorResponse } from "models/responses/course-instructors/addCourseInstructorResponse";
+import { AddCourseInstructorsRequest } from "models/requests/course-instructors/addCourseInstructorsRequest";
+import { UpdateCourseInstructorsRequest } from "models/requests/course-instructors/updateCourseInstructorsRequest";
+import { UpdateCourseInstructorResponse } from "models/responses/course-instructors/updateCourseInstructorResponse";
 
 
 

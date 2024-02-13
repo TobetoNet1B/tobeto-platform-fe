@@ -1,11 +1,11 @@
 import {BaseService} from "./baseService";
 import {BASE_API_URL} from "../environment/environment";
-import { GetAllInstructorResponse } from "models/responses/instructor/getAllInstructorResponse";
-import { GetInstructorResponse } from "models/responses/instructor/getInstructorDetailResponse";
-import { AddInstructorRequest } from "models/requests/instructor/addInstructorRequest";
-import { AddInstructorResponse } from "models/responses/instructor/addInstructorResponse";
-import { UpdateInstructorRequest } from "models/requests/instructor/updateInstructorRequest";
-import { UpdateInstructorResponse } from "models/responses/instructor/updateInstructorResponse";
+import { GetAllInstructorResponse } from "models/responses/instructors/getAllInstructorResponse";
+import { GetInstructorResponse } from "models/responses/instructors/getInstructorDetailResponse";
+import { AddInstructorRequest } from "models/requests/instructors/addInstructorRequest";
+import { AddInstructorResponse } from "models/responses/instructors/addInstructorResponse";
+import { UpdateInstructorRequest } from "models/requests/instructors/updateInstructorRequest";
+import { UpdateInstructorResponse } from "models/responses/instructors/updateInstructorResponse";
 
 class InstructorService extends BaseService<
 	GetAllInstructorResponse,
