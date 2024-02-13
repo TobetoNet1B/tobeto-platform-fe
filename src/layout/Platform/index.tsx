@@ -1,3 +1,4 @@
+import FooterBar from 'components/Platform/Footer/FooterBar'
 import PlatformNavbar from 'components/Platform/NavBar/PlatformNavbar'
 import { Outlet } from 'react-router-dom'
 
@@ -8,7 +9,7 @@ const Platform = (props: Props) => {
 		<>
 			<PlatformNavbar />
 			<Outlet />
-			{/* <PlatformFooter /> */}
+		   <FooterBar/>
 		</>
 	)
 }

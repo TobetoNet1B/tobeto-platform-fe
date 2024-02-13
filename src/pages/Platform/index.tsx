@@ -11,7 +11,7 @@ import AnnouncementCard2 from "../../components/Platform/Main/AnnouncementCards/
 import AnnouncementCard3 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard3";
 import MyExams from "../../components/Platform/Main/MyExams";
 import MySurveys from "components/Platform/Main/MySurveys";
-import FooterBoxes from "components/Platform/Footer/FooterBoxes";
+import FooterBoxes from "components/Platform/Main/FooterBoxes";
 import FooterBar from "components/Platform/Footer/FooterBar";
 
 export default function PlatformMain() {
@@ -205,7 +205,6 @@ export default function PlatformMain() {
       <br />
       <MyExams />
       <FooterBoxes/>
-      <FooterBar/>
     </div>
   );
 }
