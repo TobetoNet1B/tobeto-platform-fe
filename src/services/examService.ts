@@ -1,6 +1,6 @@
-import { UpdateExamRequest } from './../models/requests/exams/updateExamRequest';
 import {BaseService} from "./baseService";
 import {BASE_API_URL} from "../environment/environment";
+import { UpdateExamRequest } from './../models/requests/exams/updateExamRequest';
 import { GetAllExamResponse } from "models/responses/exams/getAllExamResponse";
 import { GetExamResponse } from "models/responses/exams/getExamResponse";
 import { AddExamRequest } from "models/requests/exams/addExamRequest";

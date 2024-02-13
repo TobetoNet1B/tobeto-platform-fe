@@ -1,11 +1,11 @@
 import {BaseService} from "./baseService";
 import {BASE_API_URL} from "../environment/environment";
-import { GetAllUserOperationClaimResponse } from "models/responses/useroperationclaims/getAllUserOperationClaimResponse";
-import { GetUserOperationClaimResponse } from "models/responses/useroperationclaims/getUserOperationClaimResponse";
-import { AddUserOperationClaimRequest } from "models/requests/useroperationclaims/addUserOperationClaimRequest";
-import { AddUserOperationClaimResponse } from "models/responses/useroperationclaims/addUserOperationClaimResponse";
-import { UpdateUserOperationClaimRequest } from "models/requests/useroperationclaims/updateUserOperationClaimRequest";
-import { UpdateUserOperationClaimResponse } from "models/responses/useroperationclaims/updateUserOperationClaimResponse";
+import { GetAllUserOperationClaimResponse } from "models/responses/user-operation-claims/getAllUserOperationClaimResponse";
+import { GetUserOperationClaimResponse } from "models/responses/user-operation-claims/getUserOperationClaimResponse";
+import { AddUserOperationClaimRequest } from "models/requests/user-operation-claims/addUserOperationClaimRequest";
+import { AddUserOperationClaimResponse } from "models/responses/user-operation-claims/addUserOperationClaimResponse";
+import { UpdateUserOperationClaimRequest } from "models/requests/user-operation-claims/updateUserOperationClaimRequest";
+import { UpdateUserOperationClaimResponse } from "models/responses/user-operation-claims/updateUserOperationClaimResponse";
 
 class UserOperationClaimService extends BaseService<
 	GetAllUserOperationClaimResponse,
