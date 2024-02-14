@@ -1,1 +1,4 @@
-export interface AddCourseResponse{}
+export interface AddCourseResponse{
+  id: string;
+	name: string;
+}
