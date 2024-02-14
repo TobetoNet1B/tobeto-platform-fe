@@ -1,1 +1,9 @@
-export interface UpdateStudentRequest{}
+export interface UpdateStudentRequest{
+  id:string;
+  identityNumber: string;
+	birthDate: string;
+	phoneNumber: string;
+	about: string;
+	imgUrl: string;
+	userId: number;
+}
