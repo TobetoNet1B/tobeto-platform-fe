@@ -1,1 +1,3 @@
-export interface AddCompanyRequest{}
+export interface AddCompanyRequest {
+  name: string;
+}

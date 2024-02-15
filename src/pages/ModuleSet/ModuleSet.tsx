@@ -4,11 +4,29 @@ import Course from "components/Course/Course"
 import ModuleSetHeader from "./ModuleSetHeader"
 import PreLoader from "utils/PreLoader"
 import { useEffect, useState } from "react"
+import { GetModuleSetResponse } from "models/responses/modulesets/getModuleSetResponse"
+import moduleSetService from "services/moduleSetService"
 
 type Props = {}
 
 const ModuleSet = (props: Props) => {
   const [loading, setLoading] = useState(true);
+
+  const [moduleSet, setModuleSet] = useState<GetModuleSetResponse | null>(null);
+
+  useEffect(() => {
+    const fetchStudentModule = async () => {
+      try {
+        const result = await moduleSetService.getById("d319a688-abaa-4303-6146-08dc2d616001");
+        setModuleSet(result.data as GetModuleSetResponse);
+        console.log(result.data)
+      } catch (error) {
+        console.error("Error fetching moduleset:", error);
+      }
+    };
+  
+    fetchStudentModule();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -1,1 +1,4 @@
-export interface UpdateCompanyResponse{}
+export interface UpdateCompanyResponse {
+  id : string;
+  name: string;
+}

@@ -1,1 +1,4 @@
-export interface UpdateForeignLanguageLevelRequest{}
+export interface UpdateForeignLanguageLevelRequest {
+  id : string;
+  name: string;
+}

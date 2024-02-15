@@ -1,1 +1,4 @@
-export interface AddCourseInstructorsRequest{}
+export interface AddCourseInstructorsRequest {
+  instructorId: string;
+	courseId: string;
+}

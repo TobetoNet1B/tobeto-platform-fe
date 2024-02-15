@@ -1,1 +1,5 @@
-export interface UpdateCourseCategoryRequest{}
+export interface UpdateCourseCategoryRequest {
+  id : string;
+  courseId: string;
+	categoryOfCourseId: string;
+}
