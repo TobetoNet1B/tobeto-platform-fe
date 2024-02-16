@@ -1,7 +1,7 @@
+import { GetStudentModuleResponse } from "models/responses/student-modules/getStudentModuleResponse";
 import React, { useEffect, useState } from "react";
 import StudentModuleService from "services/studentModuleService";
 import Card, { ECard } from "utils/Card";
-import { GetStudentModuleResponse } from "models/responses/student-modules/getStudentModuleResponse";
 
 type CardData = {
   imgUrl?: string;
@@ -68,7 +68,7 @@ const EducationCard = (props: Props) => {
     ? studentModule.moduleSets.map(module => ({
       imgUrl: module.imgUrl,
       name: module.name,
-      createdDate: module.createdDate.toString(),
+      createdDate: module.startDate.toString(),
       buttonText: "Eğitime Git",
       companyName: module.companyName
       
