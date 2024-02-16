@@ -82,7 +82,7 @@ export default function PlatformMain() {
 
       <h1
         id="text1"
-        className="text-2xl font-medium text-gray-900 dark:text-white"
+        className="flex justify-center text-2xl font-medium text-gray-900 dark:text-white"
       >
         Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin
         yanında!
