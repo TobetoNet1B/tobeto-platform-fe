@@ -1,1 +1,3 @@
-export interface AddForeignLanguageRequest{}
+export interface AddForeignLanguageRequest {
+  name: string;
+}

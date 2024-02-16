@@ -1,1 +1,4 @@
-export interface AddLessonTagRequest{}
+export interface AddLessonTagRequest {
+  lessonId: string;
+	tagId: string;
+}

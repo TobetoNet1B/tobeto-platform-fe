@@ -1,1 +1,5 @@
-export interface UpdateLessonTagResponse{}
+export interface UpdateLessonTagResponse {
+  id : string;
+  lessonId: string;
+	tagId: string;
+}

@@ -1,1 +1,4 @@
-export interface UpdateForeignLanguageResponse{}
+export interface UpdateForeignLanguageResponse {
+  id : string;
+  name: string;
+}
