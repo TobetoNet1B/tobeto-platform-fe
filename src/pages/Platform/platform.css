@@ -4,9 +4,6 @@
   margin-right: 10px;
 }
 
-.nav {
-  background-color: white;
-}
 .entry-container {
   display: flex;
   align-items: center;
@@ -30,10 +27,6 @@
   margin-left: 10rem;
 }
 
-#text1 {
-  display: flex;
-  justify-content: center;
-}
 
 .body-container {
   display: flex;
@@ -249,10 +242,11 @@
   justify-content: center;
   max-width: 9.3%; 
   height: auto;
+
 }
 
 .btn-footerbar {
-margin-right: 10rem;
+  margin-right: 10rem;
   width: 320px; 
   height: 35px;
   border-radius: 20px;
