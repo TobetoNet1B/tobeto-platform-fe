@@ -6,21 +6,31 @@ import Address from './Address';
 import PhoneNumber from './PhoneNumber';
 import * as Yup from 'yup';
 import { GetStudentResponse } from 'models/responses/students/getStudentResponse';
+import { GetAddressResponse } from 'models/responses/addresses/getAddressResponse';
 import studentService from 'services/studentService';
+import { UpdateStudentRequest } from 'models/requests/students/updateStudentRequest';
+import addressService from 'services/addressService';
 
 type Props = {}
 
 const PersonalInformations = (props: Props) => {
 
 	const [student, setStudent] = useState<GetStudentResponse>({} as GetStudentResponse);
+	const [address, setAddress] = useState<GetAddressResponse>({} as GetAddressResponse);
 
 	const fetchStudents = async () => {
 		const response = await studentService.getById(localStorage.userId);
 		setStudent(response.data as GetStudentResponse);
 	};
 
+	const fetchAddress = async () => {
+		const response = await addressService.getById(localStorage.studentId)
+		setAddress(response.data as GetAddressResponse);
+	}
+
 	useEffect(() => {
-		fetchStudents();		
+		fetchStudents();
+		fetchAddress();
 	}, []);
 
 
@@ -33,15 +43,15 @@ const PersonalInformations = (props: Props) => {
 		initialValues: {
 			firstName: student.user?.firstName ?? '',
 			lastName: student.user?.lastName ?? '',
-			phoneNumber: '+90' + student?.phoneNumber ?? '',
+			phoneNumber: student?.phoneNumber ?? '',
 			//countryCode: "+90",
 			birthDate: formattedBirthDate ?? '',
 			identityNumber: student.identityNumber ?? '',
 			email: student.user?.email ?? '',
-			country: '',
-			city: "SAKARYA",
-			district: '',
-			addressDetails: '',
+			country: address.countryName ?? '',
+			city: address.cityName ?? '',
+			district: address.districtName ?? '',
+			addressDetails: address.addressDetails ?? '',
 			about: student.about ?? ''
 		},
 		enableReinitialize: true,
@@ -70,11 +80,26 @@ const PersonalInformations = (props: Props) => {
 				.required('Gerekli')
 				.min(2, 'Geçersiz ülke adı')
 				.max(40, 'Ülke adı çok uzun'),
+			city: Yup.string()
+				.required('Şehir Seçin'),
 			district: Yup.string()
 				.required('İlçe Seçin')
 		}),
-		onSubmit: values => {
-			alert(JSON.stringify(values, null, 2));
+		onSubmit: async (values) => {
+			try {
+				const updateData: UpdateStudentRequest = {
+					...values,
+					id: student.id,
+					imgUrl: student.imgUrl,
+					userId: localStorage.userId,
+				};
+				await studentService.update(updateData);
+				alert('Bilgileriniz başarıyla güncellendi!');
+			}
+			catch (error) {
+				alert('Güncelleme sırasında bir hata oluştu!');
+				console.error(error);
+			}
 		}
 	});
 
