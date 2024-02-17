@@ -1,31 +1,50 @@
+import { useEffect, useState } from 'react';
 import { FormikProvider, useFormik } from 'formik'
 import { MdOutlineEdit } from "react-icons/md";
 import FormInput from 'utils/FormInput/FormInput';
 import Address from './Address';
 import PhoneNumber from './PhoneNumber';
 import * as Yup from 'yup';
+import { GetStudentResponse } from 'models/responses/students/getStudentResponse';
+import studentService from 'services/studentService';
 
 type Props = {}
 
 const PersonalInformations = (props: Props) => {
 
+	const [student, setStudent] = useState<GetStudentResponse>({} as GetStudentResponse);
+
+	const fetchStudents = async () => {
+		const response = await studentService.getById(localStorage.userId);
+		setStudent(response.data as GetStudentResponse);
+	};
+
+	useEffect(() => {
+		fetchStudents();		
+	}, []);
+
+
 	const date = new Date().toLocaleDateString('sv-SE')
+	const birthDate = new Date(student.birthDate);
+	const formattedBirthDate = birthDate.toLocaleDateString('sv-SE');
+
 
 	const formik = useFormik({
 		initialValues: {
-			firstName: '',
-			lastName: '',
-			phoneNumber: '' as any,
-			countryCode: "+90",
-			birthDate: '',
-			identityNumber: '',
-			email: '',
+			firstName: student.user?.firstName ?? '',
+			lastName: student.user?.lastName ?? '',
+			phoneNumber: '+90' + student?.phoneNumber ?? '',
+			//countryCode: "+90",
+			birthDate: formattedBirthDate ?? '',
+			identityNumber: student.identityNumber ?? '',
+			email: student.user?.email ?? '',
 			country: '',
 			city: "SAKARYA",
 			district: '',
 			addressDetails: '',
-			about: ''
+			about: student.about ?? ''
 		},
+		enableReinitialize: true,
 		validationSchema: Yup.object({
 			firstName: Yup.string()
 				.required('Adınızı girin')
@@ -51,13 +70,14 @@ const PersonalInformations = (props: Props) => {
 				.required('Gerekli')
 				.min(2, 'Geçersiz ülke adı')
 				.max(40, 'Ülke adı çok uzun'),
-			district:  Yup.string()
+			district: Yup.string()
 				.required('İlçe Seçin')
 		}),
 		onSubmit: values => {
 			alert(JSON.stringify(values, null, 2));
 		}
 	});
+
 
 	return (
 		<FormikProvider value={formik}>
