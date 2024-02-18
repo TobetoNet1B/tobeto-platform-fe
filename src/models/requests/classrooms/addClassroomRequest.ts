@@ -1,1 +1,4 @@
-export interface AddClassroomRequest{}
+export interface AddClassroomRequest {
+  name: string;
+  classSize: number;
+}

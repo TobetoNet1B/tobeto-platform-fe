@@ -11,7 +11,8 @@ import AnnouncementCard2 from "../../components/Platform/Main/AnnouncementCards/
 import AnnouncementCard3 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard3";
 import MyExams from "../../components/Platform/Main/MyExams";
 import MySurveys from "components/Platform/Main/MySurveys";
-import FooterBoxes from "components/Platform/Footer/FooterBoxes";
+import FooterBoxes from "components/Platform/Main/FooterBoxes";
+import FooterBar from "components/Platform/Footer/FooterBar";
 
 export default function PlatformMain() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
@@ -81,7 +82,7 @@ export default function PlatformMain() {
 
       <h1
         id="text1"
-        className="text-2xl font-medium text-gray-900 dark:text-white"
+        className="flex justify-center text-2xl font-medium text-gray-900 dark:text-white"
       >
         Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin
         yanında!

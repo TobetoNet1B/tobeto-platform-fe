@@ -1,11 +1,11 @@
-import { AddForeignLanguageLevelResponse } from './../models/responses/foreignlanguagelevels/addForeignLanguageLevelResponse';
 import {BaseService} from "./baseService";
 import {BASE_API_URL} from "../environment/environment";
-import { GetAllForeignLanguageLevelResponse } from "models/responses/foreignlanguagelevels/getAllForeignLanguageLevelResponse";
-import { getForeignLanguageLevelResponse } from "models/responses/foreignlanguagelevels/getForeignLanguageLevelResponse";
-import { AddForeignLanguageLevelRequest } from "models/requests/foreignlanguagelevels/addForeignLanguageLevelRequest";
-import { UpdateForeignLanguageLevelRequest } from 'models/requests/foreignlanguagelevels/updateForeignLanguageLevelRequest';
-import { UpdateForeignLanguageLevelResponse } from 'models/responses/foreignlanguagelevels/updateForeignLanguageLevelResponse';
+import { AddForeignLanguageLevelResponse } from './../models/responses/foreign-language-levels/addForeignLanguageLevelResponse';
+import { GetAllForeignLanguageLevelResponse } from "models/responses/foreign-language-levels/getAllForeignLanguageLevelResponse";
+import { getForeignLanguageLevelResponse } from "models/responses/foreign-language-levels/getForeignLanguageLevelResponse";
+import { AddForeignLanguageLevelRequest } from "models/requests/foreign-language-levels/addForeignLanguageLevelRequest";
+import { UpdateForeignLanguageLevelRequest } from 'models/requests/foreign-language-levels/updateForeignLanguageLevelRequest';
+import { UpdateForeignLanguageLevelResponse } from 'models/responses/foreign-language-levels/updateForeignLanguageLevelResponse';
 
 class ForeignLanguageLevelService extends BaseService<
 	GetAllForeignLanguageLevelResponse,

@@ -1,11 +1,11 @@
 import {BaseService} from "./baseService";
 import {BASE_API_URL} from "../environment/environment";
-import { GetAllStudentModuleResponse } from "models/responses/studentModules/getAllStudentModuleResponse";
-import { GetStudentModuleResponse } from "models/responses/studentModules/getStudentModuleResponse";
-import { AddStudentModuleRequest } from "models/requests/studentModules/addStudentModuleRequest";
-import { AddStudentModuleResponse } from "models/responses/studentModules/addStudentModuleResponse";
-import { UpdateStudentModuleRequest } from "models/requests/studentModules/updateStudentModuleRequest";
-import { UpdateStudentModuleResponse } from "models/responses/studentModules/updateStudentModuleResponse";
+import { GetAllStudentModuleResponse } from "models/responses/student-modules/getAllStudentModuleResponse";
+import { GetStudentModuleResponse } from "models/responses/student-modules/getStudentModuleResponse";
+import { AddStudentModuleRequest } from "models/requests/student-modules/addStudentModuleRequest";
+import { AddStudentModuleResponse } from "models/responses/student-modules/addStudentModuleResponse";
+import { UpdateStudentModuleRequest } from "models/requests/student-modules/updateStudentModuleRequest";
+import { UpdateStudentModuleResponse } from "models/responses/student-modules/updateStudentModuleResponse";
 
 class StudentModuleService extends BaseService<
 	GetAllStudentModuleResponse,

@@ -1,1 +1,4 @@
-export interface UpdateCompanyRequest{}
+export interface UpdateCompanyRequest {
+  id : string;
+  name: string;
+}

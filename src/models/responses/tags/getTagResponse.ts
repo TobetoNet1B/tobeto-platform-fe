@@ -1,1 +1,4 @@
-export interface GetTagResponse{}
+export interface GetTagResponse {
+	id: string;
+	tagName: string;
+}

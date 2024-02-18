@@ -1,1 +1,4 @@
-export interface UpdateTagResponse{}
+export interface UpdateTagResponse {
+	id: string;
+	tagName: string;
+}

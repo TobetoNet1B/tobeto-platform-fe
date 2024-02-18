@@ -1,4 +1,5 @@
 export interface AddAbilityRequest {
-  name: string
-  studentId: string
+	name: string;
+	studentId: string;
+
 }

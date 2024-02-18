@@ -1,11 +1,11 @@
 import {BaseService} from "./baseService";
 import {BASE_API_URL} from "../environment/environment";
-import { GetAllAnnouncementResponse } from "models/responses/announcement/getAllAnnouncementResponse";
-import { GetAnnouncementResponse } from "models/responses/announcement/getAnnouncementResponse";
-import { AddAnnouncementRequest } from "models/requests/announcement/addAnnouncementRequest";
-import { AddAnnouncementResponse } from "models/responses/announcement/addAnnouncementResponse";
-import { UpdateAnnouncementRequest } from "models/requests/announcement/updateAnnouncementRequest";
-import { UpdateAnnouncementResponse } from "models/responses/announcement/updateAnnouncementResponse";
+import { GetAllAnnouncementResponse } from "models/responses/announcements/getAllAnnouncementResponse";
+import { GetAnnouncementResponse } from "models/responses/announcements/getAnnouncementResponse";
+import { AddAnnouncementRequest } from "models/requests/announcements/addAnnouncementRequest";
+import { AddAnnouncementResponse } from "models/responses/announcements/addAnnouncementResponse";
+import { UpdateAnnouncementRequest } from "models/requests/announcements/updateAnnouncementRequest";
+import { UpdateAnnouncementResponse } from "models/responses/announcements/updateAnnouncementResponse";
 
 class AnnouncementService extends BaseService<
 	GetAllAnnouncementResponse,

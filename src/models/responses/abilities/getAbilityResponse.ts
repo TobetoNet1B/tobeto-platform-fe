@@ -1,3 +1,4 @@
+
 export type GetAbilityResponse = Root[]
 
 export interface Root {
@@ -5,3 +6,4 @@ export interface Root {
   name: string
   studentId: string
 }
+

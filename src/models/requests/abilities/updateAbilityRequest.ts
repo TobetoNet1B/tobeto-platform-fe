@@ -1,1 +1,5 @@
-export interface UpdateAbilityRequest {}
+export interface UpdateAbilityRequest {
+	id: string;
+	name: string;
+	studentId: string;
+}

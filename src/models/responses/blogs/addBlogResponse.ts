@@ -1,1 +1,6 @@
-export interface AddBlogResponse{}
+export interface AddBlogResponse {
+	id: string;
+	title: string;
+	description: string;
+	imgUrl: string;
+}

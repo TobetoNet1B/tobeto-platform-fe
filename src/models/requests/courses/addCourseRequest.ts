@@ -1,1 +1,3 @@
-export interface AddCourseRequest{}
+export interface AddCourseRequest{
+  name: string;
+}

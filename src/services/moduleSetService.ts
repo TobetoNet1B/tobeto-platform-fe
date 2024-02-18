@@ -1,6 +1,6 @@
-import { UpdateModuleSetResponse } from './../models/responses/modulesets/updateModuleSetResponse';
 import {BaseService} from "./baseService";
 import {BASE_API_URL} from "../environment/environment";
+import { UpdateModuleSetResponse } from './../models/responses/modulesets/updateModuleSetResponse';
 import { GetAllModuleSetResponse } from "models/responses/modulesets/getAllModuleSetResponse";
 import { GetModuleSetResponse } from "models/responses/modulesets/getModuleSetResponse";
 import { AddModuleSetRequest } from "models/requests/modulesets/addModuleSetRequest";
