@@ -33,7 +33,6 @@ const Address = (props: Props) => {
 		console.log(response.data);
 	}
 
-
 	useEffect(() => {
 		fetchCities();
 		if (props.city) {
@@ -49,6 +48,7 @@ const Address = (props: Props) => {
 				<label htmlFor='city'>İl*</label>
 				<Field as='select' className='select select-bordered w-full'
 					id='city' name='city' value={props.city}>
+						<option value='' disabled>İl Seçiniz</option>
 					{cities?.items.slice().sort((a, b) => a.name.localeCompare(b.name)).map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
 				</Field>
 				<ErrorSpan name={props.cname} />
@@ -57,7 +57,7 @@ const Address = (props: Props) => {
 				<label htmlFor='district'>İlçe*</label>
 				<Field as='select' className='select select-bordered w-full'
 					id='district' name='district' value={props.district}>
-					<option value='' disabled>İlçe Seçin</option>
+					<option value='' disabled>İlçe Seçiniz</option>
 					{districts?.slice().sort((a, b) => a.name.localeCompare(b.name)).map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
 				</Field>
 				<ErrorSpan name={props.dname} />
