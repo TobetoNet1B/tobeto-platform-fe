@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { jwtDecode } from 'jwt-decode';
 import authService from 'services/authService';
+import { ToastContainer } from 'react-toastify';
 
 interface CustomJwtPayload {
     [key: string]: any;
@@ -70,8 +71,10 @@ const SignInPage = (props: Props) => {
 
 
     return (
+        
         <div className="items-center grid lg:grid-flow-col lg:gap-5 justify-center min-h-full py-16 bg-gray-100">
             <div className="px-9 py-5 btn-rainbow-card bg-white shadow-md w-96 text-center relative overflow-hidden rounded-2xl">
+                
                 <img
                     src="https://tobeto.com/_next/static/media/tobeto-logo.29b55e1c.svg"
                     alt="tobeto-banner"
@@ -154,7 +157,7 @@ const SignInPage = (props: Props) => {
                 </button>
             </div>
 
-
+            <ToastContainer/>
         </div>
     );
 }
