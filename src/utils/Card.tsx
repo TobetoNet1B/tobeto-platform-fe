@@ -7,14 +7,15 @@ type Props = {
   createdDate: string;
   buttonText?: string;
   companyName?:string
-  name:string;
+  name?:string;
   type?: string;
+  title?:string
 };
 export const ECard = (props: Props) => {
-  const isDescriptionOverflowing = props.name.length > 30;
+  const isDescriptionOverflowing = props.name && props.name.length > 30;
   const baseMarginBottom = 4;
   const maxMarginBottom = isDescriptionOverflowing ? 1 : baseMarginBottom;
-  const formattedDate = new Date(props.createdDate).toLocaleString();
+  const formattedDate = new Date(props.createdDate).toLocaleDateString();
   return (
     <div className="sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 m-2">
       <div
@@ -56,11 +57,11 @@ export const ECard = (props: Props) => {
 export default ECard;
 
 export const ACard = (props: Props) => {
-  const isDescriptionOverflowing = props.name.length > 50;
+  const isDescriptionOverflowing = props.title && props.title.length > 50;
   const baseMarginBottom = 5;
   const maxMarginBottom = isDescriptionOverflowing ? 1 : baseMarginBottom;
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+ const formattedDate = new Date(props.createdDate).toLocaleDateString();
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -88,7 +89,7 @@ export const ACard = (props: Props) => {
           style={{ whiteSpace: "pre-wrap" }}
         >
           <div className="tracking-wide text-sm font-semibold text-[#767676]">
-            {props.name}
+            {props.title}
           </div>
         </div>
         <div className="pb-5"></div>
@@ -113,7 +114,7 @@ export const ACard = (props: Props) => {
             </svg>
 
             <p className="block ml-2 mt-1 text-sm leading-tight font-medium text-[#767676]">
-              {props.createdDate}
+              {formattedDate}
             </p>
           </div>
           {props.buttonText && (
@@ -130,7 +131,7 @@ export const ACard = (props: Props) => {
               <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-2xl">
                 <div className="bg-white p-8 rounded-lg w-full h-full overflow-y-auto">
                   <div className="flex justify-between">
-                    <h2 className="text-xl font-semibold mb-4">{props.name}</h2>
+                    <h2 className="text-xl font-semibold mb-4">{props.title}</h2>
                     <button
                       onClick={toggleModal}
                       className="text-gray-500 hover:text-gray-700 mb-4"
