@@ -10,6 +10,11 @@ import { GetAddressResponse } from 'models/responses/addresses/getAddressRespons
 import studentService from 'services/studentService';
 import { UpdateStudentRequest } from 'models/requests/students/updateStudentRequest';
 import addressService from 'services/addressService';
+import { UpdateUserRequest } from 'models/requests/users/updateUserRequest';
+import userService from 'services/userService';
+import { UpdateAddressRequest } from 'models/requests/addresses/updateAddressRequest';
+import { ToastContainer, toast } from 'react-toastify';
+import Toast from 'utils/Toast/Toast';
 
 type Props = {}
 
@@ -49,8 +54,8 @@ const PersonalInformations = (props: Props) => {
 			identityNumber: student.identityNumber ?? '',
 			email: student.user?.email ?? '',
 			country: address.countryName ?? '',
-			city: address.cityName ?? '',
-			district: address.districtName ?? '',
+			city: address.cityId ?? '',
+			district: address.districtId ?? '',
 			addressDetails: address.addressDetails ?? '',
 			about: student.about ?? ''
 		},
@@ -89,15 +94,31 @@ const PersonalInformations = (props: Props) => {
 			try {
 				const updateData: UpdateStudentRequest = {
 					...values,
-					id: student.id,
-					imgUrl: student.imgUrl,
+					id: localStorage.studentId,
+					imgUrl: "asdasda.com",
 					userId: localStorage.userId,
 				};
+				const updateUserData: UpdateUserRequest = {
+					...values,
+					id: localStorage.userId,
+					password: "string",
+				};
+				const updateAddressData: UpdateAddressRequest = {
+					...values,
+					Id: address.id,
+					countryId: "d61f3875-8652-448f-8528-08dc305c2630",
+					cityId: values.city,
+					districtId: values.district,
+					studentId: localStorage.studentId,
+				};
 				await studentService.update(updateData);
-				alert('Bilgileriniz başarıyla güncellendi!');
+				await userService.update(updateUserData);
+				await addressService.update(updateAddressData);
+				toast.success('Bilgileriniz başarıyla güncellendi!');
+				//<Toast message='Bilgileriniz başarıyla güncellendi!' type='success'/>
 			}
 			catch (error) {
-				alert('Güncelleme sırasında bir hata oluştu!');
+				toast.error('Güncelleme sırasında bir hata oluştu!');
 				console.error(error);
 			}
 		}
@@ -145,7 +166,9 @@ const PersonalInformations = (props: Props) => {
 					Kaydet
 				</button>
 			</form>
+			<ToastContainer/>
 		</FormikProvider>
+		
 	)
 }
 

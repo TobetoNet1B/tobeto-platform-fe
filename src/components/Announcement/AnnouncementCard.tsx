@@ -28,7 +28,8 @@ const AnnouncementCard = (props: Props) => {
     const fetchAnnouncement = async () => {
       try {
         const result = await AnnouncementService.getAll(0,20);
-        setAnnouncement(result.data); 
+        setAnnouncement(result.data);
+        
       } catch (error) {
         console.error("Error fetching announcement:", error);
       }

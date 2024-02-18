@@ -198,7 +198,7 @@ const MyProfile = (props: Props) => {
 									Yetkinliklerim
 								</h5>
 								<hr className="border-[#EEDEFF] border-[1.5px] my-2" />
-								{student.abilities?.map((ability, index) => (
+								{student.abilities?.slice().reverse().slice(0, 5).map((ability, index) => (
 									<h5 key={index} className='p-2 my-2 text-base font-normal bg-white text-black rounded-3xl hover:bg-[#9933FF] hover:text-white shadow-lg'>
 										&emsp;{ability.name}
 									</h5>
