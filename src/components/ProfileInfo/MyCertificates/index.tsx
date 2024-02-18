@@ -5,8 +5,8 @@ import '@uppy/core/dist/style.css';
 import '@uppy/dashboard/dist/style.css';
 import '@uppy/status-bar/dist/style.css';
 import { IoCloudDownloadOutline, IoCloudUploadOutline, IoTrashOutline } from 'react-icons/io5';
-import {AdvancedImage} from '@cloudinary/react';
-import {Cloudinary} from "@cloudinary/url-gen";
+import { AdvancedImage } from '@cloudinary/react';
+import { Cloudinary } from "@cloudinary/url-gen";
 import certificateService from 'services/certificateService';
 import { GetCertificateResponse } from 'models/responses/certificates/getCertificateResponse';
 const cloudinaryConfig = {
@@ -17,7 +17,7 @@ const cloudinaryConfig = {
 type UploadedFile = {
   id: string;
   name: string;
-  fileType: string ;
+  fileType: string;
   fileUrl: string;
 };
 
@@ -42,18 +42,18 @@ const MyCertificates = () => {
       Promise.all(uploadPromises)
         .then(uploadedFiles => {
           setFiles(prevFiles => [...prevFiles, ...uploadedFiles]);
-          // Backend'e kayıt için ekstra işlemler
           uploadedFiles.forEach(file => {
             certificateService.add({
               name: file.name,
-              fileType: "."+file.fileType,
+              fileType: "." + file.fileType,
               fileUrl: file.fileUrl,
               studentId: localStorage.studentId,
             }).then(() => {
               console.log('Sertifika başarıyla kaydedildi.');
+              fetchCertificates();
             }).catch(err => {
-              console.log(file.name,file.fileType,file.fileUrl,localStorage.studentId);
-              
+              console.log(file.name, file.fileType, file.fileUrl, localStorage.studentId);
+
               console.error('Sertifika kaydedilirken bir hata oluştu:', err);
             });
           });
@@ -62,50 +62,65 @@ const MyCertificates = () => {
 
     fetchCertificates();
     setUppy(uppyInstance);
-    return () => uppyInstance.close(); // Clean up Uppy instance on unmount
+    return () => uppyInstance.close();
   }, []);
 
   const uploadToCloudinary = (file: File): Promise<UploadedFile> => {
-    const url = `https://api.cloudinary.com/v1_1/${cloudinaryConfig.cloudName}/image/upload`;
-  
+    const url = `https://api.cloudinary.com/v1_1/${cloudinaryConfig.cloudName}/auto/upload`;
+
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', cloudinaryConfig.uploadPreset); // Bu değeri Cloudinary Yönetim Konsolu'ndan alın
-  
+    formData.append('upload_preset', cloudinaryConfig.uploadPreset);
+
     return fetch(url, {
       method: 'POST',
       body: formData,
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Cloudinary yükleme başarısız');
-      }
-      console.log(response);
-      setModalOpen(false);
-      return response.json();      
-    })
-    .then(data => {
-      console.log(data);
-      return {
-        id: data.public_id,
-        name: data.original_filename,
-        fileType: data.format,
-        fileUrl: data.secure_url,
-      };
-    })
-    .catch(err => {
-      console.error('Cloudinary yükleme hatası:', err);
-      throw err;
-    });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Cloudinary yükleme başarısız');
+        }
+        console.log(response);
+        setModalOpen(false);
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        return {
+          id: data.public_id,
+          name: data.original_filename,
+          fileType: data.format,
+          fileUrl: data.secure_url,
+        };
+      })
+      .catch(err => {
+        console.error('Cloudinary yükleme hatası:', err);
+        throw err;
+      });
   };
-  
+
   const fetchCertificates = () => {
     certificateService.getById(localStorage.studentId)
       .then(response => {
-        setCertificates(response.data as GetCertificateResponse); // Backend'den alınan sertifikaları state'e kaydet
+        setCertificates(response.data as GetCertificateResponse);
       })
       .catch(err => {
         console.error('Sertifikalar çekilirken hata oluştu:', err);
+      });
+  };
+
+  const deleteCertificate = (publicId: string) => {
+    console.log(publicId);
+    certificateService.delete(publicId).then(response => {
+      if (response.status >= 200 && response.status < 300) {
+        console.log(response.data);
+        setCertificates(certificates.filter(certificate => certificate.id !== publicId));
+      } else {
+        console.error('Sertifika silme işlemi başarısız.');
+      }
+    })
+      .catch(error => {
+        console.error('Sertifika silme isteği sırasında bir hata oluştu:', error);
       });
   };
 
@@ -128,29 +143,29 @@ const MyCertificates = () => {
         </div>
 
         <div className='mt-4'>
-        <h5 className='text-lg mb-2 text-[#9933FF]'>&ensp;Kaydedilmiş Sertifikalarım</h5>
-        {certificates.length > 0 && (
-          <div className='overflow-hidden overflow-x-auto border border-gray-100 rounded'>
-            <table className='min-w-full text-sm divide-y divide-gray-200'>
-              <thead>
-                <tr className='bg-gray-50'>
-                  <th className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>Dosya Adı</th>
-                  <th className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>Dosya Türü</th>
-                  <th className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>Yükleme Tarihi</th>
-                  <th className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>İşlem</th>
-                </tr>
-              </thead>
-              <tbody className='divide-y divide-gray-200'>
-                {certificates.map(certificate => (
-                  <tr key={certificate.id}>
-                    <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>{certificate.name}</td>
-                    <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>{certificate.fileType}</td>
-                    <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>{new Date().toLocaleDateString()}</td>
-                    <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>
-                      <a href={certificate.fileUrl} target="_blank" rel="noopener noreferrer">
-                        <IoCloudDownloadOutline className='inline-block w-5 h-5 mr-2 text-blue-500' />
-                      </a>
-                        <button onClick={() => {/* Silme işlevi buraya */ }}>
+          <h5 className='text-lg mb-2 text-[#9933FF]'>&ensp;Kaydedilmiş Sertifikalarım</h5>
+          {certificates.length > 0 && (
+            <div className='overflow-hidden overflow-x-auto border border-gray-100 rounded'>
+              <table className='min-w-full text-sm divide-y divide-gray-200'>
+                <thead>
+                  <tr className='bg-gray-50'>
+                    <th className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>Dosya Adı</th>
+                    <th className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>Dosya Türü</th>
+                    <th className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>Yükleme Tarihi</th>
+                    <th className='px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap'>İşlem</th>
+                  </tr>
+                </thead>
+                <tbody className='divide-y divide-gray-200'>
+                  {certificates.map(certificate => (
+                    <tr key={certificate.id}>
+                      <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>{certificate.name}</td>
+                      <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>{certificate.fileType}</td>
+                      <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>{new Date().toLocaleDateString()}</td>
+                      <td className='px-4 py-2 text-gray-700 whitespace-nowrap'>
+                        <a href={certificate.fileUrl} target="_blank" rel="noopener noreferrer">
+                          <IoCloudDownloadOutline className='inline-block w-5 h-5 mr-2 text-blue-500' />
+                        </a>
+                        <button onClick={() => deleteCertificate(certificate.id)}>
                           <IoTrashOutline className='inline-block w-5 h-5 text-red-500' />
                         </button>
                       </td>

@@ -22,10 +22,10 @@ const Abilities = () => {
   }, []);
 
   const fetchAbilities = async () => {
-    setIsLoading(true); // Veri yüklenmeye başladığında
+    setIsLoading(true); 
     const response = await abilityService.getById(localStorage.studentId);
-    setAbilities(response.data as GetAbilityResponse); // Varsayım: response yapısı { data: [] }
-    setIsLoading(false); // Veri yükleme tamamlandığında
+    setAbilities(response.data as GetAbilityResponse); 
+    setIsLoading(false); 
   };
 
   console.log("****************");
@@ -56,41 +56,36 @@ const Abilities = () => {
     "Pazarlama",
     "Building and Construction",
   ];
-  // Geçici olarak yetenekleri seçme işlemi
+  
   const handleAbilitySelect = (ability: string) => {
     if (!tempSelectedAbilities.includes(ability)) {
       setTempSelectedAbilities([...tempSelectedAbilities, ability]);
     }
   };
 
-  // Seçimleri kalıcı olarak kaydetme işlemi
+  
   const handleSaveAbilities = async () => {
-    // Yeni ve geçici seçilen yetenekleri kaydet
     const allAbilities = [...selectedAbilities, ...tempSelectedAbilities];
 
-    // Her bir yetenek için API çağrısı yap
     for (const abilityName of allAbilities) {
-        const request = { name: abilityName , studentId: localStorage.studentId}; // AddAbilityRequest yapısına uygun istek
+        const request = { name: abilityName , studentId: localStorage.studentId};
         await abilityService.add(request);
     }
 
-    // Tüm yetenekler kaydedildikten sonra, yetenek listesini güncelle
     await fetchAbilities();
 
-    // Geçici listeyi ve yeni yetenek girişini temizle
     setTempSelectedAbilities([]);
     setNewAbility('');
   };
 
-  // Seçimi geçici listeden kaldırma işlevi
   const removeTempAbility = (ability: string) => {
     setTempSelectedAbilities(tempSelectedAbilities.filter((a) => a !== ability));
   };
 
   const handleDeleteAbility = async  () => {
     if (abilityToDelete) {
-      await abilityService.delete(abilityToDelete); // Backend'den yeteneği sil
-      await fetchAbilities(); // Yetenek listesini güncelle
+      await abilityService.delete(abilityToDelete); 
+      await fetchAbilities(); 
       setAbilityToDelete(null);
       setShowConfirmationModal(false);
   }
@@ -104,15 +99,13 @@ const Abilities = () => {
     <div className=''>
       <div className=''>
         <h2>Yetkinlik</h2>
-        {/* SelectInput component'ini güncellenmiş prop'larla kullan */}
         <SelectInput
           options={abilitiesList}
           onChange={handleAbilitySelect}
-          onRemove={removeTempAbility} // Kaldırma işlevini SelectInput'a iletiyoruz
+          onRemove={removeTempAbility} 
           selected={tempSelectedAbilities}
         />
-        {/* Kaydet butonu */}
-        <div className='relative z-0 mt-8'> {/* "Kaydet" butonu için relative ve z-index eklendi */}
+        <div className='relative z-0 mt-8'> 
           <Button color="green" onClick={handleSaveAbilities} className="z-0 bg-[#9933FF] border-[#9933FF] focus:ring-0 rounded-3xl text-white font-bold hover:bg-[#822BD9] hover:border-[#822BD9] enabled:hover:bg-[#822BD9]">
             Kaydet
           </Button>
@@ -123,7 +116,7 @@ const Abilities = () => {
       <div className='mt-4'>
         {
           isLoading ? (
-            <div>Yükleniyor...</div>  // Yükleme durumu göstergesi
+            <div>Yükleniyor...</div>  
           ) : (
             <ul className='flex-col'>
               {abilities.map((ability) => (

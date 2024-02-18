@@ -26,9 +26,7 @@ export class BaseService<
 		return axios.post<AddResponseType>(this.apiUrl, request);
 	}
 
-	update(
-		request: UpdateRequestType,
-	): Promise<AxiosResponse<UpdateResponseType, any>> {
+	update(request: UpdateRequestType,): Promise<AxiosResponse<UpdateResponseType, any>> {
 		return axios.put<UpdateResponseType>(this.apiUrl, request);
 	}
 
