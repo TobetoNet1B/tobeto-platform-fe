@@ -10,6 +10,8 @@ import { GetAddressResponse } from 'models/responses/addresses/getAddressRespons
 import studentService from 'services/studentService';
 import { UpdateStudentRequest } from 'models/requests/students/updateStudentRequest';
 import addressService from 'services/addressService';
+import { UpdateUserRequest } from 'models/requests/users/updateUserRequest';
+import userService from 'services/userService';
 
 type Props = {}
 
@@ -93,7 +95,13 @@ const PersonalInformations = (props: Props) => {
 					imgUrl: student.imgUrl,
 					userId: localStorage.userId,
 				};
+				const updateUserData: UpdateUserRequest = {
+					...values,
+					id: localStorage.userId,
+					password: "string",
+				};
 				await studentService.update(updateData);
+				await userService.update(updateUserData);
 				alert('Bilgileriniz başarıyla güncellendi!');
 			}
 			catch (error) {
