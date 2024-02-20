@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import "./Toast.css"
 
-type Props = {}
+type Props = {
+  message:string,
+  type:string
+}
 
 const Toast = (props: Props) => {
   const [buttonData, setButtonData] = useState<string | null>(null);
@@ -34,7 +37,7 @@ const Toast = (props: Props) => {
 
   switch (buttonData) {
     case 'success':
-      className = `${"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#65b996] after:content-['*_Giriş_Başarılı']"}`;
+      className = `"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#65b996] after:content-['*_${props.message}']"}`;
       toast('TOBETO', {
         className,
         hideProgressBar: true,
@@ -90,7 +93,7 @@ const Toast = (props: Props) => {
   }
   return (
     <div>
-      <button onClick={() => handleClick('warning')}>Toast Göster</button>
+      {/*<button onClick={() => handleClick('warning')}>Toast Göster</button>*/}
 
       <ToastContainer/>
     </div>

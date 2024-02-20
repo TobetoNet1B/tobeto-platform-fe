@@ -1,6 +1,7 @@
-import { GetStudentModuleResponse } from "models/responses/student-modules/getStudentModuleResponse";
+
+import { GetStudentClassroomResponse } from "models/responses/student-classrooms/getStudentClassroomResponse";
 import React, { useEffect, useState } from "react";
-import StudentModuleService from "services/studentModuleService";
+import studentClassroomService from "services/studentClassroomService";
 import Card, { ECard } from "utils/Card";
 
 type CardData = {
@@ -20,13 +21,13 @@ type Props = {
 
 const EducationCard = (props: Props) => {
 
-  const [studentModule, setStudentModule] = useState<GetStudentModuleResponse | null>(null);
+  const [studentModule, setStudentModule] = useState<GetStudentClassroomResponse | null>(null);
 
   useEffect(() => {
     const fetchStudentModule = async () => {
       try {
-        const result = await StudentModuleService.getById(localStorage.studentId);
-        setStudentModule(result.data as GetStudentModuleResponse);
+        const result = await studentClassroomService.getById(localStorage.studentId);
+        setStudentModule(result.data as GetStudentClassroomResponse);
         console.log(result.data)
       } catch (error) {
         console.error("Error fetching student module:", error);
@@ -68,7 +69,7 @@ const EducationCard = (props: Props) => {
     ? studentModule.moduleSets.map(module => ({
       imgUrl: module.imgUrl,
       name: module.name,
-      createdDate: module.startDate.toString(),
+      createdDate: module.classroomStartDate.toString(),
       buttonText: "Eğitime Git",
       companyName: module.companyName
       

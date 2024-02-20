@@ -5,4 +5,7 @@ export interface GetAddressResponse{
 	districtId: string;
 	studentId: string;
 	addressDetails: string;
+	countryName: string,
+  cityName: string,
+  districtName: string
 }
