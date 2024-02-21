@@ -1,3 +1,4 @@
+import SideChecks from "./SideChecks"
 
 type Props = {}
 
@@ -19,22 +20,10 @@ const Sidebar = (props: Props) => {
 			<div>
 				<div className="form-control">
 					<span className='font-medium block mb-2'>Eğitim Durumu</span>
-					<label className="cursor-pointer label justify-start gap-x-2">
-						<input type="checkbox" className="checkbox rounded-md [--chkbg:#ff442b]" />
-						<span className="label-text">Bitmiş Dersler</span>
-					</label>
-					<label className="cursor-pointer label justify-start gap-x-2">
-						<input type="checkbox" className="checkbox rounded-md [--chkbg:#ff442b]" />
-						<span className="label-text">Devam Eden Dersler</span>
-					</label>
-					<label className="cursor-pointer label justify-start gap-x-2">
-						<input type="checkbox" className="checkbox rounded-md [--chkbg:#ff442b]" />
-						<span className="label-text">Satın Alınmış Dersler</span>
-					</label>
-					<label className="cursor-pointer label justify-start gap-x-2">
-						<input type="checkbox" className="checkbox rounded-md [--chkbg:#ff442b]" />
-						<span className="label-text">Başlamamış Dersler</span>
-					</label>
+					<SideChecks span="Bitmiş Dersler" />
+					<SideChecks span="Devam Eden Dersler" />
+					<SideChecks span="Satın Alınmış Dersler" />
+					<SideChecks span="Başlamamış Dersler" />
 				</div>
 			</div>
 		</div>
