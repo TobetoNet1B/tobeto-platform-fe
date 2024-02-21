@@ -1,5 +1,5 @@
-import Calendar from "./Calendar"
-import Sidebar from "./Sidebar"
+import Calendar from "../../components/Calendar/Calendar"
+import Sidebar from "../../components/Calendar/Sidebar"
 
 type Props = {}
 
