@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import Calendar from "pages/Calendar/Calendar";
 import Abilities from "components/ProfileInfo/Abilities";
 import Experience from "components/ProfileInfo/Experience/Experience";
 import MyEducation from "components/ProfileInfo/MyEducation/MyEducation";
@@ -22,6 +21,7 @@ import Setting from "components/ProfileInfo/Settings/Setting";
 import Main from "pages/Homepage";
 import Platform from "layout/Platform";
 import Confirmationpage from "components/Confirmationpage/Confirmationpage";
+import CalendarPage from "pages/Calendar";
 
 type Props = {};
 
@@ -37,7 +37,7 @@ const RouteDefinitions = (props: Props) => {
 				<Route path="/platform" element={<PlatformMain />} />
 				<Route path="/egitimlerim" element={<Education />} />
 				<Route path="/duyurularim" element={<Announcement />} />
-				<Route path="/takvim" element={<Calendar />} />
+				<Route path="/takvim" element={<CalendarPage />} />
 				<Route path="/degerlendirmeler" element={<Evaluations />} />
 				<Route path="/profilim">
 					<Route index={true} element={<MyProfile />} />
