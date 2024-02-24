@@ -23,6 +23,7 @@ import Platform from "layout/Platform";
 import Confirmationpage from "components/Confirmationpage/Confirmationpage";
 import CalendarPage from "pages/Calendar";
 import PrivateRoutes from "./PrivateRoutes";
+import PrivateRoutesWhenLoginned from "./PrivateRoutesWhenLoginned";
 
 type Props = {};
 
@@ -31,9 +32,11 @@ const RouteDefinitions = (props: Props) => {
 		<Routes>
 			<Route path="/" element={<Home />}>
 				<Route index={true} element={<Main />} />
-				<Route path="/giris" element={<SignInPage />} />
-				<Route path="/kayit-ol" element={<SignUpPage />} />
-				<Route path="/confirm" element={<Confirmationpage />} />
+				<Route element={<PrivateRoutesWhenLoginned />}>
+					<Route path="/giris" element={<SignInPage />} />
+					<Route path="/kayit-ol" element={<SignUpPage />} />
+					<Route path="/confirm" element={<Confirmationpage />} />
+				</Route>
 			</Route>
 			<Route element={<PrivateRoutes />}>
 				<Route element={<Platform />}>
