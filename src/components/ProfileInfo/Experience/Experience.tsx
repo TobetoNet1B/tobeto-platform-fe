@@ -81,8 +81,8 @@ const Experience: React.FC = () => {
         studentId: localStorage.studentId
       };
   console.log(requestDate)
-      await experienceService.add(requestDate); // Deneyim ekleme işlemi
-      await fetchExperience(); // Deneyim verilerini yeniden getirme
+      await experienceService.add(requestDate); 
+      await fetchExperience(); 
   
       console.log("Deneyim başarıyla eklendi!");
     } catch (error) {
@@ -170,7 +170,7 @@ const Experience: React.FC = () => {
           initialValues={initialValues}
           validationSchema={JobSchema}
           onSubmit={(values) => {
-            handleSave(values); // resetForm'u handleSave'e geçirme, ayrıca Formik içinde resetForm çağrılacak
+            handleSave(values); 
           }}
         >
           <Form className="text-sm">
@@ -228,18 +228,18 @@ const Experience: React.FC = () => {
                 <Field
   as="select"
   id="cityId"
-  name="cityId" // Değiştirildi
+  name="cityId"
   className="w-full p-3 border border-[#E6E5E4] rounded-md"
 >
   <option value="">Seçiniz*</option>
   {cities?.items.map((item) => (
-    <option key={item.id} value={item.id}> {/* Değiştirildi */}
+    <option key={item.id} value={item.id}>
       {item.name}
     </option>
   ))}
 </Field>
                 <ErrorMessage
-                  name="cityId" // Değişiklik: cityId olarak güncellendi
+                  name="cityId"
                   component="div"
                   className="text-red-500"
                 />
