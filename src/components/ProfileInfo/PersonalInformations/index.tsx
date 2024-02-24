@@ -26,6 +26,8 @@ const PersonalInformations = (props: Props) => {
 	const fetchStudents = async () => {
 		const response = await studentService.getById(localStorage.userId);
 		setStudent(response.data as GetStudentResponse);
+		console.log(response.data);
+		
 	};
 
 	const fetchAddress = async () => {
@@ -95,13 +97,12 @@ const PersonalInformations = (props: Props) => {
 				const updateData: UpdateStudentRequest = {
 					...values,
 					id: localStorage.studentId,
-					imgUrl: "asdasda.com",
+					imgUrl: student.imgUrl,
 					userId: localStorage.userId,
 				};
 				const updateUserData: UpdateUserRequest = {
 					...values,
 					id: localStorage.userId,
-					password: "string",
 				};
 				const updateAddressData: UpdateAddressRequest = {
 					...values,
