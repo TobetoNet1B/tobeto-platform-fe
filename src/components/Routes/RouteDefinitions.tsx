@@ -22,6 +22,7 @@ import Main from "pages/Homepage";
 import Platform from "layout/Platform";
 import Confirmationpage from "components/Confirmationpage/Confirmationpage";
 import CalendarPage from "pages/Calendar";
+import PrivateRoutes from "./PrivateRoutes";
 
 type Props = {};
 
@@ -32,30 +33,32 @@ const RouteDefinitions = (props: Props) => {
 				<Route index={true} element={<Main />} />
 				<Route path="/giris" element={<SignInPage />} />
 				<Route path="/kayit-ol" element={<SignUpPage />} />
+				<Route path="/confirm" element={<Confirmationpage />} />
 			</Route>
-			<Route element={<Platform />}>
-				<Route path="/platform" element={<PlatformMain />} />
-				<Route path="/egitimlerim" element={<Education />} />
-				<Route path="/duyurularim" element={<Announcement />} />
-				<Route path="/takvim" element={<CalendarPage />} />
-				<Route path="/degerlendirmeler" element={<Evaluations />} />
-				<Route path="/profilim">
-					<Route index={true} element={<MyProfile />} />
-					<Route path="profilimi-duzenle" element={<ProfileInfo />}>
-						<Route path="kisisel-bilgilerim" element={<PersonalInformations />} />
-						<Route path="deneyimlerim" element={<Experience />} />
-						<Route path="egitim-hayatim" element={<MyEducation />} />
-						<Route path="yetkinliklerim" element={<Abilities />} />
-						<Route path="sertifikalarim" element={<MyCertificates />} />
-						<Route path="medya-hesaplarim" element={<SocialMedia />} />
-						<Route path="yabanci-dil" element={<ForeignLanguage />} />
-						<Route path="ayarlar" element={<Setting />} />
+			<Route element={<PrivateRoutes />}>
+				<Route element={<Platform />}>
+					<Route path="/platform" element={<PlatformMain />} />
+					<Route path="/egitimlerim" element={<Education />} />
+					<Route path="/duyurularim" element={<Announcement />} />
+					<Route path="/takvim" element={<CalendarPage />} />
+					<Route path="/degerlendirmeler" element={<Evaluations />} />
+					<Route path="/profilim">
+						<Route index={true} element={<MyProfile />} />
+						<Route path="profilimi-duzenle" element={<ProfileInfo />}>
+							<Route path="kisisel-bilgilerim" element={<PersonalInformations />} />
+							<Route path="deneyimlerim" element={<Experience />} />
+							<Route path="egitim-hayatim" element={<MyEducation />} />
+							<Route path="yetkinliklerim" element={<Abilities />} />
+							<Route path="sertifikalarim" element={<MyCertificates />} />
+							<Route path="medya-hesaplarim" element={<SocialMedia />} />
+							<Route path="yabanci-dil" element={<ForeignLanguage />} />
+							<Route path="ayarlar" element={<Setting />} />
+						</Route>
 					</Route>
 				</Route>
+				<Route path="/moduleset" element={<ModuleSet />} />
 			</Route>
-			<Route path="/moduleset" element={<ModuleSet />} />
 			<Route path="*" element={<NotFound />} />
-			<Route path="/confirm" element={<Confirmationpage />} />
 		</Routes>
 	);
 };
