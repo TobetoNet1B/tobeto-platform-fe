@@ -4,7 +4,7 @@ import ErrorSpan from './ErrorSpan';
 import { IdentityErrorSpan } from 'utils/FormInput/ErrorSpan';
 
 type Props = {
-	label: string;
+	label?: string;
 	name: string;
 	type?: string;
 	placeHolder?: string;
