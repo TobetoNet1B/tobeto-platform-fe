@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import * as Yup from "yup";
 import { Button, Modal } from "flowbite-react";
@@ -7,50 +7,102 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { BsThreeDots } from "react-icons/bs";
 import { MdOutlineCalendarMonth } from "react-icons/md";
+import { GetExperienceResponse } from "models/responses/experiences/getExperienceResponse";
+import experienceService from "services/experienceService";
+import { GetAllCityResponse } from "models/responses/cities/getAllCityResponse";
+import cityService from "services/cityService";
+import { AddExperienceRequest } from "models/requests/experiences/addExperienceRequest";
 
 const cities = ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya"];
 
 const JobSchema = Yup.object().shape({
-  companyName: Yup.string().required("Doldurulması zorunlu alan*"),
-  position: Yup.string().required("Doldurulması zorunlu alan*"),
-  sector: Yup.string().required("Doldurulması zorunlu alan*"),
-  city: Yup.string().required("Doldurulması zorunlu alan*"),
-  startDate: Yup.string().required("Doldurulması zorunlu alan*"),
-  endDate: Yup.string().test({
-    name: "endDate",
-    test: function (value, context) {
-      if (!context.parent.ongoing) {
-        return (
-          !!value ||
-          this.createError({ message: "Doldurulması zorunlu alan*" })
-        );
-      }
-      return true;
-    },
-  }),
+  // companyName: Yup.string().required("Doldurulması zorunlu alan*"),
+  // position: Yup.string().required("Doldurulması zorunlu alan*"),
+  // sector: Yup.string().required("Doldurulması zorunlu alan*"),
+  // cityId: Yup.string().required("Doldurulması zorunlu alan*"),
+  // startDate: Yup.string().required("Doldurulması zorunlu alan*"),
+  // endDate: Yup.string().test({
+  //   name: "endDate",
+  //   test: function (value, context) {
+  //     if (!context.parent.ongoing) {
+  //       return (
+  //         !!value ||
+  //         this.createError({ message: "Doldurulması zorunlu alan*" })
+  //       );
+  //     }
+  //     return true;
+  //   },
+  // }),
 });
+
 
 const Experience: React.FC = () => {
   const initialValues = {
     companyName: "",
     position: "",
     sector: "",
-    city: "",
+    cityId: "",
     startDate: "",
     endDate: "",
-    ongoing: false,
-    jobDescription: "",
+    isContinueJob: false,
+    // jobDescription: "",
   };
 
   const [savedJobs, setSavedJobs] = React.useState<any[]>([]);
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [selectedJob, setSelectedJob] = useState<any>(null);
+  const [experience, setExperience] = useState<GetExperienceResponse | null>(null);
   const formikContext = useFormikContext<any>();
+  const [selectedEducation, setSelectedEducation] = useState<any>(null);
   const { values } = formikContext || {};
-  const handleSave = (values: any) => {
-    setSavedJobs((prevJobs) => [...prevJobs, { ...values }]);
+  const [cities, setCities] = useState<GetAllCityResponse | null>(null);
+
+  const fetchCity = async () => {
+    try {
+      const result = await cityService.getAll(0, 10);
+      setCities(result.data as GetAllCityResponse);
+    } catch (error) {
+      console.error("Error fetching social media:", error);
+    }
   };
+
+  const handleSave =  async (values: any) => {
+    try {
+      const { companyName, sector, cityId, startDate, endDate, isContinueJob,position } = values;
+      const requestDate: AddExperienceRequest = {
+        companyName,
+        sector,
+        position,
+        cityId,
+        startDate: new Date(startDate),
+        endDate: endDate ? new Date(endDate) : undefined,
+        isContinueJob,
+        studentId: localStorage.studentId
+      };
+  console.log(requestDate)
+      await experienceService.add(requestDate); // Deneyim ekleme işlemi
+      await fetchExperience(); // Deneyim verilerini yeniden getirme
+  
+      console.log("Deneyim başarıyla eklendi!");
+    } catch (error) {
+      console.error("Deneyim eklenirken bir hata oluştu:", error);
+    }
+  };
+
+  const fetchExperience = async () => {
+    try {
+      const result = await experienceService.getById(localStorage.studentId);
+      setExperience(result.data as GetExperienceResponse);
+    } catch (error) {
+      console.error("Error fetching student social media:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCity();
+    fetchExperience();
+  }, []);
 
   const openDetailsModalHandler = (job: any) => {
     setSelectedJob(job);
@@ -62,20 +114,24 @@ const Experience: React.FC = () => {
     setOpenDetailsModal(false);
   };
 
-  const openDeleteModalHandler = (job: any) => {
-    setSelectedJob(job);
+  const openDeleteModalHandler = (education: any) => {
+    setSelectedEducation(education);
     setOpenDeleteModal(true);
   };
 
   const closeDeleteModalHandler = () => {
-    setSelectedJob(null);
+    setSelectedEducation(null);
     setOpenDeleteModal(false);
   };
 
-  const handleDelete = () => {
-    setSavedJobs((prevJobs) => prevJobs.filter((job) => job !== selectedJob));
-    setSelectedJob(null);
-    setOpenDeleteModal(false);
+  const handleDelete = async () => {
+    try {
+      await experienceService.delete(selectedEducation.id);
+      fetchExperience();
+      setOpenDeleteModal(false);
+    } catch (error) {
+      console.error("Error deleting education:", error);
+    }
   };
 
   const OngoingCheckbox: React.FC = () => {
@@ -85,7 +141,7 @@ const Experience: React.FC = () => {
       event: React.ChangeEvent<HTMLInputElement>
     ) => {
       const { checked } = event.target;
-      setFieldValue("ongoing", checked);
+      setFieldValue("isContinueJob", checked);
 
       if (checked) {
         setFieldValue("endDate", "");
@@ -96,13 +152,13 @@ const Experience: React.FC = () => {
       <div className="flex items-center">
         <Field
           type="checkbox"
-          id="ongoing"
-          name="ongoing"
-          checked={values.ongoing}
+          id="isContinueJob"
+          name="isContinueJob"
+          checked={values.isContinueJob}
           onChange={handleCheckboxChange}
           className="mr-1"
         />
-        <label htmlFor="ongoing">Çalışmaya Devam Ediyorum</label>
+        <label htmlFor="isContinueJob">Çalışmaya Devam Ediyorum</label>
       </div>
     );
   };
@@ -114,7 +170,7 @@ const Experience: React.FC = () => {
           initialValues={initialValues}
           validationSchema={JobSchema}
           onSubmit={(values) => {
-            handleSave(values);
+            handleSave(values); // resetForm'u handleSave'e geçirme, ayrıca Formik içinde resetForm çağrılacak
           }}
         >
           <Form className="text-sm">
@@ -168,24 +224,22 @@ const Experience: React.FC = () => {
                 />
               </div>
               <div className="w-1/2 ml-2">
-                <label htmlFor="city">Şehir Seçiniz*</label>
+                <label htmlFor="cityId">Şehir Seçiniz*</label>
                 <Field
-                  as="select"
-                  id="city"
-                  name="city"
-                  className="w-full border border-[#B3A6C0]  p-2 rounded-md"
-                >
-                  <option value="" disabled>
-                    Şehir Seçiniz*
-                  </option>
-                  {cities.map((city) => (
-                    <option key={city} value={city}>
-                      {city}
-                    </option>
-                  ))}
-                </Field>
+  as="select"
+  id="cityId"
+  name="cityId" // Değiştirildi
+  className="w-full p-3 border border-[#E6E5E4] rounded-md"
+>
+  <option value="">Seçiniz*</option>
+  {cities?.items.map((item) => (
+    <option key={item.id} value={item.id}> {/* Değiştirildi */}
+      {item.name}
+    </option>
+  ))}
+</Field>
                 <ErrorMessage
-                  name="city"
+                  name="cityId" // Değişiklik: cityId olarak güncellendi
                   component="div"
                   className="text-red-500"
                 />
@@ -214,9 +268,9 @@ const Experience: React.FC = () => {
                   id="endDate"
                   name="endDate"
                   className={`w-full border border-[#B3A6C0] p-2 mb-2 rounded-md ${
-                    values?.ongoing ? "bg-gray-200" : ""
+                    values?.isContinueJob ? "bg-gray-200" : ""
                   }`}
-                  disabled={values?.ongoing}
+                  disabled={values?.isContinueJob}
                 />
                 <ErrorMessage
                   name="endDate"
@@ -227,7 +281,7 @@ const Experience: React.FC = () => {
               </div>
             </div>
 
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label htmlFor="jobDescription">İş Açıklaması</label>
               <Field
                 as="textarea"
@@ -241,7 +295,7 @@ const Experience: React.FC = () => {
                 component="div"
                 className="text-red-500"
               />
-            </div>
+            </div> */}
 
             <button
               type="submit"
@@ -251,33 +305,24 @@ const Experience: React.FC = () => {
             </button>
           </Form>
         </Formik>
-        {savedJobs.map((job, index) => (
-  <div
-    key={index}
-    className="pt-2 pl-2 mt-10 mb-3 text-left relative bg-[#FF000003] sm:mb-6 md:mb-8 lg:mb-10"
-  >
+        {Array.isArray(experience) && experience.map((job: GetExperienceResponse, index: number) => (
+          <div key={index} className="pt-2 pl-2 mt-10 mb-3 text-left relative bg-[#FF000003] sm:mb-6 md:mb-8 lg:mb-10">
     <div className="mb-3 flex text-[#9933FF]">
       <MdOutlineCalendarMonth className="mt-1" />
       <div className="ml-1 text-sm">
-        {new Date(job.startDate).toLocaleDateString("tr-TR")} -{" "}
-        {job.ongoing
-          ? "Çalışmaya Devam Ediyor"
-          : new Date(job.endDate).toLocaleDateString("tr-TR")}
+        {new Date(job.startDate).toLocaleDateString("tr-TR")} - {job.isContinueJob ? "Çalışmaya Devam Ediyor" : new Date(job.endDate).toLocaleDateString("tr-TR")}
       </div>
     </div>
+
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-36">
       <div className="mb-4">
         <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Kurum</h6>
-        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1 whitespace-nowrap">
-          {job.companyName}
-        </p>
+        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1 whitespace-nowrap">{job.companyName}</p>
       </div>
       <div className="mb-4">
         <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Pozisyon</h6>
-        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1 whitespace-nowrap">
-          {job.position}
-        </p>
+        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1 whitespace-nowrap">{job.position}</p>
       </div>
       <div className="mb-4">
         <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Sektör</h6>
@@ -285,19 +330,13 @@ const Experience: React.FC = () => {
       </div>
       <div className="mb-4">
         <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Şehir</h6>
-        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1">{job.city}</p>
+        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1">{job.city.cityName}</p>
       </div>
       <div className="mb-4 flex flex-col items-start">
-        <button
-          onClick={() => openDetailsModalHandler(job)}
-          className="rounded-full bg-[#9933FF] text-white p-1 hover:bg-[#7F22CC] focus:outline-none focus:ring focus:border-blue-300 mb-2"
-        >
+        <button onClick={() => openDetailsModalHandler(job)} className="rounded-full bg-[#9933FF] text-white p-1 hover:bg-[#7F22CC] focus:outline-none focus:ring focus:border-blue-300 mb-2">
           <BsThreeDots size={15} />
         </button>
-        <button
-          onClick={() => openDeleteModalHandler(job)}
-          className="rounded-full bg-[#FF4D4D] text-white p-1 hover:bg-[#CC4646] focus:outline-none focus:ring focus:border-blue-300 "
-        >
+        <button onClick={() => openDeleteModalHandler(job)} className="rounded-full bg-[#FF4D4D] text-white p-1 hover:bg-[#CC4646] focus:outline-none focus:ring focus:border-blue-300 ">
           <RiDeleteBin5Line size={15} />
         </button>
       </div>
