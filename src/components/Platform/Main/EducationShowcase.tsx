@@ -1,4 +1,4 @@
-import Card, { ECard } from "utils/Card";
+import Card, { ECard } from "utils/Platform/Card";
 
 type CardData = {
   image?: string;

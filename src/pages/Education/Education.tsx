@@ -1,7 +1,7 @@
 import EducationCard from "components/Education/EducationCard";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Banner from "utils/Banner";
+import Banner from "utils/Platform/Banner";
 type Props = {};
 
 const Education = (props: Props) => {

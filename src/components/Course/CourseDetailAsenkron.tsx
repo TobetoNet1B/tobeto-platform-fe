@@ -6,7 +6,7 @@ import { FaEllipsis } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
 import { SlLike } from 'react-icons/sl';
 import { Link } from 'react-router-dom';
-import HeartButtonLesson from 'utils/HeartButtonLesson';
+import HeartButtonLesson from 'utils/Buttons/HeartButtonLesson';
 
 type Props = {
   lessonDetail: Lesson;
