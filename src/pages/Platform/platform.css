@@ -14,7 +14,7 @@
   width: 550px;
   height: 145px;
   border: 2px solid;
-  border-left: 6px solid #803f10;
+  border-left: 6px solid #076b34;
   border-right: none;
   border-top: none;
   border-bottom: none;
@@ -30,7 +30,7 @@
   padding: 5px;
   margin-left: 25.5rem;
   margin-top: 0.4rem;
-  background-color: rgb(114, 80, 80);
+  background-color: #076b34;
   color: white;
   float: right;
 }
