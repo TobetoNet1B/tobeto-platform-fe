@@ -59,7 +59,7 @@ const RouteDefinitions = (props: Props) => {
 						</Route>
 					</Route>
 				</Route>
-				<Route path="/moduleset" element={<ModuleSet moduleSetId= {"dcedc419-9a0f-4b66-d857-08dc35fbdabd"}/>} />
+				<Route path="/moduleset/:id" element={<ModuleSet />} />
 			</Route>
 			<Route path="*" element={<NotFound />} />
 		</Routes>

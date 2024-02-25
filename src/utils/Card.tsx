@@ -6,10 +6,11 @@ type Props = {
   description?: string;
   createdDate: string;
   buttonText?: string;
-  companyName?:string
-  name?:string;
+  companyName?: string;
+  name?: string;
   type?: string;
-  title?:string
+  title?: string;
+  id?: string;
 };
 export const ECard = (props: Props) => {
   const isDescriptionOverflowing = props.name && props.name.length > 30;
@@ -45,9 +46,11 @@ export const ECard = (props: Props) => {
         <p className="hidden">{props.companyName}</p>
         <div className="p-4">
           {props.buttonText && (
-            <button className="w-full px-4 py-2 bg-gray-300 text-black rounded-full hover:bg-[#9933ff]">
-              {props.buttonText}
-            </button>
+            <Link to={`/moduleset/${props.id}`}>
+              <button className="w-full px-4 py-2 bg-gray-300 text-black rounded-full hover:bg-[#9933ff]">
+                {props.buttonText}
+              </button>
+            </Link>
           )}
         </div>
       </div>
@@ -61,7 +64,7 @@ export const ACard = (props: Props) => {
   const baseMarginBottom = 5;
   const maxMarginBottom = isDescriptionOverflowing ? 1 : baseMarginBottom;
   const [isModalOpen, setIsModalOpen] = useState(false);
- const formattedDate = new Date(props.createdDate).toLocaleDateString();
+  const formattedDate = new Date(props.createdDate).toLocaleDateString();
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };

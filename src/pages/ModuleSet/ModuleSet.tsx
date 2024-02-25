@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import "./ModuleSet.css"
 import Course from "components/Course/Course"
 import ModuleSetHeader from "./ModuleSetHeader"
@@ -10,7 +10,6 @@ import { fetchModuleSetById } from "store/moduleSet/moduleSetSlice"
 import { getStudentLessonByStudentId } from 'store/studentLesson/studentLessonSlice';
 
 type Props = {
-  moduleSetId: string;
 }
 
 const ModuleSet = (props: Props) => {
@@ -25,6 +24,7 @@ const ModuleSet = (props: Props) => {
   }, []);
 
   const dispatch = useDispatch<any>();
+  const params = useParams<{ id: string }>();
 
   const moduleSets = useSelector((state: RootState) => state.moduleSets.moduleSet);
   const moduleSetsStatus = useSelector((state: RootState) => state.moduleSets.status);
@@ -35,9 +35,9 @@ const ModuleSet = (props: Props) => {
   const studentLessonsError = useSelector((state: RootState) => state.studentLessons.error);
 
   useEffect(() => {
-    dispatch(fetchModuleSetById(props.moduleSetId));
-    dispatch(getStudentLessonByStudentId("1a34083c-d7de-4b18-775d-08dc35fc6422"));
-  }, [dispatch, props.moduleSetId, "1a34083c-d7de-4b18-775d-08dc35fc6422"]);
+    dispatch(fetchModuleSetById(params.id!));
+    dispatch(getStudentLessonByStudentId(localStorage.studentId));
+  }, [dispatch, params.id, localStorage.studentId]);
 
   if (moduleSetsStatus === 'loading' && studentLessonsStatus === "loading") {
     return <div>Loading...</div>;
