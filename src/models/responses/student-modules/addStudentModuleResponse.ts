@@ -3,4 +3,6 @@ export interface AddStudentModuleResponse{
   studentId: string;
 	moduleSetId: string;
 	timeSpent: number;
+  isLiked: boolean;
+	isFav: boolean;
 }

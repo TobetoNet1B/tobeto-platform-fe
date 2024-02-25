@@ -6,8 +6,8 @@
 // }
 export interface GetStudentModuleResponse {
 	id: string;
-    moduleSets:ModuleSet[]
-    timeSpent: number;
+	moduleSets: ModuleSet[]
+	timeSpent: number;
 }
 
 export interface ModuleSet {

@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { Slide, ToastContainer, toast } from 'react-toastify';
 
-type Props = {}
+type Props = {
+  isFav: boolean;
+}
 
 const FavButton = (props: Props) => {
 
-  const [favIcon, setFavIcon] = useState(false)
+  const [favIcon, setFavIcon] = useState<boolean>(props.isFav)
 
   const handleFavIconClick = () => {
     setFavIcon(!favIcon)
