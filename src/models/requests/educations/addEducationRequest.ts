@@ -1,9 +1,10 @@
 export interface AddEducationRequest {
-  university: string;
-	department: string;
-	graduation: string;
-	startDate: string;
-	endDate: string;
-	isContinueUniversity: boolean;
-	studentId: string;
-}
+	university: string;
+	  department: string;
+	  graduation: string;
+	  startDate?:Date;
+	  endDate?: Date; 
+	  isContinueUniversity?: boolean;
+	  studentId: string;
+  }
+  

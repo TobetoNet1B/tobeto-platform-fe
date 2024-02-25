@@ -13,7 +13,7 @@ const Evaluations = (props: Props) => {
 
 	return (
 		<div className='overflow-y-auto'>
-			<div className='h-screen  max-w-[1110px] mx-auto '>
+			<div className='min-h-screen  max-w-[1110px] mx-auto '>
 				<div className='max-w-fit mx-auto'>
 
 
@@ -23,7 +23,7 @@ const Evaluations = (props: Props) => {
 								{<img
 											src="https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg"
 											alt="profil-picture"
-											className="top-5 right-20 rounded-full absolute z-[999] w-[13%] h-[13%]"
+											className="top-36 right-16 rounded-full absolute z-[999] w-[16%] h-[16%]"
 						/>}
 							</span>
 							<div className="container text-center">

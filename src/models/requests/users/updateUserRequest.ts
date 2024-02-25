@@ -1,1 +1,6 @@
-export interface UpdateUserRequest{}
+export interface UpdateUserRequest{
+	id: number;
+	firstName: string;
+	lastName: string;
+	email: string;
+}

@@ -1,1 +1,5 @@
-export interface AddStudentForeignLanguageRequest{}
+export interface AddStudentForeignLanguageRequest{
+	studentId: string;
+	foreignLanguageId: string;
+	foreignLanguageLevelId: string;
+}

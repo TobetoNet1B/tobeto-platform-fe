@@ -3,8 +3,8 @@ export interface AddExperienceRequest {
 	position: string;
 	sector: string;
 	cityId: string;
-	startDate: string;
-	endDate: string;
-	isContinueJob: boolean;
+	startDate?: Date;
+	endDate?: Date;
+	isContinueJob?: boolean;
 	studentId: string;
 }

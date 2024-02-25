@@ -1,31 +1,67 @@
+import { useEffect, useState } from 'react';
 import { FormikProvider, useFormik } from 'formik'
 import { MdOutlineEdit } from "react-icons/md";
 import FormInput from 'utils/FormInput/FormInput';
 import Address from './Address';
 import PhoneNumber from './PhoneNumber';
 import * as Yup from 'yup';
+import { GetStudentResponse } from 'models/responses/students/getStudentResponse';
+import { GetAddressResponse } from 'models/responses/addresses/getAddressResponse';
+import studentService from 'services/studentService';
+import { UpdateStudentRequest } from 'models/requests/students/updateStudentRequest';
+import addressService from 'services/addressService';
+import { UpdateUserRequest } from 'models/requests/users/updateUserRequest';
+import userService from 'services/userService';
+import { UpdateAddressRequest } from 'models/requests/addresses/updateAddressRequest';
+import { ToastContainer, toast } from 'react-toastify';
+import Toast from 'utils/Toast/Toast';
 
 type Props = {}
 
 const PersonalInformations = (props: Props) => {
 
+	const [student, setStudent] = useState<GetStudentResponse>({} as GetStudentResponse);
+	const [address, setAddress] = useState<GetAddressResponse>({} as GetAddressResponse);
+
+	const fetchStudents = async () => {
+		const response = await studentService.getById(localStorage.userId);
+		setStudent(response.data as GetStudentResponse);
+		console.log(response.data);
+		
+	};
+
+	const fetchAddress = async () => {
+		const response = await addressService.getById(localStorage.studentId)
+		setAddress(response.data as GetAddressResponse);
+	}
+
+	useEffect(() => {
+		fetchStudents();
+		fetchAddress();
+	}, []);
+
+
 	const date = new Date().toLocaleDateString('sv-SE')
+	const birthDate = new Date(student.birthDate);
+	const formattedBirthDate = birthDate.toLocaleDateString('sv-SE');
+
 
 	const formik = useFormik({
 		initialValues: {
-			firstName: '',
-			lastName: '',
-			phoneNumber: '' as any,
-			countryCode: "+90",
-			birthDate: '',
-			identityNumber: '',
-			email: '',
-			country: '',
-			city: "SAKARYA",
-			district: '',
-			addressDetails: '',
-			about: ''
+			firstName: student.user?.firstName ?? '',
+			lastName: student.user?.lastName ?? '',
+			phoneNumber: student?.phoneNumber ?? '',
+			//countryCode: "+90",
+			birthDate: formattedBirthDate ?? '',
+			identityNumber: student.identityNumber ?? '',
+			email: student.user?.email ?? '',
+			country: address.countryName ?? '',
+			city: address.cityId ?? '',
+			district: address.districtId ?? '',
+			addressDetails: address.addressDetails ?? '',
+			about: student.about ?? ''
 		},
+		enableReinitialize: true,
 		validationSchema: Yup.object({
 			firstName: Yup.string()
 				.required('Adınızı girin')
@@ -51,13 +87,44 @@ const PersonalInformations = (props: Props) => {
 				.required('Gerekli')
 				.min(2, 'Geçersiz ülke adı')
 				.max(40, 'Ülke adı çok uzun'),
-			district:  Yup.string()
+			city: Yup.string()
+				.required('Şehir Seçin'),
+			district: Yup.string()
 				.required('İlçe Seçin')
 		}),
-		onSubmit: values => {
-			alert(JSON.stringify(values, null, 2));
+		onSubmit: async (values) => {
+			try {
+				const updateData: UpdateStudentRequest = {
+					...values,
+					id: localStorage.studentId,
+					imgUrl: student.imgUrl,
+					userId: localStorage.userId,
+				};
+				const updateUserData: UpdateUserRequest = {
+					...values,
+					id: localStorage.userId,
+				};
+				const updateAddressData: UpdateAddressRequest = {
+					...values,
+					Id: address.id,
+					countryId: "d61f3875-8652-448f-8528-08dc305c2630",
+					cityId: values.city,
+					districtId: values.district,
+					studentId: localStorage.studentId,
+				};
+				await studentService.update(updateData);
+				await userService.update(updateUserData);
+				await addressService.update(updateAddressData);
+				toast.success('Bilgileriniz başarıyla güncellendi!');
+				//<Toast message='Bilgileriniz başarıyla güncellendi!' type='success'/>
+			}
+			catch (error) {
+				toast.error('Güncelleme sırasında bir hata oluştu!');
+				console.error(error);
+			}
 		}
 	});
+
 
 	return (
 		<FormikProvider value={formik}>
@@ -100,7 +167,9 @@ const PersonalInformations = (props: Props) => {
 					Kaydet
 				</button>
 			</form>
+			<ToastContainer/>
 		</FormikProvider>
+		
 	)
 }
 

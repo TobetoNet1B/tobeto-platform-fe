@@ -17,8 +17,8 @@ function FooterBoxes() {
   };
 
   return (
-    <div className="footer-container">
-      <div className="footer-box col-span-1 md:col-span-1 mb-6">
+    <div className="flex w-[1150px] max-h-[500px] mt-10 mx-auto px-[20px] flex-row justify-between">
+      <div style={{ boxShadow: "0 40px 80px rgba(24, 32, 79, 0.25)" }} className="footer-box col-span-1 md:col-span-1 mb-6">
         <div
           style={{ borderRadius: "0 30px 40px 40px" }}
           className=" max-w-64 h-64 p-5  bg-gradient-to-tr from-[#b9a2fb] to-[#1d0b8c] "

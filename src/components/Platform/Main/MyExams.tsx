@@ -4,9 +4,10 @@ import { faSquareCheck } from "@fortawesome/free-solid-svg-icons";
 
 export default function MyExams() {
   return (
-    <div className="myExams">
-      <p style={{ fontWeight: "bold", margin: "1rem 4rem 0 0" }}>Sınavlarım</p>
-      <div className="cfeExam">
+    <div style={{ boxShadow: "0 2px 13px 13px rgba(192, 192, 192, 0.25)" }}
+     className="flex flex-col items-start max-w-[1150px] h-48 rounded-[1.5%] mx-auto shadow-box ">
+      <p className="font-bold mr-[4rem] mt-[1rem] ml-8">Sınavlarım</p>
+      <div  className="w-[560px] h-[105px] mt-3 rounded-[8px] bg-white shadow-xl ml-8 px-[14px] py-[8px] transition duration-600 cursor-pointer hover:scale-100 cfeExam">
         <p className="text-base font-extrabold">
           Herkes için Kodlama 1B Değerlendirme Sınavı
           <FontAwesomeIcon

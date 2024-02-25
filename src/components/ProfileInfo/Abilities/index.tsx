@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SelectInput from './SelectInput'; // SelectInput component'ini import et
 import { Button, Modal } from 'flowbite-react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import abilityService from 'services/abilityService';
+import { GetAbilityResponse } from 'models/responses/abilities/getAbilityResponse';
 
 const Abilities = () => {
   const [selectedAbilities, setSelectedAbilities] = useState<string[]>([]);
@@ -12,61 +14,83 @@ const Abilities = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState<boolean>(false);
   const [abilityToDelete, setAbilityToDelete] = useState<string | null>(null);
 
+  const [abilities, setAbilities] = useState<GetAbilityResponse>({} as GetAbilityResponse);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchAbilities();
+  }, []);
+
+  const fetchAbilities = async () => {
+    setIsLoading(true); 
+    const response = await abilityService.getById(localStorage.studentId);
+    setAbilities(response.data as GetAbilityResponse); 
+    setIsLoading(false); 
+  };
+
+  console.log("****************");
+  console.log(abilities);
+  console.log("****************");
+
 
   const abilitiesList = [
-    "Ateş Toplama",
-    "Su Manipülasyonu",
-    "Hava Kontrolü",
-    "Toprak Bükmek",
-    "Telepati",
-    "Süper Hız",
-    "Görünmezlik",
-    "Telekinezi",
-    "Şifa Gücü",
-    "Ses Manipülasyonu",
-    "Zihin Okuma",
-    "Şekil Değiştirme",
-    "Enerji Patlaması",
-    "Zaman Dondurma",
-    "Elektrik Üretme"
+    "Muhasebe",
+    "Aktif öğrenme",
+    "Aktif Dinleme",
+    "Uyum Sağlama",
+    "Yönetim ve idare",
+    "Reklam",
+    "Algoritmalar",
+    "Android (işletim Sistemi)",
+    "Apache Ambari",
+    "Uygulama Mağazası (IOS)",
+    "Apple Sağlık Kiti",
+    "Apple IOS",
+    "Apple Xcode",
+    "Uygulamalı Makine Öğrenimi",
+    "Büyük Veri",
+    "Blok Zinciri",
+    "Bootstarp (Front-End Framework)",
+    "Marka Yönetimi",
+    "İletişim",
+    "Pazarlama",
+    "Building and Construction",
   ];
-  // Geçici olarak yetenekleri seçme işlemi
+  
   const handleAbilitySelect = (ability: string) => {
     if (!tempSelectedAbilities.includes(ability)) {
       setTempSelectedAbilities([...tempSelectedAbilities, ability]);
     }
   };
 
-  // Seçimleri kalıcı olarak kaydetme işlemi
-  const handleSaveAbilities = () => {
-    setSelectedAbilities([...selectedAbilities, ...tempSelectedAbilities]);
-    setTempSelectedAbilities([]); // Geçici listeyi temizle
+  
+  const handleSaveAbilities = async () => {
+    const allAbilities = [...selectedAbilities, ...tempSelectedAbilities];
+
+    for (const abilityName of allAbilities) {
+        const request = { name: abilityName , studentId: localStorage.studentId};
+        await abilityService.add(request);
+    }
+
+    await fetchAbilities();
+
+    setTempSelectedAbilities([]);
+    setNewAbility('');
   };
 
-  // Seçimi geçici listeden kaldırma işlevi
   const removeTempAbility = (ability: string) => {
     setTempSelectedAbilities(tempSelectedAbilities.filter((a) => a !== ability));
   };
 
-  const handleNewAbilityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewAbility(event.target.value);
-  };
-
-  const handleCreateNewAbility = () => {
-    if (newAbility.trim() !== '') {
-      setSelectedAbilities([...selectedAbilities, newAbility]);
-      setNewAbility('');
-      setShowCreateOption(false);
-    }
-  };
-
-  const handleDeleteAbility = () => {
+  const handleDeleteAbility = async  () => {
     if (abilityToDelete) {
-      setSelectedAbilities(selectedAbilities.filter((ability) => ability !== abilityToDelete));
+      await abilityService.delete(abilityToDelete); 
+      await fetchAbilities(); 
       setAbilityToDelete(null);
       setShowConfirmationModal(false);
-    }
+  }
   };
+
   const closeConfirmationModalHandler = () => {
     setShowConfirmationModal(false);
   };
@@ -75,40 +99,47 @@ const Abilities = () => {
     <div className=''>
       <div className=''>
         <h2>Yetkinlik</h2>
-        {/* SelectInput component'ini güncellenmiş prop'larla kullan */}
         <SelectInput
           options={abilitiesList}
           onChange={handleAbilitySelect}
-          onRemove={removeTempAbility} // Kaldırma işlevini SelectInput'a iletiyoruz
+          onRemove={removeTempAbility} 
           selected={tempSelectedAbilities}
         />
-        {/* Kaydet butonu */}
-        <div className='relative z-0 mt-8'> {/* "Kaydet" butonu için relative ve z-index eklendi */}
+        <div className='relative z-0 mt-8'> 
           <Button color="green" onClick={handleSaveAbilities} className="z-0 bg-[#9933FF] border-[#9933FF] focus:ring-0 rounded-3xl text-white font-bold hover:bg-[#822BD9] hover:border-[#822BD9] enabled:hover:bg-[#822BD9]">
             Kaydet
           </Button>
         </div>
       </div>
+
+
       <div className='mt-4'>
-        <ul className='flex-col'>
-          {selectedAbilities.map((selectedAbility) => (
-            <li key={selectedAbility} className="w-full my-2 py-2 px-3 shadow-lg">
-              <div className="flex justify-between items-center">
-                <span className="flex-grow text-black font-medium py-1">{selectedAbility}</span>
-                <button
-                  onClick={() => {
-                    setAbilityToDelete(selectedAbility);
-                    setShowConfirmationModal(true);
-                  }}
-                  className="rounded-full bg-[#FF4D4D] text-white p-1 hover:bg-[#CC4646] focus:outline-none focus:ring focus:border-blue-300 "
-                >
-                  <RiDeleteBin5Line size={15} />
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+        {
+          isLoading ? (
+            <div>Yükleniyor...</div>  
+          ) : (
+            <ul className='flex-col'>
+              {abilities.map((ability) => (
+                <li key={ability.id} className="w-full my-2 py-2 px-3 shadow-lg">
+                  <div className="flex justify-between items-center">
+                    <span className="flex-grow text-black font-medium py-1">{ability.name}</span>
+                    <button
+                      onClick={() => {
+                        setAbilityToDelete(ability.id);
+                        setShowConfirmationModal(true);
+                      }}
+                      className="rounded-full bg-[#FF4D4D] text-white p-1 hover:bg-[#CC4646] focus:outline-none focus:ring focus:border-blue-300 "
+                    >
+                      <RiDeleteBin5Line size={15} />
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )
+        }
       </div>
+
       <Modal
         show={showConfirmationModal}
         size="md"
