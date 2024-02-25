@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 
-type Props = {}
+type Props = {
+  isLiked: boolean;
+}
 
 const HeartButton = (props: Props) => {
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState<boolean>(props.isLiked);
 
   const handleHeartClick = () => {
     setLiked(!liked);

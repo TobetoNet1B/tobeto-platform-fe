@@ -4,6 +4,8 @@ export interface GetAllStudentModuleResponse {
 export interface StudentModuleSet {
   id: string;
   studentId: string;
-  moduleSetId: string;
-  timeSpent: number;
+	moduleSetId: string;
+	timeSpent: number;
+  isLiked: boolean;
+	isFav: boolean;
 }

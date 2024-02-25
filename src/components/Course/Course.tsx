@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import CourseContents from './CourseContents'
 import CourseAbout from './CourseAbout'
+import { GetModuleSetResponse } from 'models/responses/modulesets/getModuleSetResponse'
+import { GetStudentLessonResponse } from 'models/responses/student-lessons/getStudentLessonResponse'
 
-type Props = {}
+type Props = {
+  moduleSet: GetModuleSetResponse;
+  studentLessons: GetStudentLessonResponse;
+}
 
 const Course = (props: Props) => {
   const [showFirst, setShowFirst] = useState(0);
@@ -35,7 +40,7 @@ const Course = (props: Props) => {
           </div>
           <div className="flex self-stretch absolute invisible pointer-events-none">
             <button type="button" className="p-2 relative bg-transparent border-0 text-[#1a1a1a] after:absolute after:right-0 after:bottom-0 after:left-0 after:h-[5px] after:transform after:translate-y-[100%] after:content-['']" style={{ visibility: "hidden", order: 1 }}>
-              <span className="inline-flex items-center text-inherit font-normal leading-[0px] text-center normal-case align-[-0.125em] antialiased" style={{textRendering:"optimizeLegibility"}}>
+              <span className="inline-flex items-center text-inherit font-normal leading-[0px] text-center normal-case align-[-0.125em] antialiased" style={{ textRendering: "optimizeLegibility" }}>
                 <svg viewBox="64 64 896 896" focusable="false" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" className="text-2xl inline-block leading-none">
                   <path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z" />
                 </svg>
@@ -46,10 +51,10 @@ const Course = (props: Props) => {
         <div className="flex-auto min-w-0 min-h-0">
           <div className="relative w-full">
             <div className={` ${showFirst === 0 ? "" : "hidden"}`}>
-              <CourseContents />
+              <CourseContents courses={props.moduleSet.courseModules} studentLessons={props.studentLessons} moduleSetTypes={props.moduleSet.moduleType.name} />
             </div>
             <div className={` ${showFirst === 1 ? "" : "hidden"}`}>
-              <CourseAbout />
+              <CourseAbout courseDate={props.moduleSet.classroomModules} estimatedTime={props.moduleSet.estimatedTime} companyName={props.moduleSet.company.name} courseModules={props.moduleSet.courseModules} studentModules={props.moduleSet.studentModules} moduleSetCategorys={props.moduleSet.moduleSetCategorys} />
             </div>
           </div>
         </div>
