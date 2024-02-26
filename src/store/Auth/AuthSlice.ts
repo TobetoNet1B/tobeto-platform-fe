@@ -14,6 +14,8 @@ const authSlice = createSlice({
 		logout: () => {
 			tokenServices.removeToken();
 			window.location.reload();
+			console.log("çıkış yapıldı2");
+			
 		},
 	},
 });
