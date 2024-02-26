@@ -7,25 +7,26 @@ import { AddStudentResponse } from "models/responses/students/addStudentResponse
 import { UpdateStudentRequest } from "models/requests/students/updateStudentRequest";
 import { UpdateStudentResponse } from "models/responses/students/updateStudentResponse";
 import axios, { AxiosResponse } from "axios";
+import { GetStudentPlatformResponse } from "models/responses/students/getStudentPlatformResponse";
 
-class StudentService extends BaseService<
-	GetAllStudentResponse,
-	GetStudentResponse,
-	AddStudentRequest,
-	AddStudentResponse,
-	UpdateStudentRequest,
-	UpdateStudentResponse	
-> {
-	constructor() {
-		super();
-		this.apiUrl = BASE_API_URL + "Students";
-	}
+class StudentPlatformService extends BaseService<
+    GetAllStudentResponse,
+    GetStudentPlatformResponse,
+    AddStudentRequest,
+    AddStudentResponse,
+    UpdateStudentRequest,
+    UpdateStudentResponse
+>{
+    constructor() {
+        super();
+        this.apiUrl = BASE_API_URL + "Students";
+    }
 
-	// GetByUserPlatformId(id: number) : Promise<AxiosResponse<GetByIdType, any>>{
-	// 	return axios.get<GetByIdType>(this.apiUrl + "/" + id);
-	// }
 
+    getByUserPlatformId(id: string): Promise<AxiosResponse<GetStudentPlatformResponse, any>> {
+        return axios.get<GetStudentPlatformResponse>(this.apiUrl + "/ByUserId/" + id);
+    }
 
 }
 
-export default new StudentService();
+export default new StudentPlatformService();

@@ -36,7 +36,7 @@ const Education = (props: Props) => {
     setIsInstitutionSelected(!!event.target.value);
   };
   return (
-    <div className="">
+    <div className="min-h-[100vh]">
       <Banner
         url="https://tobeto.com/_next/static/media/edu-banner3.d7dc50ac.svg"
         spanText="Eğitimlerim"
