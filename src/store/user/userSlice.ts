@@ -9,7 +9,7 @@ const userSlice = createSlice({
 	},
 	reducers: {
 		setFirstName(state, action) {
-			return { ...state, firtName: action.payload };
+			return { ...state, firstName: action.payload };
 		},
 		setLastName(state, action) {
 			return { ...state, lastName: action.payload };
@@ -22,6 +22,7 @@ const userSlice = createSlice({
 
 export const userReducer = userSlice.reducer;
 export const userActions = userSlice.actions;
+export const { setFirstName, setLastName, setImgUrl } = userSlice.actions;
 
-export const SelectFullName = (state:any) => state.user.firtName + ' '+ state.user.lastName;
+export const SelectFullName = (state: any) => state.user.firtName + ' ' + state.user.lastName;
 export const SelectImgUrl = (state: any) => state.user.img;
