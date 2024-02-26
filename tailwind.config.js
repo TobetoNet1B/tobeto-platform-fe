@@ -3,15 +3,15 @@ module.exports = {
 	content: [
 		"./src/**/*.{js,jsx,ts,tsx}",
 		"./node_modules/flowbite-react/lib/esm/**/*.js",
-		"./node_modules/tw-elements-react/dist/js/**/*.js",
+		"./node_modules/tw-elements-react/dist/js/**/*.js"
 	],
 	plugins: [
 		require("flowbite/plugin"),
 		require("daisyui"),
-		require("tw-elements-react/dist/plugin.cjs"),
+		require("tw-elements-react/dist/plugin.cjs")
 	],
 	daisyui: {
-		themes: ["light"],
+		themes: ["light"]
 	},
 	theme: {
 		extend: {
@@ -247,7 +247,7 @@ module.exports = {
 						opacity: 1,
 					}
 				}
-			},
+			}
 		},
 		animation: {
 			fade: "fade 4s ease infinite",
@@ -258,6 +258,6 @@ module.exports = {
 			antProgresActive: "antProgresActive 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite",
 			preloaderAnimation: "preloaderAnimation 2s linear infinite",
 			carrosel: "carrosel 12s linear infinite"
-		} /*  fade 4s ease 0s infinite normal none running fade auto normal normal */,
-	},
+		}
+	}
 };

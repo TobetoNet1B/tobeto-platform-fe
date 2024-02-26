@@ -1,22 +1,22 @@
-
 import { GetStudentClassroomResponse } from "models/responses/student-classrooms/getStudentClassroomResponse";
 import React, { useEffect, useState } from "react";
 import studentClassroomService from "services/studentClassroomService";
-import Card, { ECard } from "utils/Card";
+import Card, { ECard } from "utils/Platform/Card";
 
 type CardData = {
   imgUrl?: string;
   description?: string;
   createdDate: string;
   buttonText?: string;
-  companyName?:string
-  name:string;
+  companyName?: string
+  name: string;
+  id?: string;
 };
 
 type Props = {
   searchQuery: string;
   sortBy: string;
-  selectedOrganization:string;
+  selectedOrganization: string;
 };
 
 const EducationCard = (props: Props) => {
@@ -33,7 +33,7 @@ const EducationCard = (props: Props) => {
         console.error("Error fetching student module:", error);
       }
     };
-  
+
     fetchStudentModule();
   }, []);
 
@@ -44,14 +44,14 @@ const EducationCard = (props: Props) => {
           props.selectedOrganization === "kurum1")) &&
       (props.searchQuery === "" ||
         card.name.toLowerCase().includes(props.searchQuery.toLowerCase()))
-  
+
     );
   };
 
   const sortCards = (a: CardData, b: CardData) => {
     const dateA = new Date(a.createdDate).getTime();
     const dateB = new Date(b.createdDate).getTime();
-  
+
     switch (props.sortBy) {
       case "name-asc":
         return a.name.localeCompare(b.name);
@@ -71,11 +71,11 @@ const EducationCard = (props: Props) => {
       name: module.name,
       createdDate: module.classroomStartDate.toString(),
       buttonText: "Eğitime Git",
-      companyName: module.companyName
-      
+      companyName: module.companyName,
+      id: module.id
     })).filter(filterCards).sort(sortCards)
     : [];
-    console.log("filteredAndSortedCards:", filteredAndSortedCards);
+  console.log("filteredAndSortedCards:", filteredAndSortedCards);
   return (
     <div className="flex flex-wrap justify-center">
       {filteredAndSortedCards.length > 0 ? (
@@ -87,6 +87,7 @@ const EducationCard = (props: Props) => {
             companyName={card.companyName}
             createdDate={card.createdDate}
             buttonText={card.buttonText}
+            id={card.id}
           />
         ))
       ) : (

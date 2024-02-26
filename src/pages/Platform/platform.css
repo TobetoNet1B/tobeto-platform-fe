@@ -1,33 +1,3 @@
-.tobeto-logo {
-  height: 2.1rem;
-  justify-content: start;
-  margin-right: 10px;
-}
-
-.entry-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.text-container {
-  text-align: center;
-  margin-right: 5rem;
-}
-
-.welcome-message {
-  margin-top: 2rem;
-  margin-left: 30rem;
-}
-
-.ball {
-  width: 10rem;
-  height: 10rem;
-  margin-top: 2rem;
-  margin-left: 10rem;
-}
-
-
 .body-container {
   display: flex;
   display: block;
@@ -40,42 +10,11 @@
   box-shadow: 0 2px 15px 15px rgba(192, 192, 192, 0.25);
 }
 
-.ikLogo {
-  width: 300px;
-  height: 300px;
-  margin: 0 auto;
-  padding-top: 4rem;
-}
-
-.freeCourse {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.localBar {
-  margin: 30px 0px 0px 30px;
-}
-
-.localLink {
-  margin: 30px 0px 0px 20px;
-}
-
-.localLink:active,
-.localLink:focus {
-  text-decoration: underline;
-}
-
-#localLink2 {
-  transition: 1.5s ease;
-}
-
 .applyInfo {
   width: 550px;
   height: 145px;
   border: 2px solid;
-  border-left: 6px solid #803f10;
+  border-left: 6px solid #076b34;
   border-right: none;
   border-top: none;
   border-bottom: none;
@@ -91,47 +30,11 @@
   padding: 5px;
   margin-left: 25.5rem;
   margin-top: 0.4rem;
-  background-color: rgb(114, 80, 80);
+  background-color: #076b34;
   color: white;
   float: right;
 }
 
-.applyInfoNote1 {
-  display: flex;
-  align-items: center;
-}
-.applyInfoNote2 {
-  display: flex;
-  align-items: center;
-}
-
-.showMoreContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.showMoreBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 0.5px solid #f7f2fd;
-  background-color: transparent;
-  color: #828282;
-  box-shadow: 0px 0px 10px 2px gray;
-  cursor: pointer;
-  margin: 1rem auto;
-}
-
-.showMoreText {
-  color: #828282;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 12px;
-}
 
 .announcementCard,
 .announcementCard2,
@@ -151,64 +54,36 @@
   color: gray;
 }
 
-.myExams {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 1150px;
-  height: 12rem;
-  border-radius: 1.5%;
-  margin: 0 auto;
-  box-shadow: 0 2px 13px 13px rgba(192, 192, 192, 0.25);
-  padding-left: 3rem;
-}
+
 
 .cfeExam {
-  width: 560px;
-  height: 105px;
-  margin-right: 2rem;
-  margin-top: 1rem;
-  position: relative;
-  border-radius: 8px;
-  background: #fff;
   box-shadow: 0 1px 15px 1px rgba(0, 0, 0, 0.25);
-  padding: 8px 14px;
   transition: 0.6s;
-  cursor: pointer;
 }
 
 .cfeExam:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+
 }
 
-.mySurveys {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 20px 20px 20px 20px;
-  border-radius: 1.5%;
-  height: 280px;
-  background-color: #e6e6e6;
-}
-
-.navbar-platform {
-  margin-left: 5rem;
-  max-width: 38rem;
-  white-space: nowrap;
-}
 
 .footer-container {
   display: flex;
   width: 1150px;
   max-height: 500px;
   margin: 0 auto;
-
-  padding: 20px;
+   padding: 20px;
    flex-direction: row;
   justify-content: space-between;
 }
+
+.footer-box {
+  margin: 20px 20px 20px 55px;
+  box-shadow: 0 40px 80px rgba(24, 32, 79, 0.25),
+    inset 0 0 0 0.5px hsla(0, 0%, 100%, 0.5);
+  border-radius: 0 30px 40px 40px;
+}
+
 
 .btn-footerbox {
   background-color: rgb(139, 24, 247);
@@ -221,12 +96,6 @@
   transition: 0.3s;
 }
 
-.footer-box {
-  margin: 20px 20px 20px 55px;
-  box-shadow: 0 40px 80px rgba(24, 32, 79, 0.25),
-    inset 0 0 0 0.5px hsla(0, 0%, 100%, 0.5);
-  border-radius: 0 30px 40px 40px;
-}
 
 .footer-bar {
   display: flex;

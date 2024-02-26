@@ -1,7 +1,7 @@
 import EducationCard from "components/Education/EducationCard";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Banner from "utils/Banner";
+import Banner from "utils/Platform/Banner";
 type Props = {};
 
 const Education = (props: Props) => {
@@ -36,7 +36,7 @@ const Education = (props: Props) => {
     setIsInstitutionSelected(!!event.target.value);
   };
   return (
-    <div className="">
+    <div className="min-h-[100vh]">
       <Banner
         url="https://tobeto.com/_next/static/media/edu-banner3.d7dc50ac.svg"
         spanText="Eğitimlerim"

@@ -12,7 +12,10 @@ import AnnouncementCard3 from "../../components/Platform/Main/AnnouncementCards/
 import MyExams from "../../components/Platform/Main/MyExams";
 import MySurveys from "components/Platform/Main/MySurveys";
 import FooterBoxes from "components/Platform/Main/FooterBoxes";
-import FooterBar from "components/Platform/Footer/FooterBar";
+import { GetStudentPlatformResponse } from "models/responses/students/getStudentPlatformResponse";
+import StudentPlatformService from "services/studentPlatformService";
+import { useDispatch } from "react-redux";
+import { setFirstName, setImgUrl, setLastName } from "store/user/userSlice";
 
 export default function PlatformMain() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
@@ -31,11 +34,11 @@ export default function PlatformMain() {
       setContainerHeight(1010);
     } else if (link === "Duyuru ve Haberlerim") {
       setContainerHeight(800);
-      } 
-      else if (link === "Anketlerim") {
-        setContainerHeight(825);
-      }
-      else {
+    }
+    else if (link === "Anketlerim") {
+      setContainerHeight(825);
+    }
+    else {
       setContainerHeight(700);
     }
   }
@@ -49,39 +52,65 @@ export default function PlatformMain() {
     navigate("/duyurularim");
   };
 
+  const [studentPlatform, setStudentPlatform] = useState<GetStudentPlatformResponse>({} as GetStudentPlatformResponse);
+  useEffect(() => {
+    let studentPlatformService = StudentPlatformService;
+    studentPlatformService
+      .getByUserPlatformId(localStorage.userId)
+      .then((result) => {
+        setStudentPlatform(result.data as GetStudentPlatformResponse);
+        localStorage.setItem('studentId', result.data.id);
+      });
+  }, []);
+  console.log(studentPlatform);
+
+	let firstName = studentPlatform.user?.firstName
+	let lastName =  studentPlatform.user?.lastName
+	let imgUrl = studentPlatform.imgUrl
+
+	const dispatch = useDispatch()  
+
+	useEffect(() => {
+	dispatch(setFirstName(firstName))
+	dispatch(setLastName(lastName)) 
+	dispatch(setImgUrl(imgUrl)) 
+	}, [firstName,lastName])
+
+
   return (
     <div>
-      <div className="entry-container">
-        <div className="text-container">
-          <h1 className="welcome-message">
+      <div className="flex items-center justify-center
+">
+        <div className="text-center mr-20">
+          <h1 className="mt-8 ml-96">
             <span
               className="text-purple-600"
               style={{ fontSize: 37, fontWeight: "bold" }}
             >
-              {" "}
-              TOBETO{" "}
+
+              TOBETO
             </span>
             <span className="text-green-700" style={{ fontSize: 35 }}>
-              {" "}
-              'ya hoş geldin{" "}
+
+              'ya hoş geldin
             </span>
           </h1>
           <h1
-            className="text-green-700"
-            style={{ fontSize: 35, marginLeft: 460 }}
+            className="text-green-700 text-4xl ml-96"
+
           >
-            PAIR 3
+            {firstName.toUpperCase() + " " + lastName.toUpperCase()}
           </h1>
         </div>
         <img
-          className="ball"
+          className="w-40 h-40 mt-8 ml-40"
           src="https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg"
           alt=""
         />
       </div>
 
       <h1
-        id="text1"
+
         className="flex justify-center text-2xl font-medium text-gray-900 dark:text-white"
       >
         Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda senin
@@ -92,14 +121,14 @@ export default function PlatformMain() {
 
       <div className="body-container" style={{ height: containerHeight }}>
         <img
-          className="ikLogo"
+          className="w-72 h-72 mx-auto pt-16"
           src="https://tobeto.com/_next/static/media/ik-logo-dark.7938c0de.svg"
           alt=""
         />
-        <h1 className="freeCourse text-2xl font-medium text-gray-900 dark:text-white">
+        <h1 className="flex justify-center items-center p-5 text-2xl font-medium text-gray-900 dark:text-white">
           Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.
         </h1>
-        <h1 className="freeCourse  text-4xl font-extrabold text-gray-900 dark:text-white">
+        <h1 className="flex justify-center items-center p-5 text-4xl font-semibold text-gray-900 dark:text-white">
           Aradığın
           <span
             style={{
@@ -125,46 +154,52 @@ export default function PlatformMain() {
           Burada!
         </h1>
 
-        <div className="localBar">
+        <div className="mt-7 ml-7">
           <Link
-            id="localLink1"
-            className={`localLink text-lg text-gray-900 dark:text-white ${
-              selectedLink === "Başvurularım" ? "selected" : ""
-            }`}
+            className={`mt-7 ml-5 text-lg relative text-gray-900 dark:text-white ${selectedLink === "Başvurularım" ? "selected" : ""
+              }`}
             to={""}
             onClick={() => handleLinkClick("Başvurularım")}
           >
-            Başvurularım
+            <span className="relative z-10">Başvurularım</span>
+            {selectedLink === "Başvurularım" && (
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 mt-2"></span>
+            )}
           </Link>
+
           <Link
-            id="localLink2"
-            className={`localLink text-lg text-gray-900 dark:text-white ${
-              selectedLink === "Eğitimlerim" ? "selected" : ""
-            }`}
+            className={`mt-5 ml-5 text-lg relative text-gray-900 dark:text-white ${selectedLink === "Eğitimlerim" ? "selected" : ""
+              }`}
             to={""}
             onClick={() => handleLinkClick("Eğitimlerim")}
           >
-            Eğitimlerim
+            <span className="relative z-10">Eğitimlerim</span>
+            {selectedLink === "Eğitimlerim" && (
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 mt-2"></span>
+            )}
           </Link>
+
           <Link
-            id="localLink3"
-            className={`localLink text-lg text-gray-900 dark:text-white ${
-              selectedLink === "Duyuru ve Haberlerim" ? "selected" : ""
-            }`}
+            className={`mt-5 ml-5 text-lg relative text-gray-900 dark:text-white ${selectedLink === "Duyuru ve Haberlerim" ? "selected" : ""
+              }`}
             to={""}
             onClick={() => handleLinkClick("Duyuru ve Haberlerim")}
           >
-            Duyuru ve Haberlerim
+            <span className="relative z-10">Duyuru ve Haberlerim</span>
+            {selectedLink === "Duyuru ve Haberlerim" && (
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 mt-2"></span>
+            )}
           </Link>
           <Link
-            id="localLink4"
-            className={`localLink text-lg text-gray-900 dark:text-white ${
-              selectedLink === "Anketlerim" ? "selected" : ""
-            }`}
+            className={`mt-5 ml-5 text-lg relative text-gray-900 dark:text-white ${selectedLink === "Anketlerim" ? "selected" : ""
+              }`}
             to={""}
             onClick={() => handleLinkClick("Anketlerim")}
           >
-            Anketlerim
+            <span className="relative z-10">Anketlerim</span>
+            {selectedLink === "Anketlerim" && (
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-green-500 mt-2"></span>
+            )}
           </Link>
         </div>
 
@@ -177,11 +212,11 @@ export default function PlatformMain() {
               sortBy={sortBy}
               selectedOrganization={selectedOrganization}
             />
-            <div className="showMoreContainer">
-              <button className="showMoreBtn" onClick={toEgitimlerim}>
+            <div className="flex flex-col items-center">
+              <button style={{ boxShadow: "0px 0px 10px 2px gray" }} className="showMoreBtn flex justify-center items-center w-9 h-9 rounded-full border-0.5 border-gray-300 bg-transparent text-gray-600 shadow-box focus:outline-none cursor-pointer my-4 mx-auto" onClick={toEgitimlerim}>
                 <SlArrowRight />
               </button>
-              <p className="showMoreText" onClick={toEgitimlerim}>
+              <p className="text-gray-500 cursor-pointer font-bold text-xs" onClick={toEgitimlerim}>
                 Daha Fazla Göster
               </p>
             </div>
@@ -193,18 +228,18 @@ export default function PlatformMain() {
           {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard3 />}
         </div>
         {selectedLink === "Duyuru ve Haberlerim" && (
-          <div className="showMoreContainer">
-            <button className="showMoreBtn" onClick={toDuyurularim}>
+          <div className="flex flex-col items-center">
+            <button style={{ boxShadow: "0px 0px 10px 2px gray" }} className="showMoreBtn flex justify-center items-center w-9 h-9 rounded-full border-0.5 border-gray-300 bg-transparent text-gray-600 shadow-box focus:outline-none cursor-pointer my-4 mx-auto" onClick={toDuyurularim}>
               <SlArrowRight />
             </button>
-            <p className="showMoreText" onClick={toDuyurularim}>Daha Fazla Göster</p>
+            <p className="text-gray-500 cursor-pointer font-bold text-xs" onClick={toDuyurularim}>Daha Fazla Göster</p>
           </div>
         )}
-        {selectedLink === "Anketlerim" &&  <MySurveys/>}
+        {selectedLink === "Anketlerim" && <MySurveys />}
       </div>
       <br />
-      <MyExams />
-      <FooterBoxes/>
+      <MyExams studentPlatform={studentPlatform.studentExams} />
+      <FooterBoxes />
     </div>
   );
 }

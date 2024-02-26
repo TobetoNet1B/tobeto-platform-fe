@@ -25,7 +25,7 @@ const Calendar = (props: Props) => {
 	}, [events]);
 
 	return (
-		<div className="container my-5 mx-auto">
+		<div>
 			<div className="card p-5">
 				<FullCalendar
 					locales={[trLocale]}

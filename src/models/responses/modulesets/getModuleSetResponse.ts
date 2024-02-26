@@ -7,14 +7,20 @@ export interface GetModuleSetResponse {
 	imgUrl: string;
 	companyId: string;
 	company: Company;
+	moduleType: ModuleType;
 	courseModules: CourseModule[];
 	studentModules: StudentModule[];
+	classroomModules: ClassroomModule[];
 	moduleSetCategorys: ModuleSetCategory[];
 }
 export interface Company {
 	name: string;
 }
+export interface ModuleType {
+	name: string;
+}
 export interface Lesson {
+	id: string;
 	name: string;
 	description: string;
 	lessonUrl: string;
@@ -29,8 +35,13 @@ export interface CourseModule {
 export interface StudentModule {
 	studentId: string;
 	timeSpent: number;
+	isLiked: boolean;
+	isFav: boolean;
 }
 export interface ModuleSetCategory {
 	name: string;
 }
-
+export interface ClassroomModule {
+	classroomStartDate: string;
+	classroomEndDate: string;
+}

@@ -6,6 +6,7 @@ import { AddStudentRequest } from "models/requests/students/addStudentRequest";
 import { AddStudentResponse } from "models/responses/students/addStudentResponse";
 import { UpdateStudentRequest } from "models/requests/students/updateStudentRequest";
 import { UpdateStudentResponse } from "models/responses/students/updateStudentResponse";
+import axios, { AxiosResponse } from "axios";
 
 class StudentService extends BaseService<
 	GetAllStudentResponse,
@@ -13,14 +14,16 @@ class StudentService extends BaseService<
 	AddStudentRequest,
 	AddStudentResponse,
 	UpdateStudentRequest,
-	UpdateStudentResponse
+	UpdateStudentResponse	
 > {
 	constructor() {
 		super();
 		this.apiUrl = BASE_API_URL + "Students";
 	}
 
-	getByFilter() {}
+	// GetByUserPlatformId(id: number) : Promise<AxiosResponse<GetByIdType, any>>{
+	// 	return axios.get<GetByIdType>(this.apiUrl + "/" + id);
+	// }
 
 
 }
