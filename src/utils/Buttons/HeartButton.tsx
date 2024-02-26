@@ -6,9 +6,17 @@ type Props = {
 
 const HeartButton = (props: Props) => {
   const [liked, setLiked] = useState<boolean>(props.isLiked);
+  const [count, setCount] = useState<number>(props.isLiked ? 1 : 0);
 
   const handleHeartClick = () => {
     setLiked(!liked);
+    if (!liked) {
+      setCount(count + 1);
+    } else {
+      if(count > 0){
+        setCount(count - 1);
+      }
+    }
   };
 
   return (
@@ -182,7 +190,7 @@ const HeartButton = (props: Props) => {
         </div>
       </span>
       <span className={`!text-[#7f7f7f] font-medium text-3xl  translate-x-[0.2em] translate-y-[-0.15ex] mr-4 leading-none cursor-pointer ${liked ? ' ' : ' '}`}>
-        <span className={`cursor-pointer ${liked ? '!text-[#ff4757]' : '!text-[#7f7f7f]'}`}>106</span>
+        <span className={`cursor-pointer ${liked ? '!text-[#ff4757]' : '!text-[#7f7f7f]'}`}>{count}</span>
       </span>
     </div>
   )

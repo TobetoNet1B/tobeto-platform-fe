@@ -13,7 +13,7 @@ const Confirmationpage = (props: Props) => {
           <p className='font-extrabold text-3xl  m-auto'>Tobeto Platform'a kaydınız başarıyla gerçekleşti.Gİriş yapabilmek için e-posta adresinize iletilen doğrulama linkine tıklayarak hesabınızı aktifleştirin.</p>
           <p className='font-extrabold text-3xl  m-auto'></p>
         </div>
-        <Link to={"/"} className='btn bg-[#4caf50] hover:bg-[#3e8e41] hover:border-[#3e8e41] border-[#4caf50] text-white text-lg w-36'>Giriş Yap</Link>
+        <Link to={"/giris"} className='btn bg-[#4caf50] hover:bg-[#3e8e41] hover:border-[#3e8e41] border-[#4caf50] text-white text-lg w-36'>Giriş Yap</Link>
       </div>
     </div>
   )
