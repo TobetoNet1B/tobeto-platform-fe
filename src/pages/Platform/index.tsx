@@ -12,7 +12,6 @@ import AnnouncementCard3 from "../../components/Platform/Main/AnnouncementCards/
 import MyExams from "../../components/Platform/Main/MyExams";
 import MySurveys from "components/Platform/Main/MySurveys";
 import FooterBoxes from "components/Platform/Main/FooterBoxes";
-import FooterBar from "components/Platform/Footer/FooterBar";
 import { GetStudentPlatformResponse } from "models/responses/students/getStudentPlatformResponse";
 import StudentPlatformService from "services/studentPlatformService";
 import { useDispatch } from "react-redux";
@@ -65,13 +64,17 @@ export default function PlatformMain() {
   }, []);
   console.log(studentPlatform);
 
-const dispatch = useDispatch()  
-useEffect(() => {
-  
-dispatch(setFirstName(studentPlatform.user?.firstName))
-dispatch(setLastName(studentPlatform.user?.lastName)) 
-dispatch(setImgUrl(studentPlatform.imgUrl)) 
-}, [studentPlatform.user?.firstName,studentPlatform.user?.lastName])
+	let firstName = studentPlatform.user?.firstName
+	let lastName =  studentPlatform.user?.lastName
+	let imgUrl = studentPlatform.imgUrl
+
+	const dispatch = useDispatch()  
+
+	useEffect(() => {
+	dispatch(setFirstName(firstName))
+	dispatch(setLastName(lastName)) 
+	dispatch(setImgUrl(imgUrl)) 
+	}, [firstName,lastName])
 
 
   return (
@@ -96,7 +99,7 @@ dispatch(setImgUrl(studentPlatform.imgUrl))
             className="text-green-700 text-4xl ml-96"
 
           >
-            {studentPlatform.user?.firstName.toUpperCase() + " " + studentPlatform.user?.lastName.toUpperCase()}
+            {firstName.toUpperCase() + " " + lastName.toUpperCase()}
           </h1>
         </div>
         <img
