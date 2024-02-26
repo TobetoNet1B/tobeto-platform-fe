@@ -16,7 +16,7 @@ import FooterBar from "components/Platform/Footer/FooterBar";
 import { GetStudentPlatformResponse } from "models/responses/students/getStudentPlatformResponse";
 import StudentPlatformService from "services/studentPlatformService";
 import { useDispatch } from "react-redux";
-import { setFirstName, setImgUrl, setLastName } from "store/User/userSlice";
+import { setFirstName, setImgUrl, setLastName } from "store/user/userSlice";
 
 export default function PlatformMain() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
