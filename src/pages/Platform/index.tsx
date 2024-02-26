@@ -6,9 +6,7 @@ import "./platform.css";
 import ApplyCard from "../../components/Platform/Main/ApplyCard";
 import EducationShowcase from "../../components/Platform/Main/EducationShowcase";
 import { SlArrowRight } from "react-icons/sl";
-import AnnouncementCard from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard";
-import AnnouncementCard2 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard2";
-import AnnouncementCard3 from "../../components/Platform/Main/AnnouncementCards/AnnouncementCard3";
+
 import MyExams from "../../components/Platform/Main/MyExams";
 import MySurveys from "components/Platform/Main/MySurveys";
 import FooterBoxes from "components/Platform/Main/FooterBoxes";
@@ -16,6 +14,7 @@ import { GetStudentPlatformResponse } from "models/responses/students/getStudent
 import StudentPlatformService from "services/studentPlatformService";
 import { useDispatch } from "react-redux";
 import { setFirstName, setImgUrl, setLastName } from "store/user/userSlice";
+import AnnouncementCard2 from "components/Announcement/AnnouncementCard2";
 
 export default function PlatformMain() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
@@ -23,6 +22,9 @@ export default function PlatformMain() {
   const [sortBy, setSortBy] = useState("");
   const [selectedOrganization, setSelectedOrganization] = useState("");
   const [containerHeight, setContainerHeight] = useState<number>(100);
+
+
+  const [selectedInstitution, setSelectedInstitution] = useState("");
   useEffect(() => {
     handleLinkClick(selectedLink);
   }, []);
@@ -52,6 +54,8 @@ export default function PlatformMain() {
     navigate("/duyurularim");
   };
 
+
+
   const [studentPlatform, setStudentPlatform] = useState<GetStudentPlatformResponse>({} as GetStudentPlatformResponse);
   useEffect(() => {
     let studentPlatformService = StudentPlatformService;
@@ -64,17 +68,17 @@ export default function PlatformMain() {
   }, []);
   console.log(studentPlatform);
 
-	let firstName = studentPlatform.user?.firstName
-	let lastName =  studentPlatform.user?.lastName
-	let imgUrl = studentPlatform.imgUrl
+  let firstName = studentPlatform.user?.firstName
+  let lastName = studentPlatform.user?.lastName
+  let imgUrl = studentPlatform.imgUrl
 
-	const dispatch = useDispatch()  
+  const dispatch = useDispatch()
 
-	useEffect(() => {
-	dispatch(setFirstName(firstName))
-	dispatch(setLastName(lastName)) 
-	dispatch(setImgUrl(imgUrl)) 
-	}, [firstName,lastName])
+  useEffect(() => {
+    dispatch(setFirstName(firstName))
+    dispatch(setLastName(lastName))
+    dispatch(setImgUrl(imgUrl))
+  }, [firstName, lastName])
 
 
   return (
@@ -222,10 +226,16 @@ export default function PlatformMain() {
             </div>
           </>
         )}
-        <div style={{ display: "flex" }}>
-          {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard />}
-          {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard2 />}
-          {selectedLink === "Duyuru ve Haberlerim" && <AnnouncementCard3 />}
+        <div className="flex justify-center ">
+          {selectedLink === "Duyuru ve Haberlerim" &&
+            <AnnouncementCard2
+              searchQuery={searchQuery}
+              sortBy={sortBy}
+              selectedInstitution={selectedInstitution}
+              selectedOrganization={selectedOrganization}
+            />
+
+          }
         </div>
         {selectedLink === "Duyuru ve Haberlerim" && (
           <div className="flex flex-col items-center">
