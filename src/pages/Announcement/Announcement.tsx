@@ -1,7 +1,7 @@
 import AnnouncementCard from "components/Announcement/AnnouncementCard";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Banner from "utils/Banner";
+import Banner from "utils/Platform/Banner";
 
 type Props = {};
 

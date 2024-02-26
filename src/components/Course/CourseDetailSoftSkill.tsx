@@ -6,7 +6,7 @@ import { SlLike } from "react-icons/sl";
 import { IoClose } from "react-icons/io5";
 import { Lesson } from 'models/responses/modulesets/getModuleSetResponse';
 import { GetStudentLessonResponse } from 'models/responses/student-lessons/getStudentLessonResponse';
-import HeartButtonLesson from 'utils/HeartButtonLesson';
+import HeartButtonLesson from 'utils/Buttons/HeartButtonLesson';
 
 type Props = {
   lessonDetail: Lesson;
