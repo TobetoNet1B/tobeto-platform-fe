@@ -1,8 +1,8 @@
 import React, { useEffect, useState, } from 'react'
 import { GrLike } from "react-icons/gr";
 import { FaRegQuestionCircle } from "react-icons/fa";
-import HeartButton from 'utils/HeartButton';
-import FavButton from 'utils/FavButton';
+import HeartButton from 'utils/Buttons/HeartButton';
+import FavButton from 'utils/Buttons/FavButton';
 import { GetModuleSetResponse } from 'models/responses/modulesets/getModuleSetResponse';
 import { GetStudentLessonResponse } from 'models/responses/student-lessons/getStudentLessonResponse';
 import CountUp from 'react-countup';

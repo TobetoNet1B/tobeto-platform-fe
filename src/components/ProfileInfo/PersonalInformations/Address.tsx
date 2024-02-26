@@ -4,7 +4,6 @@ import { GetDistrictResponse } from 'models/responses/districts/getDistrictRespo
 import { useEffect, useState } from 'react';
 import cityService from 'services/cityService';
 import districtService from 'services/districtService';
-import CityAndDistrictTR from 'utils/CityAndDistrictTR.json'
 import ErrorSpan from 'utils/FormInput/ErrorSpan';
 import FormInput from 'utils/FormInput/FormInput'
 

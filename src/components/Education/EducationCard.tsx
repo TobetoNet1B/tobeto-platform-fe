@@ -1,7 +1,7 @@
 import { GetStudentClassroomResponse } from "models/responses/student-classrooms/getStudentClassroomResponse";
 import React, { useEffect, useState } from "react";
 import studentClassroomService from "services/studentClassroomService";
-import Card, { ECard } from "utils/Card";
+import Card, { ECard } from "utils/Platform/Card";
 
 type CardData = {
   imgUrl?: string;

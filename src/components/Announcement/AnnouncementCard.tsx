@@ -1,7 +1,7 @@
 import { GetAllAnnouncementResponse } from "models/responses/announcements/getAllAnnouncementResponse";
 import React, { useEffect, useState } from "react";
 import AnnouncementService from "services/announcementService";
-import Card, { ACard } from "utils/Card";
+import Card, { ACard } from "utils/Platform/Card";
 
 type Props = {
   searchQuery: string;
