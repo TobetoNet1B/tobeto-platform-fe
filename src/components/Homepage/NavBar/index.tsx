@@ -1,11 +1,15 @@
+import { useEffect } from 'react';
+import './navbar.css'
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { SelectIsAuthenticated, logout } from 'store/Auth/AuthSlice';
-import './navbar.css'
+import { SelectFullName, SelectImgUrl } from "store/user/userSlice";
 
 export default function NavBar() {
 
 	const isAuthenticated = useSelector(SelectIsAuthenticated);
+	const fullName = useSelector(SelectFullName)
+	const imgUrl = useSelector(SelectImgUrl)
 	const dispatch = useDispatch();
 
 	return (
@@ -54,7 +58,7 @@ export default function NavBar() {
 							<div className="w-10 flex rounded-full">
 								<img alt="Tailwind CSS Navbar component" src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=48&q=75" />
 							</div>
-							<span className="lg:flex hidden">Tobeto Pair Three</span>
+							<span className="lg:flex hidden">{fullName === ' ' ? 'Tobeto Pair 3' : fullName}</span>
 						</div>
 						<ul tabIndex={0} className="mt-3 z-[1] py-2 px-0 text-end shadow menu menu-sm dropdown-content rounded-box min-w-32 w-fit !bg-[#93f] text-white">
 							<li className="w-full"><Link to="profilim" className="block text-right">Profile</Link></li>
