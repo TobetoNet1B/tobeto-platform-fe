@@ -99,7 +99,7 @@ export default function PlatformMain() {
             className="text-green-700 text-4xl ml-96"
 
           >
-            {firstName.toUpperCase() + " " + lastName.toUpperCase()}
+            {firstName?.toUpperCase() + " " + lastName?.toUpperCase()}
           </h1>
         </div>
         <img
