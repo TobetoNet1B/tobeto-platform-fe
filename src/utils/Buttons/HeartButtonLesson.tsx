@@ -6,9 +6,17 @@ type Props = {
 
 const HeartButtonLesson = (props: Props) => {
   const [likedDetail, setLikedDetail] = useState<boolean>(props.isLiked);
+  const [count, setCount] = useState<number>(props.isLiked ? 1 : 0);
 
   const handleHeartClickDetail = () => {
     setLikedDetail(!likedDetail);
+    if (!likedDetail) {
+      setCount(count + 1);
+    } else {
+      if(count > 0){
+        setCount(count - 1);
+      }
+    }
   };
 
   useEffect(() => {
@@ -186,7 +194,7 @@ const HeartButtonLesson = (props: Props) => {
         </div>
       </span>
       <span className={`font-medium text-2xl z-[1] translate-x-0 translate-y-[-0.125ex] mt-2 ml-7 leading-none cursor-pointer`}>
-        <span className={` ${likedDetail ? '!text-[#ff4757]' : '!text-[#7f7f7f]'}`}>106</span>
+        <span className={` ${likedDetail ? '!text-[#ff4757]' : '!text-[#7f7f7f]'}`}>{count}</span>
       </span>
     </div>
   )
