@@ -9,12 +9,13 @@ export default function DropdownItem() {
     const firstName = useSelector((state: any) => state.user.firstName)
     const lastName = useSelector((state: any) => state.user.lastName)
     const imgUrl = useSelector((state:any) => state.user.imgUrl)
+
     return (
         <div className="navbar">
             <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle flex-nowrap avatar lg:min-w-52 lg:bg-slate-200 text-slate-900 hover:text-slate-200">
                     <div className="flex rounded-full w-[33px] ">
-                        <img style={{ width: '32px', height: '32px' }} alt="Tailwind CSS Navbar component" src={imgUrl} />
+                        <img style={{ width: '32px', height: '32px' }} alt="Tailwind CSS Navbar component" src={imgUrl || '/pp.png'} />
                     </div>
                     <span className="lg:flex hidden">{firstName} {lastName}</span>
                     <IoIosArrowDown />

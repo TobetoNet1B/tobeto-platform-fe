@@ -26,8 +26,6 @@ const PersonalInformations = (props: Props) => {
 	const fetchStudents = async () => {
 		const response = await studentService.getById(localStorage.userId);
 		setStudent(response.data as GetStudentResponse);
-		console.log(response.data);
-		
 	};
 
 	const fetchAddress = async () => {
@@ -48,10 +46,10 @@ const PersonalInformations = (props: Props) => {
 
 	const formik = useFormik({
 		initialValues: {
+			imgUrl: student.imgUrl ?? '/pp.png',
 			firstName: student.user?.firstName ?? '',
 			lastName: student.user?.lastName ?? '',
 			phoneNumber: student?.phoneNumber ?? '',
-			//countryCode: "+90",
 			birthDate: formattedBirthDate ?? '',
 			identityNumber: student.identityNumber ?? '',
 			email: student.user?.email ?? '',
@@ -97,7 +95,7 @@ const PersonalInformations = (props: Props) => {
 				const updateData: UpdateStudentRequest = {
 					...values,
 					id: localStorage.studentId,
-					imgUrl: student.imgUrl,
+					imgUrl: student.imgUrl ?? '/pp.png',
 					userId: localStorage.userId,
 				};
 				const updateUserData: UpdateUserRequest = {
@@ -133,7 +131,7 @@ const PersonalInformations = (props: Props) => {
 				<div className='grid grid-cols-12 gap-6 mx-auto'>
 					<div className="avatar col-span-12">
 						<div className="w-36 rounded-full mx-auto">
-							<img alt='' src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fimages.19a45d39.png&w=48&q=75" />
+							<img alt='' src={formik.values.imgUrl} />
 							<MdOutlineEdit className='z-10 absolute ml-24 top-24 bg-white text-violet-600 rounded-full text-3xl p-2' />
 						</div>
 					</div>
@@ -167,9 +165,9 @@ const PersonalInformations = (props: Props) => {
 					Kaydet
 				</button>
 			</form>
-			<ToastContainer/>
+			<ToastContainer />
 		</FormikProvider>
-		
+
 	)
 }
 

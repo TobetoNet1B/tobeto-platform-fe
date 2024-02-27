@@ -76,7 +76,6 @@ const MyProfile = (props: Props) => {
 				localStorage.setItem('studentId', result.data.id);
 			});
 	}, []);
-	console.log(student);
 	
 	return (
 		<div className='min-h-screen'>
@@ -114,7 +113,7 @@ const MyProfile = (props: Props) => {
 									<div className=''>
 										<div className="card rounded-2xl w-full p-4 max-h-48  bg-gradient-to-t from-[#5056C9] to-[#8D92FA] items-center">
 											<img
-												src={student.imgUrl}
+												src={student.imgUrl ?? '/pp.png'}
 												alt="profil-picture"
 												className="mb-1 mt-1 rounded-full p-4 flex-shrink-0 border-4  flex-grow max-h-32 "
 											/>

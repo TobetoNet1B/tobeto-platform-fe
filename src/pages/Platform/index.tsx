@@ -66,7 +66,6 @@ export default function PlatformMain() {
         localStorage.setItem('studentId', result.data.id);
       });
   }, []);
-  console.log(studentPlatform);
 
   let firstName = studentPlatform.user?.firstName
   let lastName = studentPlatform.user?.lastName
