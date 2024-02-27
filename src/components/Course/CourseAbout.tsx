@@ -60,7 +60,7 @@ const CourseAbout = (props: Props) => {
 
   const timeSpentFunc = () => {
     props.studentModules.forEach((element) => {
-      if (element.studentId === "fa5fd100-f8bc-40a7-d196-08dc32305081") {
+      if (element.studentId === localStorage.studentId) {
         setStudentTimeSpent(element.timeSpent)
       }
     })
