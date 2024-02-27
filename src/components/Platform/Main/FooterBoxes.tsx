@@ -31,7 +31,7 @@ function FooterBoxes() {
               Profilini oluştur <br />
               <button
                 onClick={toCreateProfile}
-                className="w-52 h-9 btn-footerbox text-sm font-extrabold text-white"
+                className="w-52 h-9 bg-purple-600 rounded-2xl mt-16 transition duration-300 hover:bg-indigo-700 text-sm font-extrabold text-white"
               >
                 Başla
               </button>
@@ -53,7 +53,7 @@ function FooterBoxes() {
               Kendini değerlendir <br />
               <button
                 onClick={toEvaluations}
-                className="w-52 h-9 btn-footerbox text-sm font-extrabold text-white"
+                className="w-52 h-9 bg-purple-600 rounded-2xl mt-16 transition duration-300 hover:bg-indigo-700 text-sm font-extrabold text-white"
               >
                 Başla
               </button>
@@ -76,7 +76,7 @@ function FooterBoxes() {
               <br />
               <button
                 onClick={toNotFound}
-                className="w-52 h-9 btn-footerbox text-sm font-extrabold text-white"
+                className="w-52 h-9 bg-purple-600 rounded-2xl mt-16 transition duration-300 hover:bg-indigo-700 text-sm font-extrabold text-white"
               >
                 Başla
               </button>
