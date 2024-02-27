@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
 	name: "user",
 	initialState: {
-		firtName: "",
+		firstName: "",
 		lastName: "",
 		imgUrl: ""
 	},
@@ -24,5 +24,5 @@ export const userReducer = userSlice.reducer;
 export const userActions = userSlice.actions;
 export const { setFirstName, setLastName, setImgUrl } = userSlice.actions;
 
-export const SelectFullName = (state: any) => state.user.firtName + ' ' + state.user.lastName;
+export const SelectFullName = (state: any) => state.user.firstName + ' ' + state.user.lastName;
 export const SelectImgUrl = (state: any) => state.user.img;
