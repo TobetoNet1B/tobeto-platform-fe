@@ -12,29 +12,26 @@ import experienceService from "services/experienceService";
 import { GetAllCityResponse } from "models/responses/cities/getAllCityResponse";
 import cityService from "services/cityService";
 import { AddExperienceRequest } from "models/requests/experiences/addExperienceRequest";
-
-const cities = ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya"];
-
+import Toast from "../../../utils/Toast/Toast"
+import { ToastContainer, toast } from "react-toastify";
 const JobSchema = Yup.object().shape({
-  // companyName: Yup.string().required("Doldurulması zorunlu alan*"),
-  // position: Yup.string().required("Doldurulması zorunlu alan*"),
-  // sector: Yup.string().required("Doldurulması zorunlu alan*"),
-  // cityId: Yup.string().required("Doldurulması zorunlu alan*"),
-  // startDate: Yup.string().required("Doldurulması zorunlu alan*"),
-  // endDate: Yup.string().test({
-  //   name: "endDate",
-  //   test: function (value, context) {
-  //     if (!context.parent.ongoing) {
-  //       return (
-  //         !!value ||
-  //         this.createError({ message: "Doldurulması zorunlu alan*" })
-  //       );
-  //     }
-  //     return true;
-  //   },
-  // }),
+  position: Yup.string().required("Doldurulması zorunlu alan*"),
+  companyName: Yup.string().required("Doldurulması zorunlu alan*"),
+  sector: Yup.string().required("Doldurulması zorunlu alan*"),
+  cityId: Yup.string().required("Doldurulması zorunlu alan*"),
+  startDate: Yup.string().required("Doldurulması zorunlu alan*"),
+  endDate: Yup.string().test({
+    name: "endDate",
+    test: function (value, context) {
+      if (!context.parent.isContinueJob) {
+        return (
+          !!value || this.createError({ message: "Doldurulması zorunlu alan*" })
+        );
+      }
+      return true;
+    },
+  }),
 });
-
 
 const Experience: React.FC = () => {
   const initialValues = {
@@ -45,14 +42,16 @@ const Experience: React.FC = () => {
     startDate: "",
     endDate: "",
     isContinueJob: false,
-    // jobDescription: "",
+    description: "",
   };
 
   const [savedJobs, setSavedJobs] = React.useState<any[]>([]);
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [selectedJob, setSelectedJob] = useState<any>(null);
-  const [experience, setExperience] = useState<GetExperienceResponse | null>(null);
+  const [experience, setExperience] = useState<GetExperienceResponse | null>(
+    null
+  );
   const formikContext = useFormikContext<any>();
   const [selectedEducation, setSelectedEducation] = useState<any>(null);
   const { values } = formikContext || {};
@@ -67,26 +66,35 @@ const Experience: React.FC = () => {
     }
   };
 
-  const handleSave =  async (values: any) => {
+  const handleSave = async (values: any) => {
     try {
-      const { companyName, sector, cityId, startDate, endDate, isContinueJob,position } = values;
+      const {
+        companyName,
+        sector,
+        description,
+        cityId,
+        startDate,
+        endDate,
+        isContinueJob,
+        position,
+      } = values;
       const requestDate: AddExperienceRequest = {
         companyName,
         sector,
         position,
         cityId,
+        description,
         startDate: new Date(startDate),
         endDate: endDate ? new Date(endDate) : undefined,
         isContinueJob,
-        studentId: localStorage.studentId
+        studentId: localStorage.studentId,
       };
-  console.log(requestDate)
-      await experienceService.add(requestDate); 
-      await fetchExperience(); 
-  
-      console.log("Deneyim başarıyla eklendi!");
+      console.log(requestDate);
+      await experienceService.add(requestDate);
+      await fetchExperience();
+      toast.success('Deneyim başarıyla eklendi');
     } catch (error) {
-      console.error("Deneyim eklenirken bir hata oluştu:", error);
+      toast.error('Deneyim eklenemedi');
     }
   };
 
@@ -94,8 +102,9 @@ const Experience: React.FC = () => {
     try {
       const result = await experienceService.getById(localStorage.studentId);
       setExperience(result.data as GetExperienceResponse);
+      console.log(result.data)
     } catch (error) {
-      console.error("Error fetching student social media:", error);
+      console.error("Error fetching experinces", error);
     }
   };
 
@@ -156,33 +165,33 @@ const Experience: React.FC = () => {
           name="isContinueJob"
           checked={values.isContinueJob}
           onChange={handleCheckboxChange}
-          className="mr-1"
+          className="mr-1 mt-3"
         />
-        <label htmlFor="isContinueJob">Çalışmaya Devam Ediyorum</label>
+        <label htmlFor="isContinueJob" className="mt-3">Çalışmaya Devam Ediyorum</label>
       </div>
     );
   };
 
   return (
     <div className="">
-      <div className="max-w-4xl mt-5 mx-auto text-[#828282] ">
+      <div className="max-w-4xl mt-8 ml-5 mx-auto text-[#5a606b]">
         <Formik
           initialValues={initialValues}
           validationSchema={JobSchema}
           onSubmit={(values) => {
-            handleSave(values); 
+            handleSave(values);
           }}
         >
           <Form className="text-sm">
-            <div className="flex mb-4 ">
-              <div className="w-1/2 mr-2">
-                <label htmlFor="companyName">Kurum Adı*</label>
+            <div className="flex mb-3 ">
+              <div className="w-1/2 mr-2 ">
+                <label htmlFor="companyName" className="font-medium ">Kurum Adı*</label>
                 <Field
                   type="text"
                   id="companyName"
                   name="companyName"
                   placeholder="Tobeto"
-                  className="w-full border border-[#B3A6C0] p-2 rounded-md"
+                  className="input input-bordered w-full"
                 />
                 <ErrorMessage
                   name="companyName"
@@ -191,13 +200,13 @@ const Experience: React.FC = () => {
                 />
               </div>
               <div className="w-1/2 ml-2">
-                <label htmlFor="position">Pozisyon*</label>
+                <label htmlFor="position" className="font-medium">Pozisyon*</label>
                 <Field
                   type="text"
                   id="position"
                   name="position"
                   placeholder="FullStack Developer"
-                  className="w-full border border-[#B3A6C0]  p-2 rounded-md"
+                  className="input input-bordered w-full"
                 />
                 <ErrorMessage
                   name="position"
@@ -209,13 +218,13 @@ const Experience: React.FC = () => {
 
             <div className="flex mb-4">
               <div className="w-1/2 mr-2">
-                <label htmlFor="sector">Sektör*</label>
+                <label htmlFor="sector" className="font-medium">Sektör*</label>
                 <Field
                   type="text"
                   id="sector"
                   placeholder="Yazılım"
                   name="sector"
-                  className="w-full border border-[#B3A6C0]  p-2 rounded-md"
+                  className="input input-bordered w-full"
                 />
                 <ErrorMessage
                   name="sector"
@@ -224,20 +233,20 @@ const Experience: React.FC = () => {
                 />
               </div>
               <div className="w-1/2 ml-2">
-                <label htmlFor="cityId">Şehir Seçiniz*</label>
+                <label htmlFor="cityId" className="font-medium">Şehir Seçiniz*</label>
                 <Field
-  as="select"
-  id="cityId"
-  name="cityId"
-  className="w-full p-3 border border-[#E6E5E4] rounded-md"
->
-  <option value="">Seçiniz*</option>
-  {cities?.items.map((item) => (
-    <option key={item.id} value={item.id}>
-      {item.name}
-    </option>
-  ))}
-</Field>
+                  as="select"
+                  id="cityId"
+                  name="cityId"
+                  className="input input-bordered w-full"
+                >
+                  <option value="">Seçiniz*</option>
+                  {cities?.items.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.name}
+                    </option>
+                  ))}
+                </Field>
                 <ErrorMessage
                   name="cityId"
                   component="div"
@@ -248,12 +257,12 @@ const Experience: React.FC = () => {
 
             <div className="flex mb-4">
               <div className="w-1/2 mr-2">
-                <label htmlFor="startDate">Başlangıç Tarihi*</label>
+                <label htmlFor="startDate" className="font-medium">Başlangıç Tarihi*</label>
                 <Field
                   type="date"
                   id="startDate"
                   name="startDate"
-                  className="w-full border border-[#B3A6C0]  p-2 rounded-md"
+                  className="input input-bordered w-full"
                 />
                 <ErrorMessage
                   name="startDate"
@@ -262,12 +271,12 @@ const Experience: React.FC = () => {
                 />
               </div>
               <div className="w-1/2 ml-2">
-                <label htmlFor="endDate">Bitiş Tarihi*</label>
+                <label htmlFor="endDate" className="font-medium">Bitiş Tarihi*</label>
                 <Field
                   type="date"
                   id="endDate"
                   name="endDate"
-                  className={`w-full border border-[#B3A6C0] p-2 mb-2 rounded-md ${
+                  className={`input input-bordered w-full${
                     values?.isContinueJob ? "bg-gray-200" : ""
                   }`}
                   disabled={values?.isContinueJob}
@@ -281,69 +290,99 @@ const Experience: React.FC = () => {
               </div>
             </div>
 
-            {/* <div className="mb-4">
-              <label htmlFor="jobDescription">İş Açıklaması</label>
-              <Field
-                as="textarea"
-                id="jobDescription"
-                name="jobDescription"
-                rows={5}
-                className="w-full border border-[#B3A6C0] rounded-lg p-2 "
-              />
-              <ErrorMessage
-                name="jobDescription"
-                component="div"
-                className="text-red-500"
-              />
-            </div> */}
+            {
+              <div className="mb-4">
+                <label htmlFor="description" className="font-medium">İş Açıklaması</label>
+                <Field
+                  as="textarea"
+                  id="description"
+                  name="description"
+                  rows={5}
+                  className="w-full border border-[#B3A6C0] rounded-lg p-2 "
+                />
+                <ErrorMessage
+                  name="description"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
+            }
 
             <button
               type="submit"
-              className="bg-[#9933FF] text-white p-2 w-24 rounded-full"
+              className='btn btn-md px-5 rounded-full bg-bs_btn_bg hover:bg-bs_btn_hover_bg text-bs_btn_color'
             >
               Kaydet
             </button>
+            <ToastContainer />
           </Form>
         </Formik>
-        {Array.isArray(experience) && experience.map((job: GetExperienceResponse, index: number) => (
-          <div key={index} className="pt-2 pl-2 mt-10 mb-3 text-left relative bg-[#FF000003] sm:mb-6 md:mb-8 lg:mb-10">
-    <div className="mb-3 flex text-[#9933FF]">
-      <MdOutlineCalendarMonth className="mt-1" />
-      <div className="ml-1 text-sm">
-        {new Date(job.startDate).toLocaleDateString("tr-TR")} - {job.isContinueJob ? "Çalışmaya Devam Ediyor" : new Date(job.endDate).toLocaleDateString("tr-TR")}
-      </div>
-    </div>
+        {Array.isArray(experience) &&
+          experience.map((job: GetExperienceResponse, index: number) => (
+            <div
+              key={index}
+              className="pt-2 pl-2 mt-10 mb-3 text-left relative bg-[#FF000003] sm:mb-6 md:mb-8 lg:mb-10"
+            >
+              <div className="mb-3 flex text-[#9933FF]">
+                <MdOutlineCalendarMonth className="mt-1" />
+                <div className="ml-1 text-sm">
+                  {new Date(job.startDate).toLocaleDateString("tr-TR")} -{" "}
+                  {job.isContinueJob
+                    ? "Çalışmaya Devam Ediyor"
+                    : new Date(job.endDate).toLocaleDateString("tr-TR")}
+                </div>
+              </div>
 
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-36">
-      <div className="mb-4">
-        <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Kurum</h6>
-        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1 whitespace-nowrap">{job.companyName}</p>
-      </div>
-      <div className="mb-4">
-        <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Pozisyon</h6>
-        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1 whitespace-nowrap">{job.position}</p>
-      </div>
-      <div className="mb-4">
-        <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Sektör</h6>
-        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1">{job.sector}</p>
-      </div>
-      <div className="mb-4">
-        <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">Şehir</h6>
-        <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1">{job.city.cityName}</p>
-      </div>
-      <div className="mb-4 flex flex-col items-start">
-        <button onClick={() => openDetailsModalHandler(job)} className="rounded-full bg-[#9933FF] text-white p-1 hover:bg-[#7F22CC] focus:outline-none focus:ring focus:border-blue-300 mb-2">
-          <BsThreeDots size={15} />
-        </button>
-        <button onClick={() => openDeleteModalHandler(job)} className="rounded-full bg-[#FF4D4D] text-white p-1 hover:bg-[#CC4646] focus:outline-none focus:ring focus:border-blue-300 ">
-          <RiDeleteBin5Line size={15} />
-        </button>
-      </div>
-    </div>
-  </div>
-))}
-
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-36">
+                <div className="mb-4">
+                  <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">
+                    Kurum
+                  </h6>
+                  <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1 whitespace-nowrap">
+                    {job.companyName}
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">
+                    Pozisyon
+                  </h6>
+                  <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1 whitespace-nowrap">
+                    {job.position}
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">
+                    Sektör
+                  </h6>
+                  <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1">
+                    {job.sector}
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <h6 className="text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm font-semibold">
+                    Şehir
+                  </h6>
+                  <p className="text-black text-xs sm:text-sm md:text-sm lg:text-sm xl:text-sm mt-1">
+                    {job.city.cityName}
+                  </p>
+                </div>
+                <div className="mb-4 flex flex-col items-start">
+                  <button
+                    onClick={() => openDetailsModalHandler(job)}
+                    className="rounded-full bg-[#9933FF] text-white p-1 hover:bg-[#7F22CC] focus:outline-none focus:ring focus:border-blue-300 mb-2"
+                  >
+                    <BsThreeDots size={15} />
+                  </button>
+                  <button
+                    onClick={() => openDeleteModalHandler(job)}
+                    className="rounded-full bg-[#FF4D4D] text-white p-1 hover:bg-[#CC4646] focus:outline-none focus:ring focus:border-blue-300 "
+                  >
+                    <RiDeleteBin5Line size={15} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
 
         <Modal
           show={openDetailsModal}
@@ -363,7 +402,7 @@ const Experience: React.FC = () => {
               {selectedJob && (
                 <>
                   <div className="mt-4">
-                    <p>{selectedJob.jobDescription}</p>
+                    <p>{selectedJob.description}</p>
                   </div>
                 </>
               )}
