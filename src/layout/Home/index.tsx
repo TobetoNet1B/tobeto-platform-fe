@@ -15,7 +15,7 @@ const Home = (props: Props) => {
 	return (
 		<div className='overflow-y-auto h-screen m-0'>
 			<div className='block box-border'>
-				<div className='bg-[rgb(24_23_23)] w-auto overflow-visible'>
+				<div className='bg-bs_dark'>
 					<div className="sticky top-0 z-[100]">
 						{!isAuthenticated ? <AppealNav /> : <VidNav />}
 						<NavBar />

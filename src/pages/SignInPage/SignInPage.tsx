@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { jwtDecode } from 'jwt-decode';
 import authService from 'services/authService';
-import { ToastContainer } from 'react-toastify';
 
 interface CustomJwtPayload {
     [key: string]: any;
@@ -161,7 +160,6 @@ const SignInPage = (props: Props) => {
                 </button>
             </div>
 
-            <ToastContainer />
         </div>
     );
 }

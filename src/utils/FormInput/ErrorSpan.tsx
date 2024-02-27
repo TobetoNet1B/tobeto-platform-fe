@@ -12,7 +12,7 @@ const ErrorSpan = (props: Props) => {
 	)
 }
 
-export const IdentityErrorSpan = (props: Props) => {
+export const SecondErrorSpan = (props: Props) => {
 	return (
 		<ErrorMessage name={props.name}>
 			{message => <span className='italic font-extralight text-sm text-[#fc5c46]'>*{message}</span>}
