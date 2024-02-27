@@ -171,7 +171,7 @@ const MyProfile = (props: Props) => {
 											</div>
 											<div className="p-1 ">
 												<p className="text-xs font-medium text-gray-500">Telefon Numarası</p>
-												<p className="text-base font-bold text-gray-900">+90{student.phoneNumber}</p>
+												<p className="text-base font-bold text-gray-900">{student.phoneNumber}</p>
 											</div>
 										</div>
 
