@@ -21,15 +21,15 @@ const JobSchema = Yup.object().shape({
   cityId: Yup.string().required("Doldurulması zorunlu alan*"),
   startDate: Yup.string().required("Doldurulması zorunlu alan*"),
   endDate: Yup.string().test({
-    name: "endDate",
-    test: function (value, context) {
-      if (!context.parent.isContinueJob) {
-        return (
-          !!value || this.createError({ message: "Doldurulması zorunlu alan*" })
-        );
+    name: 'endDate',
+    exclusive: false,
+    test: function(value) {
+      const { isContinueJob } = this.parent;
+      if (!isContinueJob && !value) {
+        return this.createError({ message: 'Doldurulması zorunlu alan*' });
       }
       return true;
-    },
+    }
   }),
 });
 
@@ -53,7 +53,7 @@ const Experience: React.FC = () => {
     null
   );
   const formikContext = useFormikContext<any>();
-  const [selectedEducation, setSelectedEducation] = useState<any>(null);
+  const [selectedExperience, setSelectedExperience] = useState<any>(null);
   const { values } = formikContext || {};
   const [cities, setCities] = useState<GetAllCityResponse | null>(null);
 
@@ -102,7 +102,7 @@ const Experience: React.FC = () => {
     try {
       const result = await experienceService.getById(localStorage.studentId);
       setExperience(result.data as GetExperienceResponse);
-      console.log(result.data)
+      console.log(result)
     } catch (error) {
       console.error("Error fetching experinces", error);
     }
@@ -123,19 +123,20 @@ const Experience: React.FC = () => {
     setOpenDetailsModal(false);
   };
 
-  const openDeleteModalHandler = (education: any) => {
-    setSelectedEducation(education);
+  const openDeleteModalHandler = (experience: any) => {
+    setSelectedExperience(experience);
     setOpenDeleteModal(true);
   };
 
   const closeDeleteModalHandler = () => {
-    setSelectedEducation(null);
+    setSelectedExperience(null);
     setOpenDeleteModal(false);
   };
 
   const handleDelete = async () => {
+    console.log(selectedExperience.id)
     try {
-      await experienceService.delete(selectedEducation.id);
+      await experienceService.delete(selectedExperience.id);
       fetchExperience();
       setOpenDeleteModal(false);
     } catch (error) {

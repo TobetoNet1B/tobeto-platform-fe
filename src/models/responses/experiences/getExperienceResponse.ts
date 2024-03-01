@@ -1,4 +1,5 @@
 export interface GetExperienceResponse{
+	id:string;
 	companyName: string;
 	position: string;
 	sector: string;
