@@ -6,6 +6,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 
 interface LessonFormValues {
+	course: string;
+	speaker: string;
 	name: string;
 	description: string;
 	lessonUrl: string;
@@ -64,6 +66,8 @@ const LessonVideoUpload = () => {
 	};
 
 	const initialValues: LessonFormValues = {
+		course: '',
+		speaker: '',
 		name: '',
 		description: '',
 		lessonUrl: '',
@@ -81,33 +85,52 @@ const LessonVideoUpload = () => {
 	return (
 		<div>
 
-			<div>
-				<label htmlFor='course'>Course</label>
-				<Select
-					id='course'
-					value={selectedCourse}
-					onChange={handleCourseChange}
-					options={courses}
-					isSearchable={false}
-				/>
-			</div>
-
-			<div>
-				<label htmlFor='speaker'>Speaker</label>
-				<Select
-					id='speaker'
-					value={selectedSpeaker}
-					onChange={handleSpeakerChange}
-					options={speakers}
-					isSearchable={false}
-				/>
-			</div>
-
 			<Formik
 				initialValues={initialValues}
 				onSubmit={handleSubmit}
 			>
 				<Form className="max-w-lg mx-auto">
+
+					<div>
+						<label htmlFor='course'>Course</label>
+						<Field name='course'>
+							{({ field, form }: { field: any, form: any }) => (
+								<Select
+									id='course'
+									value={selectedCourse}
+									onChange={(selectedOption) => {
+										handleCourseChange(selectedOption);
+										form.setFieldValue('course', selectedOption);
+									}}
+									options={courses}
+									isSearchable={false}
+								/>
+							)}
+						</Field>
+						<ErrorMessage name='course' component='div' className='text-red-500' />
+					</div>
+
+					<div>
+						<label htmlFor='speaker'>Speaker</label>
+						<Field name='speaker'>
+							{({ field, form }: { field: any, form: any }) => (
+								<Select
+									id='speaker'
+									value={selectedSpeaker}
+									onChange={(selectedOption) => {
+										handleSpeakerChange(selectedOption);
+										form.setFieldValue('speaker', selectedOption);
+									}}
+									options={speakers}
+									isSearchable={false}
+								/>
+							)}
+						</Field>
+						<ErrorMessage name='speaker' component='div' className='text-red-500' />
+					</div>
+
+
+
 					<div className="mb-4">
 						<label htmlFor="name" className="block text-gray-700">Name</label>
 						<Field type="text" id="name" name="name" className="mt-1 p-2 w-full border rounded-md" />
