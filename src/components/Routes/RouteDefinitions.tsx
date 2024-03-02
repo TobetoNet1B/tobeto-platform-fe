@@ -24,6 +24,7 @@ import Confirmationpage from "components/Confirmationpage/Confirmationpage";
 import CalendarPage from "pages/Calendar";
 import PrivateRoutes from "./PrivateRoutes";
 import PrivateRoutesWhenLoginned from "./PrivateRoutesWhenLoginned";
+import LessonVideoUpload from "components/AdminPanel/LessonVideoUpload";
 
 type Props = {};
 
@@ -62,6 +63,7 @@ const RouteDefinitions = (props: Props) => {
 				<Route path="/moduleset/:id" element={<ModuleSet />} />
 			</Route>
 			<Route path="*" element={<NotFound />} />
+			<Route path="LessonVideoUpload" element={<LessonVideoUpload />} />
 		</Routes>
 	);
 };
