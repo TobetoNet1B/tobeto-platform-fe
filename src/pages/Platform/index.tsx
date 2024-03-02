@@ -14,7 +14,7 @@ import { GetStudentPlatformResponse } from "models/responses/students/getStudent
 import StudentPlatformService from "services/studentPlatformService";
 import { useDispatch } from "react-redux";
 import { setFirstName, setImgUrl, setLastName } from "store/user/userSlice";
-import AnnouncementCard2 from "components/Announcement/AnnouncementCard2";
+import AnnouncementCard from "components/Announcement/AnnouncementCard";
 
 export default function PlatformMain() {
   const [selectedLink, setSelectedLink] = useState<string>("Başvurularım");
@@ -227,7 +227,7 @@ export default function PlatformMain() {
         )}
         <div className="flex justify-center ">
           {selectedLink === "Duyuru ve Haberlerim" &&
-            <AnnouncementCard2
+            <AnnouncementCard isPlatform={true}
               searchQuery={searchQuery}
               sortBy={sortBy}
               selectedInstitution={selectedInstitution}
