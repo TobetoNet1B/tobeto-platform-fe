@@ -18,7 +18,7 @@ export default function FooterComp() {
 							<Link to="#">Kurumlar İçin</Link>
 							<Link to="#">Kurumsal Kimlik</Link>
 							<Link to="#">S.S.S.</Link>
-							<Link to="#">İletişim</Link>
+							<Link to="/iletisim">İletişim</Link>
 						</Footer.LinkGroup>
 					</div>
 					<div className='!size-fit min-w-40'>

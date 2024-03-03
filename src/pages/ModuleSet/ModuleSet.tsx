@@ -9,6 +9,7 @@ import { RootState } from "store/store"
 import { fetchModuleSetById } from "store/moduleSet/moduleSetSlice"
 import { getStudentLessonByStudentId } from 'store/studentLesson/studentLessonSlice';
 import Skeleton from "utils/Skeleton"
+import Toast from "utils/Toast/Toast"
 
 type Props = {
 }
@@ -56,7 +57,7 @@ const ModuleSet = (props: Props) => {
   }
 
   if (moduleSetsStatus === 'failed' && studentLessonsStatus === "failed") {
-    return <div>ModuleSetsError: {moduleSetsError}, StudentLessonsError: {studentLessonsError}</div>;
+    return <Toast type="error" message={`ModuleSetsError: ${moduleSetsError}, StudentLessonsError: ${studentLessonsError}`}/>;
   }
 
   return (
