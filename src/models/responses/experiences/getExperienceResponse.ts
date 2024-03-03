@@ -1,8 +1,9 @@
 export interface GetExperienceResponse{
-	id:string
-    companyName: string;
+	id:string;
+	companyName: string;
 	position: string;
 	sector: string;
+	description: string;
 	startDate: string;
 	endDate: string;
 	isContinueJob: boolean;
@@ -11,6 +12,6 @@ export interface GetExperienceResponse{
 }
 
 
-export interface City {
+ interface City {
 	cityName: string;
 }

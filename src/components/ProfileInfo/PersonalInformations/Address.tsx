@@ -28,8 +28,6 @@ const Address = (props: Props) => {
 	const fetchDistricts = async (id: string) => {
 		const response = await districtService.getById(id);
 		setDistricts(response.data as GetDistrictResponse);
-		console.log("id"+id);
-		console.log(response.data);
 	}
 
 	useEffect(() => {
@@ -47,7 +45,7 @@ const Address = (props: Props) => {
 				<label htmlFor='city'>İl*</label>
 				<Field as='select' className='select select-bordered w-full'
 					id='city' name='city' value={props.city}>
-						<option value='' disabled>İl Seçiniz</option>
+					<option value='' disabled>İl Seçiniz</option>
 					{cities?.items.slice().sort((a, b) => a.name.localeCompare(b.name)).map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
 				</Field>
 				<ErrorSpan name={props.cname} />
