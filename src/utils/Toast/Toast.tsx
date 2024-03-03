@@ -8,34 +8,8 @@ type Props = {
 }
 
 const Toast = (props: Props) => {
-  const [buttonData, setButtonData] = useState<string | null>(null);
-
-  const handleClick = async (status: string) => {
-    setButtonData(status);
-
-    try {
-
-      const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-      const data = await response.json();
-
-
-      if (data.id) {
-        setButtonData('success');
-      }
-      else {
-        setButtonData('error');
-      }
-    } catch (error) {
-      setButtonData('warning')
-      console.log(`Error: ${error}`);
-    }
-
-
-  };
   let className = '';
-
-
-  switch (buttonData) {
+  switch (props.type) {
     case 'success':
       className = `"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#65b996] after:content-['*_${props.message}']"}`;
       toast('TOBETO', {
@@ -50,7 +24,7 @@ const Toast = (props: Props) => {
       });
       break;
     case 'error':
-      className = `${"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#fc5c46] after:content-['*_Başarısız']"}`;
+      className = `"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#fc5c46] after:content-['*_${props.message}']"}`;
       toast('TOBETO', {
         className,
         hideProgressBar: true,
@@ -63,7 +37,7 @@ const Toast = (props: Props) => {
       });
       break;
     case 'info':
-      className = `${"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#4d4d4d] after:content-['*_Bilgilendirme']"}`;
+      className = `"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#4d4d4d] after:content-['*_${props.message}']"}`;
       toast('TOBETO', {
         className,
         hideProgressBar: true,
@@ -76,7 +50,7 @@ const Toast = (props: Props) => {
       });
       break;
     case 'warning':
-      className = `${"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#ed9c56] after:content-['*_Uyarı']"}`;
+      className = `"after:h-14 after:w-full after:absolute after:bottom-0 after:left-0 after:flex after:justify-start after:items-center after:text-white after:font-semibold after:p-2 after:bg-[#ed9c56] after:content-['*${props.message}']"}`;
       toast('TOBETO', {
         className,
         hideProgressBar: true,
@@ -93,8 +67,6 @@ const Toast = (props: Props) => {
   }
   return (
     <div>
-      {/*<button onClick={() => handleClick('warning')}>Toast Göster</button>*/}
-
       <ToastContainer/>
     </div>
   )

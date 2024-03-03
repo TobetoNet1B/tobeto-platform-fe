@@ -24,6 +24,7 @@ import Confirmationpage from "components/Confirmationpage/Confirmationpage";
 import CalendarPage from "pages/Calendar";
 import PrivateRoutes from "./PrivateRoutes";
 import PrivateRoutesWhenLoginned from "./PrivateRoutesWhenLoginned";
+import Contact from "components/Homepage/Footer/Contact";
 
 type Props = {};
 
@@ -37,6 +38,7 @@ const RouteDefinitions = (props: Props) => {
 					<Route path="/kayit-ol" element={<SignUpPage />} />
 					<Route path="/confirm" element={<Confirmationpage />} />
 				</Route>
+				<Route path="/iletisim" element={<Contact />}></Route>
 			</Route>
 			<Route element={<PrivateRoutes />}>
 				<Route element={<Platform />}>
