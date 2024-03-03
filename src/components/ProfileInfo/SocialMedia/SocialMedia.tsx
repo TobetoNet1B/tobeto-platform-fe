@@ -10,6 +10,7 @@ import studentSocialMediaService from "services/studentSocialMediaService";
 import { AddStudentSocialMediaRequest } from "models/requests/student-social-medias/AddStudentSocialMediaRequest";
 import { GetStudentSocialMediaResponse } from "models/responses/student-social-medias/getStudentSocialMediaResponse";
 import { UpdateStudentSocialMediaRequest } from "models/requests/student-social-medias/UpdateStudentSocialMediaRequest";
+import { ToastContainer, toast } from "react-toastify";
 
 const validationSchema = Yup.object().shape({
   socialMediaId: Yup.string().required("Doldurulması zorunlu alan*"),
@@ -91,9 +92,9 @@ const SocialMedia: React.FC = () => {
       await studentSocialMediaService.update(requestData);
       await fetchStudentSocialMedia();
       resetForm();
-      console.log("Veri başarıyla güncellendi!");
+      toast.success('Sosyal medya başarıyla güncellendi');
     } catch (error) {
-      console.error("API isteği başarısız:", error);
+      toast.error('Sosyal medya güncellenemedi');
     }
   };
 
@@ -114,9 +115,9 @@ const SocialMedia: React.FC = () => {
       await studentSocialMediaService.add(requestData);
       await fetchStudentSocialMedia();
       resetForm();
-      console.log("Veri başarıyla gönderildi!");
+      toast.success('Sosyal medya başarıyla eklendi');
     } catch (error) {
-      console.error("API isteği başarısız:", error);
+      toast.error('Sosyal medya eklenemedi');
     }
   };
   const handleHover = (index: number | null) => {
@@ -129,10 +130,10 @@ const SocialMedia: React.FC = () => {
       if (socialMediaToDelete) {
         await studentSocialMediaService.delete(socialMediaToDelete.id);
         await fetchStudentSocialMedia();
-        console.log("Social media item deleted successfully!");
       }
+      toast.success('Sosyal medya başarıyla silindi');
     } catch (error) {
-      console.error("Error deleting social media item:", error);
+      toast.error('Sosyal medya silinemedi');
     }
   };
 
@@ -143,7 +144,7 @@ const SocialMedia: React.FC = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="text-sm mt-5">
+        <Form className="text-sm mt-5 ml-5">
           <div className="flex mb-4">
             <div className="w-1/3 mr-2">
               <Field
@@ -182,15 +183,16 @@ const SocialMedia: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="bg-[#9933FF] text-white p-2 w-24 rounded-full"
+            className='btn btn-md px-5 rounded-full bg-bs_btn_bg hover:bg-bs_btn_hover_bg text-bs_btn_color'
           >
             Kaydet
           </button>
+          <ToastContainer />
         </Form>
       </Formik>
 
       {studentSocialMedia?.socialMedia.map((item, index) => (
-        <div key={index} className="mb-4">
+        <div key={index} className="mb-4 ml-5">
           <h1 className="mt-5 mb-1 text-[18px] text-[#828282]">{item.name}</h1>
           <div
             className={`border rounded-md cursor-pointer flex justify-between items-center h-14 transition duration-300 ease-in-out`}
@@ -286,14 +288,14 @@ const SocialMedia: React.FC = () => {
                 <div className="flex justify-end mt-4">
                   <button
                     type="submit"
-                    className="bg-[#9933FF] text-white p-2 mr-5 rounded-full"
+                    className='btn btn-md px-5 rounded-full bg-bs_btn_bg hover:bg-bs_btn_hover_bg text-bs_btn_color'
                   >
                     Güncelle
                   </button>
                   <button
                     type="button"
                     onClick={closeUpdateModal}
-                    className="bg-gray-400 text-white p-2 rounded-full hover:bg-red-600"
+                    className="bg-gray-400 text-white btn btn-md px-5 rounded-full hover:bg-red-600"
                   >
                     Kapat
                   </button>
@@ -303,7 +305,7 @@ const SocialMedia: React.FC = () => {
           </Formik>
         </div>
       </Modal>
-      <p className="text-[#C17DFD] text-[18px]">
+      <p className="text-[#C17DFD] text-[18px] ml-5">
         En fazla 3 adet medya seçimi yapılabilir.
       </p>
     </div>

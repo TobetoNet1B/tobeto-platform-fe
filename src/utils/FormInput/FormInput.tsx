@@ -1,7 +1,7 @@
 import './form-input.css'
 import { Field } from "formik";
 import ErrorSpan from './ErrorSpan';
-import { IdentityErrorSpan } from 'utils/FormInput/ErrorSpan';
+import { SecondErrorSpan } from 'utils/FormInput/ErrorSpan';
 
 type Props = {
 	label?: string;
@@ -35,7 +35,7 @@ const FormInput = (props: Props) => {
 					{props.selectOption?.map((option, index) => <option key={index} value={option}>{option}</option>)}
 				</Field>
 			}
-			{props.name === 'identityNumber' ? <IdentityErrorSpan name={props.name} /> : <ErrorSpan name={props.name} />}
+			{props.name === 'identityNumber' ? <SecondErrorSpan name={props.name} /> : <ErrorSpan name={props.name} />}
 		</div>
 	)
 }

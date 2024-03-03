@@ -5,7 +5,6 @@ class TokenService {
 	}
 
 	hasToken(): boolean {
-		console.log("token var mı");
 		return localStorage.getItem("token") != null;
 	}
 

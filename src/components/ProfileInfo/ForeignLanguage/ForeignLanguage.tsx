@@ -9,6 +9,7 @@ import { getAllForeignLanguageResponse } from "models/responses/foreign-language
 import { GetAllForeignLanguageLevelResponse } from "models/responses/foreign-language-levels/getAllForeignLanguageLevelResponse";
 import foreignLanguageLevelService from "services/foreignLanguageLevelService";
 import { AddStudentForeignLanguageRequest } from "models/requests/student-foreign-languages/addStudentForeignLanguageRequest";
+import { ToastContainer, toast } from "react-toastify";
 type Props = {};
 
 const JobSchema = Yup.object().shape({
@@ -69,8 +70,9 @@ const ForeignLanguage = (props: Props) => {
   console.log(requestDate)
       await studentForeignLanguageService.add(requestDate); 
       await fetchStudentForeignLanguage(); 
+      toast.success('Dil başarıyla eklendi');
     } catch (error) {
-      console.error("Eklenirken bir hata oluştu:", error);
+      toast.error('Dil eklenemedi');
     }
   };
 
@@ -92,16 +94,16 @@ const ForeignLanguage = (props: Props) => {
             handleSave(values);
           }}
         >
-          <Form className="text-sm">
+          <Form className="text-sm ml-5 mt-5">
             <div className="flex mb-4">
               <div className="w-5/12 mr-2">
                 <Field
                  as="select"
                  id="foreignLanguageId"
                  name="foreignLanguageId"
-                 className="w-full p-3 border border-[#E6E5E4] rounded-md"
+                 className="input input-bordered w-full"
                >
-                 <option value="">Seçiniz*</option>
+                 <option value="">Yabancı Dil Seçiniz*</option>
                  {foreign?.items.map((item) => (
                    <option key={item.id} value={item.id}>
                      {item.name}
@@ -109,7 +111,7 @@ const ForeignLanguage = (props: Props) => {
                  ))}
                 </Field>
                 <ErrorMessage
-                  name="language"
+                  name="foreignLanguageId"
                   component="div"
                   className="text-red-500"
                 />
@@ -119,9 +121,9 @@ const ForeignLanguage = (props: Props) => {
                  as="select"
                  id="foreignLanguageLevelId"
                  name="foreignLanguageLevelId"
-                 className="w-full p-3 border border-[#E6E5E4] rounded-md"
+                 className="input input-bordered w-full"
                >
-                 <option value="">Seçiniz*</option>
+                 <option value="">Yabancı Dil Seviyesi Seçiniz*</option>
                  {foreignLevel?.items.map((item) => (
                    <option key={item.id} value={item.id}>
                      {item.name}
@@ -129,7 +131,7 @@ const ForeignLanguage = (props: Props) => {
                  ))}
                 </Field>
                 <ErrorMessage
-                  name="level"
+                  name="foreignLanguageLevelId"
                   component="div"
                   className="text-red-500"
                 />
@@ -137,10 +139,11 @@ const ForeignLanguage = (props: Props) => {
             </div>
             <button
               type="submit"
-              className="bg-[#9933FF] text-white p-2 w-24 rounded-full"
+              className='btn btn-md px-5 rounded-full bg-bs_btn_bg hover:bg-bs_btn_hover_bg text-bs_btn_color'
             >
               Kaydet
             </button>
+            <ToastContainer />
           </Form>
         </Formik>
         <div className="bg-[#FCF9FC] flex flex-wrap mt-5 w-full justify-center">
