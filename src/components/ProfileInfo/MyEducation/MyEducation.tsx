@@ -9,6 +9,7 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 import { AddEducationRequest } from "models/requests/educations/addEducationRequest";
 import educationService from "services/educationService";
 import { GetEducationResponse } from "models/responses/educations/getEducationResponse";
+import { ToastContainer, toast } from "react-toastify";
 
 const departmentLevels = ["Lisans", "Önlisans", "Yüksek Lisans", "Doktora"];
 
@@ -81,7 +82,6 @@ const MyEducation: React.FC = () => {
     try {
       const result = await educationService.getById(localStorage.studentId);
       setEducation(result.data as GetEducationResponse);
-      console.log(result.data);
     } catch (error) {
       console.error("Error fetching student education:", error);
     }
@@ -125,8 +125,9 @@ const MyEducation: React.FC = () => {
       await educationService.add(addEducationRequest);
       resetForm();
       fetchStudentEducation();
+      toast.success('Eğitim başarıyla eklendi');
     } catch (error) {
-      console.error("Error adding education:", error);
+      toast.error('Eğitim eklenemedi');
     }
   };
   const OngoingCheckbox: React.FC = () => {
@@ -160,7 +161,7 @@ const MyEducation: React.FC = () => {
 
   return (
     <div className="">
-      <div className="max-w-4xl mx-auto mt-5 text-[#828282]">
+      <div className="max-w-4xl mx-auto mt-5 ml-5 text-[#828282]">
         <Formik
            initialValues={{ ...initialValues, studentId: localStorage.studentId }}
            validationSchema={EducationSchema}
@@ -174,7 +175,7 @@ const MyEducation: React.FC = () => {
                   as="select"
                   id="department"
                   name="department"
-                  className="w-full border border-[#B3A6C0] p-2 rounded-md"
+                  className="input input-bordered w-full"
                 >
                   <option value="">Eğitim Durumu Seçiniz*</option>
                   {departmentLevels.map((level) => (
@@ -196,7 +197,7 @@ const MyEducation: React.FC = () => {
                   id="university"
                   name="university"
                   placeholder="Örnek Üniversite"
-                  className="w-full border border-[#B3A6C0]  p-2 rounded-md"
+                  className="input input-bordered w-full"
                 />
                 <ErrorMessage
                   name="university"
@@ -214,7 +215,7 @@ const MyEducation: React.FC = () => {
                   id="graduation"
                   name="graduation"
                   placeholder="Yazılım"
-                  className="w-full border border-[#B3A6C0] p-2 rounded-md"
+                  className="input input-bordered w-full"
                 />
                 <ErrorMessage
                   name="graduation"
@@ -264,10 +265,11 @@ const MyEducation: React.FC = () => {
 
             <button
               type="submit"
-              className="bg-[#9933FF] text-white p-2 w-24 rounded-full"
+              className='btn btn-md px-5 rounded-full bg-bs_btn_bg hover:bg-bs_btn_hover_bg text-bs_btn_color'
             >
               Kaydet
             </button>
+            <ToastContainer />
           </Form>
         </Formik>
         {education && education && education.map((edu,index) => (

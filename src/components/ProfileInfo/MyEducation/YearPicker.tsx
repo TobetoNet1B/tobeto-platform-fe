@@ -40,7 +40,7 @@ const YearPicker: React.FC<YearPickerProps> = ({ field, form, placeholderText = 
       showYearDropdown
       dropdownMode="select"
       placeholderText={placeholderText}
-      className={`w-[${pickerWidth}px] border border-[#B3A6C0] p-2 rounded-md`}
+      className={`w-[${pickerWidth}px] input input-bordered w-full`}
     />
   );
 };

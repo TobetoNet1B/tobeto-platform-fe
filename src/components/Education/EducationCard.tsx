@@ -71,7 +71,7 @@ const EducationCard = (props: Props) => {
       name: module.name,
       createdDate: module.classroomStartDate.toString(),
       buttonText: "Eğitime Git",
-      companyName: module.companyName,
+      companyName: "İstanbul Kodluyor",
       id: module.id
     })).filter(filterCards).sort(sortCards)
     : [];

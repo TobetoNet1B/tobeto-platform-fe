@@ -100,7 +100,7 @@ const Setting: React.FC = () => {
   return (
     <div className="">
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-        <Form className="grid grid-cols-3 gap-4 mt-5 ">
+        <Form className="grid grid-cols-3 gap-4 mt-5 ml-5">
           <div>
             <label htmlFor="oldPassword" className="text-sm font-medium  block mb-1 text-[#828282]">
               Eski Şifre*
@@ -110,7 +110,7 @@ const Setting: React.FC = () => {
               id="oldPassword"
               name="oldPassword"
               placeholder="Eski Şifre"
-              className="p-2 border rounded w-full"
+              className="input input-bordered w-full"
             />
             <ErrorMessage name="oldPassword" component="div" className="text-red-500 text-sm" />
           </div>
@@ -124,7 +124,7 @@ const Setting: React.FC = () => {
               id="newPassword"
               name="newPassword"
               placeholder="Yeni Şifre"
-              className="p-2 border rounded w-full"
+              className="input input-bordered w-full"
             />
             <ErrorMessage name="newPassword" component="div" className="text-red-500 text-sm" />
           </div>
@@ -138,7 +138,7 @@ const Setting: React.FC = () => {
               id="confirmPassword"
               name="confirmPassword"
               placeholder="Yeni Şifre Tekrar"
-              className="p-2 border rounded w-full "
+              className="input input-bordered w-full "
             />
             <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-sm" />
           </div>

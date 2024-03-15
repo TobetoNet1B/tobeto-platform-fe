@@ -141,6 +141,7 @@ const Announcement = (props: Props) => {
         sortBy={sortBy}
         selectedInstitution={selectedInstitution}
         selectedOrganization={selectedOrganization}
+				isPlatform={false}
       />
     </div>
   );
