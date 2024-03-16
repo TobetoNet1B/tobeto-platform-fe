@@ -1,84 +1,50 @@
-import { ErrorMessage, Field, Form, Formik, FormikProvider, useFormik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { AddTobetoContactRequest } from 'models/requests/tobeto-contact/addTobetoContactRequest';
-import React, { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import tobetoContactService from 'services/tobetoContactService';
-import FormInput from 'utils/FormInput/FormInput';
 import { object, string } from 'yup';
 
 type Props = {}
 
 const Contact = (props: Props) => {
-  const [formData, setFormData] = useState({
-    name: '',
+  // const [formData, setFormData] = useState({
+  //   fullName: '',
+  //   email: '',
+  //   message: ''
+  // });
+
+  // const { fullName, email, message } = formData;
+
+  // const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
+
+  // const isFormValid = fullName !== '' && email !== '' && message !== '';
+
+  const initialValues: AddTobetoContactRequest  = {
+    fullName: '',
     email: '',
-    message: ''
-  });
-
-  const { name, email, message } = formData;
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const isFormValid = name !== '' && email !== '' && message !== '';
-
-  const initialValues = {
-    name: '',
-      email: '',
-      message: '',
-      isReaded: false
+    message: '',
+    isReaded: false
   };
 
   const validationSchema = object({
     email: string().email('Geçersiz e-posta')
   });
 
-  const handleSubmit = async (values: { name: string; email: string; message: string; isReaded: boolean; }) => {
+  const handleSubmit = async (values: AddTobetoContactRequest) => {
     try {
-      const requestData: AddTobetoContactRequest = {
-        fullName: values.name, // fullName alanı name ile eşleştirilir
-        email: values.email,
-        message: values.message,
-        isReaded: values.isReaded
-      };
-  
-      await tobetoContactService.add(requestData);
+      console.log(values);
+      
+      await tobetoContactService.add(values);
       toast.success('Mesajınız başarıyla gönderildi!');
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Bir hata oluştu, lütfen tekrar deneyinnnnnnnnnnnn.');
+      toast.error('Bir hata oluştu, lütfen tekrar deneyin.');
     }
   };
-
-  // const formik = useFormik({
-  //   initialValues: {
-  //     name: '',
-  //     email: '',
-  //     message: '',
-  //     isReaded: false
-  //   },
-  //   validationSchema: object({
-  //     email: string().email('Geçersiz e-posta')
-  //   }),
-  //   onSubmit : async (values: { name: string; email: string; message: string; isReaded: boolean; }) => {
-  //     try {
-  //       const requestData: AddTobetoContactRequest = {
-  //         fullName: values.name,
-  //         email: values.email,
-  //         message: values.message,
-  //         isReaded: values.isReaded
-  //       };
-    
-  //       await tobetoContactService.add(requestData);
-  //       toast.success('Mesajınız başarıyla gönderildi!');
-  //     } catch (error) {
-  //       console.error('Error:', error);
-  //       toast.error('Bir hata oluştu, lütfen tekrar deneyin.');
-  //     }
-  //   }
-  // });
 
   return (
     <div className='bg-white rounded-xl pt-0 mt-20 mb-5 overflow-hidden mx-auto max-w-6xl'>
@@ -154,10 +120,10 @@ const Contact = (props: Props) => {
                 <Form>
                   <span className="badge bg-[#9933ff] font-medium h-7 text-white">Mesaj Bırakın</span>
                   <h3 className="my-6 xl:text-4xl text-[calc(1.35rem+1.2vw)] font-bold">İletişim Formu</h3>
-                  <Field name="name" value={name} onChange={handleChange} className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-6 input" type="text" placeholder="Adınız Soyadınız" />
-                  <Field name="email" value={email} onChange={handleChange} className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-6 input" type="email" placeholder="E-Mail" />
+                  <Field name="fullName"  className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-6 input" type="text" placeholder="Adınız Soyadınız" />
+                  <Field name="email" className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-6 input" type="email" placeholder="E-Mail" />
                   <ErrorMessage name="email" component="div" />
-                  <Field name="message" value={message} onChange={handleChange} className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-6 textarea" as="textarea" cols={30} rows={10} placeholder="Mesajınız"/>
+                  <Field name="message"  className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-6 textarea" as="textarea" cols={30} rows={10} placeholder="Mesajınız" />
                   <div className='text-[11px]'>
                     Yukarıdaki form ile toplanan kişisel verileriniz Enocta tarafından
                     talebinize dair işlemlerin yerine getirilmesi ve paylaşmış olduğunuz
@@ -200,10 +166,10 @@ const Contact = (props: Props) => {
                       <iframe style={{ display: "none" }} />
                     </div>
                   </div>
-                  <button type="submit" className={`btn bg-[#9933ff] text-white hover:bg-[#a64dff] ${isFormValid ? '' : 'cursor-not-allowed'}`} disabled={!isFormValid}>
+                  <button type="submit" className={`btn bg-[#9933ff] text-white hover:bg-[#a64dff] ${true ? '' : 'cursor-not-allowed'}`} >
                     Gönder
                   </button>
-                  <ToastContainer/>
+                  <ToastContainer />
                 </Form>
               </Formik>
             </div>
