@@ -14,7 +14,6 @@ import { UpdateUserRequest } from 'models/requests/users/updateUserRequest';
 import userService from 'services/userService';
 import { UpdateAddressRequest } from 'models/requests/addresses/updateAddressRequest';
 import { ToastContainer, toast } from 'react-toastify';
-// import Toast from 'utils/Toast/Toast';
 
 type Props = {}
 
