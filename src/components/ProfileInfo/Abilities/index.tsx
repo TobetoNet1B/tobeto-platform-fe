@@ -28,6 +28,9 @@ const Abilities = () => {
     setIsLoading(false); 
   };
 
+  console.log("****************");
+  console.log(abilities);
+  console.log("****************");
 
 
   const abilitiesList = [
