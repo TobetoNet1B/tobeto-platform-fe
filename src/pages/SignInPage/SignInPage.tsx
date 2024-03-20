@@ -20,10 +20,7 @@ interface CustomJwtPayload {
 type Props = {}
 
 const SignInPage = (props: Props) => {
-    const initialValues = {
-        email: '',
-        password: ''
-    }
+
 
     const validationSchema = object({
         email: string().required("E-posta girmek zorunludur.").min(0),
