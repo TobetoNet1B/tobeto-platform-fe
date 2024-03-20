@@ -20,24 +20,6 @@ interface CustomJwtPayload {
 type Props = {}
 
 const SignInPage = (props: Props) => {
-    const initialValues = {
-        email: '',
-        password: ''
-    }
-
-    const validationSchema = object({
-        email: string().required("E-posta girmek zorunludur.").min(0),
-        password: string()/*
-            .required("Şifre girmek zorunludur.")
-            .min(3, "Şifre en az 3 karakter olmalıdır.")
-            .max(50)
-            .test(
-                "my-custom-rule",
-                "En az 1 büyük, 1 küçük harf ve 1 rakam içermelidir.",
-                passwordValidator,
-            )*/
-    });
-
 
     const navigate = useNavigate();
     const [error, setError] = useState('');
