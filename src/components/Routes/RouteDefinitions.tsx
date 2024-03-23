@@ -26,6 +26,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import PrivateRoutesWhenLoginned from "./PrivateRoutesWhenLoginned";
 import Contact from "components/Homepage/Footer/Contact";
 import LessonVideoUpload from "components/AdminPanel/LessonVideoUpload";
+import AdminLayout from "admin/AdminLayout";
 
 type Props = {};
 
@@ -66,6 +67,7 @@ const RouteDefinitions = (props: Props) => {
 			</Route>
 			<Route path="*" element={<NotFound />} />
 			<Route path="LessonVideoUpload" element={<LessonVideoUpload />} />
+			<Route path="admin" element={<AdminLayout children />}/>
 		</Routes>
 	);
 };
