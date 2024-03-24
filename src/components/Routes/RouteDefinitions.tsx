@@ -67,7 +67,7 @@ const RouteDefinitions = (props: Props) => {
 			</Route>
 			<Route path="*" element={<NotFound />} />
 			<Route path="LessonVideoUpload" element={<LessonVideoUpload />} />
-			<Route path="admin" element={<AdminLayout children />}/>
+			<Route path="admin" element={<AdminLayout />}/>
 		</Routes>
 	);
 };
