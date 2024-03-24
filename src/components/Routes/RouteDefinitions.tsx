@@ -25,8 +25,9 @@ import CalendarPage from "pages/Calendar";
 import PrivateRoutes from "./PrivateRoutes";
 import PrivateRoutesWhenLoginned from "./PrivateRoutesWhenLoginned";
 import Contact from "components/Homepage/Footer/Contact";
-import LessonVideoUpload from "components/AdminPanel/LessonVideoUpload";
+import LessonVideoUpload from "admin/pages/Lesson/LessonVideoUpload";
 import AdminLayout from "admin/AdminLayout";
+import AdminMain from "admin/components/AdminMain/AdminMain";
 
 type Props = {};
 
@@ -66,8 +67,10 @@ const RouteDefinitions = (props: Props) => {
 				<Route path="/moduleset/:id" element={<ModuleSet />} />
 			</Route>
 			<Route path="*" element={<NotFound />} />
-			<Route path="LessonVideoUpload" element={<LessonVideoUpload />} />
-			<Route path="admin" element={<AdminLayout />}/>
+			<Route path="/admin" element={<AdminLayout />}>
+				<Route index={true} element={<AdminMain />} />
+				<Route path="LessonVideoUpload" element={<LessonVideoUpload />} />
+			</Route>
 		</Routes>
 	);
 };
