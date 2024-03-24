@@ -1,8 +1,7 @@
-import React, { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import AdminHeader from './components/AdminHeader/AdminHeader'
 import AdminFooter from './components/AdminFooter/AdminFooter'
 import AdminSideNav from './components/AdminSideNav/AdminSideNav'
-import AdminMain from './components/AdminMain/AdminMain'
 import { Outlet } from 'react-router-dom'
 
 type Props = {
