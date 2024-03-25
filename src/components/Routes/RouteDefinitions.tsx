@@ -28,6 +28,8 @@ import Contact from "components/Homepage/Footer/Contact";
 import LessonVideoUpload from "admin/pages/Lesson/LessonVideoUpload";
 import AdminLayout from "admin/AdminLayout";
 import AdminMain from "admin/components/AdminMain/AdminMain";
+import Classrom from "admin/pages/Classroom/Classroom";
+import ClassroomAdd from "admin/pages/Classroom/ClassroomAdd";
 
 type Props = {};
 
@@ -70,6 +72,9 @@ const RouteDefinitions = (props: Props) => {
 			<Route path="/admin" element={<AdminLayout />}>
 				<Route index={true} element={<AdminMain />} />
 				<Route path="LessonVideoUpload" element={<LessonVideoUpload />} />
+				
+				<Route path="Classroom" element={<Classrom />} />
+				<Route path="ClassroomAdd" element={<ClassroomAdd />} />
 			</Route>
 		</Routes>
 	);
