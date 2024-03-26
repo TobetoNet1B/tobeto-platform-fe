@@ -66,6 +66,7 @@ const MyProfile = (props: Props) => {
 		{ date: '2024/05/08', count: 32 },
 	];
 
+	
 	const [student, setStudent] = useState<GetStudentResponse>({} as GetStudentResponse);
 	useEffect(() => {
 		let studentService = StudentService;
