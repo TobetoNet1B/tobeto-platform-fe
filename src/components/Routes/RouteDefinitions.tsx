@@ -28,6 +28,9 @@ import Contact from "components/Homepage/Footer/Contact";
 import LessonVideoUpload from "admin/pages/Lesson/LessonVideoUpload";
 import AdminLayout from "admin/AdminLayout";
 import AdminMain from "admin/components/AdminMain/AdminMain";
+import AdminContact from "admin/pages/Contact/AdminContact";
+import AdminSendMessage from "admin/pages/Contact/AdminSendMessage";
+import AdminInboxMessage from "admin/pages/Contact/AdminInboxMessage";
 import Classrom from "admin/pages/Classroom/Classroom";
 import ClassroomAdd from "admin/pages/Classroom/ClassroomAdd";
 
@@ -72,7 +75,10 @@ const RouteDefinitions = (props: Props) => {
 			<Route path="/admin" element={<AdminLayout />}>
 				<Route index={true} element={<AdminMain />} />
 				<Route path="LessonVideoUpload" element={<LessonVideoUpload />} />
-				
+				<Route path="contact" element={<AdminContact />}>
+					<Route path="admininboxmessage" element={<AdminInboxMessage />} />
+					<Route path="adminsendmessage" element={<AdminSendMessage />} />
+				</Route>
 				<Route path="Classroom" element={<Classrom />} />
 				<Route path="ClassroomAdd" element={<ClassroomAdd />} />
 			</Route>

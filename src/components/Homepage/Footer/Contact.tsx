@@ -1,6 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { AddTobetoContactRequest } from 'models/requests/tobeto-contact/addTobetoContactRequest';
-import { ChangeEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import tobetoContactService from 'services/tobetoContactService';
@@ -9,20 +8,6 @@ import { object, string } from 'yup';
 type Props = {}
 
 const Contact = (props: Props) => {
-  // const [formData, setFormData] = useState({
-  //   fullName: '',
-  //   email: '',
-  //   message: ''
-  // });
-
-  // const { fullName, email, message } = formData;
-
-  // const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  // };
-
-  // const isFormValid = fullName !== '' && email !== '' && message !== '';
-
   const initialValues: AddTobetoContactRequest  = {
     fullName: '',
     email: '',
@@ -31,19 +16,20 @@ const Contact = (props: Props) => {
   };
 
   const validationSchema = object({
-    email: string().email('Geçersiz e-posta')
+    email: string().email('Geçersiz e-posta').required('E-posta adresi gereklidir'),
+    fullName: string().max(20, 'Lütfen 20 karakterden az yazın').required('Ad Soyad alanı zorunludur'),
+    message: string().min(10, "Mesajınuzu daha detaylı olarak yazın").required('Mesaj alanı zorunludur')
   });
 
-  const handleSubmit = async (values: AddTobetoContactRequest) => {
+  const handleSubmit = async (values: AddTobetoContactRequest, { resetForm } : any) => {
     try {
-      console.log(values);
-      
       await tobetoContactService.add(values);
       toast.success('Mesajınız başarıyla gönderildi!');
     } catch (error) {
       console.error('Error:', error);
       toast.error('Bir hata oluştu, lütfen tekrar deneyin.');
     }
+    resetForm();
   };
 
   return (
@@ -120,11 +106,13 @@ const Contact = (props: Props) => {
                 <Form>
                   <span className="badge bg-[#9933ff] font-medium h-7 text-white">Mesaj Bırakın</span>
                   <h3 className="my-6 xl:text-4xl text-[calc(1.35rem+1.2vw)] font-bold">İletişim Formu</h3>
-                  <Field name="fullName"  className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-6 input" type="text" placeholder="Adınız Soyadınız" />
-                  <Field name="email" className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-6 input" type="email" placeholder="E-Mail" />
-                  <ErrorMessage name="email" component="div" />
-                  <Field name="message"  className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-6 textarea" as="textarea" cols={30} rows={10} placeholder="Mesajınız" />
-                  <div className='text-[11px]'>
+                  <Field name="fullName" className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-3 input" type="text" placeholder="Adınız Soyadınız" />
+                  <ErrorMessage name="fullName" component="badge" className='badge badge-error'/>
+                  <Field name="email" className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-3 mt-2 input" type="email" placeholder="E-Mail" />
+                  <ErrorMessage name="email" component="badge" className='badge badge-error'/>
+                  <Field name="message" className="block w-full py-4 px-6 text-sm font-normal border-[1px] border-solid border-[#e7e5e4] rounded-md appearance-none !mb-3 mt-2 textarea" as="textarea" cols={30} rows={10} placeholder="Mesajınız" />
+                  <ErrorMessage name="message" component="badge" className='badge badge-error'/>
+                  <div className='text-[11px] mt-2'>
                     Yukarıdaki form ile toplanan kişisel verileriniz Enocta tarafından
                     talebinize dair işlemlerin yerine getirilmesi ve paylaşmış olduğunuz
                     iletişim adresi üzerinden tanıtım, bülten ve pazarlama içerikleri
