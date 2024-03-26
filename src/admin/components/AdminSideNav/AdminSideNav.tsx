@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { MdPlayLesson } from "react-icons/md";
 import { CiUser } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
+import { FaBlog } from 'react-icons/fa';
 
 type Props = {
   sidebarOpen: boolean;
@@ -26,7 +27,7 @@ const AdminSideNav = (props: Props) => {
         trigger.current.contains(target)
       )
         return;
-        props.setSidebarOpen(false);
+      props.setSidebarOpen(false);
     };
     document.addEventListener('click', clickHandler);
     return () => document.removeEventListener('click', clickHandler);
@@ -45,7 +46,7 @@ const AdminSideNav = (props: Props) => {
     <aside ref={sidebar} className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${props.sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <NavLink to="/admin">
-          <img src={"https://www.svgheart.com/wp-content/uploads/2022/05/266welcome_1220-430-min.png"} alt="Logo" />
+          <img src={"https://tobeto.com/_next/static/media/tobeto-logo.29b55e1c.svg"} alt="Logo" />
         </NavLink>
         <button
           ref={trigger}
@@ -73,25 +74,31 @@ const AdminSideNav = (props: Props) => {
         <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
           <div>
             <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">MENU</h3>
-            <ul className="mb-6 flex flex-col gap-1.5">
-              <li>
+            <ul className="mb-6 flex flex-col gap-1.5 !text-start">
+              <li className='w-full'>
                 <NavLink
-                  to="LessonVideoUpload"
+                  to="lessonvideoupload"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('lessonvideoupload') && 'bg-graydark dark:bg-meta-4'}`}>
                   <MdPlayLesson />
-                  Lesson
+                  Videolar
                 </NavLink>
                 <NavLink
                   to="User"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('user') && 'bg-graydark dark:bg-meta-4'}`}>
                   <CiUser />
-                  User
+                  Kullanıcılar
                 </NavLink>
                 <NavLink
-                  to="Mail"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('mail') && 'bg-graydark dark:bg-meta-4'}`}>
+                  to="contact/admininboxmessage"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('contact/admininboxmessage') && 'bg-graydark dark:bg-meta-4'}`}>
                   <CiMail />
-                  Mail
+                  E-Mail
+                </NavLink>
+                <NavLink
+                  to="contact"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('blog') && 'bg-graydark dark:bg-meta-4'}`}>
+                  <FaBlog />
+                  Blog
                 </NavLink>
               </li>
             </ul>
