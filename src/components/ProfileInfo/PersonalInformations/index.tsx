@@ -105,7 +105,7 @@ const PersonalInformations = (props: Props) => {
 				const updateAddressData: UpdateAddressRequest = {
 					...values,
 					Id: address.id,
-					countryId: "86f04dcc-aafd-4aca-1b67-08dc4d0842a3",
+					countryId: "652b3c39-532f-490b-e220-08dc4dc57028",
 					cityId: values.city,
 					districtId: values.district,
 					studentId: localStorage.studentId,

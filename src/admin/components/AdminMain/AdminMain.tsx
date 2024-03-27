@@ -40,6 +40,24 @@ const AdminMain = (props: Props) => {
           </div>
 
           <div className="card w-80 h-40 bg-base-100 shadow-xl image-full m-2">
+            <figure><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/classroom-2887087-2396456.png" alt="Student" /></figure>
+            <div className="card-body">
+              <div className="card-actions top-0 left-0 -m-6">
+                <Link to={"Student"} className="btn btn-primary">Öğrenci Listesi</Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="card w-80 h-40 bg-base-100 shadow-xl image-full m-2">
+            <figure><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/classroom-2887087-2396456.png" alt="StudentInfo" /></figure>
+            <div className="card-body">
+              <div className="card-actions top-0 left-0 -m-6">
+                <Link to={"StudentInfo"} className="btn btn-primary">Öğrenci Bilgi Ekleme</Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="card w-80 h-40 bg-base-100 shadow-xl image-full m-2">
             <figure><img src="https://cdn-icons-png.flaticon.com/512/1187/1187595.png" alt="Blog" /></figure>
             <div className="card-body">
               <div className="card-actions top-0 left-0 -m-6">

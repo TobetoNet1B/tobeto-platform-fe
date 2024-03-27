@@ -95,6 +95,20 @@ const AdminSideNav = (props: Props) => {
                   Kullanıcılar
                 </NavLink>
                 <NavLink
+                  to="Student"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('user') && 'bg-graydark dark:bg-meta-4'}`}>
+                  <CiUser />
+                  Öğrenci Listesi
+                </NavLink>
+
+                <NavLink
+                  to="StudentInfo"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('user') && 'bg-graydark dark:bg-meta-4'}`}>
+                  <CiUser />
+                  Öğrenci Bilgi Ekleme
+                </NavLink>
+
+                <NavLink
                   to="contact/admininboxmessage"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('contact/admininboxmessage') && 'bg-graydark dark:bg-meta-4'}`}>
                   <CiMail />
