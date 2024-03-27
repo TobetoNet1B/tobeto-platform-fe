@@ -30,6 +30,8 @@ import AdminLayout from "admin/AdminLayout";
 import AdminMain from "admin/components/AdminMain/AdminMain";
 import Classrom from "admin/pages/Classroom/Classroom";
 import ClassroomAdd from "admin/pages/Classroom/ClassroomAdd";
+import AdminAnnouncement from "admin/pages/Announcement/AdminAnnouncement";
+import AnnouncementAdd from "admin/pages/Announcement/AnnouncementAdd";
 
 type Props = {};
 
@@ -75,6 +77,8 @@ const RouteDefinitions = (props: Props) => {
 				
 				<Route path="Classroom" element={<Classrom />} />
 				<Route path="ClassroomAdd" element={<ClassroomAdd />} />
+				<Route path="Announcement" element={<AdminAnnouncement />} />
+				<Route path="AnnouncementAdd" element={<AnnouncementAdd />} />
 			</Route>
 		</Routes>
 	);

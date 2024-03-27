@@ -1,39 +1,40 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import { AddClassroomRequest } from 'models/requests/classrooms/addClassroomRequest';
+import { AddAnnouncementRequest } from 'models/requests/announcements/addAnnouncementRequest';
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify'
-import classroomService from 'services/classroomService';
+import announcementService from 'services/announcementService';
+
 import * as Yup from "yup";
 const validationSchema = Yup.object().shape({
-  classSize: Yup.number().required("Doldurulması zorunlu alan*").min(10,"Sınıf mevcutu en az 10 olmalıdır."),
-  name: Yup.string().required("Doldurulması zorunlu alan*"),
+  title: Yup.string().required("Doldurulması zorunlu alan*"),
+  description: Yup.string().required("Doldurulması zorunlu alan*"),
 });
 
-const ClassroomAdd : React.FC = () => {
+const AnnouncementAdd : React.FC = () => {
   const navigate = useNavigate();
   const initialValues = {
-    classSize:0,
-    name: "",
+    title:"",
+    description: "",
 
   };
   const handleSubmit = async (
-    values: { classSize: number; name: string },
+    values: { title: string; description: string },
     { resetForm }: { resetForm: () => void }
   ) => {
     try {
-      const { classSize, name } = values;
-      const requestData: AddClassroomRequest = {
-        classSize: classSize,
-        name: name,
+      const { title, description } = values;
+      const requestData: AddAnnouncementRequest = {
+        title: title,
+        description: description,
       };
-      await classroomService.add(requestData);
+      await announcementService.add(requestData);
+      await toast.success('Duyuru başarıyla eklendi');
 
       resetForm();
-      toast.success('Sınıf başarıyla eklendi');
-      navigate('/admin/Classroom')
+      navigate('/admin/Announcement')
     } catch (error) {
-      toast.error('Sınıf eklenemedi');
+      toast.error('Duyuru eklenemedi');
     }
   };
   return (
@@ -47,35 +48,35 @@ const ClassroomAdd : React.FC = () => {
       <Form className="text-sm ml-3">
             <div className="flex mb-3 ">
               <div className="w-1/2 mr-2 ">
-              <label htmlFor="name" className="font-medium">Sınıf Adı*</label>
+              <label htmlFor="title" className="font-medium ">Başlık*</label>
                 <Field
                   type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Tobeto"
+                  id="title"
+                  name="title"
+                  placeholder="Başlık"
                   className="input input-bordered w-full"
                 />
                 <ErrorMessage
-                  name="name"
+                  name="title"
                   component="div"
                   className="text-red-500"
                 />
               </div>
               <div className="w-1/2 ml-2">
-                
-                 <label htmlFor="classSize" className="font-medium ">Öğrenci Sayısı*</label>
+              <label htmlFor="description" className="font-medium">Açıklama*</label>
                 <Field
-                  type={"number"}
-                  id="classSize"
-                  name="classSize"
-                  placeholder="0"
+                  type="text"
+                  id="description"
+                  name="description"
+                  placeholder="Açıklama"
                   className="input input-bordered w-full"
                 />
                 <ErrorMessage
-                  name="classSize"
+                  name="description"
                   component="div"
                   className="text-red-500"
                 />
+                
               </div>
             </div>
         <button
@@ -84,18 +85,19 @@ const ClassroomAdd : React.FC = () => {
         >
           Kaydet
         </button>
-        <Link to={`/admin/Classroom`}>
+        <Link to={`/admin/Announcement`}>
         <p className="ml-3 mt-5 font-medium text-red-500 ">
           Listeye Dön...
         </p>
       </Link>
-        <ToastContainer />
+
       </Form>
+        <ToastContainer />
     </Formik>
     </div>
     </div>
   )
 }
 
-export default ClassroomAdd
+export default AnnouncementAdd
 
