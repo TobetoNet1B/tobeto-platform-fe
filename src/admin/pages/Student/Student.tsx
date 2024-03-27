@@ -10,7 +10,7 @@ const StudentList = () => {
 	const [students, setStudents] = useState<GetAllStudentResponse | null>(null);
 	const [selectedStudent, setSelectedStudent] = useState<GetStudentResponse | null>(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1); // Yeni eklenen state
+  const [currentPage, setCurrentPage] = useState(1); 
 
   useEffect(() => {
     fetchStudents(currentPage);
@@ -18,7 +18,7 @@ const StudentList = () => {
 
 	const fetchStudents = async (page: number) => {
     try {
-      const result = await studentService.getAll(page-1, pageSize); // API genellikle 0'dan saymaya başlar
+      const result = await studentService.getAll(page-1, pageSize);
       setStudents(result.data as GetAllStudentResponse);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -90,7 +90,7 @@ const StudentDetailsModal = ({ student, onClose }: { student: GetStudentResponse
 			<p><div className='font-bold'>Eğitim:</div> {student.educations?.map((educations, index) => (<h5 key={index} className=''>{educations.university}-{educations.department}</h5>))}</p>
 			<p><div className='font-bold'>Sertifikalar:</div> {student.certificates?.map((certificates, index) => (<h5 key={index} className=''>{certificates.name}</h5>))}</p>
 			<p><div className='font-bold'>Yetenekler:</div> {student.abilities?.map((ability, index) => (<h5 key={index} className=''>{ability.name}</h5>))}</p>
-			{/* Diğer detaylar burada listelenebilir */}
+			
 		</div>
 	);
 };

@@ -18,7 +18,7 @@ const CountryAdd = (props: Props) => {
 	const fetchCountries = async () => {
 		try {
 			const response = await countryService.getAll(0, 10);
-			setCountries(response.data.items); // Varsayılan olarak response'un bir data özelliği olduğunu varsayıyorum
+			setCountries(response.data.items); 
 			console.log(response);
 
 		} catch (error) {
@@ -36,8 +36,8 @@ const CountryAdd = (props: Props) => {
 			const updateData: AddCountryRequest = { name: countryName };
 			await countryService.add(updateData);
 			toast.success('Başarıyla kaydedildi.');
-			fetchCountries(); // Listeyi güncellemek için ülkeleri tekrar çek
-			setCountryName(''); // Input alanını temizle
+			fetchCountries(); 
+			setCountryName(''); 
 		} catch (error) {
 			toast.error('Kayıt sırasında bir hata oluştu!');
 			console.error(error);
@@ -48,7 +48,7 @@ const CountryAdd = (props: Props) => {
 		try {
 			await countryService.delete(countryId);
 			toast.success('Ülke başarıyla silindi.');
-			fetchCountries(); // Listeyi güncelleyin
+			fetchCountries();
 		} catch (error) {
 			toast.error('Silme işlemi sırasında bir hata oluştu!');
 			console.error(error);

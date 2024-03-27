@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';// Model yolu güncellenecek
-import socialMediaService from 'services/socialMediaService'; // Servis yolu güncellenecek
+import { ToastContainer, toast } from 'react-toastify';
+import socialMediaService from 'services/socialMediaService'; 
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { AddSocialMediaRequest } from 'models/requests/social-medias/addSocialMediaRequest';
 import { GetAllSocialMediaResponse } from 'models/responses/social-medias/getAllSocialMediaResponse';
@@ -20,8 +20,8 @@ const SocialMediaAdd = (props: Props) => {
 
 	const fetchSocialMedias = async () => {
 		try {
-			const response = await socialMediaService.getAll(0, 10); // Servis metodu güncellenecek
-			setSocialMedias(response.data); // Varsayılan olarak response'un bir data özelliği olduğunu varsayıyorum
+			const response = await socialMediaService.getAll(0, 10); 
+			setSocialMedias(response.data); 
 		} catch (error) {
 			toast.error('Sosyal medya bilgileri yüklenirken bir hata oluştu!');
 			console.error(error);
@@ -36,13 +36,13 @@ const SocialMediaAdd = (props: Props) => {
 		try {
 			const updateData: AddSocialMediaRequest = {
 				name: socialMediaName,
-				iconUrl: socialMediaIconUrl // URL bilgisi ekleniyor
+				iconUrl: socialMediaIconUrl 
 			};
-			await socialMediaService.add(updateData); // Servis metodu güncellenecek
+			await socialMediaService.add(updateData); 
 			toast.success('Başarıyla kaydedildi.');
-			fetchSocialMedias(); // Listeyi güncellemek için sosyal medya bilgileri tekrar çekiliyor
+			fetchSocialMedias(); 
 			setSocialMediaName('');
-			setSocialMediaUrl(''); // URL input alanı temizleniyor
+			setSocialMediaUrl(''); 
 		} catch (error) {
 			toast.error('Kayıt sırasında bir hata oluştu!');
 			console.error(error);
@@ -51,9 +51,9 @@ const SocialMediaAdd = (props: Props) => {
 
 	const handleDelete = async (socialMediaId: string) => {
 		try {
-			await socialMediaService.delete(socialMediaId); // Servis metodu güncellenecek
+			await socialMediaService.delete(socialMediaId);
 			toast.success('Sosyal medya başarıyla silindi.');
-			fetchSocialMedias(); // Listeyi güncelleyin
+			fetchSocialMedias(); 
 		} catch (error) {
 			toast.error('Silme işlemi sırasında bir hata oluştu!');
 			console.error(error);
@@ -63,7 +63,7 @@ const SocialMediaAdd = (props: Props) => {
 	return (
 		<div className="p-4">
 			<div className="flex justify-between items-center py-4">
-				<Link to={`/admin/StudentInfo`}> {/* Geri dönüş linki güncellendi */}
+				<Link to={`/admin/StudentInfo`}> 
 					<button type="button" className="text-white bg-[#1C64F2] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
 						Geri
 					</button>

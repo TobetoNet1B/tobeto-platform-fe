@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import { AddForeignLanguageRequest } from 'models/requests/foreign-languages/addForeignLanguageRequest'; // Yolunuz ve dosya isminiz farklı olabilir
-import foreignLanguageService from 'services/foreignLanguageService'; // Servisiniz farklı olabilir
+import { AddForeignLanguageRequest } from 'models/requests/foreign-languages/addForeignLanguageRequest';
+import foreignLanguageService from 'services/foreignLanguageService'; 
 import { RiDeleteBin5Line } from 'react-icons/ri';
 
 type Props = {}
@@ -17,8 +17,8 @@ const ForeignLanguageAdd = (props: Props) => {
 
 	const fetchLanguages = async () => {
 		try {
-			const response = await foreignLanguageService.getAll(0, 10); // Metod adı ve parametreleriniz farklı olabilir
-			setLanguages(response.data.items); // Yanıt yapınıza göre ayarlama yapabilirsiniz
+			const response = await foreignLanguageService.getAll(0, 10); 
+			setLanguages(response.data.items); 
 		} catch (error) {
 			toast.error('Diller yüklenirken bir hata oluştu!');
 			console.error(error);
@@ -31,11 +31,11 @@ const ForeignLanguageAdd = (props: Props) => {
 
 	const handleSave = async () => {
 		try {
-			const updateData: AddForeignLanguageRequest = { name: languageName }; // Yapınız farklı olabilir
-			await foreignLanguageService.add(updateData); // Metod adı farklı olabilir
+			const updateData: AddForeignLanguageRequest = { name: languageName }; 
+			await foreignLanguageService.add(updateData); 
 			toast.success('Başarıyla kaydedildi.');
-			fetchLanguages(); // Metod adı farklı olabilir
-			setLanguageName(''); // Input alanını temizle
+			fetchLanguages(); 
+			setLanguageName(''); 
 		} catch (error) {
 			toast.error('Kayıt sırasında bir hata oluştu!');
 			console.error(error);
@@ -44,9 +44,9 @@ const ForeignLanguageAdd = (props: Props) => {
 
 	const handleDelete = async (languageId: string) => {
 		try {
-			await foreignLanguageService.delete(languageId); // Metod adı farklı olabilir
+			await foreignLanguageService.delete(languageId); 
 			toast.success('Dil başarıyla silindi.');
-			fetchLanguages(); // Metod adı farklı olabilir
+			fetchLanguages();
 		} catch (error) {
 			toast.error('Silme işlemi sırasında bir hata oluştu!');
 			console.error(error);
@@ -56,7 +56,7 @@ const ForeignLanguageAdd = (props: Props) => {
 	return (
 		<div className="p-4">
 			<div className="flex justify-between items-center py-4">
-				<Link to={`/admin/StudentInfo`}> {/* Geri dönüş linki değiştirildi */}
+				<Link to={`/admin/StudentInfo`}> 
 					<button type="button" className="text-white bg-[#1C64F2] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
 						Geri
 					</button>
