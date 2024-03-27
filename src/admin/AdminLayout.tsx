@@ -18,7 +18,7 @@ const AdminLayout = (props: Props) => {
   }, [pathname]);
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 0);
+    setTimeout(() => setLoading(false), 5000);
   }, []);
   return (
     loading ? (
