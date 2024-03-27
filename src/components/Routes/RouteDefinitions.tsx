@@ -33,6 +33,11 @@ import AdminSendMessage from "admin/pages/Contact/AdminSendMessage";
 import AdminInboxMessage from "admin/pages/Contact/AdminInboxMessage";
 import Classrom from "admin/pages/Classroom/Classroom";
 import ClassroomAdd from "admin/pages/Classroom/ClassroomAdd";
+import Student from "admin/pages/Student/Student";
+import CountryAdd from "admin/pages/Student/CountryAdd";
+import ForeignLangAdd from "admin/pages/Student/ForeignLangAdd";
+import SocialMediaAdd from "admin/pages/Student/SocialMediaAdd";
+import StudentInfo from "admin/pages/Student/StudentInfo";
 
 type Props = {};
 
@@ -81,6 +86,11 @@ const RouteDefinitions = (props: Props) => {
 				</Route>
 				<Route path="Classroom" element={<Classrom />} />
 				<Route path="ClassroomAdd" element={<ClassroomAdd />} />
+				<Route path="Student" element={<Student />} />
+				<Route path="StudentInfo" element={<StudentInfo />} />
+				<Route path="CountryAdd" element={<CountryAdd />} />
+				<Route path="ForeignLangAdd" element={<ForeignLangAdd />} />
+				<Route path="SocialMediaAdd" element={<SocialMediaAdd />} />
 			</Route>
 		</Routes>
 	);
