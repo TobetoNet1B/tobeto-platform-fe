@@ -1,1 +1,5 @@
-export interface GetSocialMediaResponse{}
+export interface GetSocialMediaResponse{
+  id: string
+  name: string
+  iconUrl: string
+}
