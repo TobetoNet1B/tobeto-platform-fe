@@ -1,5 +1,6 @@
 export interface GetAllStudentResponse {
   items: Student[];
+  count: number;
 }
 export interface Student {
   id: string;
@@ -8,6 +9,7 @@ export interface Student {
   phoneNumber: string;
   about: string;
   imgUrl: string;
+  userId:number;
   user: User;
   studentExams: StudentExam[];
   experiences: Experience[];

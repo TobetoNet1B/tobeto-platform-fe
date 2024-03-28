@@ -1,1 +1,3 @@
-export interface AddCountryRequest{}
+export interface AddCountryRequest{
+  name: string
+}

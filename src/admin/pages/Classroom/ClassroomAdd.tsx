@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { AddClassroomRequest } from 'models/requests/classrooms/addClassroomRequest';
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify'
 import classroomService from 'services/classroomService';
 import * as Yup from "yup";
@@ -11,6 +11,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const ClassroomAdd : React.FC = () => {
+  const navigate = useNavigate();
   const initialValues = {
     classSize:0,
     name: "",
@@ -30,6 +31,7 @@ const ClassroomAdd : React.FC = () => {
 
       resetForm();
       toast.success('Sınıf başarıyla eklendi');
+      navigate('/admin/Classroom')
     } catch (error) {
       toast.error('Sınıf eklenemedi');
     }

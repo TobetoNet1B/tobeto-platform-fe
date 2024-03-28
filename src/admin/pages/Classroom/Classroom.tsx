@@ -76,7 +76,6 @@ const Classrom = (props: Props) => {
     e.preventDefault();
     try {
       await classroomService.update(formData);
-      toast.success('Sınıf başarıyla güncellendi.');
       closeModal();
       fetchClassroom();
     } catch (error) {

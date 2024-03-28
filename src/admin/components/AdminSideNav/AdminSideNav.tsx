@@ -4,7 +4,8 @@ import { MdPlayLesson } from "react-icons/md";
 import { CiUser } from "react-icons/ci";
 import { CiMail } from "react-icons/ci";
 import { FaBlog } from 'react-icons/fa';
-
+import { MdAnnouncement } from "react-icons/md";
+import { SiGoogleclassroom } from "react-icons/si";
 type Props = {
   sidebarOpen: boolean;
   setSidebarOpen: (arg: boolean) => void;
@@ -85,8 +86,15 @@ const AdminSideNav = (props: Props) => {
                 <NavLink
                   to="Classroom"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('lessonvideoupload') && 'bg-graydark dark:bg-meta-4'}`}>
-                  <MdPlayLesson />
+               
+<SiGoogleclassroom />
                   Sınıf İşlemleri
+                </NavLink>
+                <NavLink
+                  to="Announcement"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('lessonvideoupload') && 'bg-graydark dark:bg-meta-4'}`}>
+                <MdAnnouncement />
+                  Duyuru İşlemleri
                 </NavLink>
                 <NavLink
                   to="User"
@@ -94,6 +102,20 @@ const AdminSideNav = (props: Props) => {
                   <CiUser />
                   Kullanıcılar
                 </NavLink>
+                <NavLink
+                  to="Student"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('user') && 'bg-graydark dark:bg-meta-4'}`}>
+                  <CiUser />
+                  Öğrenci Listesi
+                </NavLink>
+
+                <NavLink
+                  to="StudentInfo"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('user') && 'bg-graydark dark:bg-meta-4'}`}>
+                  <CiUser />
+                  Öğrenci Bilgi Ekleme
+                </NavLink>
+
                 <NavLink
                   to="contact/admininboxmessage"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('contact/admininboxmessage') && 'bg-graydark dark:bg-meta-4'}`}>
