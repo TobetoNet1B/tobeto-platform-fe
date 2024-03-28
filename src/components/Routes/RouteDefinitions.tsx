@@ -41,6 +41,7 @@ import SocialMediaAdd from "admin/pages/Student/SocialMediaAdd";
 import StudentInfo from "admin/pages/Student/StudentInfo";
 import AnnouncementAdd from "admin/pages/Announcement/AnnouncementAdd";
 import AnnouncementList from "admin/pages/Announcement/AnnouncementList";
+import AdminDetailMessage from "admin/pages/Contact/AdminDetailMessage";
 
 type Props = {};
 
@@ -87,6 +88,7 @@ const RouteDefinitions = (props: Props) => {
 					<Route path="admininboxmessage" element={<AdminInboxMessage />} />
 					<Route path="adminsendmessage" element={<AdminSendMessage />} />
 					<Route path="adminresultsendmessage" element={<AdminResultSendMessage />} />
+					<Route path="admindetailmessage" element={<AdminDetailMessage />} />
 				</Route>
 				<Route path="Classroom" element={<Classrom />} />
 				<Route path="ClassroomAdd" element={<ClassroomAdd />} />
