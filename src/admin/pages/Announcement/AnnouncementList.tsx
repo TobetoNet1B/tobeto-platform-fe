@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { GoPencil } from "react-icons/go";
 import { Button, Modal } from "flowbite-react";
@@ -7,9 +6,10 @@ import { toast } from "react-toastify";
 import { GetAllAnnouncementResponse } from "models/responses/announcements/getAllAnnouncementResponse";
 import { UpdateAnnouncementRequest } from "models/requests/announcements/updateAnnouncementRequest";
 import announcementService from "services/announcementService";
+import { Link } from "react-router-dom";
 type Props = {};
 
-const AdminAnnouncement = (props: Props) => {
+const AnnouncementList = (props: Props) => {
   const [announcement, setAnnouncement] = useState<GetAllAnnouncementResponse | null>(
     null
   );
@@ -92,14 +92,14 @@ const AdminAnnouncement = (props: Props) => {
   };
   return (
     <>
-      <Link to={`/admin/AnnouncementAdd`}>
-        <button
-          type="button"
-          className="ml-3 text-white bg-[#1C64F2] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-        >
-          Ekle
-        </button>
-      </Link>
+     <Link to="/admin/AnnouncementAdd">
+  <button
+    type="button"
+    className="ml-3 text-white bg-[#1C64F2] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+  >
+    Ekle
+  </button>
+</Link>
       <div className="ml-3 mt-5 w-11/12 shadow-md sm:rounded-lg">
   <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead className="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -116,26 +116,26 @@ const AdminAnnouncement = (props: Props) => {
       </tr>
     </thead>
     <tbody>
-      {announcement?.items.map((classroom) => (
+      {announcement?.items.map((announcement) => (
         <tr
-          key={classroom.id}
+          key={announcement.id}
           className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
         >
           <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            {classroom.title}
+            {announcement.title}
           </td>
           <td className="px-6 py-4">
-            {classroom.description}
+            {announcement.description}
           </td>
           <td className="px-6 py-4 space-x-2 w-[120px]">
             <button
-              onClick={() => openModal(classroom)}
+              onClick={() => openModal(announcement)}
               className="rounded-full bg-[#9933FF] text-white p-1 hover:bg-[#7F22CC] focus:outline-none focus:ring focus:border-blue-300 mb-2"
             >
               <GoPencil size={15} />
             </button>
             <button
-              onClick={() => openDeleteModalHandler(classroom)}
+              onClick={() => openDeleteModalHandler(announcement)}
               className="rounded-full bg-[#FF4D4D] text-white p-1 hover:bg-[#CC4646] focus:outline-none focus:ring focus:border-blue-300"
             >
               <RiDeleteBin5Line size={15} />
@@ -232,4 +232,4 @@ const AdminAnnouncement = (props: Props) => {
   );
 };
 
-export default AdminAnnouncement;
+export default AnnouncementList;

@@ -56,7 +56,14 @@ const AdminMain = (props: Props) => {
               </div>
             </div>
           </div>
-
+          <div className="card w-80 h-40 bg-base-100 shadow-xl image-full m-2">
+            <figure><img src="https://img.icons8.com/pastel-glyph/64/notice--v2.png" alt="notice--v2"/></figure>
+            <div className="card-body">
+              <div className="card-actions top-0 left-0 -m-6">
+                <Link to={"Announcement"} className="btn btn-primary">Duyurular</Link>
+              </div>
+            </div>
+          </div>
           <div className="card w-80 h-40 bg-base-100 shadow-xl image-full m-2">
             <figure><img src="https://cdn-icons-png.flaticon.com/512/1187/1187595.png" alt="Blog" /></figure>
             <div className="card-body">
