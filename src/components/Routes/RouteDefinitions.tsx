@@ -31,6 +31,7 @@ import AdminMain from "admin/components/AdminMain/AdminMain";
 import AdminContact from "admin/pages/Contact/AdminContact";
 import AdminSendMessage from "admin/pages/Contact/AdminSendMessage";
 import AdminInboxMessage from "admin/pages/Contact/AdminInboxMessage";
+import AdminResultSendMessage from "admin/pages/Contact/AdminResultSendMessage";
 import Classrom from "admin/pages/Classroom/Classroom";
 import ClassroomAdd from "admin/pages/Classroom/ClassroomAdd";
 import Student from "admin/pages/Student/Student";
@@ -85,6 +86,7 @@ const RouteDefinitions = (props: Props) => {
 				<Route path="contact" element={<AdminContact />}>
 					<Route path="admininboxmessage" element={<AdminInboxMessage />} />
 					<Route path="adminsendmessage" element={<AdminSendMessage />} />
+					<Route path="adminresultsendmessage" element={<AdminResultSendMessage />} />
 				</Route>
 				<Route path="Classroom" element={<Classrom />} />
 				<Route path="ClassroomAdd" element={<ClassroomAdd />} />
