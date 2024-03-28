@@ -38,8 +38,8 @@ import CountryAdd from "admin/pages/Student/CountryAdd";
 import ForeignLangAdd from "admin/pages/Student/ForeignLangAdd";
 import SocialMediaAdd from "admin/pages/Student/SocialMediaAdd";
 import StudentInfo from "admin/pages/Student/StudentInfo";
-import AdminAnnouncement from "admin/pages/Announcement/AdminAnnouncement";
 import AnnouncementAdd from "admin/pages/Announcement/AnnouncementAdd";
+import AnnouncementList from "admin/pages/Announcement/AnnouncementList";
 
 type Props = {};
 
@@ -93,8 +93,9 @@ const RouteDefinitions = (props: Props) => {
 				<Route path="CountryAdd" element={<CountryAdd />} />
 				<Route path="ForeignLangAdd" element={<ForeignLangAdd />} />
 				<Route path="SocialMediaAdd" element={<SocialMediaAdd />} />
-				<Route path="Announcement" element={<AdminAnnouncement />} />
+				<Route path="Announcement" element={<AnnouncementList />} />
 				<Route path="AnnouncementAdd" element={<AnnouncementAdd />} />
+			
 			</Route>
 		</Routes>
 	);
