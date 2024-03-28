@@ -1,17 +1,17 @@
-import { TobetoContact } from 'models/responses/tobeto-contact/getAllTobetoContactResponse';
+import { TobetoSendMessage } from 'models/responses/tobeto-send-message/getAllTobetoSendMessageResponse';
 import React, { useEffect, useState } from 'react'
 import { FaRegStar } from 'react-icons/fa'
-import tobetoContactService from 'services/tobetoContactService';
+import tobetoSendMessageService from 'services/tobetoSendMessageService';
 
 type Props = {}
 
-const AdminInboxMessage = (props: Props) => {
-  const [messages, setMessages] = useState<TobetoContact[]>([]);
+const AdminResultSendMessage = (props: Props) => {
+  const [messages, setMessages] = useState<TobetoSendMessage[]>([]);
 
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await tobetoContactService.getAll(0, 999);
+        const response = await tobetoSendMessageService.getAll(0, 999);
         if (!response) {
           throw new Error('Mesajlar alınamadı');
         }
@@ -311,7 +311,7 @@ const AdminInboxMessage = (props: Props) => {
                       </span>
                     </div>
                   </div>
-                  Gönderen
+                  Alıcı
                 </label>
               </th>
               <th className="hidden w-3/5 py-6 px-4 xl:block">
@@ -323,7 +323,7 @@ const AdminInboxMessage = (props: Props) => {
             </tr>
           </thead>
           <tbody className="block h-full max-h-full overflow-auto py-4">
-            {messages.filter(message => !message.isReaded).map((message, index) => (
+            {messages.map((message, index) => (
               <tr className="flex cursor-pointer items-center hover:bg-whiten dark:hover:bg-boxdark-2">
                 <td className="w-[65%] py-4 pl-4 pr-4 lg:pl-10 xl:w-1/4">
                   <div className="flex items-center">
@@ -354,12 +354,12 @@ const AdminInboxMessage = (props: Props) => {
                     <span className="pr-3">
                       <FaRegStar className='w-6 h-6' />
                     </span>
-                    {message.fullName}
+                    {message.receiverName}
                   </div>
                 </td>
                 <td className="hidden w-3/5 p-4 xl:block">
                   <p>
-                    {message.message.length > 65 ? message.message.substring(0, 65) + '...' : message.message}
+                    {message.content.length > 65 ? message.content.substring(0, 65) + '...' : message.content}
                   </p>
                 </td>
                 <td className="w-[35%] py-4 pl-4 pr-4 lg:pr-10 xl:w-[20%]">
@@ -411,4 +411,4 @@ const AdminInboxMessage = (props: Props) => {
   )
 }
 
-export default AdminInboxMessage
+export default AdminResultSendMessage
